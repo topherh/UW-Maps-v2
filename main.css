@@ -1,0 +1,23 @@
+@charset "utf-8";
+#map {
+	padding: 8px;	
+	float: right;
+	border: 1px solid #CCCCCC;
+
+}
+
+#entire {
+	border: 1px solid #CCCCCC;
+	padding: 8px;
+	height: 720px;
+	width: 1050px;
+	margin: 0 auto 0 auto;
+}
+#nav {
+	float: left;
+	width: 220px;
+	height: 715px;
+	border: 1px solid #CCCCCC;
+	background-color: #f2eddf;
+
+}
