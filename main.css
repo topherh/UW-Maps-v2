@@ -17,13 +17,25 @@
 }
 #nav {
 	float: left;
-	width: 200px;
+	width: 195px;
 	height: 715px;
 	border: 1px solid #CCCCCC;
 	background-color: #f2eddf;
 	padding: 0 8px 0 20px;
 }
-
+#nav a{
+	display: block;
+	height: 33px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #666666;
+	margin: 5px 0 0 0;
+	text-decoration:none;
+}
+#nav img{
+	border: 0;
+	margin-left: 10px;
+}
 #nav p {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
@@ -52,7 +64,6 @@
 	padding: 0px;
 }
 .forms {
-
 	background-repeat: no-repeat;
 	background-position: 25px center;
 	height: 33px;
@@ -60,4 +71,36 @@
 	padding: 0px;
 	background-repeat: no-repeat;
 	background-position: 25px center;
+}
+.subforms {
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	margin: 0px;
+	padding: 0 0 0 20px;
+	background-repeat: no-repeat;
+	background-position: 25px center;
+}
+
+
+
+/*-----------------------Plus/Minus CSS---------------------*/
+
+#navi {
+        width: 10em;
+}
+#nav ul, #nav li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+}
+
+#navi a.span {
+	position: relative;
+}
+
+#navi a.span img {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	border: 0;
 }
