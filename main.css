@@ -21,18 +21,43 @@
 	height: 715px;
 	border: 1px solid #CCCCCC;
 	background-color: #f2eddf;
-	padding: 10px;
+	padding: 0 8px 0 20px;
 }
 
 #nav p {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	color: #666666;
+	margin: 5px 0 0 0;
 }
-#form2 {
-	background-image: url(img/flags/G.gif);
-	background-repeat: no-repeat;
-	background-position: 30px center;
-	height: 60px;
+.expander {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 6px;
+}
 
+
+#fParking{background-image: url(img/flags/G.gif);}
+#fBus{background-image: url(img/flags/B.gif);}
+#fEmergency{background-image: url(img/flags/P.gif);}
+#fATM{background-image: url(img/flags/A.gif);}
+#fLibraries {background-image: url(img/flags/L.gif);}
+#fZip{background-image: url(img/flags/Z.gif);}
+#fWi{background-image: url(img/flags/W.gif);}
+#fBike{background-image: url(img/flags/R.gif);}
+
+.checky {
+	margin: 8px 40px 0 0;
+	padding: 0px;
+}
+.forms {
+
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	height: 33px;
+	margin: 0px;
+	padding: 0px;
+	background-repeat: no-repeat;
+	background-position: 25px center;
 }
