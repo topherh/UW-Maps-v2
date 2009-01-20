@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Google Maps</title>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>
+  </head>
+  <body onunload="GUnload()">
+
+
+           <div id="map" style="width: 800px; height: 700px"></div>
+ 
+          
+
+
+   
+    Parking: <input type="checkbox" id="theatrebox" onclick="boxclick(this,'theatre')" /> &nbsp;&nbsp;
+    ATM: <input type="checkbox" id="golfbox" onclick="boxclick(this,'golf')" /> &nbsp;&nbsp;
+    Emergency Phone: <input type="checkbox" id="infobox" onclick="boxclick(this,'info')" /><br>
+    <script type="text/javascript">
+    //<![CDATA[
+
+    if (GBrowserIsCompatible()) {
+      var gmarkers = [];
+      var gicons = [];
+
+      gicons["theatre"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
+      gicons["golf"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
+      gicons["info"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
+
+      // A function to create the marker and set up the event window
+      function createMarker(point,name,html,category) {
+        var marker = new GMarker(point,gicons[category]);
+        // === Store the category and name info as a marker properties ===
+        marker.mycategory = category;                                 
+        marker.myname = name;
+        GEvent.addListener(marker, "click", function() {
+          marker.openInfoWindowHtml(html);
+        });
+        gmarkers.push(marker);
+        return marker;
+      }
+
+      // == shows all markers of a particular category, and ensures the checkbox is checked ==
+      function show(category) {
+        for (var i=0; i<gmarkers.length; i++) {
+          if (gmarkers[i].mycategory == category) {
+            gmarkers[i].show();
+          }
+        }
+        // == check the checkbox ==
+        document.getElementById(category+"box").checked = true;
+      }
+
+      // == hides all markers of a particular category, and ensures the checkbox is cleared ==
+      function hide(category) {
+        for (var i=0; i<gmarkers.length; i++) {
+          if (gmarkers[i].mycategory == category) {
+            gmarkers[i].hide();
+          }
+        }
+        // == clear the checkbox ==
+        document.getElementById(category+"box").checked = false;
+        // == close the info window, in case its open on a marker that we just hid
+        map.closeInfoWindow();
+      }
+
+      // == a checkbox has been clicked ==
+      function boxclick(box,category) {
+        if (box.checked) {
+          show(category);
+        } else {
+          hide(category);
+        }
+        // == rebuild the side bar
+        makeSidebar();
+      }
+
+      function myclick(i) {
+        GEvent.trigger(gmarkers[i],"click");
+      }
+
+
+
+      // create the map
+      var map = new GMap2(document.getElementById("map"));
+      map.addControl(new GLargeMapControl());
+      map.addControl(new GMapTypeControl());
+      map.setCenter(new GLatLng(47.65565,-122.30817), 17);
+
+
+   	  // ground overlay
+	  var boundaries = new GLatLngBounds(new GLatLng(47.6465,-122.32565), new GLatLng(47.6641,-122.2881));
+	  var oldmap = new GGroundOverlay("http://depts.washington.edu/uweb/map/map3.gif", boundaries);
+	  map.addOverlay(oldmap);
+
+      // Read the data
+      GDownloadUrl("categories.xml", function(doc) {
+        var xmlDoc = GXml.parse(doc);
+        var markers = xmlDoc.documentElement.getElementsByTagName("marker");
+          
+        for (var i = 0; i < markers.length; i++) {
+          // obtain the attribues of each marker
+          var lat = parseFloat(markers[i].getAttribute("lat"));
+          var lng = parseFloat(markers[i].getAttribute("lng"));
+          var point = new GLatLng(lat,lng);
+          var address = markers[i].getAttribute("address");
+          var name = markers[i].getAttribute("name");
+          var html = "<b>"+name+"</b><p>"+address;
+          var category = markers[i].getAttribute("category");
+          // create the marker
+          var marker = createMarker(point,name,html,category);
+          map.addOverlay(marker);
+        }
+
+        // == show or hide the categories initially ==
+        show("theatre");
+        hide("golf");
+        hide("info");
+        // == create the initial sidebar ==
+        makeSidebar();
+      });
+    }
+
+    else {
+      alert("Sorry, the Google Maps API is not compatible with this browser");
+    }
+    // This Javascript is based on code provided by the
+    // Blackpool Community Church Javascript Team
+    // http://www.commchurch.freeserve.co.uk/   
+    // http://econym.googlepages.com/index.htm
+
+    //]]>
+    </script>
+  </body>
+
+</html>
+
+
+
