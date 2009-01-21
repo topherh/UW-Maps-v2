@@ -10,6 +10,14 @@
         margin-bottom: 0px;
     }
 </style>
+<script type="text/javascript">
+<!--
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Google Maps JavaScript API Example</title>
@@ -24,7 +32,8 @@
 
     <link href="main.css" rel="stylesheet" type="text/css" />  
     
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript">
+    </script>
 
     <script>
     window.onload = function() {
@@ -77,7 +86,7 @@
         
     <div id="or"> -- or -- </div>
          
-	<select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" >
+	<select name="buildingList" size="1" class="gmls-no-results-label" id="parkingbox" onclick="boxclick(this,'parking')">
 	  <option selected="selected">Select a building...</option>
 	  <option>Academic Computer Center</option>
 	  <option>Aerodynamics Lab</option>
@@ -89,35 +98,32 @@
 	  <option>Arts Ticket Office</option>
 	  <option>Atmos Sciences - Geophysics</option>
 	  <option>Bagley Hall </option>
-	  <option>Balmer Hall</option>
+	  <option id="parking" onclick="show(this)">Balmer Hall</option>
 	  <option>Bank of America Exec Ed Ctr</option>
 	</select>
-	      
+
+      
   <br />
-
-
-
-
-
-
   <br />
+  
+  
   	  <div id="dotted">
 	      <ul>
 	        <li>
-	          <a id="fParking" class="forms" href="#" onclick="menuexpand('m1'); return false;"><label><input class="checky" type="checkbox" name="parking" id="parkingbox" onclick="boxclick(this,'parking')" /></label>Parking<img id="pm1" src="" alt=""></a>
+	          <a id="fParking" class="forms" href="#" onclick="menuexpand('m1'); return false;"><label><input class="checky" type="checkbox" id="parkingbox" onclick="boxclick(this,'parking')" /></label>Parking<img id="pm1" src="" alt=""></a>
 	          <ul id="m1">
 	            <li><form method="post" action="" class="subforms"><p>
-	              <label><input type="checkbox" name="parking" id="bus" /></label>
+	              <label><input type="checkbox" id="bus" /></label>
 	              Motorcycle parking lots</p></form>
                 </li>
                                        
                    <li><form method="post" action="" class="subforms"><p>
-                       <label><input type="checkbox" name="parking" id="bus" /></label>
+                       <label><input type="checkbox" id="bus" /></label>
                         Unrestricted parking lots</p></form>
 				  </li>
                               
                   <li><form method="post" action="" class="subforms"><p>
-                       <label><input type="checkbox" name="parking" id="bus" /></label>Campus gatehouses</p>
+                       <label><input type="checkbox" id="bus" /></label>Campus gatehouses</p>
      							   </form>
 				  </li><br />
               </ul>
@@ -125,26 +131,26 @@
                     
                   
             <li>
-              <a id="fBus" class="forms" href="#" onclick="menuexpand('m2'); return false;"><label><input class="checky" type="checkbox" name="parking" id="busbox" onclick="busclick(this,'bus')" /></label>Bus Stops<img id="pm2" src="" alt=""></a>
+              <a id="fBus" class="forms" href="#" onclick="menuexpand('m2'); return false;"><label><input class="checky" type="checkbox" id="busbox" onclick="busclick(this,'bus')" /></label>Bus Stops<img id="pm2" src="" alt=""></a>
                     <ul id="m2">
                         <li><form method="post" action="" class="subforms"><p>
-                          <label><input type="checkbox" name="parking" id="bus" /></label>
+                          <label><input type="checkbox" id="bus" /></label>
                           Sound Transit</p></form>
                         </li>
                                        
                         <li><form method="post" action="" class="subforms"><p>
-                             <label><input type="checkbox" name="parking" id="bus" /></label>
+                             <label><input type="checkbox" id="bus" /></label>
                               Metro</p></form>
    					    </li><br />                        
                    </ul>
             </li>      
             
             <li>
-					<a id="fEmergency" class="forms" href="#"><label><input class="checky" type="checkbox" name="parking" 		id="emergencybox" onclick="boxclick(this,'emergency')" /></label>Emergency Phone</a>
+					<a id="fEmergency" class="forms" href="#"><label><input class="checky" type="checkbox" id="emergencybox" onclick="boxclick(this,'emergency')" /></label>Emergency Phone</a>
             </li>   
             
             <li>
-              <a id="fATM" class="forms" href="#"><label><input class="checky" type="checkbox" name="parking" id="atmbox" onclick="boxclick(this,'atm')" /></label>ATM</a>
+              <a id="fATM" class="forms" href="#"><label><input class="checky" type="checkbox" id="atmbox" onclick="boxclick(this,'atm')" /></label>ATM</a>
             </li>  
             
             <li>
@@ -152,15 +158,15 @@
             </li>  
             
             <li>
-              <a id="fZip" class="forms" href="#"><label><input class="checky" type="checkbox" name="parking" id="zipbox" onclick="boxclick(this,'zip')" /></label>Zip Cars</a>
+              <a id="fZip" class="forms" href="#"><label><input class="checky" type="checkbox" id="zipbox" onclick="boxclick(this,'zip')" /></label>Zip Cars</a>
             </li>  
             
             <li>
-              <a id="fWi" class="forms" href="#"><label><input class="checky" type="checkbox" name="parking" id="wifibox" onclick="boxclick(this,'wifi')" /></label>Wi-Fi Hotspots</a>
+              <a id="fWi" class="forms" href="#"><label><input class="checky" type="checkbox" id="wifibox" onclick="boxclick(this,'wifi')" /></label>Wi-Fi Hotspots</a>
             </li>     
               
             <li>
-              <a id="fBike" class="forms" href="#"><label><input class="checky" type="checkbox" name="parking" id="bikebox" onclick="boxclick(this,'bike')" /></label>Bike Racks</a>
+              <a id="fBike" class="forms" href="#"><label><input class="checky" type="checkbox" id="bikebox" onclick="boxclick(this,'bike')" /></label>Bike Racks</a>
             </li>   
 	    </ul>
 
