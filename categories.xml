@@ -29,5 +29,10 @@
  <marker name="Green Drive emergency Club" address="This isn't really an address" lng="-122.309953" lat="47.655971" category="libraries" />
  <marker name="Grand bus" address="This isn't really an address" lng="-122.309053" lat="47.655175" category="zip" />
  <marker name="Claremont bus Club" address="This isn't really an address" lng="-122.309853" lat="47.655149" category="zip" /> 
- 
+  <marker name="Aerodynamics Lab" address="This isn't really an address" lng="-122.309853" lat="47.656149" category="aerodynamics" /> 
+  <marker name="Allen Library " address="This isn't really an address" lng="-122.309853" lat="47.655149" category="allen" /> 
+ <marker name="Alumni House" address="This isn't really an address" lng="-122.309853" lat="47.654149" category="alumni" /> 
+ <marker name="Anderson Hall" address="This isn't really an address" lng="-122.309853" lat="47.653149" category="anderson" /> 
+  <marker name="Architecture Hall" address="This isn't really an address" lng="-122.309853" lat="47.652149" category="architecture" /> 
+  <marker name="Academic Computer Center" address="This isn't really an address" lng="-122.309853" lat="47.657149" category="academic" />  
 </markers>

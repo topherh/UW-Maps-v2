@@ -10,14 +10,7 @@
         margin-bottom: 0px;
     }
 </style>
-<script type="text/javascript">
-<!--
-function MM_jumpMenu(targ,selObj,restore){ //v3.0
-  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
-  if (restore) selObj.selectedIndex=0;
-}
-//-->
-</script>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Google Maps JavaScript API Example</title>
@@ -86,20 +79,17 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         
     <div id="or"> -- or -- </div>
          
-	<select name="buildingList" size="1" class="gmls-no-results-label" id="parkingbox" onclick="boxclick(this,'parking')">
+	<select name="buildingList" size="1" class="gmls-no-results-label">
 	  <option selected="selected">Select a building...</option>
-	  <option>Academic Computer Center</option>
-	  <option>Aerodynamics Lab</option>
-	  <option>Allen Library </option>
-	  <option>Alumni House</option>
-	  <option>Anderson Hall</option>
-	  <option>Architecture Hall</option>
-	  <option>Art Bldg</option>
-	  <option>Arts Ticket Office</option>
-	  <option>Atmos Sciences - Geophysics</option>
-	  <option>Bagley Hall </option>
-	  <option id="parking" onclick="show(this)">Balmer Hall</option>
+	  <option id="academicbox" onclick="boxclick(this,'academic')">Academic Computer Center</option>
+	  <option id="aerodynamicsbox" onclick="show(this.id)">Aerodynamics Lab</option>
+	<option id="allenbox" onclick="show(this.id)">Allen Library </option>
+	  <option id="alumnibox" onclick="show(this.id)">Alumni House</option>
+	  <option id="andersonbox" onclick="show(this.id)">Anderson Hall</option>
+	
 	  <option>Bank of America Exec Ed Ctr</option>
+      
+  
 	</select>
 
       
@@ -198,6 +188,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
       gicons["bike"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
 
 
+
       // A function to create the marker and set up the event window
       function createMarker(point,name,html,category) {
         var marker = new GMarker(point,gicons[category]);
@@ -287,12 +278,18 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         hide("emergency");
         hide("parking");		
         hide("bus");
-        hide("emergency");
         hide("atm");
         hide("libraries");
         hide("zip");	
         hide("wifi");
-        hide("bike");		
+        hide("bike");				
+		hide("academic");
+        hide("aerodynamics");		
+        hide("allen");
+        hide("alumni");
+        hide("anderson");
+        hide("architecture");
+	
 		
 
       });
