@@ -29,10 +29,13 @@
  <marker name="Green Drive emergency Club" address="This isn't really an address" lng="-122.309953" lat="47.655971" category="libraries" />
  <marker name="Grand bus" address="This isn't really an address" lng="-122.309053" lat="47.655175" category="zip" />
  <marker name="Claremont bus Club" address="This isn't really an address" lng="-122.309853" lat="47.655149" category="zip" /> 
-  <marker name="Aerodynamics Lab" address="This isn't really an address" lng="-122.309853" lat="47.656149" category="aerodynamics" /> 
-  <marker name="Allen Library " address="This isn't really an address" lng="-122.309853" lat="47.655149" category="allen" /> 
- <marker name="Alumni House" address="This isn't really an address" lng="-122.309853" lat="47.654149" category="alumni" /> 
- <marker name="Anderson Hall" address="This isn't really an address" lng="-122.309853" lat="47.653149" category="anderson" /> 
-  <marker name="Architecture Hall" address="This isn't really an address" lng="-122.309853" lat="47.652149" category="architecture" /> 
-  <marker name="Academic Computer Center" address="This isn't really an address" lng="-122.309853" lat="47.657149" category="academic" />  
+ <marker name="Paul G. Allen Center for Computer Science &amp; Engineering" address="98195" lat="47.653296" lng="-122.305732" category="building" />
+ <marker name="Communications Building" address="98195	N" lat="47.65700325" lng="-122.3054427" category="building" />
+ <marker name="Gerberding Hall" address="98195	N" lat="47.65549432" lng="-122.3095679" category="building" />
+ <marker name="Kane Hall" address="98195	N" lat="47.65662169" lng="-122.3091388" category="building" />
+ <marker name="Mary Gates Hall" address="98195	N" lat="47.65505926" lng="-122.3079747" category="building" />
+ <marker name="Meany Hall" address="98195	N" lat="47.6558412" lng="-122.3104692" category="building" />
+ <marker name="Padelford Hall" address="98195	N" lat="47.65647716" lng="-122.3103404" category="building" />
+ <marker name="Stadium" address="98195	N" lat="47.65033798" lng="-122.3017037" category="building" />
+ <marker name="Suzzallo Library" address="98195	N" lat="47.65587397" lng="-122.3086989" category="building" />
 </markers>
