@@ -10,6 +10,7 @@
         margin-bottom: 0px;
     }
 </style>
+
 <script type="text/javascript">
 <!--
 function MM_jumpMenu(targ,selObj,restore){ //v3.0
@@ -18,6 +19,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 }
 //-->
 </script>
+<link href="funkyBox.css" rel="stylesheet" type="text/css" />
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>UW - Google Maps JavaScript API Example</title>
@@ -27,6 +29,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     <script src="http://www.google.com/uds/solutions/localsearch/gmlocalsearch.js" type="text/javascript"></script>
 
     <script type="text/javascript" src="scripts/plusminus.js"></script>
+        <script type="text/javascript" src="scripts/extinfowindow.js"></script>
     <link href="main.css" rel="stylesheet" type="text/css" />
     
     <style type="text/css">
@@ -46,21 +49,34 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     var gCurrentResults = [];
     var gSearchForm;
     
+    // Create our "tiny" marker icon 
+    var gSmallIcon = new GIcon();
+    gSmallIcon.image = "http://labs.google.com/ridefinder/images/mm_20_yellow.png";
+    gSmallIcon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
+    gSmallIcon.iconSize = new GSize(12, 20);
+    gSmallIcon.shadowSize = new GSize(22, 20);
+    gSmallIcon.iconAnchor = new GPoint(6, 20);
+    gSmallIcon.infoWindowAnchor = new GPoint(5, 1); 
+    
     // Create our "tiny" marker icon
-    var gSmallIcon = null;
-
     var gmarkers = [];
-    var gicons = [];
 
-    gicons["parking"] = new GIcon(G_DEFAULT_ICON,"colour086.png");	  
-    gicons["bus"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
-    gicons["emergency"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
-    gicons["atm"] = new GIcon(G_DEFAULT_ICON,"colour086.png");  
-    gicons["libraries"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
-    gicons["zip"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
-    gicons["wifi"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
-    gicons["bike"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
-    gicons["building"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
+    // This icon is a different shape, so we need our own settings       
+    var buildingIcon = new GIcon();
+    buildingIcon.image = "img/flags/H.gif";
+    buildingIcon.shadow = "img/shadow.png";
+    buildingIcon.iconSize = new GSize(32, 32);
+    buildingIcon.shadowSize = new GSize(45, 33);
+    buildingIcon.iconAnchor = new GPoint(5, 34);
+    buildingIcon.infoWindowAnchor = new GPoint(5, 2);
+    buildingIcon.infoShadowAnchor = new GPoint(14, 25);
+    buildingIcon.transparent = "img/flags/.gif";
+    buildingIcon.printImage = "img/flags/.gif";
+    buildingIcon.mozPrintImage = "img/flags/.gif";
+
+    // An array of GIcons, to make the selection easier
+    var gicons = [];
+    gicons["building"] = buildingIcon;
 
     // A function to create the marker and set up the event window
     function createMarker(point,name,html,category)
@@ -71,72 +87,20 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         marker.myname = name;
         GEvent.addListener(marker, "click", function()
         {
-            marker.openInfoWindowHtml(html);
+            marker.openExtInfoWindow(
+              map,
+              "extInfoWindow_funkyBox", html,
+              {beakOffset: 2}
+            ); 
         });
         gmarkers.push(marker);
         return marker;
-    }
-
-    // == shows all markers of a particular category, and ensures the checkbox is checked ==
-    function show(category)
-    {
-        for (var i=0; i<gmarkers.length; i++)
-        {
-            if (gmarkers[i].mycategory == category)
-            {
-                gmarkers[i].show();
-            }
-        }
-        // == check the checkbox ==
-        document.getElementById(category+"box").checked = true;
-    }
-
-    // == hides all markers of a particular category, and ensures the checkbox is cleared ==
-    function hide(category)
-    {
-        for (var i=0; i<gmarkers.length; i++)
-        {
-            if (gmarkers[i].mycategory == category)
-            {
-                gmarkers[i].hide();
-            }
-        }
-        // == clear the checkbox ==
-        document.getElementById(category+"box").checked = false;
-        // == close the info window, in case its open on a marker that we just hid
-        map.closeInfoWindow();
-    }
-
-    // == a checkbox has been clicked ==
-    function boxclick(box,category)
-    {
-        if (box.checked)
-        {
-            show(category);
-        }
-        else
-        {
-            hide(category);
-        }
-    }
-
-    function myclick(i)
-    {
-        GEvent.trigger(gmarkers[i],"click");
     }
 
     function OnLoad()
     {
         if (GBrowserIsCompatible())
         {
-            // // // gSmallIcon = new GIcon();
-            // // // gSmallIcon.image = "http://labs.google.com/ridefinder/images/mm_20_yellow.png";
-            // // // gSmallIcon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
-            // // // gSmallIcon.iconSize = new GSize(12, 20);
-            // // // gSmallIcon.shadowSize = new GSize(22, 20);
-            // // // gSmallIcon.iconAnchor = new GPoint(6, 20);
-            // // // gSmallIcon.infoWindowAnchor = new GPoint(5, 1);
-
             // create the map
             map = new GMap2(document.getElementById("map"));
 
@@ -145,17 +109,22 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             // ground overlay
             map.addOverlay(oldmap);
                         
-            //var options = new google.search.SearcherOptions(); // create the object 
-            //options.setExpandMode(GSearchControl.EXPAND_MODE_OPEN);
+            ////////////////////////////////////////////// SEARCH //////////////////////////////////////////////
+            // // // var options = new google.search.SearcherOptions(); 
+            // // // options.setExpandMode(GSearchControl.EXPAND_MODE_OPEN);
 
-            //var searchControl = new google.search.SearchControl();
-            //searchControl.setSearchCompleteCallback(this, gotResults);
+            // // // var searchControl = new google.search.SearchControl();
+            // // // searchControl.setSearchCompleteCallback(this, gotResults);
 
-            //var localSearch = new google.search.LocalSearch();
-            //searchControl.addSearcher(localSearch, options);
+            // // // var localSearch = new google.search.LocalSearch();
+            // // // searchControl.addSearcher(localSearch, options);
 
-            //localSearch.setCenterPoint(new GLatLng(47.65565,-122.30817), 17);
-            //searchControl.draw(document.getElementById("searchform"));
+            // // // localSearch.setCenterPoint(new GLatLng(47.65565,-122.30817), 17);
+            // // // searchControl.draw(document.getElementById("search"));
+            ////////////////////////////////////////////// SEARCH //////////////////////////////////////////////
+            
+            gLocalSearch = new GlocalSearch();
+            gLocalSearch.setSearchCompleteCallback(null, OnLocalSearch);
 
             map.addControl(new GLargeMapControl());
             map.addControl(new GMapTypeControl());
@@ -217,7 +186,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 		}
 		resultdiv.innerHTML = resultcontent;
 	}
-
+    
+    function doSearch()
+    {
+        var zip = document.getElementById("zipInput").value;
+        var cat = document.getElementById("catInput").value;
+        gLocalSearch.setCenterPoint(zip);
+        gLocalSearch.execute(cat);
+    } 
 
     // Called when Local Search results are returned, we clear the old
     // results and load the new ones.
@@ -252,100 +228,144 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         var first = gLocalSearch.results[0];
         map.panTo(new GLatLng(first.lat, first.lng));
     }
-
-    // // // // // // Cancel the form submission, executing an AJAX Search API search.
-    // // // // // function CaptureForm(searchForm)
-    // // // // // {
-        // // // // // gLocalSearch.execute(searchForm.input.value);
-        // // // // // return false;
-    // // // // // }
-
-    // // // // // // A class representing a single Local Search result returned by the
-    // // // // // // Google AJAX Search API.
-    // // // // // function LocalResult(result)
-    // // // // // {
-        // // // // // this.result_ = result;
-        // // // // // this.resultNode_ = this.unselectedHtml();
-        // // // // // document.getElementById("searchwell").appendChild(this.resultNode_);
-        // // // // // map.addOverlay(this.marker(gSmallIcon));
-    // // // // // }
-
-    // // // // // // Returns the map marker for this result, creating it with the given
-    // // // // // // icon if it has not already been created.
-    // // // // // LocalResult.prototype.marker = function(opt_icon)
-    // // // // // {
-        // // // // // if (this.marker_) return this.marker_;
-        // // // // // var marker = new Marker(
-            // // // // // new LatLng(parseFloat(this.result_.lat),
-            // // // // // parseFloat(this.result_.lng)),
-            // // // // // opt_icon);
-            
-            // // // // // GEvent.bind(marker, "click", this, function()
-            // // // // // {
-                // // // // // marker.openInfoWindow(this.selected() ? this.selectedHtml() : this.unselectedHtml());
-            // // // // // });
-
-        // // // // // this.marker_ = marker;
-        // // // // // return marker;
-    // // // // // }
-
-    // // // // // // "Saves" this result if it has not already been saved
-    // // // // // LocalResult.prototype.select = function()
-    // // // // // {
-        // // // // // if (!this.selected())
-        // // // // // {
-            // // // // // this.selected_ = true;
-
-            // // // // // // Remove the old marker and add the new marker
-            // // // // // map.removeOverlay(this.marker());
-            // // // // // this.marker_ = null;
-            // // // // // map.addOverlay(this.marker(G_DEFAULT_ICON));
-
-            // // // // // // Add our result to the saved set
-            // // // // // document.getElementById("selected").appendChild(this.selectedHtml());
-
-            // // // // // // Remove the old search result from the search well
-            // // // // // this.resultNode_.parentNode.removeChild(this.resultNode_);
-        // // // // // }
-    // // // // // }
-
-    // // // // // // Returns the HTML we display for a result before it has been "saved"
-    // // // // // LocalResult.prototype.unselectedHtml = function()
-    // // // // // {
-        // // // // // var container = document.createElement("div");
-        // // // // // container.className = "unselected";
-        // // // // // container.appendChild(this.result_.html.cloneNode(true));
-        
-        // // // // // var saveDiv = document.createElement("div");
-        // // // // // saveDiv.className = "select";
-        // // // // // saveDiv.innerHTML = "Save this location";
-        // // // // // GEvent.bindDom(saveDiv, "click", this, function()
-        // // // // // {
-            // // // // // map.closeInfoWindow();
-            // // // // // this.select();
-            // // // // // gSelectedResults.push(this);
-        // // // // // });
-        // // // // // container.appendChild(saveDiv);
-        // // // // // return container;
-    // // // // // }
-
-    // // // // // // Returns the HTML we display for a result after it has been "saved"
-    // // // // // LocalResult.prototype.selectedHtml = function()
-    // // // // // {
-        // // // // // return this.result_.html.cloneNode(true);
-    // // // // // }
-
-    // // // // // // Returns true if this result is currently "saved"
-    // // // // // LocalResult.prototype.selected = function()
-    // // // // // {
-        // // // // // return this.selected_;
-    // // // // // }
     
-    google.setOnLoadCallback(OnLoad);
-    // // // else
-    // // // {
-        // // // alert("Sorry, the Google Maps API is not compatible with this browser");
-    // // // }
+       // == shows all markers of a particular category, and ensures the checkbox is checked ==
+    function show(category)
+    {
+        for (var i=0; i<gmarkers.length; i++)
+        {
+            if (gmarkers[i].mycategory == category)
+            {
+                gmarkers[i].show();
+            }
+        }
+        // == check the checkbox ==
+        document.getElementById(category+"box").checked = true;
+    }
+
+    // == hides all markers of a particular category, and ensures the checkbox is cleared ==
+    function hide(category)
+    {
+        for (var i=0; i<gmarkers.length; i++)
+        {
+            if (gmarkers[i].mycategory == category)
+            {
+                gmarkers[i].hide();
+            }
+        }
+        // == clear the checkbox ==
+        document.getElementById(category+"box").checked = false;
+        // == close the info window, in case its open on a marker that we just hid
+        map.closeInfoWindow();
+    }
+
+    // == a checkbox has been clicked ==
+    function boxclick(box,category)
+    {
+        if (box.checked)
+        {
+            show(category);
+        }
+        else
+        {
+            hide(category);
+        }
+    }
+
+    function myclick(i)
+    {
+        GEvent.trigger(gmarkers[i],"click");
+    }
+
+    // Cancel the form submission, executing an AJAX Search API search.
+    function CaptureForm(searchForm)
+    {
+        gLocalSearch.execute(searchForm.input.value);
+        return false;
+    }
+
+    // A class representing a single Local Search result returned by the
+    // Google AJAX Search API.
+    function LocalResult(result)
+    {
+        this.result_ = result;
+        this.resultNode_ = this.unselectedHtml();
+        document.getElementById("searchwell").appendChild(this.resultNode_);
+        map.addOverlay(this.marker(gSmallIcon));
+    }
+
+    // Returns the map marker for this result, creating it with the given
+    // icon if it has not already been created.
+    LocalResult.prototype.marker = function(opt_icon)
+    {
+        if (this.marker_) return this.marker_;
+        var marker = new Marker(
+            new LatLng(parseFloat(this.result_.lat),
+            parseFloat(this.result_.lng)),
+            opt_icon);
+            
+            GEvent.bind(marker, "click", this, function()
+            {
+                marker.openInfoWindow(this.selected() ? this.selectedHtml() : this.unselectedHtml());
+            });
+
+        this.marker_ = marker;
+        return marker;
+    }
+
+    // "Saves" this result if it has not already been saved
+    LocalResult.prototype.select = function()
+    {
+        if (!this.selected())
+        {
+            this.selected_ = true;
+
+            // Remove the old marker and add the new marker
+            map.removeOverlay(this.marker());
+            this.marker_ = null;
+            map.addOverlay(this.marker(G_DEFAULT_ICON));
+
+            // Add our result to the saved set
+            document.getElementById("selected").appendChild(this.selectedHtml());
+
+            // Remove the old search result from the search well
+            this.resultNode_.parentNode.removeChild(this.resultNode_);
+        }
+    }
+
+    // Returns the HTML we display for a result before it has been "saved"
+    LocalResult.prototype.unselectedHtml = function()
+    {
+        var container = document.createElement("div");
+        container.className = "unselected";
+        container.appendChild(this.result_.html.cloneNode(true));
+        
+        var saveDiv = document.createElement("div");
+        saveDiv.className = "select";
+        saveDiv.innerHTML = "Save this location";
+        GEvent.bindDom(saveDiv, "click", this, function()
+        {
+            map.closeInfoWindow();
+            this.select();
+            gSelectedResults.push(this);
+        });
+        container.appendChild(saveDiv);
+        return container;
+    }
+
+    // Returns the HTML we display for a result after it has been "saved"
+    LocalResult.prototype.selectedHtml = function()
+    {
+        return this.result_.html.cloneNode(true);
+    }
+
+    // Returns true if this result is currently "saved"
+    LocalResult.prototype.selected = function()
+    {
+        return this.selected_;
+    }
+    
+    google.setOnLoadCallback(OnLoad);    
 
     //]]>
 </script>
@@ -393,15 +413,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
       <div id="nav"><br />
 	      
-        <div id="searcher">
-	        <form class="theForm" name=formA id="searchbox_001967960132951597331:04hcho0_drk" 
-		action="http://www.google.com/cse">
-	          <input type="hidden" name="cx" value="001967960132951597331:04hcho0_drk" />
-	          <input type="hidden" name="cof" value="FORID:0" />
-	          <input name="q" id="goBox2" type="text" size="30" value="Enter Search" onClick="make_blank();"/>
-	          <input id="goBox" type="submit" name="sa" value="Go" />
-            </form>
-      </div> 
+      <div id="searching"></div>
         
     <div id="or"> -- or -- </div>
          
@@ -500,15 +512,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
       <div id="map"></div>
       </div>
       
-      <div id="selected"></div>
-      
-      <div id="search">
-        <div id="searchform"></div>
-      </div>
-      
-      <div id="results">
-        <div id="searchresults"></div>
-      </div>
+      <div id="search">         <div id="searchform">           <input type="text" id="zipInput" />            <select id="catInput">             <option value="restaurants">Restaurants</option>             <option value="bars">Bars</option>           </select>           <input type="button" value="Find" onclick="doSearch()"/>         </div>       </div>       <div id="results">         <div id="searchwell"></div>       </div>       <div id="map"></div>       <div id="selected"></div>     </div> 
       
 </body>
 </html>
