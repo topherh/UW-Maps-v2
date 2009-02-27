@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="Slim_Header/header.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    body {
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+    }
+</style>
+
+<script type="text/javascript">
+<!--
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+<link href="funkyBox.css" rel="stylesheet" type="text/css" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>UW - Google Maps JavaScript API Example</title>
+
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>
+    <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>      
+    <script src="http://www.google.com/uds/solutions/localsearch/gmlocalsearch.js" type="text/javascript"></script>
+    <script src="UWMap.js" type="text/javascript"></script>
+    
+    <script type="text/javascript" src="scripts/plusminus.js"></script>
+    <script type="text/javascript" src="scripts/extinfowindow.js"></script>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    
+    <style type="text/css">
+      @import url("http://www.google.com/uds/css/gsearch.css");
+      @import url("http://www.google.com/uds/solutions/localsearch/gmlocalsearch.css");
+    </style>
+
+    <script type="text/javascript">
+    //<![CDATA[
+    
+    var map;
+    var locations = new Array();
+    
+    function OnLoad()
+    {
+        if (GBrowserIsCompatible())
+        {
+            // create the map
+            map = new GMap2(document.getElementById("map"));
+
+            var boundaries = new GLatLngBounds(new GLatLng(47.6465,-122.32565), new GLatLng(47.6641,-122.2881));
+            var overlay = new GGroundOverlay("http://depts.washington.edu/uweb/map/map4.gif", boundaries);            
+            // ground overlay
+            map.addOverlay(overlay);
+
+            map.addControl(new GLargeMapControl());
+            map.addControl(new GMapTypeControl());
+            map.setCenter(new GLatLng(47.65565,-122.30817), 17);
+            
+            GDownloadUrl("categories.xml", function(doc)
+            {
+                var xmlDoc = GXml.parse(doc);
+                var markers = xmlDoc.documentElement.getElementsByTagName("marker");
+                
+                for (var i=0; i<markers.length; i++)
+                {
+                    // obtain the attribues of each marker
+                    var lat = markers[i].getAttribute("lat");
+                    var lng = markers[i].getAttribute("lng");
+
+                    var name = markers[i].getAttribute("name");
+                    var address = markers[i].getAttribute("address");
+                    var category = markers[i].getAttribute("category");
+                    
+                    var uloc = new UWLocation(i, map, lat, lng, name, address, category); // Line is Failing
+                    locations.push(uloc);
+                }
+            });
+        }
+        else
+        {
+            alert("Sorry, the Google Maps API is not compatible with this browser");
+        }
+    }    
+
+    // doSearch needs to work with OnLocalSearch to do the actual searching
+    // then display the correct results on screen
+    function doSearch()
+    {
+        var input = document.getElementById("Input").value;
+        // Here is where the custom search goes
+        alert(input);
+    } 
+    
+    // OnClick event used for the categories displayed on page
+    // == a checkbox has been clicked ==
+    function boxclick(box,category)
+    {
+        // Bring back Location Set with Category
+        var loc = locations;
+        if (box.checked)
+        {
+            for (var i=0; i<loc.length; i++)
+            {
+                if (loc[i].category == category)
+                {
+                    map.addOverlay(loc[i].marker);
+                    loc[i].marker.show();
+                }
+            }
+            // == check the checkbox ==
+            document.getElementById(category+"box").checked = true;
+        }
+        else
+        {
+            for (var i=0; i<loc.length; i++)
+            {
+                if (loc[i].category == category)
+                {
+                    loc[i].marker.hide();
+                }
+            }
+            // == clear the checkbox ==
+            document.getElementById(category+"box").checked = false;
+            // == close the info window, in case its open on a marker that we just hid
+            map.closeInfoWindow();
+        }
+    }
+
+    google.setOnLoadCallback(OnLoad);
+    //]]>
+    </script>
+
+    <script>
+    window.onload = function() {
+         menuinit();
+    }
+    window.onunload = function()
+    {
+        GUnload();
+    }
+    </script>
+
+
+</head>
+  <body>
+  
+  <div id="thinSearchbar">
+	<a href="http://www.washington.edu/"><img id="lgo" src="Slim_Header/w.gif" alt="University of Washington"/></a>  
+<div id="rhtlnks">
+      <form class=formation name=form1 id="searchbox_001967960132951597331:04hcho0_drk" 
+			action="http://www.google.com/cse">
+        <input type="hidden" name="cx" value="001967960132951597331:04hcho0_drk" />
+        <input type="hidden" name="cof" value="FORID:0" />
+        <input name="q" type="text" size="20" value="Enter Search" onClick="make_blank();"/>
+        <input type="submit" name="sa" value="Go" />
+      </form>
+      <div id="searcha">
+        <ul>
+          <li><a href="http://www.washington.edu/discovery/about.html">About Us</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
+          <li><a href="http://www.uwnews.org/">News</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
+          <li><a href="http://gohuskies.ocsn.com/">Sports</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
+          <li><a href="http://www.washington.edu/alumni/">Alumni</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
+          <li><a href="http://myuw.washington.edu/">MyUW</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
+          <li><a href="http://www.washington.edu/home/directories.html">Directories</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
+          <li><a href="http://www.washington.edu/visit/events.html">Calendar</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  
+        <div id="entire">
+
+      <div id="nav"><br />
+	      
+    <div id="search">
+        <div id="searchform">
+            <form class="theForm" name="form">
+            <input name="Input" id="Input" type="text" size="20"/>
+            <input id="goBox" type="submit" name="sa" value="Go" onclick="doSearch()" />
+            </form>
+        </div>
+    </div>
+        
+    <div id="or"> -- or -- </div>
+         
+	<select name="buildingList" size="1" class="gmls-no-results-label" id="parkingbox" onclick="boxclick(this,'parking')">
+	  <option selected="selected">Select a building...</option>
+	  <option>Academic Computer Center</option>
+	  <option>Aerodynamics Lab</option>
+	  <option>Allen Library </option>
+	  <option>Alumni House</option>
+	  <option>Anderson Hall</option>
+	  <option>Architecture Hall</option>
+	  <option>Art Bldg</option>
+	  <option>Arts Ticket Office</option>
+	  <option>Atmos Sciences - Geophysics</option>
+	  <option>Bagley Hall </option>
+	  <option id="parking" onclick="show(this)">Balmer Hall</option>
+	  <option>Bank of America Exec Ed Ctr</option>
+	</select>
+
+      
+  <br />
+  <br />
+
+  	  <div id="dotted">
+	      <ul>
+	        <li>
+	          <a id="fParking" class="forms" href="#" onclick="menuexpand('m1'); return false;"><label><input class="checky" type="checkbox" id="parkingbox" onclick="boxclick(this,'parking')" /></label>Parking<img id="pm1" src="" alt=""></a>
+	          <ul id="m1">
+	            <li><form method="post" action="" class="subforms"><p>
+	              <label><input type="checkbox" id="bus" /></label>
+	              Motorcycle parking lots</p></form>
+                </li>
+                                       
+                   <li><form method="post" action="" class="subforms"><p>
+                       <label><input type="checkbox" id="bus" /></label>
+                        Unrestricted parking lots</p></form>
+				  </li>
+                              
+                  <li><form method="post" action="" class="subforms"><p>
+                       <label><input type="checkbox" id="bus" /></label>Campus gatehouses</p>
+     							   </form>
+				  </li><br />
+              </ul>
+            </li>
+                    
+                  
+            <li>
+              <a id="fBus" class="forms" href="#" onclick="menuexpand('m2'); return false;"><label><input class="checky" type="checkbox" id="busbox" onclick="busclick(this,'bus')" /></label>Bus Stops<img id="pm2" src="" alt=""></a>
+                    <ul id="m2">
+                        <li><form method="post" action="" class="subforms"><p>
+                          <label><input type="checkbox" id="bus" /></label>
+                          Sound Transit</p></form>
+                        </li>
+                                       
+                        <li><form method="post" action="" class="subforms"><p>
+                             <label><input type="checkbox" id="bus" /></label>
+                              Metro</p></form>
+   					    </li><br />                        
+                   </ul>
+            </li>      
+            
+            <li>
+					<a id="fEmergency" class="forms" href="#"><label><input class="checky" type="checkbox" id="emergencybox" onclick="boxclick(this,'emergency')" /></label>Emergency Phone</a>
+            </li>   
+            
+            <li>
+              <a id="fATM" class="forms" href="#"><label><input class="checky" type="checkbox" id="atmbox" onclick="boxclick(this,'atm')" /></label>ATM</a>
+            </li>  
+            
+            <li>
+              <a id="fLibraries" class="forms" href="#"><label><input class="checky" type="checkbox" id="librariesbox" onclick="boxclick(this,'libraries')" /></label>Libraries</a>
+            </li>  
+            
+            <li>
+				<a id="fBuilding" class="forms" href="#"><label><input class="checky" type="checkbox" id="buildingbox" onclick="boxclick(this,'building')" /></label>Buildings</a>
+            </li>   
+            
+            <li>
+              <a id="fZip" class="forms" href="#"><label><input class="checky" type="checkbox" id="zipbox" onclick="boxclick(this,'zip')" /></label>Zip Cars</a>
+            </li>  
+            
+            <li>
+              <a id="fWi" class="forms" href="#"><label><input class="checky" type="checkbox" id="wifibox" onclick="boxclick(this,'wifi')" /></label>Wi-Fi Hotspots</a>
+            </li>     
+              
+            <li>
+              <a id="fBike" class="forms" href="#"><label><input class="checky" type="checkbox" id="bikebox" onclick="boxclick(this,'bike')" /></label>Bike Racks</a>
+            </li>   
+	    </ul>
+
+          
+        <br />
+        </div>
+      </div>
+       
+      <div id="map"></div>
+      </div>
+      
+</body>
+</html>
