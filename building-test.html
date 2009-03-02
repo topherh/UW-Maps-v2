@@ -42,7 +42,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     //<![CDATA[
     
     var map;
-    var locations = new Array();
+    //var locations = new Array();
+    var ulocset = new UWLocationSet(map);
     
     function OnLoad()
     {
@@ -63,21 +64,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             GDownloadUrl("categories.xml", function(doc)
             {
                 var xmlDoc = GXml.parse(doc);
-                var markers = xmlDoc.documentElement.getElementsByTagName("marker");
-                
-                for (var i=0; i<markers.length; i++)
-                {
-                    // obtain the attribues of each marker
-                    var lat = markers[i].getAttribute("lat");
-                    var lng = markers[i].getAttribute("lng");
-
-                    var name = markers[i].getAttribute("name");
-                    var address = markers[i].getAttribute("address");
-                    var category = markers[i].getAttribute("category");
-                    
-                    var uloc = new UWLocation(i, map, lat, lng, name, address, category); // Line is Failing
-                    locations.push(uloc);
-                }
+                ulocset.load(xmlDoc);
             });
         }
         else
@@ -88,11 +75,19 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
     // doSearch needs to work with OnLocalSearch to do the actual searching
     // then display the correct results on screen
-    function doSearch()
+    function doSearch(value)
     {
-        var input = document.getElementById("Input").value;
-        // Here is where the custom search goes
-        alert(input);
+        if (value == 'building')
+        {
+            var input = document.getElementById("buildingList").value;
+            ulocset.search(map,'building',input);
+        }
+        else
+        {
+            var input = document.getElementById("Input").value;
+            // Here is where the custom search goes
+            ulocset.search(map,'building',input);
+        }
     } 
     
     // OnClick event used for the categories displayed on page
@@ -100,33 +95,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     function boxclick(box,category)
     {
         // Bring back Location Set with Category
-        var loc = locations;
+        //var loc = locations;
         if (box.checked)
         {
-            for (var i=0; i<loc.length; i++)
-            {
-                if (loc[i].category == category)
-                {
-                    map.addOverlay(loc[i].marker);
-                    loc[i].marker.show();
-                }
-            }
-            // == check the checkbox ==
-            document.getElementById(category+"box").checked = true;
+            ulocset.show(map,category);
         }
         else
         {
-            for (var i=0; i<loc.length; i++)
-            {
-                if (loc[i].category == category)
-                {
-                    loc[i].marker.hide();
-                }
-            }
-            // == clear the checkbox ==
-            document.getElementById(category+"box").checked = false;
-            // == close the info window, in case its open on a marker that we just hid
-            map.closeInfoWindow();
+            ulocset.hide(map,category);
         }
     }
 
@@ -179,29 +155,15 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 	      
     <div id="search">
         <div id="searchform">
-            <form class="theForm" name="form">
-            <input name="Input" id="Input" type="text" size="20"/>
-            <input id="goBox" type="submit" name="sa" value="Go" onclick="doSearch()" />
-            </form>
+            <input id="Input" name="Input" type="text" size="20" />
+            <input value="Go" type="submit" onclick="doSearch()" />
         </div>
     </div>
         
     <div id="or"> -- or -- </div>
          
-	<select name="buildingList" size="1" class="gmls-no-results-label" id="parkingbox" onclick="boxclick(this,'parking')">
+	<select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('building')">
 	  <option selected="selected">Select a building...</option>
-	  <option>Academic Computer Center</option>
-	  <option>Aerodynamics Lab</option>
-	  <option>Allen Library </option>
-	  <option>Alumni House</option>
-	  <option>Anderson Hall</option>
-	  <option>Architecture Hall</option>
-	  <option>Art Bldg</option>
-	  <option>Arts Ticket Office</option>
-	  <option>Atmos Sciences - Geophysics</option>
-	  <option>Bagley Hall </option>
-	  <option id="parking" onclick="show(this)">Balmer Hall</option>
-	  <option>Bank of America Exec Ed Ctr</option>
 	</select>
 
       

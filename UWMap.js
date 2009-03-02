@@ -57,80 +57,85 @@ function UWLocation(id, map, lat, lng, name, address, category)
 };
 
 /*********************************NOTES****************************
-***** var locset = new UWLocationSet(map, category);
-***** locset.show;
-***** locset.hide;
+***** var locset = new UWLocationSet(map);
+***** locset.add(category,uloc);
+***** locset.show(map,category);
+***** locset.hide(map,category);
 **********************************************************************/
-// // function UWLocationSet()
-// // {
-    // // this.locations = new Array();
+function UWLocationSet(map)
+{
+    this.cat = new Array();
+    
+    this.cat['parking'] = new Array();
+    this.cat['bus'] = new Array();
+    this.cat['wifi'] = new Array();
+    this.cat['zip'] = new Array();
+    this.cat['bike'] = new Array();
+    this.cat['atm'] = new Array();
+    this.cat['libraries'] = new Array();
+    this.cat['emergency'] = new Array();
+    this.cat['building'] = new Array();
 
-    // // this.init = function(map)
-    // // {
-        // // // Read the data
-        // // GDownloadUrl("categories.xml", function(doc)
-        // // {
-            // // var xmlDoc = GXml.parse(doc);
-            // // var markers = xmlDoc.documentElement.getElementsByTagName("marker");
+    this.load = function(xmlDoc)
+    {
+        var buildList = document.getElementById("buildingList");
+        var markers = xmlDoc.documentElement.getElementsByTagName("marker");
+        for (var i=0; i<markers.length; i++)
+        {
+            // obtain the attribues of each marker
+            var lat = markers[i].getAttribute("lat");
+            var lng = markers[i].getAttribute("lng");
 
-            // // GLog.write('Original Marker Length: ' + markers.length);
-            // // for (var i=0; i<markers.length; i++)
-            // // {
-                // // GLog.write('Original Marker: ' + markers[i].getAttribute("name"));
-                // // GLog.write('Map Object: ' + map);
-                // // var uloc = new UWLocation(i, map);
-                // // Glog.write('Got here');
-                // // // obtain the attribues of each marker
-                // // uloc.lat = parseFloat(markers[i].getAttribute("lat"));
-                // // uloc.lng = parseFloat(markers[i].getAttribute("lng"));
-
-                // // uloc.name = markers[i].getAttribute("name");
-                // // uloc.address = markers[i].getAttribute("address");
-                // // uloc.category = markers[i].getAttribute("category");
-                
-                // // //  Calculated Properties
-                // // uloc.point = new GLatLng(uloc.lat,uloc.lng); // This could be done smarter
-                // // uloc.html = "<b>"+uloc.name+"</b><p>"+uloc.address; // Ditto
-                // // // create the marker
-                // // // This is the failure point for some strange reason
-                // // GLog.write('Location Name: ' + uloc.name);
-                // // GLog.write('Loop Number: ' + i);
-
-                // // this.locations.append(uloc);
-            // // }
-            // // GLog.write('Object Marker Length: ' + uloc.locations.length);
-        // // });
-    // // }          
-    // // // == shows all this.markers of a particular category, and ensures the checkbox is checked ==
-    // // this.show = function(category)
-    // // {
-        // // var loc = this.locations;
-        // // GLog.write('Length of Locations Array: ' + loc.length);
-        // // for (var i=0; i<loc.length; i++)
-        // // {
-            // // if (loc[i].category == category)
-            // // {
-                // // loc[i].activate;
-                // // loc[i].marker.show();
-            // // }
-        // // }
-        // // // == check the checkbox ==
-        // // document.getElementById(category+"box").checked = true;
-    // // }
-    // // // == hides all this.locations.markers of a particular category, and ensures the checkbox is cleared ==
-    // // this.hide = function(map, category)
-    // // {
-        // // var loc = this.locations;
-        // // for (var i=0; i<loc.length; i++)
-        // // {
-            // // if (loc[i].category == category)
-            // // {
-                // // loc[i].marker.hide();
-            // // }
-        // // }
-        // // // == clear the checkbox ==
-        // // document.getElementById(category+"box").checked = false;
-        // // // == close the info window, in case its open on a marker that we just hid
-        // // map.closeInfoWindow();
-    // // }
-// // };
+            var name = markers[i].getAttribute("name");
+            var address = markers[i].getAttribute("address");
+            var category = markers[i].getAttribute("category");
+            
+            // Papulate Controls
+            var option = document.createElement("option");
+            option.text = name;
+            option.value = name;
+            buildList.appendChild(option);            
+            
+            var uloc = new UWLocation(i, map, lat, lng, name, address, category); // Line is Failing
+            this.cat[category].push(uloc);
+        }
+    }
+    this.show = function(map,category)
+    {
+        var arrLoc = this.cat[category];
+        for (var i=0; i<arrLoc.length; i++)
+        {
+            map.addOverlay(arrLoc[i].marker);
+            arrLoc[i].marker.show();
+        }
+        // == check the checkbox ==
+        document.getElementById(category+"box").checked = true;    
+    }
+    this.hide = function(map,category)
+    {
+        var arrLoc = this.cat[category];
+        for (var i=0; i<arrLoc.length; i++)
+        {
+            arrLoc[i].marker.hide();
+        }
+        // == clear the checkbox ==
+        document.getElementById(category+"box").checked = false;
+        // == close the info window, in case its open on a marker that we just hid
+        map.closeInfoWindow();
+    }
+    this.search = function(map,category,data)
+    {
+        var arrLoc = this.cat[category];
+        for (var i=0; i<arrLoc.length; i++)
+        {
+            // Clear all markers before we display another
+            map.removeOverlay(arrLoc[i].marker);
+            if (arrLoc[i].name.toLowerCase() == data.toLowerCase())
+            {
+                map.addOverlay(arrLoc[i].marker);
+                arrLoc[i].marker.show();
+                map.setCenter(new GLatLng(arrLoc[i].lat,arrLoc[i].lng), 17);
+            }
+        }
+    }
+};
