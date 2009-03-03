@@ -42,8 +42,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     //<![CDATA[
     
     var map;
-    //var locations = new Array();
-    var ulocset = new UWLocationSet(map);
+    var ulocset;
     
     function OnLoad()
     {
@@ -51,6 +50,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         {
             // create the map
             map = new GMap2(document.getElementById("map"));
+            ulocset = new UWLocationSet(map);
 
             var boundaries = new GLatLngBounds(new GLatLng(47.6465,-122.32565), new GLatLng(47.6641,-122.2881));
             var overlay = new GGroundOverlay("http://depts.washington.edu/uweb/map/map4.gif", boundaries);            
@@ -59,6 +59,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
             map.addControl(new GLargeMapControl());
             map.addControl(new GMapTypeControl());
+            // Following is called 3 times - need to put it somewhere or at least have defaults
             map.setCenter(new GLatLng(47.65565,-122.30817), 17);
             
             GDownloadUrl("categories.xml", function(doc)
@@ -75,19 +76,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
     // doSearch needs to work with OnLocalSearch to do the actual searching
     // then display the correct results on screen
-    function doSearch(value)
+    function doSearch(objectID)
     {
-        if (value == 'building')
-        {
-            var input = document.getElementById("buildingList").value;
-            ulocset.search(map,'building',input);
-        }
-        else
-        {
-            var input = document.getElementById("Input").value;
-            // Here is where the custom search goes
-            ulocset.search(map,'building',input);
-        }
+        var input = document.getElementById(objectID).value;
+        // Here is where the custom search goes
+        ulocset.search(map,'building',input);
     } 
     
     // OnClick event used for the categories displayed on page
@@ -156,13 +149,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     <div id="search">
         <div id="searchform">
             <input id="Input" name="Input" type="text" size="20" />
-            <input value="Go" type="submit" onclick="doSearch()" />
+            <input value="Go" type="submit" onclick="doSearch('Input')" />
         </div>
     </div>
         
     <div id="or"> -- or -- </div>
          
-	<select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('building')">
+	<select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('buildingList')">
 	  <option selected="selected">Select a building...</option>
 	</select>
 

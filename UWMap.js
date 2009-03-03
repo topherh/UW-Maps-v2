@@ -20,40 +20,48 @@ function UWLocation(id, map, lat, lng, name, address, category)
     this.point = new GLatLng(this.lat,this.lng);
     this.address = address;
     this.name = name;
-    this.html = "<b>"+name+"</b><p>"+address;
     this.category = category;
     this.marker;
+    this.buildingIcon = new GIcon();
+    
+    var html = "<b>" + this.name + "</b>" 
+        + "<p>" + this.address + "</p>";
 
-    // Private Class Properties
+    var iconCats = new Array();
+    iconCats['parking'] = 'G';
+    iconCats['bus'] = 'B';
+    iconCats['emergency'] = 'P';
+    iconCats['atm'] = 'A';
+    iconCats['libraries'] = 'L';
+    iconCats['zip'] = 'Z';
+    iconCats['wifi'] = 'W';
+    iconCats['bike'] = 'R';
+    iconCats['building'] = 'H';
+
     // This icon is a different shape, so we need our own settings       
-    var buildingIcon = new GIcon();
-    buildingIcon.image = "img/flags/H.gif";
-    buildingIcon.shadow = "img/shadow.png";
-    buildingIcon.iconSize = new GSize(32, 32);
-    buildingIcon.shadowSize = new GSize(45, 33);
-    buildingIcon.iconAnchor = new GPoint(5, 34);
-    buildingIcon.infoWindowAnchor = new GPoint(5, 2);
-    buildingIcon.infoShadowAnchor = new GPoint(14, 25);
-    buildingIcon.transparent = "img/flags/.gif";
-    buildingIcon.printImage = "img/flags/.gif";
-    buildingIcon.mozPrintImage = "img/flags/.gif";
-
-    // An array of GIcons, to make the selection easier
-    var gicons = [];
-    gicons["building"] = buildingIcon;
-
-    this.marker = new GMarker(this.point,gicons[this.category]);
-    // === Store the category and name info as a this.marker properties ===
-    // // // this.marker.mycategory = this.category;
-    // // // this.marker.myname = this.name;
-    GEvent.addListener(this.marker, "click", function()
+    this.buildingIcon.image = "img/flags/" + iconCats[this.category] + ".gif";
+    this.buildingIcon.shadow = "img/shadow.png";
+    this.buildingIcon.iconSize = new GSize(32, 32);
+    this.buildingIcon.shadowSize = new GSize(45, 33);
+    this.buildingIcon.iconAnchor = new GPoint(5, 34);
+    this.buildingIcon.infoWindowAnchor = new GPoint(5, 2);
+    this.buildingIcon.infoShadowAnchor = new GPoint(14, 25);
+    this.buildingIcon.transparent = "img/flags/.gif";
+    this.buildingIcon.printImage = "img/flags/.gif";
+    this.buildingIcon.mozPrintImage = "img/flags/.gif";    
+        
+    // GMarker does not work if you assign it right away
+    // Need to store it in a temp variable and the load when complete
+    var mark = new GMarker(this.point,this.buildingIcon);
+    GEvent.addListener(mark, "click", function()
     {
-        this.marker.openExtInfoWindow(
+        mark.openExtInfoWindow(
           map,
-          "extInfoWindow_funkyBox", this.html,
+          "extInfoWindow_funkyBox", html,
           {beakOffset: 2}
         ); 
     });
+    this.marker = mark;
 };
 
 /*********************************NOTES****************************
@@ -91,10 +99,13 @@ function UWLocationSet(map)
             var category = markers[i].getAttribute("category");
             
             // Papulate Controls
-            var option = document.createElement("option");
-            option.text = name;
-            option.value = name;
-            buildList.appendChild(option);            
+            if (category == 'building')
+            {
+                var option = document.createElement("option");
+                option.text = name;
+                option.value = name;
+                buildList.appendChild(option);            
+            }
             
             var uloc = new UWLocation(i, map, lat, lng, name, address, category); // Line is Failing
             this.cat[category].push(uloc);
@@ -109,6 +120,7 @@ function UWLocationSet(map)
             arrLoc[i].marker.show();
         }
         // == check the checkbox ==
+        map.setCenter(new GLatLng(47.65565,-122.30817), 17);
         document.getElementById(category+"box").checked = true;    
     }
     this.hide = function(map,category)
