@@ -60,7 +60,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     gicons["zip"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
     gicons["wifi"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
     gicons["bike"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
-    gicons["building"] = new GIcon(G_DEFAULT_ICON,"colour086.png");
 
     // A function to create the marker and set up the event window
     function createMarker(point,name,html,category)
@@ -139,30 +138,47 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
             // create the map
             map = new GMap2(document.getElementById("map"));
-
+            map.setCenter(new GLatLng(47.65565,-122.30817), 17);
             var boundaries = new GLatLngBounds(new GLatLng(47.6465,-122.32565), new GLatLng(47.6641,-122.2881));
-            var oldmap = new GGroundOverlay("http://depts.washington.edu/uweb/map/map4.gif", boundaries);            
+            var oldmap = new GGroundOverlay("http://depts.washington.edu/uweb/map/map3.gif", boundaries);            
+            
             // ground overlay
             map.addOverlay(oldmap);
-                        
-            //var options = new google.search.SearcherOptions(); // create the object 
-            //options.setExpandMode(GSearchControl.EXPAND_MODE_OPEN);
+            
+            var options = new google.search.SearcherOptions(); // create the object 
+            options.setExpandMode(GSearchControl.EXPAND_MODE_OPEN);
+            options.setRoot(document.getElementById("searchwell"));
 
-            //var searchControl = new google.search.SearchControl();
-            //searchControl.setSearchCompleteCallback(this, gotResults);
+            // ExpandMode: google.search.SearchControl.EXPAND_MODE_OPEN,
+            // listingTypes: GlocalSearch.TYPE_BLENDED_RESULTS
+            
+            var searchControl = new google.search.SearchControl();
+            searchControl.setSearchCompleteCallback(this, OnLocalSearch);
 
-            //var localSearch = new google.search.LocalSearch();
-            //searchControl.addSearcher(localSearch, options);
-
-            //localSearch.setCenterPoint(new GLatLng(47.65565,-122.30817), 17);
-            //searchControl.draw(document.getElementById("searchform"));
-
+            var localSearch = new google.search.LocalSearch();
+            searchControl.addSearcher(localSearch, options);
+            
             map.addControl(new GLargeMapControl());
             map.addControl(new GMapTypeControl());
             
-            map.setCenter(new GLatLng(47.65565,-122.30817), 17);
+            searchControl.execute("parking");
             
-           
+            // var searchControl = new google.search.SearchControl(null);
+            // searchControl.draw(document.getElementById("searchform"));
+
+            // Create a SearcherOptions object to ensure we can see all results 
+            // var options = new google.search.SearcherOptions(); // create the object 
+            // options.setExpandMode(google.search.SearchControl.EXPAND_MODE_OPEN);
+            // options.setRoot(document.getElementById("searchwell"));
+            // options.setSearchCompleteCallback(OnLocalSearch);
+            
+            // var options = 
+            // {
+                // setRoot: document.getElementById("searchwell"),
+                // onSearchCompleteCallback: OnLocalSearch(),
+                // ExpandMode: google.search.SearchControl.EXPAND_MODE_OPEN
+            // };
+
             // Read the data
             GDownloadUrl("categories.xml", function(doc)
             {
@@ -182,9 +198,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     // create the marker
                     var marker = createMarker(point,name,html,category);
                     map.addOverlay(marker);
-                    //GLog.write(marker);
                 }
-                
+
                 // == show or hide the categories initially ==
                 hide("emergency");
                 hide("parking");		
@@ -194,10 +209,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 hide("libraries");
                 hide("zip");	
                 hide("wifi");
-                hide("bike");
-                show("building");
+                hide("bike");		
             });
             
+            //searchControl.execute("parking");
         }
         else
         {
@@ -205,20 +220,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         }
 
     }
-    
-    function gotResults(sc, searcher)
-	{
-		var resultcontent = '';
-		var resultdiv = document.getElementById('searchresults');
-		
-		for (i=0; i<searcher.results.length; i++)
-		{
-			var result = searcher.results[i];
-			resultcontent += '<p>'+result.title+'<br />'+result.streetAddress+'</p>';
-		}
-		resultdiv.innerHTML = resultcontent;
-	}
-
 
     // Called when Local Search results are returned, we clear the old
     // results and load the new ones.
@@ -355,15 +356,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     window.onload = function() {
          menuinit();
     }
-    window.onunload = function()
-    {
-        GUnload();
-    }
     </script>
 
 
 </head>
-  <body>
+  <body onunload="GUnload()">
   
   <div id="thinSearchbar">
 	<a href="http://www.washington.edu/"><img id="lgo" src="Slim_Header/w.gif" alt="University of Washington"/></a>  
@@ -390,41 +387,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
   </div>
   
-        <div id="entire">
+    <div id="entire">
 
       <div id="nav"><br />
-	      
-        <div id="searcher">
-	        <form class="theForm" name=formA id="searchbox_001967960132951597331:04hcho0_drk" 
-		action="http://www.google.com/cse">
-	          <input type="hidden" name="cx" value="001967960132951597331:04hcho0_drk" />
-	          <input type="hidden" name="cof" value="FORID:0" />
-	          <input name="q" id="goBox2" type="text" size="30" value="Enter Search" onClick="make_blank();"/>
-	          <input id="goBox" type="submit" name="sa" value="Go" />
-            </form>
-      </div> 
-        
-    <div id="or"> -- or -- </div>
-         
-	<select name="buildingList" size="1" class="gmls-no-results-label" id="parkingbox" onclick="boxclick(this,'parking')">
-	  <option selected="selected">Select a building...</option>
-	  <option>Academic Computer Center</option>
-	  <option>Aerodynamics Lab</option>
-	  <option>Allen Library </option>
-	  <option>Alumni House</option>
-	  <option>Anderson Hall</option>
-	  <option>Architecture Hall</option>
-	  <option>Art Bldg</option>
-	  <option>Arts Ticket Office</option>
-	  <option>Atmos Sciences - Geophysics</option>
-	  <option>Bagley Hall </option>
-	  <option id="parking" onclick="show(this)">Balmer Hall</option>
-	  <option>Bank of America Exec Ed Ctr</option>
-	</select>
-
-      
-  <br />
-  <br />
 
   	  <div id="dotted">
 	      <ul>
@@ -477,10 +442,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             </li>  
             
             <li>
-				<a id="fBuilding" class="forms" href="#"><label><input class="checky" type="checkbox" id="buildingbox" onclick="boxclick(this,'building')" /></label>Buildings</a>
-            </li>   
-            
-            <li>
               <a id="fZip" class="forms" href="#"><label><input class="checky" type="checkbox" id="zipbox" onclick="boxclick(this,'zip')" /></label>Zip Cars</a>
             </li>  
             
@@ -508,7 +469,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
       </div>
       
       <div id="results">
-        <div id="searchresults"></div>
+        <div id="searchwell"></div>
       </div>
       
 </body>

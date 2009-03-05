@@ -79,10 +79,9 @@
 #fZip{background-image: url(img/flags/Z.gif);}
 #fWi{background-image: url(img/flags/W.gif);}
 #fBike{background-image: url(img/flags/R.gif);}
-#fBuilding{background-image: url(img/flags/H.gif);}
 
 .checky {
-	margin: 8px 55px 0 0;
+	margin: 8px 40px 0 0;
 	padding: 0px;
 }
 .forms {
