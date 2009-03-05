@@ -51,13 +51,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             // create the map
             map = new GMap2(document.getElementById("map"));
             ulocset = new UWLocationSet(map);
-
-            // // var boundaries = new GLatLngBounds(new GLatLng(47.6465,-122.32565), new GLatLng(47.6641,-122.2881));
-            // var overlay = new GGroundOverlay("http://depts.washington.edu/uweb/map/map4.gif", boundaries);            
-            // ground overlay
-            // map.addOverlay(overlay);
-            // // map.setCenter(new GLatLng(47.655,-122.30817), 17);
-            
+        
             map.addControl(new GLargeMapControl());
             map.addControl(new GMapTypeControl());
             
@@ -66,7 +60,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             function CustomGetTileUrl(point,zoom)
             {
                 // We only have zoom at 17 - need to adjust as we get more slices
-                if (zoom != 17)
+                if (zoom < 12 || zoom > 17)
                 {
                     return 'blanktile.png';
                 }
@@ -96,107 +90,28 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     point.y < minTileCoord.y ||
                     point.y > maxTileCoord.y)
                 {
-                    // GLog.write('X: Min (' + minTileCoord.x + ') | Max (' + maxTileCoord.x + ') || ' +
-                    // 'Y: Min (' + minTileCoord.y + ') | Max (' + maxTileCoord.y + ') || ' +
-                    // 'Point X: ' + point.x + ' |  Point Y: ' + point.y);
                     return 'blanktile.png';
                 }
                 return 'cutter/' + zoom + '_' + point.x + '_' + point.y + '.png';
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            // ===== Write our own getTileUrl function ========
-            // This particular one checks to see if the tiles are in range
-            // if so, returns the URL of the actual tile
-            // Otherwise returns the URL of the Google Map tileserver tile
-            // // CustomGetTileUrl = function(a,b)
-            // // {
-                // // if (a.x>=1 && a.x<=999999 && a.y>=1 && a.y<= 999999)
-                // // {
-                    // // //	 if (a.x>=20999 && a.x<=21013 && a.y>=45744 && a.y<= 45754) {
-                    // // return "cutter/"+b+ "_" +a.x+ "_" +a.y+  ".png"
-                // // }
-                // // else
-                // // {
-                    // // return G_NORMAL_MAP.getTileLayers()[0].getTileUrl(a,b);
-                // // }
-            // // }
 
-            // Optional
-            // // // var copyright = new GCopyright(1,
-                // // // new GLatLngBounds(
-                    // // // new GLatLng(53.8136257,-3.0981445), new GLatLng(53.8654855,-2.9663944)
-                    // // // ), 17, "Ordnance Survey");
-
-            // // // var copyrightCollection = new GCopyrightCollection('Map Data:');
-            // // // copyrightCollection.addCopyright(copyright);
-
-                // // // ===== Now a third map type that combines NORMAL with partially transparent OLD OS 
-                // // var paleLayer = new GTileLayer(copyrightCollection,13,17); 
-                // // paleLayer.getTileUrl = CustomGetTileUrl; 
-                
-                // // //paleLayer.getOpacity = function() {return 0.5} 
-                // // var tilelayers3 = [G_NORMAL_MAP.getTileLayers()[0], paleLayer]; 
-                // // var custommap3 = new GMapType(tilelayers3, new 
-                
-                // // GMercatorProjection(18), "Mixture", {shortName:"Mix"}); 
-                // // map.addMapType(custommap3);             
-
-                // Template for what in theory should be working
-                // // var tileLayerOverlay = new GTileLayerOverlay(
-                    // // new GTileLayer(null, null, null, {
-                    // // tileUrlTemplate: '/tiles/reefs/{Z}/{X}/{Y}.png',
-                    // // isPng:true,
-                    // // opacity:1.0
-                    // // })
-                // // );
-
-                
-            // var tileLayer = new GTileLayer(null,null,null, {
-                // isPng:true,
-                // opacity:1.0
-            // });
-            // tileLayer.getTileUrl = CustomGetTileUrl;
-            
-            // var tileLayerOverlay = new GTileLayerOverlay(tileLayer)
-            // map.addOverlay(tileLayerOverlay);
-
+            // Setting the Normal Map as the initial will show it in the background if 
+            // user goes out of range
             var tileLayer = new GTileLayer(null,12,19, {
                     isPng:true,
-                    opacity:0.9
+                    opacity:0.9 // 1.0 is solid, anything less and we can see if the map lines up
                     });
             
             var tilelayers = [G_NORMAL_MAP.getTileLayers()[0],tileLayer];
             tilelayers[1].getTileUrl = CustomGetTileUrl;
 
-            // ============================================================
-            // === If we know the copyright, return it, otherwise look for the G_NORMAL_MAP copyright =====      
-            // Again - Optional
-            // // // tilelayers[0].getCopyright = function(a,b)
-            // // // {
-                // // // var c = copyrightCollection.getCopyrightNotice(a,b);
-                // // // if (!c)
-                // // // {
-                    // // // c = G_NORMAL_MAP.getTileLayers()[0].getCopyright(a,b);
-                // // // }
-                // // // return c;
-            // // // }
-
             var custommap = new GMapType(tilelayers, G_SATELLITE_MAP.getProjection(), "Campus");
             map.addMapType(custommap);
             
-            // Sets the center and th edefault map
+            // Sets the center and the default map
             map.setCenter(new GLatLng(47.65565,-122.30817), 17, custommap);
             // ============================================================
             // ============================================================
-
 
             // Following is called 3 times - need to put it somewhere or at least have defaults
             // map.setCenter(new GLatLng(47.65565,-122.30817), 17);
