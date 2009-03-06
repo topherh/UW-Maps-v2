@@ -1,0 +1,86 @@
+@charset "utf-8";
+#thinSearchbar {
+	background-image: url(bg.gif);
+	background-repeat: repeat-x;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999999;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #999999;
+	height: 2.19em;
+	width: 100%;
+}
+
+#lgo {
+	float: left;
+	height: 1.25em;
+	padding-top: .25em;
+	width: 13.13em;
+	text-decoration: none;
+	margin-top: .19em;
+	margin-bottom: 0.25em;
+	margin-left: 0.63em;
+	border: none;
+}
+
+#rhtlnks {
+	text-align: right;
+	height: 2.19em;
+	overflow: hidden;
+}
+#searcha {
+	float: right;
+	padding-top: .31em;
+	overflow: hidden;
+}
+
+
+#rhtlnks ul {
+	margin-top: .13em;
+	text-decoration: none;
+	display: inline;
+}
+#rhtlnks li {
+	display: inline;
+	padding-right: .13em;
+	font-size:0.63em;
+	font-weight: normal;
+	color: #FFFFFF;
+	font-family: "Lucida Grande", geneva, helvetica, sans-serif;
+	text-decoration: none;
+}
+#rhtlnks a {
+	color: #FFFFFF;
+}
+
+#rhtlnks a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+#rhtlnks a:visited {
+	color: #CCCCCC;
+	text-decoration: none;
+}
+
+#rhtlnks a:hover {
+	color: #CC9900;
+}
+.barLeft {
+	color: #999999
+}
+#rhtlnks input {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: .63em;
+	color: #999999;
+}
+.formation {
+	margin-top: 0em;
+	padding-top: 0px;
+	float: right;
+	height: 1.69em;
+	overflow: hidden;
+	padding-left: 0.31em;
+	padding-right: 0.19em;
+	padding-top: 0.38em;
+}

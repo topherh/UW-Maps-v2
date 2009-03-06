@@ -1,0 +1,154 @@
+@charset "utf-8";
+
+/*------- Searchbox ----------*/
+#searcher {
+	text-align: left;
+}
+#searcher input {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.68em;
+	color: #666666;
+}
+#goBox {
+	width: 30px;
+}
+#goBox2 {
+	width: 150px;
+}
+.theForm {
+	margin: 0px;
+	padding: 0px;
+}
+/*------- end Searchbox ----------*/
+#map {
+	padding: 8px;
+	float: right;
+	border: 1px solid #CCCCCC;
+	width: 800px;
+	height: 700px;
+
+}
+
+#entire {
+	border: 1px solid #CCCCCC;
+	padding: 8px;
+	height: 718px;
+	width: 1050px;
+	margin: 30px auto 0 auto;
+}
+#nav {
+	float: left;
+	width: 195px;
+	height: 715px;
+	border: 1px solid #CCCCCC;
+	background-color: #f2eddf;
+	padding: 0 8px 0 20px;
+}
+#nav a{
+	display: block;
+	height: 33px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #666666;
+	margin: 5px 0 0 0;
+	text-decoration:none;
+}
+#nav img{
+	border: 0;
+	margin-left: 10px;
+}
+#nav p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #666666;
+	margin: 5px 0 0 0;
+}
+.expander {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 6px;
+}
+
+/*----these are the tags for the left nav----*/
+#fParking{background-image: url(img/flags/G.gif);}
+#fBus{background-image: url(img/flags/B.gif);}
+#fEmergency{background-image: url(img/flags/P.gif);}
+#fATM{background-image: url(img/flags/A.gif);}
+#fLibraries {background-image: url(img/flags/L.gif);}
+#fZip{background-image: url(img/flags/Z.gif);}
+#fWi{background-image: url(img/flags/W.gif);}
+#fBike{background-image: url(img/flags/R.gif);}
+
+.checky {
+	margin: 8px 40px 0 0;
+	padding: 0px;
+}
+.forms {
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	height: 33px;
+	margin: 10px 0 0 0;
+	padding: 0px;
+	background-repeat: no-repeat;
+	background-position: 25px center;
+}
+.forms p{
+	margin-bottom:5px;
+}
+.subforms {
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	margin: 0px;
+	padding: 0 0 0 20px;
+	background-repeat: no-repeat;
+	background-position: 25px center;
+}
+
+
+
+/*-----------------------Plus/Minus CSS---------------------*/
+
+#navi {
+        width: 10em;
+}
+#nav ul, #nav li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+}
+
+#navi a.span {
+	position: relative;
+}
+
+#navi a.span img {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	border: 0;
+}
+#or {
+	margin: 5px 0 5px 0;
+	display: block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #666666;
+	align: center;
+	text-align: center;
+}
+#dotted {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: dotted;
+	border-bottom-style: dotted;
+	border-top-color: #999999;
+	border-bottom-color: #999999;
+}
+
+
+#buildingList {
+	width: 190px;
+}

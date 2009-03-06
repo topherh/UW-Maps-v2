@@ -1,0 +1,488 @@
+body {
+	min-width: 77em;
+	color: white;
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Optima, Trebuchet, "Trebuchet MS", Arial, Helvetica, sans;
+	font-size: 75%;	/* everything on page is based on 3/4 em */
+	font-weight: 100;
+	line-height: 1.2;
+	background-color: #39275b;
+	background-repeat: no-repeat;
+}
+#headerWrap {
+	padding: 1.5em 0 0 0;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a.more {
+	white-space: nowrap;
+	font-weight: bold;
+}
+div#header {
+	position: relative;
+	height: 4.25em;
+	margin-bottom: -0.25em;
+}
+div#header img#logo {
+	width: 21.38em;
+	height: 2.06em;
+	padding-left: 2.5em;
+	padding-top: 0.7em;
+}
+* html div#header div.ieminwidth {
+	width: 77em;
+	height: 1em;
+	margin-bottom: -1em;
+}
+h1 {
+	display: none;
+}
+ul#campuses {
+	position: absolute;
+	z-index: 1;		/* bring it above main links */
+	width: 17.55em;
+	top: 4em;
+	left: 2.5em;
+	color: #d8c858;
+	background: transparent;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 0.9em;
+}
+ul#campuses, ul#campuses a {
+	color: #f1f2c1;
+	background: transparent;
+}
+ul#campuses li#bothell {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+ul#campuses li#seattle {
+	display: inline;
+}
+ul#campuses li#tacoma {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+div#searchbox {
+	position: absolute;
+	top: 0;
+	right: 0.5em;
+	z-index: 20;
+	color: inherit;
+	padding-bottom: 0.5em;
+	background-image: none;
+	text-align: right;
+	padding-right: 1em;
+}
+div#searchbox form {
+	margin: 0 0 0.25em;
+	padding: 0;
+}
+div#searchbox input.empty {
+	color: #666;
+	background: white;
+}
+div#searchbox ul {
+	margin: 0 0 7px 0;
+	padding: 0;
+}
+div#searchbox li {
+	display: inline;
+	margin: 0 0 0 1px;
+	padding: 0;
+}
+
+div#searchbox a {
+	color: white;
+	background: transparent;
+	font-size: 11px;
+}
+.borderLeft {
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #666666;
+	padding-left: 6px;
+}
+h2 {
+	font-size: 1.3em;
+}
+img {
+	font-size: 1.333em;
+	border: 0;
+}
+div#linkbar {
+	position: relative;
+	height: 15em;
+	z-index: 600;	/* to help ie7 */
+	margin-top: 4em;
+}
+body.noscript div#linkbar {
+	height: auto;
+}
+div#linkbar ul#mainlinks {
+	position: absolute;
+	top: 0;
+	left: 3.5em;
+	width: 17em;
+	margin: -1em 0 0;
+	padding: 0;
+	list-style-type: none;
+	z-index: 600;	/* to help ie7 */
+}
+body.noscript div#linkbar ul#mainlinks {
+	position: static;
+	width: 25em;
+	margin: 2.5em 0.5em 1em 1.5em;
+	text-indent: -1em;
+	line-height: 1.4;
+}
+* html body.noscript div#linkbar ul#mainlinks {
+	padding-left: 1.5em;
+}
+div#linkbar ul#mainlinks h2 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-size: 1.25em;
+}
+body.noscript div#linkbar ul#mainlinks h2 {
+	display: inline;
+}
+div#linkbar ul#mainlinks li {
+	position: relative;
+	margin: 1em 0 0;
+	padding: 0 0 0.15em 0.333em;
+}
+div#linkbar ul#mainlinks li.show {
+	color: white;
+	background: #605074;
+	-webkit-border-top-left-radius: 0.25em;
+	-webkit-border-bottom-left-radius: 0.25em;
+	-moz-border-radius-topleft: 0.25em;
+	-moz-border-radius-bottomleft: 0.25em;
+	border-top-left-radius: 0.25em;
+	border-bottom-left-radius: 0.25em;
+}
+div#linkbar ul#mainlinks li.show li {
+	border-width: 0;
+}
+html>body div#linkbar ul#mainlinks li.show {
+	color: white;
+	background: rgba(101, 84, 125, 0.9);
+}
+body.noscript div#linkbar ul#mainlinks ul.flyout {
+	position: static;
+	display: inline;
+	margin: 0;
+}
+body.noscript div#linkbar ul#mainlinks ul.flyout li {
+	display: inline;
+	margin-left: 0.25em;
+	border-left: white solid;
+	border-width: 0 0 0 0.3em;
+	padding-left: 0.5em;
+	line-height: 1;
+}
+div#linkbar ul#mainlinks ul.flyout li {
+	padding: 0;
+	margin: 0;
+}
+div#linkbar ul#mainlinks li.show ul.flyout {
+	list-style-type: none;
+	visibility: visible;
+}
+body.script div#linkbar ul#mainlinks ul.flyout {
+	top: 0;
+	left: 100%;
+	width: 12.5em;
+	color: white;
+	background: #605074;
+	margin: 0;
+	padding: 0 0.5em 0.25em;
+	line-height: 1.5em;
+}
+* html body.script div#linkbar ul#mainlinks ul.flyout {
+	margin-left: -0.3333em;
+}
+* html body.script div#linkbar ul#mainlinks ul.flyout li a {
+	margin-left: -2em;
+	padding-left: 2em;
+}
+html>body.script div#linkbar ul#mainlinks ul.flyout {
+	color: white;
+	background: rgba(101, 84, 125, 0.9);
+	-webkit-border-radius: 0.5em;
+	-webkit-border-top-left-radius: 0;
+	-moz-border-radius: 0.5em;
+	-moz-border-radius-topleft: 0;
+	border-radius: 0.5em;
+	border-top-left-radius: 0;
+}
+body.script div#linkbar ul#mainlinks ul.flyout li {
+	margin-top: 0.5em;
+	margin-left: -2em;
+	mar\gin-left: 2em;
+	padding-left: 2em;
+	paddin\g-left: 0;
+	te\xt-indent: -2em;
+}
+body.script div#linkbar ul#mainlinks ul.flyout li:first-child {
+	margin-top: 0;
+}
+div#linkbar ul#mainlinks a {
+	display: block;
+	width: 100%;
+	color: white;
+	background: transparent;
+}
+div.feature {
+	position: relative;
+	height: 100%;
+	margin-left: 25em;
+}
+* html div.feature {
+	z-index: -1;
+}
+div#mainbody {
+	position: relative;
+	clear: both;
+	color: #4a4434;
+	background: #e2d06c;
+	padding-bottom: 0.5em;
+}
+* html div#mainbody {
+	height: 1%;	/* for ie so we can position */
+}
+/*
+normally we'd use div#newsbarwrap div.ieminwidth and ul#newsbar li
+div.ieminwidth to make sure the li items don't get too narrow.  however,
+ie will still try to wrap the floats, even if ul#newsbar is set to 100%.
+we can, however, still do maximum widths
+*/
+div#newsbarwrap {
+	padding: 0.75em 0;	/* horizontal padding is on li p */
+}
+div#newsbarwrap div.clear {
+	clear: both;
+}
+ul#newsbar {
+	line-height: 1.15;
+	margin: 0;
+	padding: 0;
+}
+ul#newsbar li {
+	width: 33%;
+	max-width: 30em;
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style-type: none;
+}
+* html ul#newsbar li {
+	width: expression(ie_newsbar_li_width ());
+	padding-bottom: 1em;
+	padd\ing-bottom: 0;
+}
+ul#newsbar li div {
+	margin: 0 1em;
+	padding: 0;
+}
+ul#newsbar li div.ieminwidth {
+	margin: 0;
+}
+ul#newsbar a.img {
+	display: block;
+	float: left;
+	margin: 0.25em 0.75em 0 0;
+}
+ul#newsbar a.img img {
+	width: 6.25em;
+	height: 4.0625em;
+}
+ul#newsbar h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.1em;
+}
+ul#newsbar a {
+	color: #2b1b3f;
+	background: transparent;
+}
+div#tablewrap {		/* wrap table with a div for positioning; some browsers don't let table objects be positioned */
+	position: relative;
+}
+* html div#tablewrap {
+	height: 1%;	/* so we can position */
+}
+table {
+	width: 100%;
+}
+table, tr, td {
+	color: inherit;
+	background: white;
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+td {
+	vertical-align: top;
+	padding-bottom: 1em;
+}
+* html td div.ieminwidth {
+	width: 18em;
+	height: 1em;
+	margin-bottom: -1em;
+}
+td h2 {
+	color: #6e6e6e;
+	background: transparent;
+	margin: 1em;
+}
+td#quicklinks {
+	color: #4a4434;
+	background: #f3ecc2;
+	width: 18em;
+	padding-bottom: 6em;
+}
+td#quicklinks a {
+	color: #4a4434;
+	background: transparent;
+}
+td#quicklinks ul {
+	margin: 0 1.5em;
+	padding: 0;
+	list-style-type: none;
+}
+td#quicklinks li {
+	margin: 1em 0 0 0.5em;
+	padding: 0 0 0 0.5em;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-indent: -1em;
+}
+td#quicklinks a {
+	color: #4a4434;
+	background: transparent;
+}
+td#news {
+	color: #4a4434;
+	background: transparent;
+}
+* html td#news div.ieminwidth {
+	width: 31em;
+}
+td#news a {
+	color: #2b1b3f;
+	background: transparent;
+}
+td#news ul {
+	margin: 0 1.5em;
+	padding: 0;
+	list-style-type: none;
+}
+td#news li {
+	clear: left;
+	height: 1%;		/* for ie */
+	margin: 1.25em 0;
+	padding: 0.25em 0 0;
+}
+td#news[id] li {	/* undo stuff needed for ie/win - ie5.0 does wrong things w/ td>li */
+	height: auto;
+	padding-top: 0;
+}
+td#news h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.1em;
+}
+td#news a.img {
+	float: left;
+	margin: 0.25em 1em 0 0;
+}
+td#visit {
+	color: #4a4434;
+	background: #f5f3fa;
+	width: 18em;
+}
+td#visit p, td#visit img {
+	position: relative;
+	z-index: 2;
+	margin-left: 1.5em;
+}
+td#visit p {
+	margin-right: 1em;
+}
+td#visit ul {
+	position: relative;
+	z-index: 2;
+	margin: 0 2em 0 3em;
+	padding: 0 0 1em;
+	list-style-type: none;
+	font-weight: bold;
+	text-indent: -1em;
+}
+td#visit li {
+	margin: 0.5em 0 0;
+	padding: 0;
+}
+td#visit ul a {
+	color: #4a4434;
+	background: transparent;
+}
+img#george, img#quickimg {
+	position: absolute;
+	bottom: 0;
+}
+img#george {
+	z-index: 1;
+	width: 4.8125em;
+	height: 10.6875em;
+	right: 0;
+}
+img#quickimg {
+	width: 10.9375em;
+	height: 3.625em;
+	left: 1.2667em;
+}
+ul#footlinks {
+	height: 1.7em;
+	hei\ght: 1.2em;
+	clear: both;
+	margin: 0;
+	padding: 0.5em 1em 0;
+	list-style-type: none;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center;
+}
+ul#footlinks li {
+	display: inline;
+	padding: 0 0.75em 0 1em;
+	border-left: 1px #2b1b3f solid;
+}
+ul#footlinks li.first {
+	padding-left: 0;
+	border: 0;
+}
+ul#footlinks, ul#footlinks a {
+	color: #2b1b3f;
+	background: transparent;
+}
+div#footer, div#footer a {
+	color: white;
+	background: #39275b;
+}
+div#footer {
+	padding: 1em 0 1.5em 2em;
+}
