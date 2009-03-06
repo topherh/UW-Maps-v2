@@ -26,7 +26,7 @@ function UWLocation(id, map, lat, lng, name, address, category)
     
     var html = "<b>" + this.name + "</b>" 
         + "<p>" + this.address + "</p>";
-        
+
     var iconCats = new Array();
     iconCats['parking'] = 'G';
     iconCats['bus'] = 'B';
@@ -94,12 +94,11 @@ function UWLocationSet(map)
             var lat = markers[i].getAttribute("lat");
             var lng = markers[i].getAttribute("lng");
 
-            // Rest of the information related to the marker
             var name = markers[i].getAttribute("name");
             var address = markers[i].getAttribute("address");
             var category = markers[i].getAttribute("category");
             
-            // Papulate Dropdown List
+            // Papulate Controls
             if (category == 'building')
             {
                 var option = document.createElement("option");
@@ -122,7 +121,7 @@ function UWLocationSet(map)
         }
         // == check the checkbox ==
         map.setCenter(new GLatLng(47.65565,-122.30817), 17);
-        document.getElementById(category+"box").checked = true;
+        document.getElementById(category+"box").checked = true;    
     }
     this.hide = function(map,category)
     {
@@ -136,14 +135,14 @@ function UWLocationSet(map)
         // == close the info window, in case its open on a marker that we just hid
         map.closeInfoWindow();
     }
-    this.search = function(map,category,strQuery)
+    this.search = function(map,category,data)
     {
         var arrLoc = this.cat[category];
         for (var i=0; i<arrLoc.length; i++)
         {
             // Clear all markers before we display another
             map.removeOverlay(arrLoc[i].marker);
-            if (arrLoc[i].name.toLowerCase() == strQuery.toLowerCase())
+            if (arrLoc[i].name.toLowerCase() == data.toLowerCase())
             {
                 map.addOverlay(arrLoc[i].marker);
                 arrLoc[i].marker.show();
@@ -152,63 +151,3 @@ function UWLocationSet(map)
         }
     }
 };
-
-/*********************************NOTES****************************
-***** var uMap = new UWCampusMap();
-**********************************************************************/
-// var UWCampusMap;
-// UWCampusMap.prototype = new GMapType
-// {
-    // this.opacity = 0.9; // 1.0 is solid, anything less and we can see if the map lines up
-    // this.tileLayers = new Array();
-    // this.name = "Campus";
-
-    // // ============================================================
-    // // http://code.google.com/p/cumberland/wiki/TilePyramiderAndGoogleMaps
-    // this.gettileurl = function(point,zoom)
-    // {
-        // // We only have zoom at 17 - need to adjust as we get more slices
-        // if (zoom < 12 || zoom > 17)
-        // {
-            // return 'blanktile.png';
-        // }
-
-        // // Define our tile boundaries
-        // // Note: origin in google maps is top-left
-        // var minLL = new GLatLng(47.6641,-122.32565); 
-        // var maxLL = new GLatLng(47.6465,-122.2881);
-        
-        // // convert our lat/long values to world pixel coordinates
-        // var currentProjection = G_NORMAL_MAP.getProjection();
-        // var minPixelPt = currentProjection.fromLatLngToPixel(minLL, zoom);
-        // var maxPixelPt = currentProjection.fromLatLngToPixel(maxLL, zoom);
-
-        // // convert our world pixel coordinates to tile coordinates 
-        // var minTileCoord = new GPoint();
-        // minTileCoord.x = Math.floor(minPixelPt.x / 256);
-        // minTileCoord.y = Math.floor(minPixelPt.y / 256);
-
-        // var maxTileCoord = new GPoint();
-        // maxTileCoord.x = Math.floor(maxPixelPt.x / 256);
-        // maxTileCoord.y = Math.floor(maxPixelPt.y / 256);
-
-        // // filter out any tile requests outside of our bounds
-        // if (point.x < minTileCoord.x || 
-            // point.x > maxTileCoord.x ||
-            // point.y < minTileCoord.y ||
-            // point.y > maxTileCoord.y)
-        // {
-            // return 'blanktile.png';
-        // }
-        // return 'cutter/' + zoom + '_' + point.x + '_' + point.y + '.png';
-    // }
-    
-    // var tileLayer = new GTileLayer(null,12,19, {
-        // isPng:true,
-        // opacity:this.opacity
-        // });
-
-    // this.tilelayers = [G_NORMAL_MAP.getTileLayers()[0],tileLayer];
-        // tilelayers[1].getTileUrl = this.gettileurl;
-// }
-// UWCampusMap.prototype.call(this, this.tilelayers, G_SATELLITE_MAP.getProjection(), this.name);
