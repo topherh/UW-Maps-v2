@@ -1,0 +1,8 @@
+yelp map to dos
+
+[] add more search options
+[] add a default search URL (like top 20 rated restaurants within 2 miles of campus)
+[] integrate the yelp map into the overall map via tab option or categories on left nav menu
+[] test the map a ton
+[] ask questions about whether yelp map should be limited to restaurants
+[] should we add more to yelp map (other review types)
