@@ -70,13 +70,7 @@
     {
         if (GBrowserIsCompatible())
         {
-            // create the map
-            /*map = new GMap2(document.getElementById("map"));
-            ulocset = new UWLocationSet(map);
-        
-            map.addControl(new GLargeMapControl());
-            map.addControl(new GMapTypeControl());*/
-            
+            // create the map            
             map = new GMap2(document.getElementById("map"));
 	        GEvent.addListener(map, "load", function() {updateMap();});
 	        map.setCenter(new GLatLng(47.65565,-122.30817),15);
@@ -246,28 +240,28 @@
         // div start
         text += '<div class="businessinfo">';
         // name/url
-        text += '<a href="'+biz.url+'" target="_blank">'+biz.name+'</a><br/>';
+        text += '<a href="'+biz.url+'" target="_blank">'+biz.name+'</a><br />';
         // stars
         text += '<img class="ratingsimage" src="'+biz.rating_img_url_small+'"/>&nbsp;based&nbsp;on&nbsp;';
         // reviews
-        text += biz.review_count + '&nbsp;reviews<br/><br />';
+        text += biz.review_count + '&nbsp;reviews<br /><br />';
         // categories
         text += formatCategories(biz.categories);
         // neighborhoods
         if(biz.neighborhoods.length)
             text += formatNeighborhoods(biz.neighborhoods);
         // address
-        text += biz.address1 + '<br/>';
+        text += biz.address1 + '<br />';
         // address2
         if(biz.address2.length)
-            text += biz.address2+ '<br/>';
+            text += biz.address2+ '<br />';
         // city, state and zip
-        text += biz.city + ',&nbsp;' + biz.state + '&nbsp;' + biz.zip + '<br/>';
+        text += biz.city + ',&nbsp;' + biz.state + '&nbsp;' + biz.zip + '<br />';
         // phone number
         if(biz.phone.length)
             text += formatPhoneNumber(biz.phone);
         // Read the reviews
-        text += '<br/><a href="'+biz.url+'" target="_blank">Read the reviews »</a><br/>';
+        text += '<br /><a href="'+biz.url+'" target="_blank">Read the reviews &raquo;</a><br />';
         // div end
         text += '</div></div>'
         return text;
@@ -304,7 +298,7 @@
      */
     function formatPhoneNumber(num) {
         if(num.length != 10) return '';
-        return '(' + num.slice(0,3) + ') ' + num.slice(3,6) + '-' + num.slice(6,10) + '<br/>';
+        return '(' + num.slice(0,3) + ') ' + num.slice(3,6) + '-' + num.slice(6,10) + '<br />';
     }
 
     /*
