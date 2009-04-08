@@ -20,6 +20,42 @@
 	padding: 0px;
 }
 /*------- end Searchbox ----------*/
+
+/*------- Tabs ----------*/
+@charset "utf-8";
+#tabs {
+	width: 1000px;
+	margin: 15px auto 0 auto;
+	height: 43px;
+	padding: 0;
+}
+#tabs ul {
+	margin: 0px;
+	padding: 0px;
+
+}
+#tabs ul li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+
+}
+#tabs img {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+#tabs a {
+	margin: 0;
+	padding: 0;
+}
+
+#busroute a:active {	
+}
+#campusmap a:active {
+}
+/*------- end Tabs ----------*/
+
 #map {
 	padding: 8px;
 	float: right;
@@ -34,7 +70,7 @@
 	padding: 8px;
 	height: 718px;
 	width: 1050px;
-	margin: 30px auto 0 auto;
+	margin: 0 auto 0 auto;
 }
 #nav {
 	float: left;
@@ -79,9 +115,10 @@
 #fZip{background-image: url(img/flags/Z.gif);}
 #fWi{background-image: url(img/flags/W.gif);}
 #fBike{background-image: url(img/flags/R.gif);}
+#fBuilding{background-image: url(img/flags/H.gif);}
 
 .checky {
-	margin: 8px 40px 0 0;
+	margin: 8px 55px 0 0;
 	padding: 0px;
 }
 .forms {
