@@ -17,6 +17,7 @@
 		.marker .businessimage { float: left;}
 		.marker .ratingsimage {vertical-align:middle; margin-top:0px;}
 		.marker .businessinfo { margin-left: 110px;}
+		#yelpForm { font-size: 12px; }
 	</style>
 	<link href="Slim_Header/header.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
@@ -42,6 +43,11 @@
 	<script type="text/javascript">
     //<![CDATA[
     
+    function make_blank()
+	{
+		document.yelpForm.term.value="";
+	}
+    
 	var YWSID = "VblhHix8eCBPyqXxnIbXOw"; // common required parameter (api key)
 	
     var map;
@@ -55,7 +61,6 @@
 
             map.addControl(new GLargeMapControl());
             map.addControl(new GMapTypeControl());
-			
 			
 			if (window.attachEvent) window.attachEvent("onresize", function() { map.checkResize()} );
 	        else if (window.addEventListener) window.addEventListener("resize", function() { map.checkResize()}, false);
@@ -127,6 +132,8 @@
 	        icon.shadowSize = new GSize(38, 29);
 	        icon.iconAnchor = new GPoint(15, 29);
 	        icon.infoWindowAnchor = new GPoint(15, 3);
+	        
+	        return updateMap();
 
         }
         else
@@ -140,20 +147,26 @@
 		 * Construct the URL to call for the API request
 		 */
 		function constructYelpURL() {
+			
+			var term = "";
+			(document.getElementById("term").value) ? term=document.getElementById("term").value : term="thai"
+			
+			var radius = "";
+			(document.getElementById("radius").value) ? radius=document.getElementById("radius").value : radius="2"
+			
 			var mapBounds = map.getBounds();
 			var URL = "http://api.yelp.com/" +
 				"business_review_search?"+
 				"callback=" + "handleResults" +
-				"&term=" + document.getElementById("term").value +
+				"&term=" + term +
 				"&num_biz_requested=20" +
 				"&tl_lat=" + mapBounds.getSouthWest().lat() +
 				"&tl_long=" + mapBounds.getSouthWest().lng() +
 				"&br_lat=" + mapBounds.getNorthEast().lat() +
 				"&br_long=" + mapBounds.getNorthEast().lng() + 
-				"&radius=" + document.getElementById("radius").value +
+				"&radius=" + radius +
 				"&ywsid=" + YWSID + 
-				"&category=restaurants" +
-				"&avg_rating=5";
+				"&category=restaurants";
 			return encodeURI(URL);
 		}
 
@@ -344,28 +357,14 @@
 
       <div id="nav"><br />
 	      
-   <form>
-		Search for <input type="text" id="term" name="term" value="" /><br />
-		Within <input type="text" id="radius" name="radius" value="" /> miles of campus<br />
+   <form name="yelpForm" id="yelpForm">
+		Search for <input type="text" id="term" name="term" value="thai" onclick="make_blank();" /><br />
+		Within <input type="text" id="radius" name="radius" value="" size="3" maxlength="2" /> miles of campus<br />
 		<input type="button" value="Search" onclick="return updateMap();" />
 		<img id="spinner" src="img/spinner.gif" /><br />
 		<span class="error" id="errorMessage" />
 	</form>
-	<ul>
-		<li><a href="http://www.washington.edu/commuterservices/index.php"><strong>Commuter Services</strong></a> </li>
-
-		<li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&#8226; Getting to the UW</a> </li>
-
-		<li><a href="http://www.washington.edu/commuterservices/parking/index.php">&#8226; Parking at the UW</a></li> 
-
-		<li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&#8226; Gatehouses</a> </li>
-
-		<li><a href="http://flatline.cs.washington.edu/CAMPS/">&#8226; Campus walking directions</a>
-
-		<li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#8226; UW Shuttle Service</a>
-	</ul>
-          
-        <br />
+	
       </div>
        
       <div id="map"></div>
