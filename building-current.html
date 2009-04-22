@@ -187,6 +187,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 		resultdiv.innerHTML = resultcontent;
 	}
     
+    // doSearch needs to work with OnLocalSearch to do the actual searching
+    // then display the correct results on screen
     function doSearch()
     {
         var zip = document.getElementById("zipInput").value;
@@ -228,54 +230,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         var first = gLocalSearch.results[0];
         map.panTo(new GLatLng(first.lat, first.lng));
     }
-    
-       // == shows all markers of a particular category, and ensures the checkbox is checked ==
-    function show(category)
-    {
-        for (var i=0; i<gmarkers.length; i++)
-        {
-            if (gmarkers[i].mycategory == category)
-            {
-                gmarkers[i].show();
-            }
-        }
-        // == check the checkbox ==
-        document.getElementById(category+"box").checked = true;
-    }
-
-    // == hides all markers of a particular category, and ensures the checkbox is cleared ==
-    function hide(category)
-    {
-        for (var i=0; i<gmarkers.length; i++)
-        {
-            if (gmarkers[i].mycategory == category)
-            {
-                gmarkers[i].hide();
-            }
-        }
-        // == clear the checkbox ==
-        document.getElementById(category+"box").checked = false;
-        // == close the info window, in case its open on a marker that we just hid
-        map.closeInfoWindow();
-    }
-
-    // == a checkbox has been clicked ==
-    function boxclick(box,category)
-    {
-        if (box.checked)
-        {
-            show(category);
-        }
-        else
-        {
-            hide(category);
-        }
-    }
-
-    function myclick(i)
-    {
-        GEvent.trigger(gmarkers[i],"click");
-    }
 
     // Cancel the form submission, executing an AJAX Search API search.
     function CaptureForm(searchForm)
@@ -299,8 +253,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     LocalResult.prototype.marker = function(opt_icon)
     {
         if (this.marker_) return this.marker_;
-        var marker = new Marker(
-            new LatLng(parseFloat(this.result_.lat),
+        var marker = new google.maps.Marker(
+            new GLatLng(parseFloat(this.result_.lat),
             parseFloat(this.result_.lng)),
             opt_icon);
             
@@ -367,6 +321,53 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
     google.setOnLoadCallback(OnLoad);    
 
+    // == shows all markers of a particular category, and ensures the checkbox is checked ==
+    function show(category)
+    {
+        for (var i=0; i<gmarkers.length; i++)
+        {
+            if (gmarkers[i].mycategory == category)
+            {
+                gmarkers[i].show();
+            }
+        }
+        // == check the checkbox ==
+        document.getElementById(category+"box").checked = true;
+    }
+
+    // == hides all markers of a particular category, and ensures the checkbox is cleared ==
+    function hide(category)
+    {
+        for (var i=0; i<gmarkers.length; i++)
+        {
+            if (gmarkers[i].mycategory == category)
+            {
+                gmarkers[i].hide();
+            }
+        }
+        // == clear the checkbox ==
+        document.getElementById(category+"box").checked = false;
+        // == close the info window, in case its open on a marker that we just hid
+        map.closeInfoWindow();
+    }
+
+    // == a checkbox has been clicked ==
+    function boxclick(box,category)
+    {
+        if (box.checked)
+        {
+            show(category);
+        }
+        else
+        {
+            hide(category);
+        }
+    }
+
+    function myclick(i)
+    {
+        GEvent.trigger(gmarkers[i],"click");
+    }
     //]]>
 </script>
 
@@ -413,7 +414,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
       <div id="nav"><br />
 	      
-      <div id="searching"></div>
+    <div id="search">
+        <div id="searchform">
+            <input type="text" id="zipInput" />
+            <select id="catInput">
+                <option value="restaurants">Restaurants</option>
+                <option value="bars">Bars</option>
+            </select>
+            <input type="button" value="Find" onclick="doSearch()"/>
+        </div>
+    </div>
         
     <div id="or"> -- or -- </div>
          
@@ -507,12 +517,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
           
         <br />
         </div>
-      </div>
-       
-      <div id="map"></div>
-      </div>
+    <div id="results">
+        <div id="searchwell" style="overflow:auto; height:180px;"></div>
+    </div>
+
+<div id="selected"></div>
+        </div>
       
-      <div id="search">         <div id="searchform">           <input type="text" id="zipInput" />            <select id="catInput">             <option value="restaurants">Restaurants</option>             <option value="bars">Bars</option>           </select>           <input type="button" value="Find" onclick="doSearch()"/>         </div>       </div>       <div id="results">         <div id="searchwell"></div>       </div>       <div id="map"></div>       <div id="selected"></div>     </div> 
+<div id="map"></div>
+</div>
+
       
 </body>
 </html>

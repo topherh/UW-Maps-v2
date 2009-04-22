@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
 <link href="Slim_Header/header.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
     body {
@@ -22,7 +22,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <link href="funkyBox.css" rel="stylesheet" type="text/css" />
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>UW - Google Maps JavaScript API Example</title>
+    <title>University of Washington Campus Map</title>
 
     <!-- Google Includes -->
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>
@@ -226,18 +226,25 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     <div id="or"> -- or -- </div>
          
 	<select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('buildingList')">
-	  <option selected="selected">Select a building...</option>
+	  <option value="" selected="selected">Select a building...</option>
 	</select>
-
       
   <br />
   <br />
 
   	  <div id="dotted">
 	      <ul>
+          
+          
+          <li>
+				<a id="fBuilding" class="forms" href="#"><label><input class="checky" type="checkbox" id="buildingbox" onclick="boxclick(this,'building')" /></label>Buildings</a>
+            </li>   
+          
+          
 	        <li>
 	          <a id="fParking" class="forms" href="#" onclick="menuexpand('m1'); return false;"><label><input class="checky" type="checkbox" id="parkingbox" onclick="boxclick(this,'parking')" /></label>Parking<img id="pm1" src="" alt=""></a>
-	          <ul id="m1">
+	          <ul id="m1">  
+           
 	            <li><form method="post" action="" class="subforms"><p>
 	              <label><input type="checkbox" id="bus" /></label>
 	              Motorcycle parking lots</p></form>
@@ -279,27 +286,42 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
               <a id="fATM" class="forms" href="#"><label><input class="checky" type="checkbox" id="atmbox" onclick="boxclick(this,'atm')" /></label>ATM</a>
             </li>  
             
-            <li>
+            <!-- <li>
               <a id="fLibraries" class="forms" href="#"><label><input class="checky" type="checkbox" id="librariesbox" onclick="boxclick(this,'libraries')" /></label>Libraries</a>
-            </li>  
+            </li>   -->
             
-            <li>
-				<a id="fBuilding" class="forms" href="#"><label><input class="checky" type="checkbox" id="buildingbox" onclick="boxclick(this,'building')" /></label>Buildings</a>
-            </li>   
             
-            <li>
+            
+           <!-- <li>
               <a id="fZip" class="forms" href="#"><label><input class="checky" type="checkbox" id="zipbox" onclick="boxclick(this,'zip')" /></label>Zip Cars</a>
-            </li>  
+            </li>  -->
             
-            <li>
+           <!-- <li>
               <a id="fWi" class="forms" href="#"><label><input class="checky" type="checkbox" id="wifibox" onclick="boxclick(this,'wifi')" /></label>Wi-Fi Hotspots</a>
-            </li>     
+            </li>  -->   
               
             <li>
               <a id="fBike" class="forms" href="#"><label><input class="checky" type="checkbox" id="bikebox" onclick="boxclick(this,'bike')" /></label>Bike Racks</a>
             </li>   
-	    </ul>
+	    
 
+
+<li><a href="http://www.washington.edu/commuterservices/index.php"><strong>Commuter Services</strong></a> </li>
+
+<li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&#8226; Getting to the UW</a> </li>
+
+<li><a href="http://www.washington.edu/commuterservices/parking/index.php">&#8226; Parking at the UW</a></li> 
+
+<li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&#8226; Gatehouses</a> </li>
+
+<li><a href="http://flatline.cs.washington.edu/CAMPS/">&#8226; Campus walking directions</a>
+
+<li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#8226; UW Shuttle Service</a>
+
+
+
+
+</ul>
           
         <br />
         </div>
