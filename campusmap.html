@@ -225,8 +225,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   
         <div id="entire">
 
-      <div id="nav"><br />
+      <div id="nav">
+      
+      <div align="center"><img src="compass_map.png" alt="" width="128px" height="128px" style="padding-top:10px" /></div>
+      
+      <br />
 	      
+          <div class="purpleText"><strong>Search for campus buildings</strong></div>
+          
     <div id="search">
         <div id="searchform">
             <input id="searchField" name="searchField" type="text"/>
@@ -235,6 +241,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     </div>
         
     <div id="or"> -- or -- </div>
+    
+    <div class="purpleText"><strong>Browse</strong></div>
          
 	<select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('buildingList')">
 	  <option value="" selected="selected">Select a building...</option>
@@ -242,12 +250,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
       
   <br />
   <br />
+<br />
+
 
   	  <div id="dotted">
-	      <ul>
+	    <!--   <ul>
           
           
-	        <li>
+	         <li>
 	          <a id="fParking" class="forms" href="#" onclick="menuexpand('m1'); return false;"><label><input class="checky" type="checkbox" id="parkingbox" onclick="boxclick(this,'parking')" /></label>Parking<img id="pm1" src="" alt=""></a>
 	          <ul id="m1">  
            
@@ -266,7 +276,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
      							   </form>
 				  </li><br />
               </ul>
-            </li>
+            </li> 
                     
                   
             <li>
@@ -295,28 +305,35 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
               
             <li>
               <a id="fBike" class="forms" href="#"><label><input class="checky" type="checkbox" id="bikebox" onclick="boxclick(this,'bike')" /></label>Bike Racks</a>
-            </li>   
-	    
+            </li>   -->
+	  
+      
+<div class="purpleText"><strong>Commuter Services</strong></div>        
 
+<ul>
 
-<li><a href="http://www.washington.edu/commuterservices/index.php"><strong>Commuter Services</strong></a> </li>
+<li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&#187; Getting to the UW</a> </li>
 
-<li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&#8226; Getting to the UW</a> </li>
+<li><a href="http://www.washington.edu/commuterservices/parking/index.php">&#187;  Parking at the UW</a></li> 
 
-<li><a href="http://www.washington.edu/commuterservices/parking/index.php">&#8226; Parking at the UW</a></li> 
+<li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&#187;  Gatehouses</a> </li>
 
-<li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&#8226; Gatehouses</a> </li>
+<li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus walking directions</a>
 
-<li><a href="http://flatline.cs.washington.edu/CAMPS/">&#8226; Campus walking directions</a>
-
-<li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#8226; UW Shuttle Service</a>
-
-
-
+<li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#187; UW Shuttle Service</a></li>
 
 </ul>
-          
-        <br />
+
+
+<div class="purpleText"><strong>Visitor's Center</strong></div> 
+
+
+<ul>
+
+<li><a href="http://admit.washington.edu/Visit/GuidedTour">&#187; Guided Campus Tour</a> </li>
+
+</ul>
+
         </div>
       </div>
        
