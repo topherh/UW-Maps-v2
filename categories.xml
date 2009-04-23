@@ -1,35 +1,6 @@
 <markers>
-<marker name="1107 NE 45th Street (University District Building)" address="1107 NE 45TH ST" lng="-122.316259225" lat="47.6609359818" category="building" />
-<marker name="1209 N.E. 41ST STREET" address="1209 NE 41ST ST" lng="-122.31510431" lat="47.6566955634" category="building" />
-<marker name="1415 N.E. 45TH STREET (Alumni House)" address="1415 NE 45TH ST" lng="-122.312339133" lat="47.6610774185" category="building" />
-<marker name="1429 N.E. Boat Street" address="1429 NE BOAT ST" lng="-122.312766675" lat="47.6503091275" category="building" />
-<marker name="1429 N.E. Boat Street" address="1429 NE BOAT ST" lng="-122.313060432" lat="47.6502586963" category="building" />
-<marker name="3710 Brooklyn Avenue N.E." address="3710 BROOKLYN AVE NE" lng="-122.314227505" lat="47.6519647261" category="building" />
-<marker name="3716 Brooklyn Avenue N.E." address="3716 BROOKLYN AVE NE" lng="-122.314212424" lat="47.6521552197" category="building" />
-<marker name="3900/3902 UNIVERSITY WAY" address="3900/3902 U WAY" lng="-122.312877356" lat="47.653749109" category="building" />
-<marker name="3930 Brooklyn Avenue N.E." address="3930 BROOKLYN NE" lng="-122.314227242" lat="47.6549991783" category="building" />
-<marker name="3935 University Way N.E." address="3935 UNIV WAY NE" lng="-122.31361013" lat="47.6547779214" category="building" />
-<marker name="3937 15th Avenue N.E." address="3937 15TH AVE NE" lng="-122.312463849" lat="47.6543402566" category="building" />
-<marker name="3939 University Way N.E." address="3939 UNIV WAY NE" lng="-122.31362428" lat="47.6548932037" category="building" />
-<marker name="3941 University Way N.E." address="3941 UNIV WAY NE" lng="-122.313590558" lat="47.6552313879" category="building" />
-<marker name="3941 University Way N.E." address="3941 UNIV WAY NE" lng="-122.313602077" lat="47.655053314" category="building" />
-<marker name="3945 15th Avenue N.E." address="3945 15TH AVE NE" lng="-122.312464447" lat="47.6545621879" category="building" />
-<marker name="4001-7 University Way N.E." address="4001-7 UNIV WAY NE" lng="-122.313504085" lat="47.6555195187" category="building" />
-<marker name="4034 12th Avenue N.E." address="4034 12TH AVE NE" lng="-122.315294616" lat="47.6564031166" category="building" />
-<marker name="4038 12TH AVE NE" address="4038 12TH AVE NE" lng="-122.315304213" lat="47.6565031616" category="building" />
-<marker name="4042 12th Avenue N.E." address="4042 12TH AVE NE" lng="-122.315329004" lat="47.6566073535" category="building" />
-<marker name="4046 12TH AVE NE" address="4046 12TH AVE NE" lng="-122.315312791" lat="47.6567335216" category="building" />
-<marker name="4225 Roosevelt Way N.E. (Roosevelt I)" address="4225 ROOSEVELT WAY" lng="-122.318351888" lat="47.6580675849" category="building" />
-<marker name="4245 Roosevelt Way N.E. (Roosevelt II)" address="4245 ROOSEVELT WAY" lng="-122.318371365" lat="47.6585149557" category="building" />
-<marker name="4516 University Way NE" address="4516 UNIV WAY NE" lng="-122.312796292" lat="47.661662679" category="building" />
-<marker name="4534 University Way NE (Gelb Building)" address="4534 UNIV WAY NE" lng="-122.312798947" lat="47.6623501628" category="building" />
-<marker name="4625 Union Bay Place" address="4625 UNION BAY PL" lng="-122.295330428" lat="47.6627835858" category="building" />
-<marker name="664 NE NORTHLAKE WAY" address="664 NE NORTHLAKE WAY" lng="-122.321431492" lat="47.6547745956" category="building" />
-<marker name="668 N. E. Northlake Way (Environmental Hlth Dept)" address="668 NE NORTHLAKE WAY" lng="-122.321124658" lat="47.6547633959" category="building" />
-<marker name="909 N.E. 43RD (WARREN BUILDING)" address="909 NE 43RD ST" lng="-122.318061575" lat="47.659010794" category="building" />
 <marker name="Academic Computer Center" address="3737 BROOKLYN AVE NE" lng="-122.314905011" lat="47.6530037096" category="building" />
 <marker name="Aerodynamics Laboratory" address="MAIN CAMPUS" lng="-122.3054359" lat="47.6541929135" category="building" />
-<marker name="Aerospace and Engineering Research Building" address="MAIN CAMPUS" lng="-122.305683756" lat="47.6541530097" category="building" />
 <marker name="Aerospace and Engineering Research Building" address="MAIN CAMPUS" lng="-122.305779299" lat="47.6539790707" category="building" />
 <marker name="Allen Library" address="MAIN CAMPUS" lng="-122.306986657" lat="47.6555088144" category="building" />
 <marker name="Anderson Hall" address="MAIN CAMPUS" lng="-122.307570393" lat="47.6517559151" category="building" />
@@ -38,7 +9,7 @@
 <marker name="Atmospheric Sciences-Geophysics Building" address="MAIN CAMPUS" lng="-122.309058199" lat="47.6540814798" category="building" />
 <marker name="Bagley Hall" address="MAIN CAMPUS" lng="-122.308820329" lat="47.6534912524" category="building" />
 <marker name="Balmer Hall" address="MAIN CAMPUS" lng="-122.307704378" lat="47.6591510353" category="building" />
-<marker name="BENJAMIN HALL INTERDISCIPLINARY RESEARCH BUILDING(R&amp;T BLDG)" address="670 NE NORTHLAKE PL" lng="-122.321394577" lat="47.655276742" category="building" />
+<marker name="Benjamin Hall Interdisciplinary Research Building" address="670 NE NORTHLAKE PL" lng="-122.321394577" lat="47.655276742" category="building" />
 <marker name="Benson Hall" address="MAIN CAMPUS" lng="-122.309543827" lat="47.6530464623" category="building" />
 <marker name="Bloedel Hall" address="MAIN CAMPUS" lng="-122.307685786" lat="47.6512579519" category="building" />
 <marker name="Botany Greenhouse" address="MAIN CAMPUS" lng="-122.309986831" lat="47.6523158294" category="building" />
@@ -57,20 +28,6 @@
 <marker name="Communications Building" address="MAIN CAMPUS" lng="-122.305338781" lat="47.6570073866" category="building" />
 <marker name="Condon Hall" address="1100 NE CAMPUS PKWY" lng="-122.316084338" lat="47.656621365" category="building" />
 <marker name="Conibear Shellhouse" address="MAIN CAMPUS" lng="-122.2997546" lat="47.6529020514" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.292118169" lat="47.6593971047" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.292259267" lat="47.6592721714" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.292671973" lat="47.6592009336" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.292750079" lat="47.659295735" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.292792474" lat="47.6593482024" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.292811427" lat="47.6593715515" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.292856755" lat="47.6594256083" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.292885375" lat="47.6590675697" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.293037776" lat="47.6590172552" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.2931566" lat="47.6589696363" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.293180185" lat="47.6593610568" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.293286714" lat="47.6589520284" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.293475885" lat="47.6592365779" category="building" />
-<marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.293546493" lat="47.659372771" category="building" />
 <marker name="Corporation Yard Buildings" address="MAIN CAMPUS" lng="-122.293902654" lat="47.6588620114" category="building" />
 <marker name="Cunningham Hall" address="MAIN CAMPUS" lng="-122.310073538" lat="47.6543306698" category="building" />
 <marker name="Denny Hall" address="MAIN CAMPUS" lng="-122.308889215" lat="47.6584240519" category="building" />
@@ -80,11 +37,8 @@
 <marker name="Electrical Engineering Building" address="MAIN CAMPUS" lng="-122.306255341" lat="47.6535602202" category="building" />
 <marker name="Engineering Annex" address="MAIN CAMPUS" lng="-122.304319576" lat="47.6536396249" category="building" />
 <marker name="Engineering Library" address="MAIN CAMPUS" lng="-122.304500868" lat="47.6546459324" category="building" />
-<marker name="Environmental Safety Storage Building" address="MAIN CAMPUS" lng="-122.293123581" lat="47.6596337699" category="building" />
-<marker name="Environmental Safety Storage Building" address="MAIN CAMPUS" lng="-122.293390985" lat="47.6596414559" category="building" />
 <marker name="Ethnic Cultural Center" address="3931 BROOKLYN AVE NE" lng="-122.314799617" lat="47.6551989096" category="building" />
-<marker name="Ethnic Cultural Center" address="3931 BROOKLYN AVE NE" lng="-122.314820179" lat="47.6549853685" category="building" />
-<marker name="ETHNIC CULTURAL CENTER THEATRE" address="3940 BROOKLYN AVE NE" lng="-122.314099236" lat="47.6551640938" category="building" />
+<marker name="Ethnic Cultural Center Theatre" address="3940 BROOKLYN AVE NE" lng="-122.314099236" lat="47.6551640938" category="building" />
 <marker name="Fialkow Biomedical Sciences Research Pavilion (K wing)" address="1750 NE PACIFIC ST" lng="-122.311646436" lat="47.6511080982" category="building" />
 <marker name="Fisheries Center" address="MAIN CAMPUS" lng="-122.309504471" lat="47.6487456511" category="building" />
 <marker name="Fisheries Teaching and Research Building" address="1140 NE BOAT ST" lng="-122.315570295" lat="47.6525518327" category="building" />
@@ -124,9 +78,6 @@
 <marker name="Hutchinson Hall" address="MAIN CAMPUS" lng="-122.306627344" lat="47.6595911095" category="building" />
 <marker name="Indoor Practice Facility (DEMPSEY INDOOR CENTER)" address="3870 MONTLAKE BLVD" lng="-122.299324836" lat="47.6514991411" category="building" />
 <marker name="Intramural Activities Building" address="3924 MONTLAKE BLVD" lng="-122.300288854" lat="47.6537538234" category="building" />
-<marker name="Intramural Activities Building" address="3924 MONTLAKE BLVD" lng="-122.300439738" lat="47.6532236112" category="building" />
-<marker name="Intramural Activities Building" address="3924 MONTLAKE BLVD" lng="-122.301233039" lat="47.6536830774" category="building" />
-<marker name="Intramural Activities Building" address="3924 MONTLAKE BLVD" lng="-122.301851745" lat="47.6535566941" category="building" />
 <marker name="Isaacson Hall" address="3501 NE 41ST ST" lng="-122.289906839" lat="47.6578889211" category="building" />
 <marker name="Johnson Annex A" address="MAIN CAMPUS" lng="-122.309769067" lat="47.6543269546" category="building" />
 <marker name="Johnson Hall" address="MAIN CAMPUS" lng="-122.308889738" lat="47.6546032223" category="building" />
@@ -140,7 +91,6 @@
 <marker name="Lewis Annex 2 (A&amp;S)" address="MAIN CAMPUS" lng="-122.304906105" lat="47.6591669971" category="building" />
 <marker name="Lewis Hall" address="MAIN CAMPUS" lng="-122.30534313" lat="47.6588551588" category="building" />
 <marker name="Loew Hall" address="MAIN CAMPUS" lng="-122.304184074" lat="47.6543728016" category="building" />
-<marker name="Loew Hall" address="MAIN CAMPUS" lng="-122.304556162" lat="47.6542822987" category="building" />
 <marker name="Mackenzie Hall" address="MAIN CAMPUS" lng="-122.307239467" lat="47.6587808045" category="building" />
 <marker name="Magnuson Health Sciences Center T" address="1705 NE PACIFIC ST" lng="-122.309108538" lat="47.6508961402" category="building" />
 <marker name="Marine Sciences Building" address="1501 NE BOAT ST" lng="-122.312928894" lat="47.6498853108" category="building" />
@@ -159,7 +109,7 @@
 <marker name="Music Building" address="MAIN CAMPUS" lng="-122.305784732" lat="47.6576673905" category="building" />
 <marker name="Nordstrom Tennis Center" address="MAIN CAMPUS" lng="-122.300039813" lat="47.6518591288" category="building" />
 <marker name="Northlake Building" address="814 NE NORTHLAKE PLC" lng="-122.319025376" lat="47.6550325045" category="building" />
-<marker name="NORTH PHYSICS LABORATORY (Cyclotron Shop)" address="MAIN CAMPUS" lng="-122.302907855" lat="47.6591072454" category="building" />
+<marker name="North Physics Laboratory (Cyclotron Shop)" address="MAIN CAMPUS" lng="-122.302907855" lat="47.6591072454" category="building" />
 <marker name="North Physics Laboratory (Van de Graaff Accelerator)" address="MAIN CAMPUS" lng="-122.302851668" lat="47.6599944845" category="building" />
 <marker name="Northwest Horticultural Society Hall" address="3501 NE 41ST ST" lng="-122.290154318" lat="47.6580643024" category="building" />
 <marker name="Oceanography Building" address="MAIN CAMPUS" lng="-122.310612435" lat="47.6491206763" category="building" />
@@ -204,22 +154,22 @@
 <marker name="Student Union Building" address="MAIN CAMPUS" lng="-122.305169453" lat="47.6553185229" category="building" />
 <marker name="Suzzallo Library" address="MAIN CAMPUS" lng="-122.308118564" lat="47.6557621081" category="building" />
 <marker name="SW Maintenance Bldg" address="3902 COWLITZ ROAD NE" lng="-122.315250153" lat="47.6547541958" category="building" />
-<marker name="THEODOR JACOBSEN Observatory" address="MAIN CAMPUS" lng="-122.309287699" lat="47.6603419984" category="building" />
+<marker name="Theodor Jacobsen Observatory" address="MAIN CAMPUS" lng="-122.309287699" lat="47.6603419984" category="building" />
 <marker name="Thomson Hall" address="MAIN CAMPUS" lng="-122.305822" lat="47.6565557297" category="building" />
 <marker name="Thomson Hall" address="MAIN CAMPUS" lng="-122.305836751" lat="47.6567510412" category="building" />
 <marker name="Transportation Services Building" address="4549 25TH AVE NE" lng="-122.301389934" lat="47.6628676319" category="building" />
 <marker name="University Facilities Annex 1" address="MAIN CAMPUS" lng="-122.304021868" lat="47.6547256194" category="building" />
-<marker name="UNIVERSITY FACILITIES ANNEX 2 (CPO ANNEX 2)" address="MAIN CAMPUS" lng="-122.303854856" lat="47.6546798776" category="building" />
+<marker name="University Facilities Annex 2 (CPO ANNEX 2)" address="MAIN CAMPUS" lng="-122.303854856" lat="47.6546798776" category="building" />
 <marker name="University Facilities Building" address="MAIN CAMPUS" lng="-122.303872437" lat="47.6550670054" category="building" />
 <marker name="University Medical Center" address="1959 NE PACIFIC ST" lng="-122.307336811" lat="47.649411339" category="building" />
-<marker name="UNIVERSITY OF WASHINGTON CLUB (Faculty Center)" address="MAIN CAMPUS" lng="-122.304160809" lat="47.6556180998" category="building" />
+<marker name="University of Washington Club (Faculty Center)" address="MAIN CAMPUS" lng="-122.304160809" lat="47.6556180998" category="building" />
 <marker name="Urban Horticulture Field House" address="4120 UNION BAY CRCL" lng="-122.28874061" lat="47.6567055398" category="building" />
 <marker name="UW Technology" address="4545 15TH AVE NE" lng="-122.312315451" lat="47.6618392361" category="building" />
 <marker name="Waterfront Activities Center" address="MAIN CAMPUS" lng="-122.299819006" lat="47.6485791607" category="building" />
 <marker name="West Receiving Station" address="3903 15TH AVE NE" lng="-122.312546843" lat="47.6536634712" category="building" />
 <marker name="Wilcox Hall" address="MAIN CAMPUS" lng="-122.304558224" lat="47.6518462539" category="building" />
-<marker name="WILLIAM H. FOEGE Bioengineering" address="3710 15TH AVE NE" lng="-122.312586799" lat="47.6524732379" category="building" />
-<marker name="WILLIAM H. FOEGE Genome Sciences" address="3812 15TH AVE NE" lng="-122.313181189" lat="47.6519195285" category="building" />
+<marker name="William H. Foege bioengineering" address="3710 15th ave ne" lng="-122.312586799" lat="47.6524732379" category="building" />
+<marker name="William H. Foege Genome Sciences" address="3812 15TH AVE NE" lng="-122.313181189" lat="47.6519195285" category="building" />
 <marker name="William H. Gates Hall" address="MAIN CAMPUS" lng="-122.310931281" lat="47.6592284902" category="building" />
 <marker name="Wilson Annex" address="MAIN CAMPUS" lng="-122.305174696" lat="47.6513809355" category="building" />
 <marker name="Wilson Ceramic Laboratory" address="MAIN CAMPUS" lng="-122.304847362" lat="47.6516793519" category="building" />
