@@ -4,7 +4,7 @@
 <head>
 	<style type="text/css">
 		html, body {width: 100%; height: 100%; font-family: arial;}
-		body {margin:0;padding 0;overflow: hidden;}
+		body {margin:0;padding: 0;overflow: hidden;}
 		#mapContainer {padding-top: 50px;}
 		#map, #mapContainer {width:100%; height: 100%;}
 		#top {position:absolute; top:0; left:0; width: 100%; height: 50px; line-height: 50px;}
@@ -19,11 +19,88 @@
 		.marker .businessinfo { margin-left: 110px;}
 		#yelpForm { font-size: 12px; }
 		
+		ul.tabNavigation {
+		    list-style: none;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		ul.tabNavigation li {
+		    display: inline;
+			width: 62px;
+			height: 22px;
+		}		
 		
-		ul.tabNav li.current a { color: blue; font-weight: bold; }
+		a:link#searchTab {
+			background-image: url(img/buttons/search.gif);
+			display: block;
+			width: 62px;
+			height: 22px;
+		}
 		
-		div.tabContainer div.tab { display: none; }
-		div.tabContainer div.current { display: block; }
+		a:link#browseTab {
+			background-image: url(img/buttons/browse.gif);
+			display: block;
+			width: 62px;
+			height: 22px;
+		}
+		
+		a.selected#searchTab, a:hover#searchTab {
+			background-image: url(img/buttons/search_active.gif);
+			display: block;
+			width: 62px;
+			height: 26px;
+		}
+		
+		a.selected#browseTab, a:hover#browseTab {
+			background-image: url(img/buttons/browse_active.gif);
+			display: block;
+			width: 62px;
+			height: 26px;
+		}
+
+		/*#searchTab li {
+		    padding: 3px 5px;
+		    background: #ccc url(img/buttons/search.gif);
+		    color: #000;
+		    text-decoration: none;
+		}
+		
+		#browseTab li {
+		    padding: 3px 5px;
+		    background: #ccc url(img/buttons/browse.gif);
+		    color: #000;
+		    text-decoration: none;
+		}*/
+
+		/*ul.tabNavigation li a.selected,
+		ul.tabNavigation li a:hover {
+		    background-color: #333;
+		    color: #fff;
+		    padding-top: 7px;
+		}*/
+		
+		/*ul.tabNavigation li a:focus {
+			outline: 0;
+		}*/
+
+		/*div.tabs > div {
+			padding: 5px;
+			margin-top: 3px;
+			border: 5px solid #333;
+		}*/
+		
+		/*div.tabs > div h2 {
+			margin-top: 0;
+		}*/
+
+		#search {
+		    background-color: #F2EDDF;
+		}
+
+		#browse {
+		    background-color: #F2EDDF;
+		}
 		
 	</style>
 	<link href="Slim_Header/header.css" rel="stylesheet" type="text/css" />
@@ -50,24 +127,21 @@
     <script type="text/javascript" src="dimensions.js"></script>
     <script type="text/javascript" src="autocomplete.js"></script>
     <!-- JQuery / Autocomplete End -->
-
     
-    <script type="text/javascript">
-$(document).ready(function(){
-	$('ul.tabNav a').click(function() {
-		var curChildIndex = $(this).parent().prevAll().length + 1;
-		$(this).parent().parent().children('.current').removeClass('current');
-		$(this).parent().addClass('current');
-		$(this).parent().parent().next('.tabContainer').children('.current').slideUp('fast',function() {
-			$(this).removeClass('current');
-			$(this).parent().children('div:nth-child('+curChildIndex+')').slideDown('normal',function() {
-				$(this).addClass('current');
-			});
+    <script type="text/javascript" charset="utf-8">
+		$(function () {
+			var tabContainers = $('div.tabs > div');
+			tabContainers.hide().filter(':first').show();
+			
+			$('div.tabs ul.tabNavigation a').click(function () {
+				tabContainers.hide();
+				tabContainers.filter(this.hash).show();
+				$('div.tabs ul.tabNavigation a').removeClass('selected');
+				$(this).addClass('selected');
+				return false;
+			}).filter(':first').click();
 		});
-		return false;								
-	});
-});
-</script>
+	</script>
 
             
     <link href="main.css" rel="stylesheet" type="text/css" />
@@ -75,6 +149,10 @@ $(document).ready(function(){
 	<script type="text/javascript">
     //<![CDATA[
    
+    // preload the active state for the browse button image so there is no "blip" when hovering your mouse
+    browseActive = new Image(62,26);
+	browseActive.src="http://depts.washington.edu/uweb/map/img/buttons/browse_active.gif";
+    
     function returnFoodCats() {
     	
     	var foodCatsArray = { "afghani":"Afghan","african":"African","newamerican":"American","argentine":"Argentine","asianfusion":"Asian Fusion","bbq":"Barbeque","basque":"Basque","belgian":"Belgian","brasseries":"Brasseries","brazilian":"Brazilian","breakfast_brunch":"Breakfast & Brunch","british":"British","buffets":"Buffets","burgers":"Burgers","burmese":"Burmese","cajun":"Cajun/Creole","cambodian":"Cambodian","caribbean":"Caribbean","chicken_wings":"Chicken Wings","chinese":"Chinese","creperies":"Creperies","cuban":"Cuban","delis":"Delis","dimsum":"Dim Sum","diners":"Diners","ethiopian":"Ethiopian","hotdogs":"Fast Food","filipino":"Filipino","fishnchips":"Fish & Chips","fondue":"Fondue","foodstands":"Food Stands","french":"French","gastropubs":"Gastropubs","german":"German","gluten_free":"Gluten-Free","greek":"Greek","halal":"Halal","hawaiian":"Hawaiian","himalayan":"Himalayan/Nepalese","hotdog":"Hot Dogs","hungarian":"Hungarian","indpak":"Indian","indonesian":"Indonesian","irish":"Irish","italian":"Italian","japanese":"Japanese","korean":"Korean","kosher":"Kosher","latin":"Latin American","raw_food":"Live/Raw Food","malaysian":"Malaysian","mediterranean":"Mediterranean","mexican":"Mexican","mideastern":"Middle Eastern","modern_european":"Modern European","mongolian":"Mongolian","moroccan":"Moroccan","pakistani":"Pakistani","persian":"Persian/Iranian","pizza":"Pizza","polish":"Polish","portuguese":"Portuguese","russian":"Russian","sandwiches":"Sandwiches","scandinavian":"Scandinavian","seafood":"Seafood","singaporean":"Singaporean","soulfood":"Soul Food","southern":"Southern","spanish":"Spanish","steak":"Steakhouses","sushi":"Sushi Bars","taiwanese":"Taiwanese","tapas":"Tapas Bars","tex-mex":"Tex-Mex","thai":"Thai","turkish":"Turkish","ukrainian":"Ukrainian","vegan":"Vegan","vegetarian":"Vegetarian","vietnamese":"Vietnamese" };
@@ -201,9 +279,6 @@ $(document).ready(function(){
 				document.yelpForm.term.value = "thai";
 			    term = "thai";
 			}
-						
-			var radius = "";
-			(document.getElementById("radius").value) ? radius=document.getElementById("radius").value : radius="2"
 			
 			var mapBounds = map.getBounds();
 			var URL = "http://api.yelp.com/" +
@@ -215,8 +290,7 @@ $(document).ready(function(){
 				"&tl_long=" + mapBounds.getSouthWest().lng() +
 				"&br_lat=" + mapBounds.getNorthEast().lat() +
 				"&br_long=" + mapBounds.getNorthEast().lng() + 
-				"&radius=" + radius +
-				"&ywsid=" + YWSID + 
+				"&radius=2&ywsid=" + YWSID + 
 				"&category=restaurants";
 			
 			//term = "";
@@ -232,6 +306,10 @@ $(document).ready(function(){
 		 * placing markers on it at the appropriate places
 		 */
 		function updateMap() {
+			
+			// reset the cursor focus into the "term" field each time the map is called
+			document.yelpForm.term.focus();
+			
 			// turn on spinner animation
 			document.getElementById("spinner").style.visibility = 'visible';
 
@@ -386,6 +464,8 @@ $(document).ready(function(){
 			return html;
 			
 		}
+		
+		
 	
 	
 	
@@ -403,7 +483,7 @@ $(document).ready(function(){
 
     
 </head>
-  <body>
+  <body onload="document.yelpForm.term.focus();">
   
   <div id="thinSearchbar">
 	<a href="http://www.washington.edu/"><img id="lgo" src="Slim_Header/w.gif" alt="University of Washington"/></a>  
@@ -442,36 +522,27 @@ $(document).ready(function(){
 
       <div id="nav"><br />
 
-      
-      <ul class="tabNav">
-	   <li class="current"><a href="#">Search</a></li>
-	   <li><a href="#">Browse</a></li>
-	  </ul>
-	  
-	  <div class="tabContainer">
-	<div class="tab current">
-		 <form name="yelpForm" id="yelpForm">
-		Search for <input type="text" id="term" name="term" value="thai" onclick="make_blank();" /><br />
-		Within <input type="text" id="radius" name="radius" value="" size="3" maxlength="2" /> miles of campus<br />
-		<input type="button" value="Search" onclick="return updateMap();" />
-		<img id="spinner" src="img/spinner.gif" /><br />
-		<span class="error" id="errorMessage" />
-	</form>
-	</div>
-	<div class="tab">
+      <div class="tabs">
+        <ul class="tabNavigation">
+            <li><a href="#search" id="searchTab"></a></li>
+            <li><a href="#browse" id="browseTab"></a></li>
+        </ul>
 
-	<script type="text/javascript">
+        <div id="search">
+            <form name="yelpForm" id="yelpForm" onsubmit="return updateMap();">
+				<input type="text" id="term" name="term" value="thai" onclick="make_blank();" />&nbsp;&nbsp;<input type="button" value="Go" onclick="return updateMap();" />
+				<img id="spinner" src="img/spinner.gif" /><br />
+				<span class="error" id="errorMessage" />
+			</form>
+        </div>
+        <div id="browse">
+            <script type="text/javascript">
 	
-	document.write(generateRestaurantCategoriesDropdownHTML());
+			    document.write(generateRestaurantCategoriesDropdownHTML());
 	
-	</script>
-	
-	</div>
-    </div>
-      
-  
-	
-	
+			</script>
+        </div>
+    </div>	
 	
       </div>
        
