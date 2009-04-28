@@ -24,6 +24,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>University of Washington Campus Map</title>
 
+    <!-- Shared JS code -->
+    <script type="text/javascript" src="functions.js"></script>
+    
     <!-- Google Includes -->
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>
     <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>      
@@ -40,25 +43,26 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     <script type="text/javascript" src="autocomplete.js"></script>
     <!-- JQuery / Autocomplete End -->
     
-    <link href="main.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="autocomplete.css" type="text/css" media="screen">
-
     <script type="text/javascript">
 	$(function(){
 	    setAutoComplete("searchField", "results", "autocomplete.php?part=");
 	});
 	$(function () {
-        var tabContainers = $('div.tabs > div');    
-        $('div.tabs ul.tabNavigation a').click(function () {
-            tabContainers.hide().filter(this.hash).show();
-            
-            $('div.tabs ul.tabNavigation a').removeClass('selected');
-            $(this).addClass('selected');
-            
-            return false;
-        }).filter(':first').click();
-    });
+		var tabContainers = $('div.subTabs > div');
+		tabContainers.hide().filter(':first').show();
+		
+		$('div.subTabs ul.tabNavigation a').click(function () {
+			tabContainers.hide();
+			tabContainers.filter(this.hash).show();
+			$('div.subTabs ul.tabNavigation a').removeClass('selected');
+			$(this).addClass('selected');
+			return false;
+		}).filter(':first').click();
+	});
     </script>
+    
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="autocomplete.css" type="text/css" media="screen">
     
     <style type="text/css">
       @import url("http://www.google.com/uds/css/gsearch.css");
@@ -229,9 +233,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   
   <div id="tabs">
   	<ul>
-    	<li><a href="campusmap.html"><img src="img/buttons/map_1.jpg" alt="Campus Maps" width="154" height="40" /></a></li>
-        <li><a href="busroute.html"><img src="img/buttons/map_2.jpg" alt="Bus Routes" width="135" height="40" /></a></li>
-       <li><a href="dining.html"><img src="img/buttons/map_3.jpg" alt="Bus Routes" width="109" height="40" /></a></li>
+    	<li><a href="campusmap.html"><img src="img/buttons/map_1_active.jpg" alt="Campus maps tab" width="154" height="40" /></a></li>
+        <li><a href="busroute.html"><img src="img/buttons/map_2.jpg" alt="Bus routes tab" width="135" height="40" /></a></li>
+       <li><a href="dining.html"><img src="img/buttons/map_3.jpg" alt="Food tab" width="109" height="40" /></a></li>
     </ul>  
   </div>
   
@@ -246,27 +250,25 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <br />
 <div class="purpleText"><strong>UW Campus Buildings</strong></div> 
 
-<div class="tabs">
-  <!-- tabs -->
-  <ul class="tabNavigation" id="tabNav">
-        <li>
-        <a href="#find"><img src="img/buttons/search.gif" alt="search" width="62" height="22" /></a><a href="#browse"><img src="img/buttons/browse.gif" alt="browse" width="64" height="22" /></a></li>
-      </ul>
-  <!-- tab containers -->
-  <div id="find">      
-    <br />
-    <div id="search">
-            <div id="searchform">
-                <input id="searchField" name="searchField" type="text"/>
-                <input value="Go" type="submit" onclick="doSearch('searchField')" />
-            </div>
-        </div>
-      </div>
-  <div id="browse">
-    <select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('buildingList')">
-      <option value="" selected="selected">Select a building...</option>
-    </select>
-  </div>
+<div class="subTabs">
+	<ul class="tabNavigation">
+		<li><a href="#search" id="searchTab"></a></li>
+		<li><a href="#browse" id="browseTab"></a></li>
+	</ul>
+  
+	<div id="search">
+		<form id="searchform">
+			<input id="searchField" name="searchField" type="text" />
+			<input value="Go" type="submit" onclick="doSearch('searchField')" />
+		</form>
+	</div>
+	<div id="browse">
+		<form>         
+			<select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('buildingList')">
+				<option value="" selected="selected">Select a building...</option>
+			</select>
+		</form>
+	</div>
 </div>	
 	
    

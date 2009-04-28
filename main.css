@@ -80,6 +80,7 @@ ul.tabNavigation {
     margin: 0;
     padding: 0;
 }
+
 ul.tabNavigation li {
     display: inline;
 	width: 64px;
@@ -143,7 +144,7 @@ ul.tabNavigation li a:focus {
 	background-color: #f2eddf;
 	padding: 0 8px 0 20px;
 }
-#nav a{
+#nav a {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #534741;
@@ -232,7 +233,6 @@ ul.tabNavigation li a:focus {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	color: #666666;
-	align: center;
 	text-align: center;
 }
 #dotted {
@@ -250,8 +250,6 @@ ul.tabNavigation li a:focus {
 #buildingList {
 	width: 190px;
 }
-
-
 .purpleText {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
