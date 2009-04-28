@@ -48,16 +48,15 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 	    setAutoComplete("searchField", "results", "autocomplete.php?part=");
 	});
 	$(function () {
-    var tabContainers = $('div.tabs > div');
-    
-    $('div.tabs ul.tabNavigation a').click(function () {
-        tabContainers.hide().filter(this.hash).show();
-        
-        $('div.tabs ul.tabNavigation a').removeClass('selected');
-        $(this).addClass('selected');
-        
-        return false;
-    }).filter(':first').click();
+        var tabContainers = $('div.tabs > div');    
+        $('div.tabs ul.tabNavigation a').click(function () {
+            tabContainers.hide().filter(this.hash).show();
+            
+            $('div.tabs ul.tabNavigation a').removeClass('selected');
+            $(this).addClass('selected');
+            
+            return false;
+        }).filter(':first').click();
     });
     </script>
     
@@ -249,15 +248,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <div class="tabs">
   <!-- tabs -->
-  <ul class="tabNavigation">
+  <ul class="tabNavigation" id="tabNav">
         <li>
         <a href="#find"><img src="img/buttons/search.gif" alt="search" width="62" height="22" /></a><a href="#browse"><img src="img/buttons/browse.gif" alt="browse" width="64" height="22" /></a></li>
       </ul>
   <!-- tab containers -->
   <div id="find">      
     <br />
-    <br />
-      <div id="search">
+    <div id="search">
             <div id="searchform">
                 <input id="searchField" name="searchField" type="text"/>
                 <input value="Go" type="submit" onclick="doSearch('searchField')" />
@@ -265,11 +263,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         </div>
       </div>
   <div id="browse">
-         <br />
-         <br />
-	<select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('buildingList')">
-	  <option value="" selected="selected">Select a building...</option>
-	</select>
+    <select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('buildingList')">
+      <option value="" selected="selected">Select a building...</option>
+    </select>
   </div>
 </div>	
 	
