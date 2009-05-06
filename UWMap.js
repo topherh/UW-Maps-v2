@@ -23,10 +23,10 @@ function UWLocation(id, map, lat, lng, name, address, category)
     this.category = category;
     this.marker;
     this.buildingIcon = new GIcon();
-    
+   
     var html = "<b>" + this.name + "</b>" 
-        + "<p>" + this.address + "</p>";
-        
+    + "<p>" + this.address + "</p>";    
+
     var iconCats = new Array();
     iconCats['parking'] = 'G';
     iconCats['bus'] = 'B';
@@ -37,6 +37,7 @@ function UWLocation(id, map, lat, lng, name, address, category)
     iconCats['wifi'] = 'W';
     iconCats['bike'] = 'R';
     iconCats['building'] = 'H';
+    iconCats['gatehouse'] = 'G';
 
     // This icon is a different shape, so we need our own settings       
     this.buildingIcon.image = "img/flags/" + iconCats[this.category] + ".gif";
@@ -55,12 +56,28 @@ function UWLocation(id, map, lat, lng, name, address, category)
     var mark = new GMarker(this.point,this.buildingIcon);
     GEvent.addListener(mark, "click", function()
     {
-        mark.openExtInfoWindow(
-          map,
-          "extInfoWindow_funkyBox", html,
-          {beakOffset: 2}
-        ); 
+        var idiv = document.createElement('div');
+        idiv.innerHTML = html;
+
+        t = document.createElement('a');
+        t.className = 'info-removemarker';
+        t.href = '#';
+        t.appendChild(document.createTextNode('Remove marker'));
+        t.onclick = function(e) {
+            map.removeOverlay(mark);
+            map.closeInfoWindow();
+        }
+        idiv.appendChild(t);
+        mark.openInfoWindow(idiv);
+
     });
+    GEvent.addListener(mark, 'dblclick', function()
+    {
+        map.closeInfoWindow();
+        map.removeOverlay(mark);
+
+    });
+
     this.marker = mark;
 };
 
@@ -83,6 +100,7 @@ function UWLocationSet(map)
     this.cat['libraries'] = new Array();
     this.cat['emergency'] = new Array();
     this.cat['building'] = new Array();
+    this.cat['gatehouse'] = new Array();
 
     this.load = function(xmlDoc)
     {
@@ -98,18 +116,26 @@ function UWLocationSet(map)
             var name = markers[i].getAttribute("name");
             var address = markers[i].getAttribute("address");
             var category = markers[i].getAttribute("category");
-            
+		
             // Papulate Dropdown List
             if (category == 'building')
             {
-                var option = document.createElement("option");
-                option.text = name;
-                option.value = name;
-                buildList.appendChild(option);            
+                var option = new Option(name,name);
+	        try {
+		    buildList.add(option, null); // standards compliant; doesn't work in IE
+		}
+		catch(ex) {
+		    buildList.add(option); // IE only
+		}
             }
-            
+
             var uloc = new UWLocation(i, map, lat, lng, name, address, category); // Line is Failing
-            this.cat[category].push(uloc);
+            try {
+                this.cat[category].push(uloc);
+            }
+            catch(ex) {
+                GLog.write('Error: Category Does NOT Exist');
+            }
         }
     }
     this.show = function(map,category)
@@ -139,10 +165,14 @@ function UWLocationSet(map)
     this.search = function(map,category,strQuery)
     {
         var arrLoc = this.cat[category];
+        // map.closeInfoWindow();
+
         for (var i=0; i<arrLoc.length; i++)
         {
             // Clear all markers before we display another
+            arrLoc[i].marker.hide();
             map.removeOverlay(arrLoc[i].marker);
+            // GLog.write('Map Marker: '+arrLoc[i].name);
             if (arrLoc[i].name.toLowerCase() == strQuery.toLowerCase())
             {
                 map.addOverlay(arrLoc[i].marker);
