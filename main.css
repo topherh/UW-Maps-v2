@@ -82,7 +82,7 @@ ul.tabNavigation {
 }
 
 ul.tabNavigation li {
-    display: inline;
+	display: inline;
 	width: 64px;
 	height: 22px;
 }		
@@ -91,14 +91,18 @@ a:link#searchTab {
 	background-image: url(img/buttons/search.gif);
 	display: block;
 	width: 62px;
-	height: 22px;
+	height: 26px;
+	background-position: bottom;
+	background-repeat: no-repeat;
 }
 
 a:link#browseTab {
 	background-image: url(img/buttons/browse.gif);
 	display: block;
 	width: 64px;
-	height: 22px;
+	height: 26px;
+	background-position: bottom;
+	background-repeat: no-repeat;
 }
 
 a.selected#searchTab {
@@ -106,6 +110,8 @@ a.selected#searchTab {
 	display: block;
 	width: 62px;
 	height: 26px;
+	background-position: bottom;
+	background-repeat: no-repeat;
 }
 
 a.selected#browseTab {
@@ -113,6 +119,8 @@ a.selected#browseTab {
 	display: block;
 	width: 64px;
 	height: 26px;
+	background-position: bottom;
+	background-repeat: no-repeat;
 }
 
 ul.tabNavigation li a:focus {
