@@ -11,7 +11,7 @@
 ***** loc.show;
 ***** loc.hide;
 **********************************************************************/
-function UWLocation(id, map, lat, lng, name, address, category)
+function UWLocation(id, map, lat, lng, name, address, category, desc)
 {
     // Public Class Properties
     this.id = id;
@@ -21,11 +21,14 @@ function UWLocation(id, map, lat, lng, name, address, category)
     this.address = address;
     this.name = name;
     this.category = category;
+    this.desc = desc;
     this.marker;
     this.buildingIcon = new GIcon();
    
-    var html = "<b>" + this.name + "</b>" 
-    + "<p>" + this.address + "</p>";    
+    var html = "<h1>" + this.name + "</h1>" 
+    + "<p>" + this.address + "</p>"
+    + "<p>Organization List: <ul>"
+    + this.desc + "</ul>";
 
     var iconCats = new Array();
     iconCats['parking'] = 'G';
@@ -59,7 +62,9 @@ function UWLocation(id, map, lat, lng, name, address, category)
         var idiv = document.createElement('div');
         idiv.innerHTML = html;
 
-        t = document.createElement('a');
+        var p = document.createElement('p');
+
+        var t = document.createElement('a');
         t.className = 'info-removemarker';
         t.href = '#';
         t.appendChild(document.createTextNode('Remove marker'));
@@ -67,7 +72,8 @@ function UWLocation(id, map, lat, lng, name, address, category)
             map.removeOverlay(mark);
             map.closeInfoWindow();
         }
-        idiv.appendChild(t);
+        p.appendChild(t);
+        idiv.appendChild(p);
         mark.openInfoWindow(idiv);
 
     });
@@ -116,6 +122,7 @@ function UWLocationSet(map)
             var name = markers[i].getAttribute("name");
             var address = markers[i].getAttribute("address");
             var category = markers[i].getAttribute("category");
+            var desc = markers[i].getAttribute("desc");
 		
             // Papulate Dropdown List
             if (category == 'building')
@@ -129,7 +136,7 @@ function UWLocationSet(map)
 		}
             }
 
-            var uloc = new UWLocation(i, map, lat, lng, name, address, category); // Line is Failing
+            var uloc = new UWLocation(i, map, lat, lng, name, address, category, desc); // Line is Failing
             try {
                 this.cat[category].push(uloc);
             }

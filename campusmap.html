@@ -147,7 +147,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             // Following is called 3 times - need to put it somewhere or at least have defaults
             // map.setCenter(new GLatLng(47.65565,-122.30817), 17);
             
-            GDownloadUrl("categories.xml", function(doc)
+            GDownloadUrl("markers.xml", function(doc)
             {
                 var xmlDoc = GXml.parse(doc);
                 ulocset.load(xmlDoc);
@@ -381,7 +381,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 </ul>
 
-<br />
+
 
 <div class="purpleText"><strong>Prospective Students</strong></div> 
 
@@ -389,7 +389,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <li><a href="http://admit.washington.edu/Visit/GuidedTour">&#187; Schedule a Guided Campus Tour</a> </li>
 </ul>
 
-<br />
+
 
 
 <div class="purpleText"><strong>Commuter Services</strong></div>        
@@ -402,30 +402,19 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#187; UW Shuttle Service</a></li>
 </ul>
 
-<br />
-
 
 <div class="purpleText"><strong>Other Maps</strong></div> 
 
-<li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus Walking Directions</a></li>
-
 <ul>
-<li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map - UW Campus and vicinity (PDF)</a><BR /></li>
-
-<li><a href="/admin/ada/">&#187; Access Guide for People With Disabilities</a><BR /></li>
-
-<li><a href="/home/maps/mobilitymap.pdf">&#187; Campus Mobility - Wheelchair Entrances and Routes  (PDF)</a><BR /></li>
-
+<li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus Walking Directions</a></li>
+<li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map - UW Campus and vicinity (PDF)</a></li>
+<li><a href="/admin/ada/">&#187; Access Guide for People With Disabilities</a></li>
+<li><a href="/home/maps/mobilitymap.pdf">&#187; Campus Mobility - Wheelchair Entrances and Routes  (PDF)</a></li>
 <li><a href="/computing/compmap.html">&#187; Computing Labs</a></li>
-
 <li><a href="http://www.lib.washington.edu/about/bookdrops.html">&#187; UW Libraries</a></li>
-
 <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&#187; UW Health Sciences Center</a></li>
-
 <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a> <a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
 </ul>
-
-
 
         </div>
       </div>
