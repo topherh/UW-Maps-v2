@@ -1,0 +1,304 @@
+@charset "utf-8";
+
+/*------- Searchbox ----------*/
+#searcher {
+	text-align: left;
+}
+#searcher input {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.68em;
+	color: #666666;
+}
+#goBox {
+	width: 30px;
+}
+#goBox2 {
+	width: 150px;
+}
+.theForm {
+	margin: 0px;
+	padding: 0px;
+}
+/*------- end Searchbox ----------*/
+
+/*------- Tabs ----------*/
+@charset "utf-8";
+#tabs {
+	width: 1000px;
+	margin: 15px auto 0 auto;
+	height: 40px;
+	padding: 0;
+}
+#tabs ul {
+	margin: 0px;
+	padding: 0px;
+}
+#search {
+	clear:both;
+	border: 1px solid #CCCCCC;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+}	
+#browse {
+	clear:both;
+	border: 1px solid #CCCCCC;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+}	
+#tabs ul li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+
+}
+#tabs img {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+#tabs a {
+	margin: 0;
+	padding: 0;
+}
+
+#busroute a:active {	
+}
+#campusmap a:active {
+}
+/*------- end Tabs ----------*/
+
+/*------- sub Tabs ----------*/
+.subTabs {
+	margin: 14px 0 0 0;
+}
+
+ul.tabNavigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.tabNavigation li {
+    display: inline;
+	width: 64px;
+	height: 22px;
+}		
+
+a:link#searchTab {
+	background-image: url(img/buttons/search.gif);
+	display: block;
+	width: 62px;
+	height: 22px;
+}
+
+a:link#browseTab {
+	background-image: url(img/buttons/browse.gif);
+	display: block;
+	width: 64px;
+	height: 22px;
+}
+
+a.selected#searchTab {
+	background-image: url(img/buttons/search_active.gif);
+	display: block;
+	width: 62px;
+	height: 26px;
+}
+
+a.selected#browseTab {
+	background-image: url(img/buttons/browse_active.gif);
+	display: block;
+	width: 64px;
+	height: 26px;
+}
+
+ul.tabNavigation li a:focus {
+	outline: 0;
+}
+/* ------ end sub Tabs ------*/
+
+#map {
+	padding: 8px;
+	float: right;
+	border: 1px solid #CCCCCC;
+	width: 800px;
+	height: 700px;
+
+}
+
+#entire {
+	border: 1px solid #CCCCCC;
+	padding: 8px;
+	height: 718px;
+	width: 1050px;
+	margin: 0 auto 0 auto;
+}
+#nav {
+	float: left;
+	width: 195px;
+	height: 715px;
+	border: 1px solid #CCCCCC;
+	background-color: #f2eddf;
+	padding: 0 8px 0 20px;
+}
+#nav a{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #534741;
+	margin: 5px 0 0 0;
+	text-decoration:none;
+}
+#nav img{
+	border: 0;
+	margin-left: 10px;
+}
+#nav p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #666666;
+	margin: 5px 0 0 0;
+}
+.expander {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 6px;
+}
+
+/*----these are the tags for the left nav----*/
+#fParking{background-image: url(img/flags/G.gif);}
+#fBus{background-image: url(img/flags/B.gif);}
+#fEmergency{background-image: url(img/flags/P.gif);}
+#fATM{background-image: url(img/flags/A.gif);}
+#fLibraries {background-image: url(img/flags/L.gif);}
+#fZip{background-image: url(img/flags/Z.gif);}
+#fWi{background-image: url(img/flags/W.gif);}
+#fBike{background-image: url(img/flags/R.gif);}
+#fBuilding{background-image: url(img/flags/H.gif);}
+
+.checky {
+	margin: 8px 55px 0 0;
+	padding: 0px;
+}
+.forms {
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	height: 33px;
+	margin: 10px 0 0 0;
+	padding: 0px;
+	background-repeat: no-repeat;
+	background-position: 25px center;
+}
+.forms p{
+	margin-bottom:5px;
+}
+.subforms {
+	background-repeat: no-repeat;
+	background-position: 25px center;
+	margin: 0px;
+	padding: 0 0 0 20px;
+	background-repeat: no-repeat;
+	background-position: 25px center;
+}
+
+
+
+/*-----------------------Plus/Minus CSS---------------------*/
+
+#navi {
+        width: 10em;
+}
+#nav ul, #nav li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+}
+
+#navi a.span {
+	position: relative;
+}
+
+#navi a.span img {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	border: 0;
+}
+#or {
+	margin: 5px 0 5px 0;
+	display: block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #666666;
+	align: center;
+	text-align: center;
+}
+#dotted {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: dotted;
+	border-bottom-style: dotted;
+	border-top-color: #999999;
+	border-bottom-color: #999999;
+}
+
+
+#buildingList {
+	width: 190px;
+}
+
+
+.purpleText {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #39275b;
+	margin: 0 0 3px 0;
+}
+.tabNavigation a {
+	width: 80px;
+	float: left;
+	display: block;
+	height: 22px;
+}
+
+
+
+.purpleTextheader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	color: #39275b;
+	margin: 0 0 3px 0;
+
+}
+
+
+.purpleTextcategory {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #39275b;
+	text-transform:uppercase;
+	margin: 4px 4px 4px 0px;
+
+}
+
+.popupBox {
+        width:400px;
+		background-image:url(img/popup_background.jpg);
+        padding: 20px;
+		font-size:14px;
+		font-family:Arial, Helvetica, sans-serif;
+		
+    }
+
+
+.popupPicture {
+	margin: 4px 4px 4px 4px;
+	border:#CCCCCC 1px solid;
+	padding: 4px;
+	float:right;
+
+}
