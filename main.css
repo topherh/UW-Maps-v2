@@ -92,6 +92,8 @@ ul.tabNavigation li {
 	display: inline;
 	width: 64px;
 	height: 22px;
+	margin: 0;
+	padding: 0;
 }		
 
 a:link#searchTab {
@@ -101,7 +103,6 @@ a:link#searchTab {
 	height: 26px;
 	background-position: bottom;
 	background-repeat: no-repeat;
-	margin-left: 5px;
 }
 
 a:link#browseTab {
@@ -163,9 +164,8 @@ ul.tabNavigation li a:focus {
 }
 #nav a {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
+	font-size: 11px;
 	color: #534741;
-	margin: 5px 0 0 0;
 	text-decoration:none;
 }
 #nav img{
@@ -177,6 +177,20 @@ ul.tabNavigation li a:focus {
 	font-size: 13px;
 	color: #666666;
 	margin: 5px 0 0 0;
+}
+#nav ul {
+	margin: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+
+}
+#nav li {
+	line-height: 12px;
+	text-indent: -10px;
+	list-style-type: none;
+
 }
 .expander {
 	margin-top: 0px;
@@ -228,11 +242,6 @@ ul.tabNavigation li a:focus {
 #navi {
         width: 10em;
 }
-#nav ul, #nav li {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-}
 
 #navi a.span {
 	position: relative;
@@ -270,9 +279,9 @@ ul.tabNavigation li a:focus {
 
 .purpleText {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
+	font-size: 13px;
 	color: #39275b;
-	margin: 0 0 3px 0;
+	margin: 9px 0 3px 0;
 }
 .tabNavigation a {
 	width: 80px;
