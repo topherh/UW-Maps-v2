@@ -2,12 +2,15 @@
   width: 400px;
 }
 #custom_info_window_red_contents{
-  background-color: #FFF;
+	background-color: #FFF;
+	background-image: url(../images/corners/bg.png);
+	background-repeat: repeat-x;
+	background-position: top;
 }
 #custom_info_window_red_tl{
-  width: 16px;
-  height: 16px;
-  background: url('../images/corners/red_tl.png') top left no-repeat transparent;
+	width: 4px;
+	height: 4px;
+	background: url('../images/corners/red_tl.png') top left no-repeat transparent;
 }
 * html #custom_info_window_red_tl{
   background-image:none;
@@ -34,21 +37,24 @@
   background: url('../images/corners/red_r.png') top right repeat-y transparent;
 }
 #custom_info_window_red_bl{
-  width: 16px;
-  height: 16px;
-  background: url('../images/corners/red_bl.png') top left no-repeat transparent;
+	width: 4px;
+	height: 4px;
+	background: url('../images/corners/red_bl.png') top left no-repeat transparent;
 }
 * html #custom_info_window_red_bl{
   background-image:none;
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_bl.png', sizingMethod='crop');
 }
 #custom_info_window_red_b{
-  background: url('../images/corners/red_b.png') top left repeat-x transparent;
+	background-color: #FFFFFF;
+	background-image: url(../images/corners/red_b.png);
+	background-repeat: repeat-x;
+	background-position: left bottom;
 }
 #custom_info_window_red_br{
-  width: 16px;
-  height: 16px;
-  background: url('../images/corners/red_br.png') top left no-repeat transparent;
+	width: 4px;
+	height: 4px;
+	background: url('../images/corners/red_br.png') top left no-repeat transparent;
 }
 * html #custom_info_window_red_br{
   background-image:none;
@@ -65,9 +71,9 @@
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_close.png', sizingMethod='crop');
 }
 #custom_info_window_red_beak{
-  width: 28px;
-  height: 38px;
-  background: url('../images/corners/red_beak.png') top left no-repeat transparent;
+	width: 52px;
+	height: 37px;
+	background: url('../images/corners/red_beak.png') top left no-repeat transparent;
 }
 * html #custom_info_window_red_beak{
   background-image:none;
