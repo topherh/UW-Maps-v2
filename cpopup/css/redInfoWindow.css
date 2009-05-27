@@ -17,12 +17,15 @@
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tl.png', sizingMethod='crop');
 }
 #custom_info_window_red_t{
-  background: url('../images/corners/red_t.png') top left repeat-x transparent;
+	background: url('../images/corners/red_t.png') top left repeat-x transparent;
 }
 #custom_info_window_red_tr{
-  width: 16px;
-  height: 16px;
-  background: url('../images/corners/red_tr.png') top left no-repeat transparent;
+	width: 4px;
+	height: 4px;
+	background-color: transparent;
+	background-image: url(../images/corners/red_tr.png);
+	background-repeat: no-repeat;
+	background-position: right top;
 }
 * html #custom_info_window_red_tr{
   background-image:none;
@@ -61,10 +64,13 @@
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_br.png', sizingMethod='crop');
 }
 #custom_info_window_red_close{
-  width: 21px;
-  height: 21px;
-  background: url('../images/corners/red_close.png') top left no-repeat transparent;
-  cursor: pointer;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	background-color: transparent;
+	background-image: url(../images/corners/red_close.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
 }
 * html #custom_info_window_red_close{
   background-image:none;
@@ -74,6 +80,7 @@
 	width: 52px;
 	height: 37px;
 	background: url('../images/corners/red_beak.png') top left no-repeat transparent;
+	margin-left: 20px;
 }
 * html #custom_info_window_red_beak{
   background-image:none;
@@ -100,3 +107,46 @@
   color: #FFF;
   background-color: #900;
 }
+
+
+/*-----------------Text Stuff-----------------*/
+
+#custom_info_window_red_contents h2{
+	font-family: Georgia, serif;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: normal;
+	text-transform: normal;
+	letter-spacing: normal;
+	line-height: 1.2em;
+	padding: 0 0 3px 15px;
+	margin-bottom: 10px;
+	color: #39275b;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #CCCCCC;
+}
+#custom_info_window_red_contents p{
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-transform: normal;
+	letter-spacing: normal;
+	line-height: 1.4em;
+	padding: 0 0 0 15px;
+	margin: 0;
+	color: #484848;
+}
+#custom_info_window_red_contents ul { 
+	list-style-image: url(../images/arrow.gif);
+ 	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-transform: normal;
+	letter-spacing: normal;
+	line-height: 1.4em;
+
+	color: #484848
+} 
