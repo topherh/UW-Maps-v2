@@ -159,42 +159,40 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             // Not sure what the campusmap is doing at this point
             GEvent.addListener(map, 'click', function(campusmap, point)
             {
-                findClosestLandmark(point);
-            });
-         
-            findClosestLandmark = function(point)
-            {
-                var maxXrange = 0.0015; //degrees lon.
-                var maxYrange = 0.001; //degrees lat.
-                var minimumdist = 1000; //1 kilometer
-                var bestLandmark = null;
-
-                var category = 'building'; // TODO:Remove
-                var arrLoc = ulocset.cat[category];
-                for (var i=0; i<arrLoc.length; i++)
+                if (point)
                 {
-                    // Clear all markers before we display another
-                    map.removeOverlay(arrLoc[i].marker);
-                    var candidate = arrLoc[i].point;
+                    var maxXrange = 0.0015; //degrees lon.
+                    var maxYrange = 0.001; //degrees lat.
+                    var minimumdist = 1000; //1 kilometer
+                    var bestLocation = null;
         
-                    if ((Math.abs(point.x - candidate.x) < maxXrange) &&
-                    (Math.abs(point.y - candidate.y) < maxYrange))
+                    var category = 'building'; // TODO:Remove
+                    var arrLoc = ulocset.cat[category];
+                    for (var i=0; i<arrLoc.length; i++)
                     {
-                        var candidatedist = candidate.distanceFrom(point);
-                        if (candidatedist < minimumdist)
+                        // Clear all markers before we display another
+                        map.removeOverlay(arrLoc[i].marker);
+                        var candidate = arrLoc[i].point;
+                
+                        if ((Math.abs(point.x - candidate.x) < maxXrange) &&
+                        (Math.abs(point.y - candidate.y) < maxYrange))
                         {
-                            minimumdist = candidatedist;
-                            bestLocation = arrLoc[i];
+                            var candidatedist = candidate.distanceFrom(point);
+                            if (candidatedist < minimumdist)
+                            {
+                                minimumdist = candidatedist;
+                                bestLocation = arrLoc[i];
+                            }
                         }
                     }
+                    if (bestLocation)
+                    {
+                        map.addOverlay(bestLocation.marker);
+                        bestLocation.marker.show();
+                        map.setCenter(new GLatLng(bestLocation.lat,bestLocation.lng), 17);
+                    }
                 }
-                if (bestLocation)
-                {
-                    map.addOverlay(bestLocation.marker);
-                    bestLocation.marker.show();
-                    map.setCenter(new GLatLng(bestLocation.lat,bestLocation.lng), 17);
-                }
-            }
+            });
         }
         else
         {

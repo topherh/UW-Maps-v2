@@ -25,11 +25,6 @@ function UWLocation(id, map, lat, lng, name, address, category, desc)
     this.marker;
     this.buildingIcon = new GIcon();
    
-    var html = "<h1>" + this.name + "</h1>" 
-    + "<p>" + this.address + "</p>"
-    + "<p>Organization List: <ul>"
-    + this.desc + "</ul>";
-
     var iconCats = new Array();
     iconCats['parking'] = 'G';
     iconCats['bus'] = 'B';
@@ -60,9 +55,18 @@ function UWLocation(id, map, lat, lng, name, address, category, desc)
     GEvent.addListener(mark, "click", function()
     {
         var idiv = document.createElement('div');
-        idiv.innerHTML = html;
+        idiv.setAttribute('class','popupBox');
+        idiv.innerHTML = desc;
 
-        var p = document.createElement('p');
+        var p1 = document.createElement('p');
+        var p2 = document.createElement('p');
+
+        var input = document.createElement("INPUT");
+        input.setAttribute('type', 'text');
+        input.setAttribute('name', 'Permalink');
+        fieldValue = window.location + '?location=' + name;
+        input.setAttribute('value', fieldValue);
+        input.setAttribute('size', '50');
 
         var t = document.createElement('a');
         t.className = 'info-removemarker';
@@ -72,11 +76,15 @@ function UWLocation(id, map, lat, lng, name, address, category, desc)
             map.removeOverlay(mark);
             map.closeInfoWindow();
         }
-        p.appendChild(t);
-        idiv.appendChild(p);
-        mark.openInfoWindow(idiv);
-
+        p1.appendChild(t);
+        p2.appendChild(input);
+        idiv.appendChild(p1);
+        idiv.appendChild(p2);
+        mark.openInfoWindow(
+            idiv
+            );
     });
+
     GEvent.addListener(mark, 'dblclick', function()
     {
         map.closeInfoWindow();
@@ -122,7 +130,8 @@ function UWLocationSet(map)
             var name = markers[i].getAttribute("name");
             var address = markers[i].getAttribute("address");
             var category = markers[i].getAttribute("category");
-            var desc = markers[i].getAttribute("desc");
+            var desc = markers[i].childNodes[0].nodeValue;
+            //var desc = markers[i].getAttribute("desc");
 		
             // Papulate Dropdown List
             if (category == 'building')
@@ -180,6 +189,7 @@ function UWLocationSet(map)
             arrLoc[i].marker.hide();
             map.removeOverlay(arrLoc[i].marker);
             // GLog.write('Map Marker: '+arrLoc[i].name);
+            // GLog.write(arrLoc[i].name.toLowerCase() + ' == ' + strQuery.toLowerCase());
             if (arrLoc[i].name.toLowerCase() == strQuery.toLowerCase())
             {
                 map.addOverlay(arrLoc[i].marker);
