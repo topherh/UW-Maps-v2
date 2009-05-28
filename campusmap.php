@@ -1,3 +1,7 @@
+<?php
+$loc = $_GET['location'];
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
@@ -140,7 +144,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             map.addMapType(campusmap);
 
             // Sets the center and the default map
-            map.setCenter(new GLatLng(47.65565,-122.30817), 17, campusmap);
+<?php
+    if ($loc)
+        echo '    map.setMapType(campusmap);';
+    else
+        echo '    map.setCenter(new GLatLng(47.65565,-122.30817), 17, campusmap);';
+?>
             // ============================================================
             // ============================================================
 
@@ -153,6 +162,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 ulocset.load(xmlDoc);
             });
 
+<?php
+    if ($loc)
+        echo "    ulocset.search(map,'building',$loc);";
+?>
             // The point of this is instead of using the KML data, we just 
             // Choose the closest pointer and go with that - downsides??
             // ------------------------------------------------------ 
