@@ -1,11 +1,12 @@
 #custom_info_window_red{
-  width: 400px;
+	width: 650px;
 }
 #custom_info_window_red_contents{
 	background-color: #FFF;
 	background-image: url(../images/corners/bg.png);
 	background-repeat: repeat-x;
 	background-position: top;
+
 }
 #custom_info_window_red_tl{
 	width: 4px;
@@ -147,6 +148,21 @@
 	text-transform: normal;
 	letter-spacing: normal;
 	line-height: 1.4em;
-
 	color: #484848
 } 
+/*-----------------Div Stuff-----------------*/
+#popLeft {
+	width: 300px;
+	float: left;	
+}
+#popRight {
+	width: 300px;
+	float: right;
+	padding: 0 0 0 25px;
+}
+.photoBorder {
+	padding: 4px;
+	border: 1px solid #CCCCCC;
+	background-color: #FFFFFF;
+	
+}
