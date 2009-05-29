@@ -1,45 +1,36 @@
 <?php
 $loc = $_GET['location'];
 ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
-<link href="Slim_Header/header.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-    body {
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-right: 0px;
-        margin-bottom: 0px;
-    }
-</style>
-
-<script type="text/javascript">
-<!--
-function MM_jumpMenu(targ,selObj,restore){ //v3.0
-  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
-  if (restore) selObj.selectedIndex=0;
-}
-//-->
-</script>
-<link href="funkyBox.css" rel="stylesheet" type="text/css" />
 <head>
+    <link href="Slim_Header/header.css" rel="stylesheet" type="text/css" />
+    <link href="cpopup/css/redInfoWindowTabs.css" type="text/css" rel="Stylesheet" media="screen" />
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <link href="autocomplete.css" rel="stylesheet" type="text/css" media="screen" />
+    <style type="text/css">
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>University of Washington Campus Map</title>
 
     <!-- Shared JS code -->
     <script type="text/javascript" src="functions.js"></script>
+    <script type="text/javascript" src="scripts/plusminus.js"></script>
+    <script type="text/javascript" src="scripts/extinfowindow.js"></script>    
+    <script type="text/javascript" src="UWMap.js"></script>
     
     <!-- Google Includes -->
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>
     <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>      
     <script src="http://www.google.com/uds/solutions/localsearch/gmlocalsearch.js" type="text/javascript"></script>
     <!-- Google Includes -->
-    
-    <script type="text/javascript" src="scripts/plusminus.js"></script>
-    <script type="text/javascript" src="scripts/extinfowindow.js"></script>    
-    <script type="text/javascript" src="UWMap.js"></script>
     
     <!-- JQuery / Autocomplete Start-->
     <script type="text/javascript" src="jquery.js"></script>
@@ -48,25 +39,23 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     <!-- JQuery / Autocomplete End -->
     
     <script type="text/javascript">
-	$(function() {
-	    setAutoComplete("searchField", "results", "autocomplete.php?part=");
-	});
-	$(function() {
-		var tabContainers = $('div.subTabs > div');
-		tabContainers.hide().filter(':first').show();
-		
-		$('div.subTabs ul.tabNavigation a').click(function () {
-			tabContainers.hide();
-			tabContainers.filter(this.hash).show();
-			$('div.subTabs ul.tabNavigation a').removeClass('selected');
-			$(this).addClass('selected');
-			return false;
-		}).filter(':first').click();
-	});
+        $(function() {
+            setAutoComplete("searchField", "results", "autocomplete.php?part=");
+        });
+        $(function() {
+            var tabContainers = $('div.subTabs > div');
+            tabContainers.hide().filter(':first').show();
+        
+            $('div.subTabs ul.tabNavigation a').click(function () {
+            	tabContainers.hide();
+            	tabContainers.filter(this.hash).show();
+            	$('div.subTabs ul.tabNavigation a').removeClass('selected');
+            	$(this).addClass('selected');
+            	return false;
+            }).filter(':first').click();
+        });
     </script>
     
-    <link href="main.css" rel="stylesheet" type="text/css" />
-    <link href="autocomplete.css" rel="stylesheet" type="text/css" media="screen" />
     
     <style type="text/css">
       @import url("http://www.google.com/uds/css/gsearch.css");
@@ -84,17 +73,20 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         if (GBrowserIsCompatible())
         {
             // create the map
-            map = new GMap2(document.getElementById("map"));
+            var mapTypes = new Array(G_SATELLITE_MAP,G_HYBRID_MAP);
+            map = new GMap2(document.getElementById("map"), {mapTypes: mapTypes});
+            //map = new GMap2(document.getElementById("map"));
             ulocset = new UWLocationSet(map);
         
             map.addControl(new GLargeMapControl());
+            map.addControl(new GOverviewMapControl());
             map.addControl(new GMapTypeControl());
 
             // ============================================================
             // http://code.google.com/p/cumberland/wiki/TilePyramiderAndGoogleMaps
             function CustomGetTileUrl(point,zoom)
             {
-                // We only have zoom at 17 - need to adjust as we get more slices
+                // We only have limited zoom - need to adjust as we get more slices
                 if (zoom < 12 || zoom > 17)
                 {
                     return 'blanktile.png';
@@ -141,6 +133,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             tilelayers[1].getTileUrl = CustomGetTileUrl;
 
             var campusmap = new GMapType(tilelayers, G_SATELLITE_MAP.getProjection(), "Campus");
+            campusmap.getMaximumResolution = function(latlng){ return 17;};
+            campusmap.getMinimumResolution = function(latlng){ return 12;};
             map.addMapType(campusmap);
 
             // Sets the center and the default map
@@ -201,7 +195,15 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     if (bestLocation)
                     {
                         map.addOverlay(bestLocation.marker);
+                        // Add the InfoWindow Show Here
                         bestLocation.marker.show();
+                        bestLocation.marker.openExtInfoWindow(
+                          map,
+                          "custom_info_window_red",
+                          bestLocation.html,
+                          {beakOffset: 3}
+                        ); 
+                        map.getExtInfoWindow().resize();
                         map.setCenter(new GLatLng(bestLocation.lat,bestLocation.lng), 17);
                     }
                 }
@@ -244,7 +246,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     </script>
 
     <script>
-    window.onload = function() {
+    window.onload = function()
+    {
          menuinit();
     }
     window.onunload = function()
@@ -252,7 +255,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         GUnload();
     }
     </script>
-
 
 </head>
   <body>
@@ -286,21 +288,18 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   	<ul>
     	<li><a href="campusmap.html"><img src="img/buttons/map_1_active.gif" alt="Campus maps tab" width="154" height="40" /></a></li>
         <li><a href="busroute.html"><img src="img/buttons/map_2.gif" alt="Bus routes tab" width="135" height="40" /></a></li>
-       <li><a href="dining.html"><img src="img/buttons/map_3.gif" alt="Food tab" width="109" height="40" /></a></li>
-    </ul>  
+        <li><a href="dining.html"><img src="img/buttons/map_3.gif" alt="Food tab" width="109" height="40" /></a></li>
+        </ul>  
   </div>
   
         <div id="entire">
 
       <div id="nav">
-      
-      <!-- <div align="center"><img src="compass_map.png" alt="" width="128px" height="128px" style="padding-top:10px" /></div>
-      
-      <br /> -->
 
 <br />
 <div class="purpleText"><strong>UW Campus Buildings</strong></div> 
 
+  	  <div id="dotted">
 <div class="subTabs">
     <ul class="tabNavigation">
         <li><a href="#search" id="searchTab"></a></li>
@@ -321,12 +320,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 	
    
   <br />
-  <br />
-
-
-
-  	  <div id="dotted">
-	    <!--   <ul>
+	    <!-- <ul>
           
           
 	         <li>
@@ -363,75 +357,59 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                              <label><input type="checkbox" id="bus" /></label>
                               Metro</p></form>
    					    </li><br />                        
-                   </ul>
-            </li>      
-            
-            <li>
-					<a id="fEmergency" class="forms" href="#"><label><input class="checky" type="checkbox" id="emergencybox" onclick="boxclick(this,'emergency')" /></label>Emergency Phone</a>
-            </li>   
-            
-            <li>
-              <a id="fATM" class="forms" href="#"><label><input class="checky" type="checkbox" id="atmbox" onclick="boxclick(this,'atm')" /></label>ATM</a>
-            </li>  
-
-              
-            <li>
-              <a id="fBike" class="forms" href="#"><label><input class="checky" type="checkbox" id="bikebox" onclick="boxclick(this,'bike')" /></label>Bike Racks</a>
-            </li>   -->
+                   </ul> -->
+    <ul>
+        <li><a id="fEmergency" class="forms" href="#"><label><input class="checky" type="checkbox" id="emergencybox" onclick="boxclick(this,'emergency')" /></label>Emergency Phone</a></li>   
+        <li><a id="fATM" class="forms" href="#"><label><input class="checky" type="checkbox" id="atmbox" onclick="boxclick(this,'atm')" /></label>ATM</a></li>  
+        <li><a id="fBike" class="forms" href="#"><label><input class="checky" type="checkbox" id="bikebox" onclick="boxclick(this,'bike')" /></label>Bike Racks</a></li>   
+    </ul>
 	  
       
+  <br />
 
 
-
-
-<div class="purpleText"><strong>Visitors Center</strong></div> 
-
-
-    <ul>
-<li><a href="http://www.washington.edu/visit">&#187; Information and Visitors Center</a></li>
-
-</ul>
-
-
-
-<div class="purpleText"><strong>Prospective Students</strong></div> 
-
-<ul>
-<li><a href="http://admit.washington.edu/Visit/GuidedTour">&#187; Schedule a Guided Campus Tour</a> </li>
-</ul>
-
-
-
-
-<div class="purpleText"><strong>Commuter Services</strong></div>        
-
-<ul>
-<li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&#187; Getting to the UW</a> </li>
-<li><a href="http://www.washington.edu/commuterservices/parking/index.php">&#187;  Parking at the UW</a></li> 
-<li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&#187;  Gatehouses</a> </li>
-
-<li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#187; UW Shuttle Service</a></li>
-</ul>
-
-
-<div class="purpleText"><strong>Other Maps</strong></div> 
-
-<ul>
-<li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus Walking Directions</a></li>
-<li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map - UW Campus and vicinity (PDF)</a></li>
-<li><a href="/admin/ada/">&#187; Access Guide for People With Disabilities</a></li>
-<li><a href="/home/maps/mobilitymap.pdf">&#187; Campus Mobility - Wheelchair Entrances and Routes  (PDF)</a></li>
-<li><a href="/computing/compmap.html">&#187; Computing Labs</a></li>
-<li><a href="http://www.lib.washington.edu/about/bookdrops.html">&#187; UW Libraries</a></li>
-<li><a href="http://uwmedicine.washington.edu/Global/Maps/">&#187; UW Health Sciences Center</a></li>
-<li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a> <a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
-</ul>
 
         </div>
       </div>
        
-      <div id="map"></div>
-      </div>
+    <div id="map"></div>
+
+    <div class="purpleText"><strong>Visitors Center</strong></div> 
+    
+    <ul>
+        <li><a href="http://www.washington.edu/visit">&#187; Information and Visitors Center</a></li>
+    </ul>
+    
+    <div class="purpleText"><strong>Prospective Students</strong></div> 
+    
+    <ul>
+        <li><a href="http://admit.washington.edu/Visit/GuidedTour">&#187; Schedule a Guided Campus Tour</a> </li>
+    </ul>
+    
+    <div class="purpleText"><strong>Commuter Services</strong></div>        
+    
+    <ul>
+        <li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&#187; Getting to the UW</a> </li>
+        <li><a href="http://www.washington.edu/commuterservices/parking/index.php">&#187;  Parking at the UW</a></li> 
+        <li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&#187;  Gatehouses</a> </li>
+        <li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#187; UW Shuttle Service</a></li>
+    </ul>
+    
+    
+    <div class="purpleText"><strong>Other Maps</strong></div> 
+    
+    <ul>
+        <li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus Walking Directions</a></li>
+        <li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map - UW Campus and vicinity (PDF)</a></li>
+        <li><a href="/admin/ada/">&#187; Access Guide for People With Disabilities</a></li>
+        <li><a href="/home/maps/mobilitymap.pdf">&#187; Campus Mobility - Wheelchair Entrances and Routes  (PDF)</a></li>
+        <li><a href="/computing/compmap.html">&#187; Computing Labs</a></li>
+        <li><a href="http://www.lib.washington.edu/about/bookdrops.html">&#187; UW Libraries</a></li>
+        <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&#187; UW Health Sciences Center</a></li>
+        <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a> <a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
+    </ul>
+
+</div>
       
 </body>
 </html>
