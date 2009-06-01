@@ -5,8 +5,10 @@ $loc = $_GET['location'];
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>University of Washington Campus Map</title>
     <link href="Slim_Header/header.css" rel="stylesheet" type="text/css" />
-    <link href="cpopup/css/redInfoWindowTabs.css" type="text/css" rel="Stylesheet" media="screen" />
+    <link href="cpopup/css/redInfoWindow.css" type="text/css" rel="Stylesheet" media="screen" />
     <link href="main.css" rel="stylesheet" type="text/css" />
     <link href="autocomplete.css" rel="stylesheet" type="text/css" media="screen" />
     <style type="text/css">
@@ -17,31 +19,34 @@ $loc = $_GET['location'];
             margin-bottom: 0px;
         }
     </style>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>University of Washington Campus Map</title>
 
+    <!-- Google Includes -->
+    <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>      
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>
+    <!-- Google Includes -->
+    
     <!-- Shared JS code -->
-    <script type="text/javascript" src="functions.js"></script>
+    <script type="text/javascript" src="scripts/functions.js"></script>
     <script type="text/javascript" src="scripts/plusminus.js"></script>
     <script type="text/javascript" src="scripts/extinfowindow.js"></script>    
-    <script type="text/javascript" src="UWMap.js"></script>
-    
-    <!-- Google Includes -->
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>
-    <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>      
-    <script src="http://www.google.com/uds/solutions/localsearch/gmlocalsearch.js" type="text/javascript"></script>
-    <!-- Google Includes -->
     
     <!-- JQuery / Autocomplete Start-->
-    <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="dimensions.js"></script>
-    <script type="text/javascript" src="autocomplete.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/dimensions.js"></script>
+    <script type="text/javascript" src="scripts/autocomplete.js"></script>
     <!-- JQuery / Autocomplete End -->
     
+    <script type="text/javascript" src="UWMap2.js"></script>
+
     <script type="text/javascript">
+    //<![CDATA[
         $(function() {
             setAutoComplete("searchField", "results", "autocomplete.php?part=");
         });
+    //]]>
+    </script>
+    <script type="text/javascript">
+    //<![CDATA[
         $(function() {
             var tabContainers = $('div.subTabs > div');
             tabContainers.hide().filter(':first').show();
@@ -54,13 +59,8 @@ $loc = $_GET['location'];
             	return false;
             }).filter(':first').click();
         });
+    //]]>
     </script>
-    
-    
-    <style type="text/css">
-      @import url("http://www.google.com/uds/css/gsearch.css");
-      @import url("http://www.google.com/uds/solutions/localsearch/gmlocalsearch.css");
-    </style>
 
     <script type="text/javascript">
     //<![CDATA[
@@ -75,7 +75,6 @@ $loc = $_GET['location'];
             // create the map
             var mapTypes = new Array(G_SATELLITE_MAP,G_HYBRID_MAP);
             map = new GMap2(document.getElementById("map"), {mapTypes: mapTypes});
-            //map = new GMap2(document.getElementById("map"));
             ulocset = new UWLocationSet(map);
         
             map.addControl(new GLargeMapControl());
@@ -132,7 +131,7 @@ $loc = $_GET['location'];
             var tilelayers = [G_NORMAL_MAP.getTileLayers()[0],tileLayer];
             tilelayers[1].getTileUrl = CustomGetTileUrl;
 
-            var campusmap = new GMapType(tilelayers, G_SATELLITE_MAP.getProjection(), "Campus");
+            var campusmap = new GMapType(tilelayers, G_NORMAL_MAP.getProjection(), "Campus");
             campusmap.getMaximumResolution = function(latlng){ return 17;};
             campusmap.getMinimumResolution = function(latlng){ return 12;};
             map.addMapType(campusmap);
@@ -203,7 +202,6 @@ $loc = $_GET['location'];
                           bestLocation.html,
                           {beakOffset: 3}
                         ); 
-                        map.getExtInfoWindow().resize();
                         map.setCenter(new GLatLng(bestLocation.lat,bestLocation.lng), 17);
                     }
                 }
@@ -284,14 +282,7 @@ $loc = $_GET['location'];
 
   </div>
   
-  <div id="tabs">
-  	<ul>
-    	<li><a href="campusmap.html"><img src="img/buttons/map_1_active.gif" alt="Campus maps tab" width="154" height="40" /></a></li>
-        <li><a href="busroute.html"><img src="img/buttons/map_2.gif" alt="Bus routes tab" width="135" height="40" /></a></li>
-        <li><a href="dining.html"><img src="img/buttons/map_3.gif" alt="Food tab" width="109" height="40" /></a></li>
-        </ul>  
-  </div>
-  
+ <p>&nbsp;</p> 
         <div id="entire">
 
       <div id="nav">
@@ -359,20 +350,14 @@ $loc = $_GET['location'];
    					    </li><br />                        
                    </ul> -->
     <ul>
-        <li><a id="fEmergency" class="forms" href="#"><label><input class="checky" type="checkbox" id="emergencybox" onclick="boxclick(this,'emergency')" /></label>Emergency Phone</a></li>   
-        <li><a id="fATM" class="forms" href="#"><label><input class="checky" type="checkbox" id="atmbox" onclick="boxclick(this,'atm')" /></label>ATM</a></li>  
-        <li><a id="fBike" class="forms" href="#"><label><input class="checky" type="checkbox" id="bikebox" onclick="boxclick(this,'bike')" /></label>Bike Racks</a></li>   
+        <li><a id="fGatehouse" class="forms" href="#"><label><input class="checky" type="checkbox" id="gatehousebox" onclick="boxclick(this,'gatehouse')" /></label>Gatehouses</a></li>   
+        <li><a id="fLibraries" class="forms" href="#"><label><input class="checky" type="checkbox" id="atmbox" onclick="boxclick(this,'atm')" /></label>Libraries</a></li>  
+        <li><a id="fFood" class="forms" href="#"><label><input class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food')" /></label>Campus Food</a></li>   
     </ul>
 	  
       
   <br />
 
-
-
-        </div>
-      </div>
-       
-    <div id="map"></div>
 
     <div class="purpleText"><strong>Visitors Center</strong></div> 
     
@@ -408,6 +393,12 @@ $loc = $_GET['location'];
         <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&#187; UW Health Sciences Center</a></li>
         <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a> <a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
     </ul>
+
+        </div>
+      </div>
+       
+    <div id="map"></div>
+
 
 </div>
       

@@ -39,28 +39,19 @@ function UWLocation(id, map, code, lat, lng, name, address, category, desc)
     iconCats['building'] = 'H';
     iconCats['gatehouse'] = 'G';
 
-    var html = '<div id="" class="tabs">' +
-    '  <div class="tabs_header">' +
-    '    <div id="tab0" class="tab"><p class="contents">Info</p></div>' +
-    '    <div id="tab1" class="tab"><p class="contents">List</p></div>' +
-    '  </div>' +
-    '  <div class="tab_contents">' +
-    '    <div id="tab0_content">' +
-    '      <div class="title">Building Information</div>' +
-    '      <h2>' + this.name + ' ('+ this.code + ')' + '</h2>' +
-    '      <p><img src="img/bldg/' + this.code.toLowerCase() + '.jpg" alt="' + 
-    this.name + '" title="' + this.name + '" width="240" height="180" /></p>' + 
-    '      <p>' + this.address + '</p>' +
-    '      <p style="padding-left:15px"><input name="embed" value="' +
+    var html = '<h2>' + this.name + ' (' + this.code + ')</h2>' +
+    '<div id="popLeft">' + 
+    '<div id="scrollText">' +
+    '<p>' + 'Short Description' + '</p>' +
+    this.desc + 
+    '</div>' + '</div>' + 
+    '<div id="popRight">' +
+    '<img src="img/bldg/' + this.code.toLowerCase() + '.jpg" alt="' + 
+    this.name + '" title="' + this.name + '" width="240" height="180" />' + 
+    '<p>Address: ' + this.address + '</p>' +
+    '<p style="padding-left:15px">Share: <input name="embed" value="' +
     window.location + '?location="' + name + '" size="30" /></p>' + 
-    '    </div>' +
-    '    <div id="tab1_content">' +
-    '      <div class="title">Organization List</div>' +
-    this.desc +
-    '      <p>&nbsp;</p>' +
-    '      </div>' +
-    '    </div>' +
-    '  </div>';
+    '</div>';
     this.html = html;
 
     // This icon is a different shape, so we need our own settings       
@@ -86,7 +77,6 @@ function UWLocation(id, map, code, lat, lng, name, address, category, desc)
         html,
         {beakOffset: 3}
       ); 
-      map.getExtInfoWindow().resize();
     });
     GEvent.addListener(mark, 'dblclick', function()
     {
@@ -94,43 +84,6 @@ function UWLocation(id, map, code, lat, lng, name, address, category, desc)
         map.removeOverlay(mark);
 
     });
-    GEvent.addDomListener(map, 'extinfowindowopen',function()
-    {
-        var windowContent = document.getElementById("custom_info_window_red_contents");
-        var tabs = new Array(document.getElementById("tab0"),document.getElementById("tab1"));
-        if( tabs.length > 0 )
-        {
-            var tabContentsArray = new Array(tabs.length);
-            for( i=0; i < tabs.length; i++)
-            {
-                tabContentsArray[i] = document.getElementById("tab"+i+"_content");
-                if( i > 0)
-                {
-                    tabhide(tabContentsArray[i]);
-                }
-                tabs[i].setAttribute("name", i.toString());
-                
-                GEvent.addDomListener(tabs[i],"click",function()
-                {
-                    var tabIndex = this.getAttribute("name");
-                    
-                    for(tabContentIndex=0; tabContentIndex < tabs.length; tabContentIndex++)
-                    {
-                        if( tabContentIndex == tabIndex )
-                        {
-                            tabshow(tabContentsArray[tabContentIndex]);
-                        }
-                        else
-                        {
-                            tabhide(tabContentsArray[tabContentIndex]);
-                        }
-                    }
-                    map.getExtInfoWindow().resize();
-                });
-            }
-        }
-    });
-
     this.marker = mark;
 };
 
@@ -171,7 +124,6 @@ function UWLocationSet(map)
             var address = markers[i].getAttribute("address");
             var category = markers[i].getAttribute("category");
             var desc = markers[i].childNodes[0].nodeValue;
-            //var desc = markers[i].getAttribute("desc");
 		
             // Papulate Dropdown List
             if (category == 'building')
