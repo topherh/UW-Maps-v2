@@ -21,7 +21,9 @@ $loc = $_GET['location'];
     </style>
 
     <!-- Google Includes -->
-    <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ">
+    <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ"></script>
+    <script type="text/javascript">
+        google.load("maps", "2");
     </script>
     <!-- Google Includes -->
     
@@ -174,6 +176,7 @@ $loc = $_GET['location'];
         
                     var category = 'building'; // TODO:Remove
                     var arrLoc = ulocset.cat[category];
+                    map.closeInfoWindow();
                     for (var i=0; i<arrLoc.length; i++)
                     {
                         // Clear all markers before we display another
@@ -269,7 +272,7 @@ $loc = $_GET['location'];
       </form>
       <div id="searcha">
         <ul>
-          <li><a href="http://www.washington.edu/discovery/about.html">About Us</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
+          <li><a href="http://www.washington.edu/">UW Home</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
           <li><a href="http://www.uwnews.org/">News</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
           <li><a href="http://gohuskies.ocsn.com/">Sports</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
           <li><a href="http://www.washington.edu/alumni/">Alumni</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
@@ -385,9 +388,9 @@ $loc = $_GET['location'];
     
     <ul>
         <li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus Walking Directions</a></li>
-        <li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map - UW Campus and vicinity (PDF)</a></li>
-        <li><a href="/admin/ada/">&#187; Access Guide for People With Disabilities</a></li>
-        <li><a href="/home/maps/mobilitymap.pdf">&#187; Campus Mobility - Wheelchair Entrances and Routes  (PDF)</a></li>
+        <li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map (PDF)</a></li>
+        <li><a href="/admin/ada/">&#187; Disabilities Access Guide</a></li>
+        <li><a href="/home/maps/mobilitymap.pdf">&#187; Wheelchair Entrances and Routes  (PDF)</a></li>
         <li><a href="/computing/compmap.html">&#187; Computing Labs</a></li>
         <li><a href="http://www.lib.washington.edu/about/bookdrops.html">&#187; UW Libraries</a></li>
         <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&#187; UW Health Sciences Center</a></li>

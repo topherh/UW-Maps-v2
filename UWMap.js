@@ -42,11 +42,11 @@ function UWLocation(id, map, code, lat, lng, name, address, category, desc)
     var html = '<h2>' + this.name + ' (' + this.code + ')</h2>' +
     '<div id="popLeft">' + 
     '<div id="scrollText">' +
-    '<p>' + 'Short Description' + '</p>' +
+    '<p>' + 'Organization List' + '</p>' +
     this.desc + 
     '</div>' + '</div>' + 
     '<div id="popRight">' +
-    '<img src="img/bldg/' + this.code.toLowerCase() + '.jpg" alt="' + 
+    '<img class="photoBorder" src="img/bldg/' + this.code.toLowerCase() + '.jpg" alt="' + 
     this.name + '" title="' + this.name + '" width="240" height="180" />' + 
     '<p>Address: ' + this.address + '</p>' +
     '<p style="padding-left:15px">Share: <input name="embed" value="' +
