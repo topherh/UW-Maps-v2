@@ -21,13 +21,13 @@ $loc = $_GET['location'];
     </style>
 
     <!-- Google Includes -->
-    <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>      
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ" type="text/javascript"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ">
+    </script>
     <!-- Google Includes -->
     
     <!-- Shared JS code -->
     <script type="text/javascript" src="scripts/functions.js"></script>
-    <script type="text/javascript" src="scripts/plusminus.js"></script>
+    <!-- script type="text/javascript" src="scripts/plusminus.js"></script -->
     <script type="text/javascript" src="scripts/extinfowindow.js"></script>    
     
     <!-- JQuery / Autocomplete Start-->
@@ -239,14 +239,14 @@ $loc = $_GET['location'];
         }
     }
 
-    google.setOnLoadCallback(OnLoad);
     //]]>
     </script>
 
     <script>
     window.onload = function()
     {
-         menuinit();
+         OnLoad();
+         //menuinit();
     }
     window.onunload = function()
     {
