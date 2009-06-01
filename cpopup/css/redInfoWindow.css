@@ -152,17 +152,26 @@
 } 
 /*-----------------Div Stuff-----------------*/
 #popLeft {
-	width: 300px;
-	float: left;	
+	width: 290px;
+	float: left;
 }
 #popRight {
 	width: 300px;
 	float: right;
-	padding: 0 0 0 25px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #E1E1E1;
+	margin: 0 0 0 15px;
+	padding: 0 0 0 20px;
+	min-height: 275px;
 }
 .photoBorder {
 	padding: 4px;
 	border: 1px solid #CCCCCC;
-	background-color: #FFFFFF;
-	
+	background-color: #FFFFFF;	
+}
+#scrollText {
+	height: 230px;
+	overflow: auto;
+	margin: 15px 0 0 0;
 }
