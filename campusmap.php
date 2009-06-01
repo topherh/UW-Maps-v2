@@ -36,7 +36,7 @@ $loc = $_GET['location'];
     <script type="text/javascript" src="scripts/autocomplete.js"></script>
     <!-- JQuery / Autocomplete End -->
     
-    <script type="text/javascript" src="UWMap2.js"></script>
+    <script type="text/javascript" src="UWMap.js"></script>
 
     <script type="text/javascript">
     //<![CDATA[
