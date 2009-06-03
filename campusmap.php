@@ -240,13 +240,13 @@ $loc = $_GET['location'];
 
   </div>
   
- <p>&nbsp;</p> 
+
         <div id="entire">
 
       <div id="nav">
 
 <br />
-<div class="purpleText"><strong>UW Campus Buildings</strong></div> 
+<div class="headline">UW Campus Buildings</div> 
 
   	  <div id="dotted">
 <div class="subTabs">
@@ -326,7 +326,8 @@ $loc = $_GET['location'];
     
         <li><a id="fComputing" class="forms" href="#"><label><input class="checky" type="checkbox" id="computingbox" onclick="boxclick(this,'computing')" /></label>Computer Labs</a></li> 
     
-    <li><a id="fFood" class="forms" href="#"><label><input class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food')" /></label>Food</a></li>
+    <li><a id="fFood" class="forms" href="#"><label><input class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food')" /></label>
+    Food</a></li>
     
     
     <li><a id="fGatehouse" class="forms" href="#"><label><input class="checky" type="checkbox" id="gatehousebox" onclick="boxclick(this,'gatehouse')" /></label>Gatehouses</a></li>   
@@ -346,47 +347,57 @@ $loc = $_GET['location'];
       
   <br />
 
-    
-    <div class="purpleText"><strong>Prospective Students</strong></div> 
-    
-    <ul>
-        <li><a href="http://admit.washington.edu/Visit/GuidedTour">&#187; Schedule a Guided Campus Tour</a> </li>
-    </ul>
-    
-    
-<br />    
-    <div class="purpleText"><strong>Commuter Services</strong></div>        
-    
-    <ul>
-        <li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&#187; Getting to the UW</a> </li>
-        <li><a href="http://www.washington.edu/commuterservices/parking/index.php">&#187;  Parking at the UW</a></li> 
-        <li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&#187;  Gatehouses</a> </li>
-        <li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#187; UW Shuttle Service</a></li>
-    </ul>
-    
-    
-    
-    <br />
-    <div class="purpleText"><strong>Other Maps</strong></div> 
-    
-    <ul>
-        <li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus Walking Directions</a></li>
-        <li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map (PDF)</a></li>
-        <li><a href="/admin/ada/">&#187; Disabilities Access Guide</a></li>
-        <li><a href="/home/maps/mobilitymap.pdf">&#187; Wheelchair Access Routes  (PDF)</a></li>
-        <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&#187; UW Health Sciences Center</a></li>
-        
-        <br /><br />
-        
-        <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a> <a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
-    </ul>
+ 
 
         </div>
       </div>
        
     <div id="map"></div>
 
+<div id="foot">
 
+    <div id="footLeft">
+    </div>
+    
+    <div id="footRight">
+            <span class="footLinks">
+                    <ul>
+                    <li>Prospective Students</li>
+                     <li><a href="http://admit.washington.edu/Visit/GuidedTour">&#187; Schedule a Guided Campus Tour</a> </li>
+                    </ul>
+            </span>
+            
+            <span class="footLinks">
+                <ul>
+                <li>Commuter Services</li>
+                    <li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&#187; Getting to the UW</a> </li>
+                    <li><a href="http://www.washington.edu/commuterservices/parking/index.php">&#187;  Parking at the UW</a></li> 
+                    <li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&#187;  Gatehouses</a> </li>
+                    <li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#187; UW Shuttle Service</a></li>
+                </ul>
+            </span>
+            
+            <span class="footLinks">
+    <ul>
+		<li>Other Maps</li>
+        <li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus Walking Directions</a></li>
+        <li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map (PDF)</a></li>
+        <li><a href="/admin/ada/">&#187; Disabilities Access Guide</a></li>
+        <li><a href="/home/maps/mobilitymap.pdf">&#187; Wheelchair Access Routes  (PDF)</a></li>
+        <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&#187; UW Health Sciences Center</a></li>
+    </ul>
+            </span>
+            <span class="footLinks">
+    <ul>
+		<li>Campuses</li>
+        <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a> <a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
+    </ul>
+            </span>
+    
+    </div>
+  
+</div>
+<br clear="all" />
 </div>
       
 </body>

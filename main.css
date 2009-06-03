@@ -70,7 +70,13 @@
 	margin: 0;
 	padding: 0;
 }
-
+.headline {
+	font-family: arial,sans-serif;
+	color: #5E5E5E;
+	font-size: 17px;
+	letter-spacing: -0.2pt;
+	word-spacing: 0.2pt;
+}
 #busroute a:active {	
 }
 #campusmap a:active {
@@ -138,26 +144,41 @@ ul.tabNavigation li a:focus {
 }
 /* ------ end sub Tabs ------*/
 
+#demo_explanation {
+  border-right: 1px solid #000;
+  float: left;
+  width: 49%;
+  margin-right: 5px;
+  padding-right: 5px;
+  font-size: .9em;
+}
+
+iframe {
+  background-color: #DDD;
+  border: 0;
+  margin-left: 20px;
+  font-size: .9em;
+}
+
 #map {
 	padding: 8px;
 	float: right;
 	border: 1px solid #CCCCCC;
 	width: 800px;
-	height: 700px;
-
+	height: 600px;
 }
+
 
 #entire {
 	border: 1px solid #CCCCCC;
 	padding: 8px;
-	height: 718px;
 	width: 1050px;
-	margin: 0 auto 0 auto;
+	margin: 30px auto 0 auto;
 }
 #nav {
 	float: left;
-	width: 195px;
-	height: 715px;
+	width: 200px;
+	height: 615px;
 	border: 1px solid #CCCCCC;
 	background-color: #f2eddf;
 	padding: 0 8px 0 10px;
@@ -167,6 +188,8 @@ ul.tabNavigation li a:focus {
 	font-size: 11px;
 	color: #534741;
 	text-decoration:none;
+	height: 25px;
+	display: block;
 }
 #nav img{
 	border: 0;
@@ -187,10 +210,8 @@ ul.tabNavigation li a:focus {
 
 }
 #nav li {
-	line-height: 12px;
 	text-indent: -10px;
 	list-style-type: none;
-
 }
 .expander {
 	margin-top: 0px;
@@ -200,29 +221,27 @@ ul.tabNavigation li a:focus {
 }
 
 /*----these are the tags for the left nav----*/
-#fParking{background-image: url(img/flags/G.gif);}
-#fBus{background-image: url(img/flags/B.gif);}
-#fEmergency{background-image: url(img/flags/P.gif);}
-#fATM{background-image: url(img/flags/A.gif);}
-#fLibraries {background-image: url(img/flags/L.gif);}
-#fZip{background-image: url(img/flags/Z.gif);}
-#fWi{background-image: url(img/flags/W.gif);}
-#fBike{background-image: url(img/flags/R.gif);}
-#fBuilding{background-image: url(img/flags/H.gif);}
+#fComputing{background-image: url(img/flags/icons_sm/1.gif);}
+#fFood{background-image: url(img/flags/icons_sm/2.gif);}
+#fGatehouse{background-image: url(img/flags/icons_sm/3.gif);}
+#fLandmarks{background-image: url(img/flags/icons_sm/4.gif);}
+#fLibrary{background-image: url(img/flags/icons_sm/5.gif);}
+#fVisitors{background-image: url(img/flags/icons_sm/6.gif);}
 
 .checky {
-	margin: 8px 55px 0 0;
+	margin: 8px 45px 0 0;
 	padding: 0px;
 }
 .forms {
 	background-repeat: no-repeat;
 	background-position: 25px center;
-	height: 33px;
-	margin: 10px 0 0 0;
+	margin: 0 0 0 15px;
 	padding: 0px;
 	background-repeat: no-repeat;
-	background-position: 25px center;
+	background-position: 15px 5px;
+	height: 30px;
 }
+
 .forms p{
 	margin-bottom:5px;
 }
@@ -234,7 +253,6 @@ ul.tabNavigation li a:focus {
 	background-repeat: no-repeat;
 	background-position: 25px center;
 }
-
 
 
 /*-----------------------Plus/Minus CSS---------------------*/
@@ -276,54 +294,55 @@ ul.tabNavigation li a:focus {
 #buildingList {
 	width: 180px;
 }
-
-.purpleText {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	color: #39275b;
-	margin: 9px 0 3px 0;
-}
 .tabNavigation a {
 	width: 80px;
 	float: left;
 	display: block;
 	height: 22px;
 }
-
-
-
-.purpleTextheader {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	color: #39275b;
-	margin: 0 0 3px 0;
-
-}
-
-
-.purpleTextcategory {
+.footLinks {
+	display: block;
+	float: left;
+	width: 150px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	color: #39275b;
-	text-transform:uppercase;
-	margin: 4px 4px 4px 0px;
-
+	padding: 5px 10px 5px 15px;
 }
+.footLinks ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	text-indent: -11px;
+}
+.footLinks li {
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 3px;
+	font-weight: bold;
+}
+.footLinks a {
+	text-decoration: none;
+	font-size: 11px;
+	color: #535353;
+	font-weight: normal;
+}
+/*---------Footer--------*/
 
-.popupBox {
-        width:400px;
-		background-image:url(img/popup_background.jpg);
-        padding: 20px;
-		font-size:14px;
-		font-family:Arial, Helvetica, sans-serif;
-		
-    }
-
-
-.popupPicture {
-	margin: 4px 4px 4px 4px;
-	border:#CCCCCC 1px solid;
-	padding: 4px;
-	float:right;
-
+#footRight {
+	padding: 8px;
+	float: right;
+	border: 1px solid #CCCCCC;
+	width: 800px;
+	height: 150px;
+	margin-top: 10px;
+}
+#footLeft {
+	padding: 8px;
+	float: left;
+	border: 1px solid #CCCCCC;
+	width: 203px;
+	height: 150px;
+	margin: 10px 0 0 0;
+}
+#foot {
+	clear: both;
 }

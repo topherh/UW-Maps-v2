@@ -1,5 +1,6 @@
 #custom_info_window_red{
-	width: 650px;
+	width: 530px;
+
 }
 #custom_info_window_red_contents{
 	background-color: #FFF;
@@ -102,6 +103,12 @@
   margin: 1px 0;
   padding: 5px;
 }
+#custom_info_window_red_contents a{
+	color: #39275b;
+}
+#custom_info_window_red_contents a:visited{
+	color: #999999;
+}
 #custom_info_window_red_contents .title{
   font-size: 18px;
   font-weight: bold;
@@ -129,7 +136,7 @@
 }
 #custom_info_window_red_contents p{
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 12px;
+	font-size: 11px;
 	font-style: normal;
 	font-weight: normal;
 	text-transform: normal;
@@ -152,11 +159,11 @@
 } 
 /*-----------------Div Stuff-----------------*/
 #popLeft {
-	width: 290px;
+	width: 220px;
 	float: left;
 }
 #popRight {
-	width: 300px;
+	width: 260px;
 	float: right;
 	border-left-width: 1px;
 	border-left-style: solid;
@@ -174,4 +181,9 @@
 	height: 230px;
 	overflow: auto;
 	margin: 15px 0 0 0;
+}
+#popRight input{
+	font-size: 11px;
+	width: 180px;
+	height: 15px;
 }
