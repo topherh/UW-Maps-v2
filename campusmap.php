@@ -33,7 +33,7 @@ $loc = $_GET['location'];
     <script type="text/javascript" src="scripts/extinfowindow.js"></script>    
     
     <!-- JQuery / Autocomplete Start-->
-    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/dimensions.js"></script>
     <script type="text/javascript" src="scripts/autocomplete.js"></script>
     <!-- JQuery / Autocomplete End -->
@@ -164,50 +164,9 @@ $loc = $_GET['location'];
             // The point of this is instead of using the KML data, we just 
             // Choose the closest pointer and go with that - downsides??
             // ------------------------------------------------------ 
-            // Not sure what the campusmap is doing at this point
             GEvent.addListener(map, 'click', function(campusmap, point)
             {
-                if (point)
-                {
-                    var maxXrange = 0.0015; //degrees lon.
-                    var maxYrange = 0.001; //degrees lat.
-                    var minimumdist = 1000; //1 kilometer
-                    var bestLocation = null;
-        
-                    var category = 'building'; // TODO:Remove
-                    var arrLoc = ulocset.cat[category];
-                    map.closeInfoWindow();
-                    for (var i=0; i<arrLoc.length; i++)
-                    {
-                        // Clear all markers before we display another
-                        map.removeOverlay(arrLoc[i].marker);
-                        var candidate = arrLoc[i].point;
-                
-                        if ((Math.abs(point.x - candidate.x) < maxXrange) &&
-                        (Math.abs(point.y - candidate.y) < maxYrange))
-                        {
-                            var candidatedist = candidate.distanceFrom(point);
-                            if (candidatedist < minimumdist)
-                            {
-                                minimumdist = candidatedist;
-                                bestLocation = arrLoc[i];
-                            }
-                        }
-                    }
-                    if (bestLocation)
-                    {
-                        map.addOverlay(bestLocation.marker);
-                        // Add the InfoWindow Show Here
-                        bestLocation.marker.show();
-                        bestLocation.marker.openExtInfoWindow(
-                          map,
-                          "custom_info_window_red",
-                          bestLocation.html,
-                          {beakOffset: 3}
-                        ); 
-                        map.setCenter(new GLatLng(bestLocation.lat,bestLocation.lng), 17);
-                    }
-                }
+                ulocset.locate(map,point);
             });
         }
         else
@@ -251,14 +210,10 @@ $loc = $_GET['location'];
          OnLoad();
          //menuinit();
     }
-    window.onunload = function()
-    {
-        GUnload();
-    }
     </script>
 
 </head>
-  <body>
+  <body onunload="GUnload()"> 
   
   <div id="thinSearchbar">
 	<a href="http://www.washington.edu/"><img id="lgo" src="Slim_Header/w.gif" alt="University of Washington"/></a>  
@@ -305,8 +260,23 @@ $loc = $_GET['location'];
     </div>
     <div id="browse">
         <form id="browseform">
-            <select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" onclick="doSearch('buildingList')">
+            <select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" >
                 <option value="" selected="selected">Select a building...</option>
+<?php
+    // Grab our categories XML document and prepare for parsing
+    $doc = new DOMDocument();
+    $doc->load( 'buildings.xml' );
+
+    $markers = $doc->getElementsByTagName( "marker" );
+
+    // We are only searching for the name by looking through all the results
+    for ($x=0; $x<$markers->length; $x++)
+    {
+        $code = $markers->item($x)->getAttribute('code');
+        $name = $markers->item($x)->getAttribute('name');
+        echo "<option value=\"$name\" onclick=\"doSearch('buildingList')\">$name ($code)</option>";
+    }
+?>
             </select>
         </form>
     </div>
@@ -353,20 +323,29 @@ $loc = $_GET['location'];
    					    </li><br />                        
                    </ul> -->
     <ul>
-        <li><a id="fGatehouse" class="forms" href="#"><label><input class="checky" type="checkbox" id="gatehousebox" onclick="boxclick(this,'gatehouse')" /></label>Gatehouses</a></li>   
-        <li><a id="fLibraries" class="forms" href="#"><label><input class="checky" type="checkbox" id="atmbox" onclick="boxclick(this,'atm')" /></label>Libraries</a></li>  
-        <li><a id="fFood" class="forms" href="#"><label><input class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food')" /></label>Campus Food</a></li>   
+    
+        <li><a id="fComputing" class="forms" href="#"><label><input class="checky" type="checkbox" id="computingbox" onclick="boxclick(this,'computing')" /></label>Computer Labs</a></li> 
+    
+    <li><a id="fFood" class="forms" href="#"><label><input class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food')" /></label>Food</a></li>
+    
+    
+    <li><a id="fGatehouse" class="forms" href="#"><label><input class="checky" type="checkbox" id="gatehousebox" onclick="boxclick(this,'gatehouse')" /></label>Gatehouses</a></li>   
+    
+    <li><a id="fLandmarks" class="forms" href="#"><label><input class="checky" type="checkbox" id="landmarksbox" onclick="boxclick(this,'landmarks')" /></label>Landmarks</a></li>  
+    
+    <li><a id="fLibrary" class="forms" href="#"><label><input class="checky" type="checkbox" id="librarybox" onclick="boxclick(this,'library')" /></label>Libraries</a></li>  
+    
+    
+          <li><a id="fVisitors" class="forms" href="#"><label><input class="checky" type="checkbox" id="visitors" onclick="boxclick(this,'visitors')" /></label>Visitors Center</a></li> 
+    
+        
+        
+           
     </ul>
 	  
       
   <br />
 
-
-    <div class="purpleText"><strong>Visitors Center</strong></div> 
-    
-    <ul>
-        <li><a href="http://www.washington.edu/visit">&#187; Information and Visitors Center</a></li>
-    </ul>
     
     <div class="purpleText"><strong>Prospective Students</strong></div> 
     
@@ -374,6 +353,8 @@ $loc = $_GET['location'];
         <li><a href="http://admit.washington.edu/Visit/GuidedTour">&#187; Schedule a Guided Campus Tour</a> </li>
     </ul>
     
+    
+<br />    
     <div class="purpleText"><strong>Commuter Services</strong></div>        
     
     <ul>
@@ -384,16 +365,19 @@ $loc = $_GET['location'];
     </ul>
     
     
+    
+    <br />
     <div class="purpleText"><strong>Other Maps</strong></div> 
     
     <ul>
         <li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus Walking Directions</a></li>
         <li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map (PDF)</a></li>
         <li><a href="/admin/ada/">&#187; Disabilities Access Guide</a></li>
-        <li><a href="/home/maps/mobilitymap.pdf">&#187; Wheelchair Entrances and Routes  (PDF)</a></li>
-        <li><a href="/computing/compmap.html">&#187; Computing Labs</a></li>
-        <li><a href="http://www.lib.washington.edu/about/bookdrops.html">&#187; UW Libraries</a></li>
+        <li><a href="/home/maps/mobilitymap.pdf">&#187; Wheelchair Access Routes  (PDF)</a></li>
         <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&#187; UW Health Sciences Center</a></li>
+        
+        <br /><br />
+        
         <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a> <a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
     </ul>
 
