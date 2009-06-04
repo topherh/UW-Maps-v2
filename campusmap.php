@@ -24,17 +24,18 @@ $loc = $_GET['location'];
     <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAcU4W0SxvtACcZE2LNL5tMhQOjAQj1TDVieadEub6KQQllOqtmRQlZxJIcWkImOAv2IHj2_p0dx4emQ"></script>
     <script type="text/javascript">
         google.load("maps", "2");
+        google.load("jquery", "1.3.2");
     </script>
     <!-- Google Includes -->
     
     <!-- Shared JS code -->
     <script type="text/javascript" src="scripts/functions.js"></script>
     <!-- script type="text/javascript" src="scripts/plusminus.js"></script -->
-    <script type="text/javascript" src="scripts/extinfowindow.js"></script>    
+    <script type="text/javascript" src="scripts/extinfowindow_packed.js"></script>
     
     <!-- JQuery / Autocomplete Start-->
-    <script type="text/javascript" src="scripts/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/dimensions.js"></script>
+    <!-- script type="text/javascript" src="scripts/jquery.min.js"></script -->
+    <!-- script type="text/javascript" src="scripts/dimensions.js"></script -->
     <script type="text/javascript" src="scripts/autocomplete.js"></script>
     <!-- JQuery / Autocomplete End -->
     
@@ -79,6 +80,7 @@ $loc = $_GET['location'];
             map = new GMap2(document.getElementById("map"), {mapTypes: mapTypes});
             ulocset = new UWLocationSet(map);
         
+            map.enableScrollWheelZoom();
             map.addControl(new GLargeMapControl());
             map.addControl(new GOverviewMapControl());
             map.addControl(new GMapTypeControl());
@@ -155,6 +157,7 @@ $loc = $_GET['location'];
             {
                 var xmlDoc = GXml.parse(doc);
                 ulocset.load(xmlDoc);
+                xmlDoc = null;
             });
 
 <?php
@@ -181,7 +184,7 @@ $loc = $_GET['location'];
     {
         var input = document.getElementById(strQuery).value;
         // Here is where the custom search goes
-	map.closeInfoWindow();
+	map.closeExtInfoWindow();
         ulocset.search(map,'building',input);
     } 
     
@@ -239,7 +242,10 @@ $loc = $_GET['location'];
     </div>
 
   </div>
-  
+
+<div id="rounded">
+
+<div class="top"><span></span></div>
 
         <div id="entire">
 
@@ -254,6 +260,7 @@ $loc = $_GET['location'];
         <li><a href="#search" id="searchTab"></a></li>
         <li><a href="#browse" id="browseTab"></a></li>
     </ul>
+    <br style="clear:both" />
     <div id="search">
             <input name="searchField" type="text" id="searchField" />
             <input value="Go" type="submit" onclick="doSearch('searchField')" />
@@ -356,10 +363,18 @@ $loc = $_GET['location'];
 
 <div id="foot">
 
-    <div id="footLeft">
-    </div>
     
-    <div id="footRight">
+    
+  
+</div>
+    <span style="clear:both"><span>
+</div>
+
+
+<div class="bottom"><span></span></div>
+</div>
+
+<div id="footer">
             <span class="footLinks">
                     <ul>
                     <li>Prospective Students</li>
@@ -395,10 +410,7 @@ $loc = $_GET['location'];
             </span>
     
     </div>
-  
-</div>
-<br clear="all" />
-</div>
-      
+
+
 </body>
 </html>
