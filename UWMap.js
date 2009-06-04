@@ -10,8 +10,7 @@
 **********************************************************************/
 function UWIcon(category)
 {
-    this.icon = new GIcon();
-    this.category = category;
+    this.icon;
 
     var iconCats = new Array();
     iconCats['parking'] = 'G';
@@ -26,9 +25,10 @@ function UWIcon(category)
     iconCats['building'] = 'H';
     iconCats['gatehouse'] = 'G';
 
-    try {
-        var iconcat = iconCats[this.category];
-        this.icon.image = "img/flags/" + iconcat + ".gif";
+    if (iconCats[category])
+    {
+        this.icon = new GIcon();
+        this.icon.image = "img/flags/" +iconCats[category]+ ".gif";
         this.icon.shadow = "img/shadow.png";
         this.icon.iconSize = new GSize(32, 32);
         this.icon.shadowSize = new GSize(45, 33);
@@ -39,10 +39,11 @@ function UWIcon(category)
         this.icon.printImage = "img/flags/.gif";
         this.icon.mozPrintImage = "img/flags/.gif";    
     }
-    catch(ex) {
+    else
+    {
         this.icon = new GIcon(G_DEFAULT_ICON);
-        this.iconAnchor = new GPoint(0, 0);
-        this.infoWindowAnchor = new GPoint(10, 0 );
+        this.iconAnchor = new GPoint(5, 34);
+        this.infoWindowAnchor = new GPoint(5, 2);
     }
 
 }
@@ -62,12 +63,13 @@ function UWLocation(code, map, lat, lng, name, category)
     this.lat = parseFloat(lat);
     this.lng = parseFloat(lng);
     this.point = new GLatLng(this.lat,this.lng);
-    this.buildingIcon = new UWIcon(this.category);
+    this.buildingIcon;
     this.event1;
     this.event2;
 
     this.init = function(map)
     {
+        this.buildingIcon = new UWIcon(this.category);
         var url = 'info/window.php?cat='+ this.category +'&code='+ this.code;
         // GMarker does not work if you assign it right away
         // Need to store it in a temp variable and the load when complete
@@ -81,22 +83,23 @@ function UWLocation(code, map, lat, lng, name, category)
             {
                 ajaxUrl:url,
                 beakOffset:3,
-                paddingX:0,
+                paddingX:25,
                 paddingY:25
             }
           ); 
         });
         var event2 = GEvent.addListener(mark, 'dblclick', function()
         {
-            if (map.getExtInfoWindow())
-            {
-                map.closeExtInfoWindow();
-                //mark.closeExtInfoWindow(map);
-            }
-            map.removeOverlay(mark);
+            // if ((map.getExtInfoWindow() != null) || (typeof (map.getExtInfoWindow() != 'undefined')))
+            // {
+            //     //map.closeExtInfoWindow();
+            //     mark.closeExtInfoWindow(map);
+            // }
+            mark.hide();
         
         });
-        map.setCenter(new GLatLng(this.lat,this.lng), 17);
+        map.setCenter(this.point, 17);
+        map.addOverlay(mark);
         this.url = url;
             
         this.marker = mark;
@@ -105,10 +108,10 @@ function UWLocation(code, map, lat, lng, name, category)
     }
     this.destroy = function(map)
     {
-        if (map.getExtInfoWindow())
-        {
-            map.closeExtInfoWindow();
-        }
+        // if ((map.getExtInfoWindow() != null) || (typeof (map.getExtInfoWindow() != 'undefined')))
+        // {
+        //     map.closeExtInfoWindow();
+        // }
         GEvent.removeListener(this.event1);
         GEvent.removeListener(this.event2);
         map.removeOverlay(this.marker);
@@ -141,7 +144,6 @@ function UWLocationSet(map)
 
     this.load = function(xmlDoc)
     {
-        var buildList = document.getElementById("buildingList");
         var markers = xmlDoc.documentElement.getElementsByTagName("marker");
         for (var i=0; i<markers.length; i++)
         {
@@ -155,6 +157,12 @@ function UWLocationSet(map)
             var category = markers[i].getAttribute("category");
 
             var uloc = new UWLocation(code, map, lat, lng, name, category);
+            if (category != 'building')
+            {
+                uloc.init(map);
+                uloc.marker.hide();
+            } 
+
             try {
                 this.cat[category].push(uloc);
             }
@@ -165,15 +173,16 @@ function UWLocationSet(map)
     }
     this.show = function(map,category)
     {
-        map.closeInfoWindow();
-        map.clearOverlays();
-        var arrLoc = this.cat[category];
-        for (var i=0; i<arrLoc.length; i++)
+        //map.closeExtInfoWindow();
+        //map.clearOverlays();
+        for (var i=0; i<this.cat[category].length; i++)
         {
-            arrLoc[i].init(map);
-            map.addOverlay(arrLoc[i].marker);
+            if (this.cat[category][i].marker)
+                this.cat[category][i].marker.show();
+            else
+                this.cat[category][i].init(map);
+            //this.cat[category][i].marker.show();
             //map.addOverlay(arrLoc[i].marker);
-            //arrLoc[i].marker.show();
         }
         // == check the checkbox ==
         map.setCenter(new GLatLng(47.65565,-122.30817), 16);
@@ -181,45 +190,54 @@ function UWLocationSet(map)
     }
     this.hide = function(map,category)
     {
-        var arrLoc = this.cat[category];
-        map.clearOverlays();
-        map.closeInfoWindow();
-        for (var i=0; i<arrLoc.length; i++)
+        //map.closeExtInfoWindow();
+        for (var i=0; i<this.cat[category].length; i++)
         {
-            arrLoc[i].destroy(map);
+            this.cat[category][i].marker.hide();
             //arrLoc[i].marker.hide();
         }
         // == clear the checkbox ==
         //document.getElementById(category+"box").checked = false;
         // == close the info window, in case its open on a marker that we just hid
     }
+    this.clear = function()
+    {
+        for (c in this.cat)
+        {
+            for (var i=0; i<this.cat[c].length; i++)
+            {
+                if (this.cat[c][i].marker)
+                    this.cat[c][i].marker.hide();
+            }
+        }
+    }
     this.search = function(map,category,strQuery)
     {
-        var arrLoc = this.cat[category];
         // map.closeInfoWindow();
-
-        for (var i=0; i<arrLoc.length; i++)
+        //this.clear();
+        for (var i=0; i<this.cat[category].length; i++)
         {
             // Clear all markers before we display another
-            if (arrLoc[i].marker)
-            {
-                //arrLoc[i].marker.hide();
-                //map.removeOverlay(arrLoc[i].marker);
-                arrLoc[i].destroy(map);
-            }
+            // if (this.cat[category][i].marker)
+            // {
+            //     //arrLoc[i].marker.hide();
+            //     //map.removeOverlay(arrLoc[i].marker);
+            //     this.cat[category].destroy(map);
+            // }
             // GLog.write('Map Marker: '+arrLoc[i].name);
             // GLog.write(arrLoc[i].name.toLowerCase() + ' == ' + strQuery.toLowerCase());
-            if (arrLoc[i].name.toLowerCase() == strQuery.toLowerCase())
+            if (this.cat[category][i].name.toLowerCase() == strQuery.toLowerCase())
             {
-                arrLoc[i].init(map);
-                map.addOverlay(arrLoc[i].marker);
-                GEvent.trigger(arrLoc[i].marker,'click');
+                this.cat[category][i].init(map);
+                //this.cat[category][i].marker.show();
+                //GEvent.trigger(arrLoc[i].marker,'click');
                //arrLoc[i].marker.show();
             }
         }
     }
     this.locate = function(map,point)
     {
+        //this.clear();
         if (point)
         {
             var maxXrange = 0.0015; //degrees lon.
@@ -227,16 +245,16 @@ function UWLocationSet(map)
             var minimumdist = 1000; //1 kilometer
             var bestLocation = null;
     
+            // For right now
             var category = 'building';
-            var arrLoc = this.cat[category];
-            for (var i=0; i<arrLoc.length; i++)
+            for (var i=0; i<this.cat[category].length; i++)
             {
                 // Clear all markers before we display another
-                if (arrLoc[i].marker)
-                {
-                    arrLoc[i].destroy(map);
-                }
-                var candidate = arrLoc[i].point;
+                // if (this.cat[category][i].marker)
+                // {
+                //     this.cat[category][i].destroy(map);
+                // }
+                var candidate = this.cat[category][i].point;
         
                 if ((Math.abs(point.x - candidate.x) < maxXrange) &&
                 (Math.abs(point.y - candidate.y) < maxYrange))
@@ -255,10 +273,10 @@ function UWLocationSet(map)
                 // Maybe instead of center location, drop down a bit
                 // for new window height
                 //map.setCenter(new GLatLng(arrLoc[i].lat,arrLoc[i].lng), 17);
-                arrLoc[i].init(map);
                 // Add the InfoWindow Show Here
-                map.addOverlay(arrLoc[i].marker);
-                GEvent.trigger(arrLoc[i].marker,'click');
+                this.cat[category][i].init(map);
+                //this.cat[category][i].marker.show();
+                //GEvent.trigger(this.cat[category][i].marker,'click');
             }
         }
     }

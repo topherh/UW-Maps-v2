@@ -82,7 +82,6 @@ $loc = $_GET['location'];
         
             map.enableScrollWheelZoom();
             map.addControl(new GLargeMapControl());
-            map.addControl(new GOverviewMapControl());
             map.addControl(new GMapTypeControl());
 
             // ============================================================
@@ -184,7 +183,7 @@ $loc = $_GET['location'];
     {
         var input = document.getElementById(strQuery).value;
         // Here is where the custom search goes
-	map.closeExtInfoWindow();
+	//map.closeExtInfoWindow();
         ulocset.search(map,'building',input);
     } 
     
