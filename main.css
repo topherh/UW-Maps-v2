@@ -34,10 +34,11 @@
 }
 #search {
 	clear:both;
-	border: 1px solid #CCCCCC;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	padding-left: 5px;
+	padding-left: 9px;
+	height: 28px;
+
 }
 #search input {
 	font-family: Arial, Helvetica, sans-serif;
@@ -49,11 +50,11 @@
 }	
 #browse {
 	clear:both;
-	border: 1px solid #CCCCCC;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	padding-left: 5px;
+	padding-left: 9px;
 	padding-right: 5px;
+	height: 28px;
 }	
 #tabs ul li {
 	display: inline;
@@ -71,11 +72,8 @@
 	padding: 0;
 }
 .headline {
-	font-family: arial,sans-serif;
-	color: #5E5E5E;
-	font-size: 17px;
-	letter-spacing: -0.2pt;
-	word-spacing: 0.2pt;
+	margin: 0;
+	padding: 0;
 }
 #busroute a:active {	
 }
@@ -86,6 +84,9 @@
 /*------- sub Tabs ----------*/
 .subTabs {
 	margin: 14px 0 0 0;
+	background-image: url(img/tabs/bg.gif);
+	background-repeat: no-repeat;
+	background-position: bottom;
 }
 
 ul.tabNavigation {
@@ -96,45 +97,46 @@ ul.tabNavigation {
 
 ul.tabNavigation li {
 	display: inline;
-	width: 64px;
+	width: 87px;
 	height: 22px;
 	margin: 0;
 	padding: 0;
 }		
 
 a:link#searchTab {
-	background-image: url(img/buttons/search.gif);
+	background-image: url(img/tabs/search.gif);
 	display: block;
-	width: 62px;
-	height: 26px;
+	width: 87px;
+	height: 28px;
 	background-position: bottom;
 	background-repeat: no-repeat;
 }
 
 a:link#browseTab {
-	background-image: url(img/buttons/browse.gif);
+	background-image: url(img/tabs/browse.gif);
 	display: block;
-	width: 64px;
-	height: 26px;
+	width: 87px;
+	height: 28px;
 	background-position: bottom;
 	background-repeat: no-repeat;
-	margin-left: 2px;
 }
 
 a.selected#searchTab {
-	background-image: url(img/buttons/search_active.gif);
+	background-image: url(img/tabs/search_active.gif);
 	display: block;
-	width: 62px;
-	height: 26px;
+	width: 87px;
+	height: 28px;
 	background-position: bottom;
 	background-repeat: no-repeat;
+	margin: 0;
+	padding: 0;
 }
 
 a.selected#browseTab {
-	background-image: url(img/buttons/browse_active.gif);
+	background-image: url(img/tabs/browse_active.gif);
 	display: block;
-	width: 64px;
-	height: 26px;
+	width: 87px;
+	height: 28px;
 	background-position: bottom;
 	background-repeat: no-repeat;
 }

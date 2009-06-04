@@ -246,7 +246,7 @@ $loc = $_GET['location'];
       <div id="nav">
 
 <br />
-<div class="headline">UW Campus Buildings</div> 
+<img src="img/headline.gif" alt="UW Campus Buildings" /> 
 
   	  <div id="dotted">
 <div class="subTabs">
