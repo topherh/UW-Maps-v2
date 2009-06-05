@@ -43,107 +43,40 @@ $loc = $_GET['location'];
     <script type="text/javascript">
     //<![CDATA[
     
-    var map;
+    var cmap;
     var ulocset;
     
     function OnLoad()
     {
         if (GBrowserIsCompatible())
         {
-            // create the map
-            var mapTypes = new Array(G_SATELLITE_MAP,G_HYBRID_MAP);
-            map = new GMap2(document.getElementById("map"), {mapTypes: mapTypes});
-            ulocset = new UWLocationSet(map);
-        
-            map.enableScrollWheelZoom();
-            map.addControl(new GLargeMapControl());
-            map.addControl(new GMapTypeControl());
-
-            // ============================================================
-            // http://code.google.com/p/cumberland/wiki/TilePyramiderAndGoogleMaps
-            function CustomGetTileUrl(point,zoom)
-            {
-                // We only have limited zoom - need to adjust as we get more slices
-                if (zoom < 12 || zoom > 17)
-                {
-                    return 'blanktile.png';
-                }
-
-                // Define our tile boundaries
-                // Note: origin in google maps is top-left
-                var minLL = new GLatLng(47.6641,-122.32565); 
-                var maxLL = new GLatLng(47.6465,-122.2881);
-                
-                // convert our lat/long values to world pixel coordinates
-                var currentProjection = G_NORMAL_MAP.getProjection();
-                var minPixelPt = currentProjection.fromLatLngToPixel(minLL, zoom);
-                var maxPixelPt = currentProjection.fromLatLngToPixel(maxLL, zoom);
-
-                // convert our world pixel coordinates to tile coordinates 
-                var minTileCoord = new GPoint();
-                minTileCoord.x = Math.floor(minPixelPt.x / 256);
-                minTileCoord.y = Math.floor(minPixelPt.y / 256);
-
-                var maxTileCoord = new GPoint();
-                maxTileCoord.x = Math.floor(maxPixelPt.x / 256);
-                maxTileCoord.y = Math.floor(maxPixelPt.y / 256);
-
-                // filter out any tile requests outside of our bounds
-                if (point.x < minTileCoord.x || 
-                    point.x > maxTileCoord.x ||
-                    point.y < minTileCoord.y ||
-                    point.y > maxTileCoord.y)
-                {
-                    return 'blanktile.png';
-                }
-                return 'cutter/' + zoom + '_' + point.x + '_' + point.y + '.png';
-            }
-
-            // Setting the Normal Map as the initial will show it in the background if 
-            // user goes out of range
-            var tileLayer = new GTileLayer(null,12,19, {
-                    isPng:true,
-                    opacity:1.0 // 1.0 is solid, anything less and we can see if the map lines up
-                    });
-            
-            var tilelayers = [G_NORMAL_MAP.getTileLayers()[0],tileLayer];
-            tilelayers[1].getTileUrl = CustomGetTileUrl;
-
-            var campusmap = new GMapType(tilelayers, G_NORMAL_MAP.getProjection(), "Campus");
-            campusmap.getMaximumResolution = function(latlng){ return 17;};
-            campusmap.getMinimumResolution = function(latlng){ return 12;};
-            map.addMapType(campusmap);
-
-            // Sets the center and the default map
+            cmap = new UWCampusMap();
+            cmap.init();
+            ulocset = new UWLocationSet(cmap.map);
 <?php
     if ($loc)
-        echo '    map.setMapType(campusmap);';
+        echo '    cmap.overlay();';
     else
-        echo '    map.setCenter(new GLatLng(47.65565,-122.30817), 17, campusmap);';
+        echo '    cmap.center();';
 ?>
-            // ============================================================
-            // ============================================================
 
-            // Following is called 3 times - need to put it somewhere or at least have defaults
-            // map.setCenter(new GLatLng(47.65565,-122.30817), 17);
-            
             GDownloadUrl("markers.xml", function(doc)
             {
                 var xmlDoc = GXml.parse(doc);
                 ulocset.load(xmlDoc);
-                xmlDoc = null;
             });
 
 <?php
     if ($loc)
-        echo "    ulocset.search(map,'building',$loc);";
+        echo "    ulocset.search(cmap.map,'building',$loc);";
 ?>
             // The point of this is instead of using the KML data, we just 
             // Choose the closest pointer and go with that - downsides??
             // ------------------------------------------------------ 
-            GEvent.addListener(map, 'click', function(campusmap, point)
+            var campusmap = cmap.campusmap;
+            GEvent.addListener(cmap.map, 'click', function(campusmap, point)
             {
-                ulocset.locate(map,point);
+                ulocset.locate(cmap.map,point);
             });
         }
         else
@@ -159,7 +92,7 @@ $loc = $_GET['location'];
         var input = document.getElementById(strQuery).value;
         // Here is where the custom search goes
 	//map.closeExtInfoWindow();
-        ulocset.search(map,'building',input);
+        ulocset.search(cmap.map,'building',input);
     } 
     
     // OnClick event used for the categories displayed on page
@@ -170,11 +103,11 @@ $loc = $_GET['location'];
         //var loc = locations;
         if (box.checked)
         {
-            ulocset.show(map,category);
+            ulocset.show(cmap.map,category);
         }
         else
         {
-            ulocset.hide(map,category);
+            ulocset.hide(cmap.map,category);
         }
     }
 

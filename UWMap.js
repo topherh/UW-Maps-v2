@@ -280,67 +280,78 @@ function UWLocationSet(map)
 /*********************************NOTES****************************
 ***** var UMap = new UWCampusMap();
 **********************************************************************/
-var UWCampusMap = function()
+function UWCampusMap()
 {
     this.opacity = 1.0; // 1.0 is solid, anything less and we can see if the map lines up
     this.name = "Campus";
+    this.point = new GLatLng(47.65565,-122.30817);
     this.tileLayers = [];
-    this.map = '';
+    this.campusmap = '';
+    this.map;
 
     // create the map
     var mapTypes = new Array(G_SATELLITE_MAP,G_HYBRID_MAP);
     this.map = new GMap2(document.getElementById("map"), {mapTypes: mapTypes});
-    ulocset = new UWLocationSet(this.map);
-  
+      
     this.map.enableScrollWheelZoom();
     this.map.addControl(new GLargeMapControl());
     this.map.addControl(new GMapTypeControl());
 
-    //============================================================
-    //http:code.google.com/p/cumberland/wiki/TilePyramiderAndGoogleMaps
-    function CustomGetTileUrl(point,zoom)
+    this.init = function()
     {
-        // We only have limited zoom - need to adjust as we get more slices
-        if (zoom < 12 || zoom > 17)
-        {
-            return 'blanktile.png';
-        }
-
-        // Define our tile boundaries
-        // Note: origin in google maps is top-left
-        var minLL = new GLatLng(47.6641,-122.32565); 
-        var maxLL = new GLatLng(47.6465,-122.2881);
+        // Setting the Normal Map as the initial will show it in the background if 
+        // user goes out of range
+        var tileLayer = new GTileLayer(null,12,19, {
+                isPng:true,
+                opacity:this.opacity
+                });
         
-        // convert our lat/long values to world pixel coordinates
-        var currentProjection = G_NORMAL_MAP.getProjection();
-        var minPixelPt = currentProjection.fromLatLngToPixel(minLL, zoom);
-        var maxPixelPt = currentProjection.fromLatLngToPixel(maxLL, zoom);
-
-        // convert our world pixel coordinates to tile coordinates 
-        var minTileCoord = new GPoint();
-        minTileCoord.x = Math.floor(minPixelPt.x / 256);
-        minTileCoord.y = Math.floor(minPixelPt.y / 256);
-
-        var maxTileCoord = new GPoint();
-        maxTileCoord.x = Math.floor(maxPixelPt.x / 256);
-        maxTileCoord.y = Math.floor(maxPixelPt.y / 256);
-
-        // filter out any tile requests outside of our bounds
-        if (point.x < minTileCoord.x || 
-            point.x > maxTileCoord.x ||
-            point.y < minTileCoord.y ||
-            point.y > maxTileCoord.y)
+        this.tilelayers = [G_NORMAL_MAP.getTileLayers()[0],tileLayer];
+        //============================================================
+        //http:code.google.com/p/cumberland/wiki/TilePyramiderAndGoogleMaps
+        this.tilelayers[1].getTileUrl = function(point,zoom)
         {
-            return 'blanktile.png';
-        }
-        return 'cutter/' + zoom + '_' + point.x + '_' + point.y + '.png';
-    }
+            // Define our tile boundaries
+            // Note: origin in google maps is top-left
+            var minLL = new GLatLng(47.6641,-122.32565); 
+            var maxLL = new GLatLng(47.6465,-122.2881);
+            
+            // convert our lat/long values to world pixel coordinates
+            var currentProjection = G_NORMAL_MAP.getProjection();
+            var minPixelPt = currentProjection.fromLatLngToPixel(minLL, zoom);
+            var maxPixelPt = currentProjection.fromLatLngToPixel(maxLL, zoom);
 
-    var tileLayer = new GTileLayer(null,12,19, {
-        isPng:true,
-        opacity:this.opacity
-        });
-   
-    this.tileLayers = [G_NORMAL_MAP.getTileLayers()[0],tileLayer];
-    this.tilelayers[1].getTileUrl = CustomGetTileUrl;
+            // convert our world pixel coordinates to tile coordinates 
+            var minTileCoord = new GPoint();
+            minTileCoord.x = Math.floor(minPixelPt.x / 256);
+            minTileCoord.y = Math.floor(minPixelPt.y / 256);
+
+            var maxTileCoord = new GPoint();
+            maxTileCoord.x = Math.floor(maxPixelPt.x / 256);
+            maxTileCoord.y = Math.floor(maxPixelPt.y / 256);
+
+            // filter out any tile requests outside of our bounds
+            if (point.x < minTileCoord.x || 
+                point.x > maxTileCoord.x ||
+                point.y < minTileCoord.y ||
+                point.y > maxTileCoord.y)
+            {
+                return 'blanktile.png';
+            }
+            return 'cutter/' + zoom + '_' + point.x + '_' + point.y + '.png';
+        }
+ 
+        this.campusmap = new GMapType(this.tilelayers, G_NORMAL_MAP.getProjection(), "Campus");
+        this.campusmap.getMaximumResolution = function(latlng){ return 17;};
+        this.campusmap.getMinimumResolution = function(latlng){ return 12;};
+        this.map.addMapType(this.campusmap);
+    }
+    this.overlay = function()
+    {
+        this.map.setMapType(this.campusmap);
+    }
+    this.center = function()
+    {
+        this.map.setCenter(this.point, 17, this.campusmap);
+    }
 };
