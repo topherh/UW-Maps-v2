@@ -19,7 +19,6 @@ function UWIcon(category)
     iconCats['atm'] = 'A';
     iconCats['library'] = 'L';
     iconCats['zip'] = 'Z';
-    iconCats['computing'] = 'W';
     iconCats['wifi'] = 'W';
     iconCats['bike'] = 'R';
     iconCats['building'] = 'H';
@@ -90,11 +89,11 @@ function UWLocation(code, map, lat, lng, name, category)
         });
         var event2 = GEvent.addListener(mark, 'dblclick', function()
         {
-            // if ((map.getExtInfoWindow() != null) || (typeof (map.getExtInfoWindow() != 'undefined')))
-            // {
-            //     //map.closeExtInfoWindow();
-            //     mark.closeExtInfoWindow(map);
-            // }
+            if ((map.getExtInfoWindow() != null) || (typeof (map.getExtInfoWindow() != 'undefined')))
+            {
+                //map.closeExtInfoWindow();
+                mark.closeExtInfoWindow(map);
+            }
             mark.hide();
         
         });
@@ -129,16 +128,16 @@ function UWLocationSet(map)
 {
     this.cat = new Array();
     
-    this.cat['parking'] = new Array();
-    this.cat['bus'] = new Array();
-    this.cat['wifi'] = new Array();
-    this.cat['zip'] = new Array();
-    this.cat['bike'] = new Array();
+    //this.cat['parking'] = new Array();
+    //this.cat['bus'] = new Array();
+    //this.cat['wifi'] = new Array();
+    //this.cat['zip'] = new Array();
+    //this.cat['bike'] = new Array();
     this.cat['food'] = new Array();
     this.cat['computing'] = new Array();
-    this.cat['atm'] = new Array();
+    //this.cat['atm'] = new Array();
     this.cat['library'] = new Array();
-    this.cat['emergency'] = new Array();
+    //this.cat['emergency'] = new Array();
     this.cat['building'] = new Array();
     this.cat['gatehouse'] = new Array();
 
@@ -154,50 +153,47 @@ function UWLocationSet(map)
             // Rest of the information related to the marker
             var code = markers[i].getAttribute("code");
             var name = markers[i].getAttribute("name");
-            var category = markers[i].getAttribute("category");
+            var cat = markers[i].getAttribute("category");
 
-            var uloc = new UWLocation(code, map, lat, lng, name, category);
-            if (category != 'building')
+            var uloc = new UWLocation(code, map, lat, lng, name, cat);
+            if (cat != 'building')
             {
                 uloc.init(map);
                 uloc.marker.hide();
             } 
 
             try {
-                this.cat[category].push(uloc);
+                this.cat[cat].push(uloc);
             }
             catch(ex) {
-                GLog.write('Error: Category '+ category +' Does NOT Exist');
+                GLog.write('Error: Category '+ cat +' Does NOT Exist');
             }
         }
     }
-    this.show = function(map,category)
+    this.show = function(map,c)
     {
         //map.closeExtInfoWindow();
         //map.clearOverlays();
-        for (var i=0; i<this.cat[category].length; i++)
+        for (var i=0; i<this.cat[c].length; i++)
         {
-            if (this.cat[category][i].marker)
-                this.cat[category][i].marker.show();
+            if (this.cat[c][i].marker)
+                this.cat[c][i].marker.show();
             else
-                this.cat[category][i].init(map);
-            //this.cat[category][i].marker.show();
-            //map.addOverlay(arrLoc[i].marker);
+                this.cat[c][i].init(map);
         }
         // == check the checkbox ==
         map.setCenter(new GLatLng(47.65565,-122.30817), 16);
-        //document.getElementById(category+"box").checked = true;
+        //document.getElementById(c+"box").checked = true;
     }
-    this.hide = function(map,category)
+    this.hide = function(map,c)
     {
         //map.closeExtInfoWindow();
-        for (var i=0; i<this.cat[category].length; i++)
+        for (var i=0; i<this.cat[c].length; i++)
         {
-            this.cat[category][i].marker.hide();
-            //arrLoc[i].marker.hide();
+            this.cat[c][i].marker.hide();
         }
         // == clear the checkbox ==
-        //document.getElementById(category+"box").checked = false;
+        //document.getElementById(c+"box").checked = false;
         // == close the info window, in case its open on a marker that we just hid
     }
     this.clear = function()
@@ -211,25 +207,25 @@ function UWLocationSet(map)
             }
         }
     }
-    this.search = function(map,category,strQuery)
+    this.search = function(map,c,strQuery)
     {
         // map.closeInfoWindow();
         //this.clear();
-        for (var i=0; i<this.cat[category].length; i++)
+        for (var i=0; i<this.cat[c].length; i++)
         {
             // Clear all markers before we display another
-            // if (this.cat[category][i].marker)
+            // if (this.cat[c][i].marker)
             // {
             //     //arrLoc[i].marker.hide();
             //     //map.removeOverlay(arrLoc[i].marker);
-            //     this.cat[category].destroy(map);
+            //     this.cat[c].destroy(map);
             // }
             // GLog.write('Map Marker: '+arrLoc[i].name);
             // GLog.write(arrLoc[i].name.toLowerCase() + ' == ' + strQuery.toLowerCase());
-            if (this.cat[category][i].name.toLowerCase() == strQuery.toLowerCase())
+            if (this.cat[c][i].name.toLowerCase() == strQuery.toLowerCase())
             {
-                this.cat[category][i].init(map);
-                //this.cat[category][i].marker.show();
+                this.cat[c][i].init(map);
+                //this.cat[c][i].marker.show();
                 //GEvent.trigger(arrLoc[i].marker,'click');
                //arrLoc[i].marker.show();
             }
@@ -243,18 +239,18 @@ function UWLocationSet(map)
             var maxXrange = 0.0015; //degrees lon.
             var maxYrange = 0.001; //degrees lat.
             var minimumdist = 1000; //1 kilometer
-            var bestLocation = null;
+            var bL = null;
     
             // For right now
-            var category = 'building';
-            for (var i=0; i<this.cat[category].length; i++)
+            var c = 'building';
+            for (var i=0; i<this.cat[c].length; i++)
             {
                 // Clear all markers before we display another
                 // if (this.cat[category][i].marker)
                 // {
                 //     this.cat[category][i].destroy(map);
                 // }
-                var candidate = this.cat[category][i].point;
+                var candidate = this.cat[c][i].point;
         
                 if ((Math.abs(point.x - candidate.x) < maxXrange) &&
                 (Math.abs(point.y - candidate.y) < maxYrange))
@@ -263,20 +259,19 @@ function UWLocationSet(map)
                     if (candidatedist < minimumdist)
                     {
                         minimumdist = candidatedist;
-                        bestLocation = i;
+                        bL = i;
                     }
                 }
             }
-            if (bestLocation)
+            if (bL)
             {
-                var i = bestLocation;
                 // Maybe instead of center location, drop down a bit
                 // for new window height
                 //map.setCenter(new GLatLng(arrLoc[i].lat,arrLoc[i].lng), 17);
                 // Add the InfoWindow Show Here
-                this.cat[category][i].init(map);
-                //this.cat[category][i].marker.show();
-                //GEvent.trigger(this.cat[category][i].marker,'click');
+                this.cat[c][bL].init(map);
+                //this.cat[c][i].marker.show();
+                GEvent.trigger(this.cat[c][bL].marker,'click');
             }
         }
     }
@@ -285,67 +280,67 @@ function UWLocationSet(map)
 /*********************************NOTES****************************
 ***** var UMap = new UWCampusMap();
 **********************************************************************/
-//  var UWCampusMap = function(map)
-//  {
-//      this.opacity = 1.0; // 1.0 is solid, anything less and we can see if the map lines up
-//      this.name = "Campus";
-//      this.tileLayers = [];
-// 
-//      // create the map
-//      var mapTypes = new Array(G_SATELLITE_MAP,G_HYBRID_MAP);
-//      map = new GMap2(document.getElementById("map"), {mapTypes: mapTypes});
-//      //map = new GMap2(document.getElementById("map"));
-//      ulocset = new UWLocationSet(map);
-//    
-//      map.addControl(new GLargeMapControl());
-//      map.addControl(new GOverviewMapControl());
-//      map.addControl(new GMapTypeControl());
-// 
-//      //============================================================
-//      //http:code.google.com/p/cumberland/wiki/TilePyramiderAndGoogleMaps
-//      function CustomGetTileUrl(point,zoom)
-//      {
-//          // We only have limited zoom - need to adjust as we get more slices
-//          if (zoom < 12 || zoom > 17)
-//          {
-//              return 'blanktile.png';
-//          }
-// 
-//          // Define our tile boundaries
-//          // Note: origin in google maps is top-left
-//          var minLL = new GLatLng(47.6641,-122.32565); 
-//          var maxLL = new GLatLng(47.6465,-122.2881);
-//          
-//          // convert our lat/long values to world pixel coordinates
-//          var currentProjection = G_NORMAL_MAP.getProjection();
-//          var minPixelPt = currentProjection.fromLatLngToPixel(minLL, zoom);
-//          var maxPixelPt = currentProjection.fromLatLngToPixel(maxLL, zoom);
-// 
-//          // convert our world pixel coordinates to tile coordinates 
-//          var minTileCoord = new GPoint();
-//          minTileCoord.x = Math.floor(minPixelPt.x / 256);
-//          minTileCoord.y = Math.floor(minPixelPt.y / 256);
-// 
-//          var maxTileCoord = new GPoint();
-//          maxTileCoord.x = Math.floor(maxPixelPt.x / 256);
-//          maxTileCoord.y = Math.floor(maxPixelPt.y / 256);
-// 
-//          // filter out any tile requests outside of our bounds
-//          if (point.x < minTileCoord.x || 
-//              point.x > maxTileCoord.x ||
-//              point.y < minTileCoord.y ||
-//              point.y > maxTileCoord.y)
-//          {
-//              return 'blanktile.png';
-//          }
-//          return 'cutter/' + zoom + '_' + point.x + '_' + point.y + '.png';
-//      }
-// 
-//      var tileLayer = new GTileLayer(null,12,19, {
-//          isPng:true,
-//          opacity:this.opacity
-//          });
-//     
-//      this.tileLayers = [G_NORMAL_MAP.getTileLayers()[0],tileLayer];
-//      this.tilelayers[1].getTileUrl = CustomGetTileUrl;
-//  };
+var UWCampusMap = function()
+{
+    this.opacity = 1.0; // 1.0 is solid, anything less and we can see if the map lines up
+    this.name = "Campus";
+    this.tileLayers = [];
+    this.map = '';
+
+    // create the map
+    var mapTypes = new Array(G_SATELLITE_MAP,G_HYBRID_MAP);
+    this.map = new GMap2(document.getElementById("map"), {mapTypes: mapTypes});
+    ulocset = new UWLocationSet(this.map);
+  
+    this.map.enableScrollWheelZoom();
+    this.map.addControl(new GLargeMapControl());
+    this.map.addControl(new GMapTypeControl());
+
+    //============================================================
+    //http:code.google.com/p/cumberland/wiki/TilePyramiderAndGoogleMaps
+    function CustomGetTileUrl(point,zoom)
+    {
+        // We only have limited zoom - need to adjust as we get more slices
+        if (zoom < 12 || zoom > 17)
+        {
+            return 'blanktile.png';
+        }
+
+        // Define our tile boundaries
+        // Note: origin in google maps is top-left
+        var minLL = new GLatLng(47.6641,-122.32565); 
+        var maxLL = new GLatLng(47.6465,-122.2881);
+        
+        // convert our lat/long values to world pixel coordinates
+        var currentProjection = G_NORMAL_MAP.getProjection();
+        var minPixelPt = currentProjection.fromLatLngToPixel(minLL, zoom);
+        var maxPixelPt = currentProjection.fromLatLngToPixel(maxLL, zoom);
+
+        // convert our world pixel coordinates to tile coordinates 
+        var minTileCoord = new GPoint();
+        minTileCoord.x = Math.floor(minPixelPt.x / 256);
+        minTileCoord.y = Math.floor(minPixelPt.y / 256);
+
+        var maxTileCoord = new GPoint();
+        maxTileCoord.x = Math.floor(maxPixelPt.x / 256);
+        maxTileCoord.y = Math.floor(maxPixelPt.y / 256);
+
+        // filter out any tile requests outside of our bounds
+        if (point.x < minTileCoord.x || 
+            point.x > maxTileCoord.x ||
+            point.y < minTileCoord.y ||
+            point.y > maxTileCoord.y)
+        {
+            return 'blanktile.png';
+        }
+        return 'cutter/' + zoom + '_' + point.x + '_' + point.y + '.png';
+    }
+
+    var tileLayer = new GTileLayer(null,12,19, {
+        isPng:true,
+        opacity:this.opacity
+        });
+   
+    this.tileLayers = [G_NORMAL_MAP.getTileLayers()[0],tileLayer];
+    this.tilelayers[1].getTileUrl = CustomGetTileUrl;
+};

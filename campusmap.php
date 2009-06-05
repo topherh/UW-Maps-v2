@@ -10,7 +10,7 @@ $loc = $_GET['location'];
     <link href="Slim_Header/header.css" rel="stylesheet" type="text/css" />
     <link href="cpopup/css/redInfoWindow.css" type="text/css" rel="Stylesheet" media="screen" />
     <link href="main.css" rel="stylesheet" type="text/css" />
-    <link href="autocomplete.css" rel="stylesheet" type="text/css" media="screen" />
+    <!-- link href="autocomplete.css" rel="stylesheet" type="text/css" media="screen" /-->
     <style type="text/css">
         body {
             margin-left: 0px;
@@ -29,41 +29,16 @@ $loc = $_GET['location'];
     <!-- Google Includes -->
     
     <!-- Shared JS code -->
-    <script type="text/javascript" src="scripts/functions.js"></script>
     <!-- script type="text/javascript" src="scripts/plusminus.js"></script -->
     <script type="text/javascript" src="scripts/extinfowindow_packed.js"></script>
     
     <!-- JQuery / Autocomplete Start-->
     <!-- script type="text/javascript" src="scripts/jquery.min.js"></script -->
     <!-- script type="text/javascript" src="scripts/dimensions.js"></script -->
-    <script type="text/javascript" src="scripts/autocomplete.js"></script>
+    <!-- script type="text/javascript" src="scripts/autocomplete.js"></script -->
     <!-- JQuery / Autocomplete End -->
-    
+    <script type="text/javascript" src="scripts/functions.js"></script>
     <script type="text/javascript" src="UWMap.js"></script>
-
-    <script type="text/javascript">
-    //<![CDATA[
-        $(function() {
-            setAutoComplete("searchField", "results", "autocomplete.php?part=");
-        });
-    //]]>
-    </script>
-    <script type="text/javascript">
-    //<![CDATA[
-        $(function() {
-            var tabContainers = $('div.subTabs > div');
-            tabContainers.hide().filter(':first').show();
-        
-            $('div.subTabs ul.tabNavigation a').click(function () {
-            	tabContainers.hide();
-            	tabContainers.filter(this.hash).show();
-            	$('div.subTabs ul.tabNavigation a').removeClass('selected');
-            	$(this).addClass('selected');
-            	return false;
-            }).filter(':first').click();
-        });
-    //]]>
-    </script>
 
     <script type="text/javascript">
     //<![CDATA[

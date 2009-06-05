@@ -346,7 +346,7 @@ iframe {
 	background-image: url(img/rounded/top_slice.gif);
 	background-repeat: no-repeat;
 	background-position: left top;
-	margin: 30px 0 0 0;
+	margin: 0;
       }
 .top span {
 	display:block;
@@ -374,3 +374,31 @@ iframe {
       height:10px;
       background:url(img/rounded/corner_br.gif) no-repeat right top;
       }
+
+#searchField {
+	width: 140px;
+}
+
+#results {
+	border: 1px solid #666;
+	border-bottom: 0px;
+	font-size: 10px;
+	font-family: arial;
+	padding: 0px;
+	display: none;
+}
+
+#results div {
+    border-bottom: 1px solid #666;
+    padding: 3px;
+}
+
+#results .selected {
+	background-color: #666;
+	color: #fff;
+}
+
+#results .unselected {
+	background-color: #fff;
+	color: #666;
+}
