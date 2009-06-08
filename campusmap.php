@@ -46,19 +46,22 @@ $loc = $_GET['location'];
     var cmap;
     var ulocset;
     
+<?php
+    if ($loc)
+        echo "    var loc = $loc;";
+    else
+        echo '    var loc = null;';
+?>
     function OnLoad()
     {
         if (GBrowserIsCompatible())
         {
             cmap = new UWCampusMap();
-            cmap.init();
             ulocset = new UWLocationSet(cmap.map);
-<?php
-    if ($loc)
-        echo '    cmap.overlay();';
-    else
-        echo '    cmap.center();';
-?>
+            if (loc)
+                cmap.overlay();
+            else
+                cmap.center();
 
             GDownloadUrl("markers.xml", function(doc)
             {
@@ -66,17 +69,16 @@ $loc = $_GET['location'];
                 ulocset.load(xmlDoc);
             });
 
-<?php
-    if ($loc)
-        echo "    ulocset.search(cmap.map,'building',$loc);";
-?>
+            if (loc)
+                ulocset.search('building',loc);
+
             // The point of this is instead of using the KML data, we just 
             // Choose the closest pointer and go with that - downsides??
             // ------------------------------------------------------ 
             var campusmap = cmap.campusmap;
             GEvent.addListener(cmap.map, 'click', function(campusmap, point)
             {
-                ulocset.locate(cmap.map,point);
+                ulocset.locate(point);
             });
         }
         else
@@ -87,13 +89,13 @@ $loc = $_GET['location'];
 
     // doSearch needs to work with OnLocalSearch to do the actual searching
     // then display the correct results on screen
-    function doSearch(strQuery)
-    {
-        var input = document.getElementById(strQuery).value;
-        // Here is where the custom search goes
-	//map.closeExtInfoWindow();
-        ulocset.search(cmap.map,'building',input);
-    } 
+    // function doSearch(strQuery)
+    // {
+    //     var input = document.getElementById(strQuery).value;
+    //     // Here is where the custom search goes
+    //     //map.closeExtInfoWindow();
+    //     ulocset.search('building',input);
+    // } 
     
     // OnClick event used for the categories displayed on page
     // == a checkbox has been clicked ==
@@ -103,11 +105,11 @@ $loc = $_GET['location'];
         //var loc = locations;
         if (box.checked)
         {
-            ulocset.show(cmap.map,category);
+            ulocset.show(category);
         }
         else
         {
-            ulocset.hide(cmap.map,category);
+            ulocset.hide(category);
         }
     }
 
@@ -170,7 +172,7 @@ $loc = $_GET['location'];
     <br style="clear:both" />
     <div id="search">
             <input name="searchField" type="text" id="searchField" />
-            <input value="Go" type="submit" onclick="doSearch('searchField')" />
+            <input value="Go" type="submit" onclick="cmap.search(ulocset,'searchField')" />
     </div>
     <div id="browse">
         <form id="browseform">
@@ -188,7 +190,7 @@ $loc = $_GET['location'];
     {
         $code = $markers->item($x)->getAttribute('code');
         $name = $markers->item($x)->getAttribute('name');
-        echo "<option value=\"$name\" onclick=\"doSearch('buildingList')\">$name ($code)</option>";
+        echo "<option value=\"$name\" onclick=\"cmap.search(ulocset,'buildingList')\">$name ($code)</option>";
     }
 ?>
             </select>
