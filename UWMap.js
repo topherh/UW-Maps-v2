@@ -137,6 +137,7 @@ function UWLocationSet(map)
     //this.cat['zip'] = new Array();
     //this.cat['bike'] = new Array();
     this.cat['food'] = new Array();
+    this.cat['landmarks'] = new Array();
     this.cat['computing'] = new Array();
     //this.cat['atm'] = new Array();
     this.cat['library'] = new Array();
