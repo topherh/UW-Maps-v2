@@ -10,7 +10,6 @@ $loc = $_GET['location'];
     <link href="Slim_Header/header.css" rel="stylesheet" type="text/css" />
     <link href="cpopup/css/redInfoWindow.css" type="text/css" rel="Stylesheet" media="screen" />
     <link href="main.css" rel="stylesheet" type="text/css" />
-    <!-- link href="autocomplete.css" rel="stylesheet" type="text/css" media="screen" /-->
     <style type="text/css">
         body {
             margin-left: 0px;
@@ -29,99 +28,80 @@ $loc = $_GET['location'];
     <!-- Google Includes -->
     
     <!-- Shared JS code -->
-    <!-- script type="text/javascript" src="scripts/plusminus.js"></script -->
     <script type="text/javascript" src="scripts/extinfowindow_packed.js"></script>
-    
-    <!-- JQuery / Autocomplete Start-->
-    <!-- script type="text/javascript" src="scripts/jquery.min.js"></script -->
-    <!-- script type="text/javascript" src="scripts/dimensions.js"></script -->
-    <!-- script type="text/javascript" src="scripts/autocomplete.js"></script -->
-    <!-- JQuery / Autocomplete End -->
     <script type="text/javascript" src="scripts/functions.js"></script>
     <script type="text/javascript" src="UWMap.js"></script>
 
     <script type="text/javascript">
     //<![CDATA[
-    
     var cmap;
-    var ulocset;
     
-<?php
-    if ($loc)
-        echo "    var loc = $loc;";
-    else
-        echo '    var loc = null;';
-?>
+
     function OnLoad()
     {
         if (GBrowserIsCompatible())
         {
             cmap = new UWCampusMap();
-            ulocset = new UWLocationSet(cmap.map);
-            if (loc)
-                cmap.overlay();
-            else
-                cmap.center();
+<?php
+    if ($loc)
+        echo "    cmap.loc = $loc;";
+    else
+        echo '    cmap.loc = null;';
+?>
 
             GDownloadUrl("markers.xml", function(doc)
             {
                 var xmlDoc = GXml.parse(doc);
-                ulocset.load(xmlDoc);
+                cmap.ulocset.load(xmlDoc);
             });
 
-            if (loc)
-                ulocset.search('building',loc);
-
-            // The point of this is instead of using the KML data, we just 
-            // Choose the closest pointer and go with that - downsides??
-            // ------------------------------------------------------ 
-            var campusmap = cmap.campusmap;
-            GEvent.addListener(cmap.map, 'click', function(campusmap, point)
+            var campusmap = this.campusmap;
+            cmap.clicker = GEvent.addListener(cmap.map, 'click', function(campusmap, point)
             {
-                ulocset.locate(point);
+                cmap.ulocset.locate(point);
             });
+
+            if (cmap.loc)
+            {
+                cmap.overlay();
+                cmap.ulocset.search('building',cmap.loc);
+                var result = ulocset.result;
+                cmap.ulocset.cat['building'][result].openw();
+            }
+            else
+            {
+                cmap.center(17);
+            }
+            // The point of this is instead of using the KML data, we just 
+            // Choose the closest pointer and go with that.
+            // ------------------------------------------------------ 
+            // var campusmap = ulocset.cmap.campusmap;
+            // GEvent.addListener(ulocset.cmap.map, 'click', function(campusmap, point)
+            // {
+            //     ulocset.locate(point);
+            // });
         }
         else
         {
             alert("Sorry, the Google Maps API is not compatible with this browser");
         }
     }    
-
-    // doSearch needs to work with OnLocalSearch to do the actual searching
-    // then display the correct results on screen
-    // function doSearch(strQuery)
-    // {
-    //     var input = document.getElementById(strQuery).value;
-    //     // Here is where the custom search goes
-    //     //map.closeExtInfoWindow();
-    //     ulocset.search('building',input);
-    // } 
     
-    // OnClick event used for the categories displayed on page
+    // onclick event used for the categories displayed on page
     // == a checkbox has been clicked ==
-    function boxclick(box,category)
+    function boxclick(box,c)
     {
-        // Bring back Location Set with Category
-        //var loc = locations;
         if (box.checked)
-        {
-            ulocset.show(category);
-        }
+            cmap.ulocset.show(c);
         else
-        {
-            ulocset.hide(category);
-        }
+            cmap.ulocset.hide(c);
     }
-
-    //]]>
-    </script>
-
-    <script>
+    // Start the loading process
     window.onload = function()
     {
          OnLoad();
-         //menuinit();
     }
+    //]]>
     </script>
 
 </head>
@@ -134,7 +114,7 @@ $loc = $_GET['location'];
 			action="http://www.google.com/cse">
         <input type="hidden" name="cx" value="001967960132951597331:04hcho0_drk" />
         <input type="hidden" name="cof" value="FORID:0" />
-        <input name="q" type="text" size="20" value="Enter Search" onClick="make_blank();"/>
+        <input name="q" type="text" size="20" value="Enter Search" onclick="make_blank();"/>
         <input type="submit" name="sa" value="Go" />
       </form>
       <div id="searcha">
@@ -172,7 +152,7 @@ $loc = $_GET['location'];
     <br style="clear:both" />
     <div id="search">
             <input name="searchField" type="text" id="searchField" />
-            <input value="Go" type="submit" onclick="cmap.search(ulocset,'searchField')" />
+            <input value="Go" type="submit" onclick="cmap.ulocset.search('building',document.getElementById('searchField').value)" />
     </div>
     <div id="browse">
         <form id="browseform">
@@ -190,7 +170,7 @@ $loc = $_GET['location'];
     {
         $code = $markers->item($x)->getAttribute('code');
         $name = $markers->item($x)->getAttribute('name');
-        echo "<option value=\"$name\" onclick=\"cmap.search(ulocset,'buildingList')\">$name ($code)</option>";
+        echo "<option value=\"$name\" onclick=\"cmap.ulocset.search('building',this.value)\">$name ($code)</option>";
     }
 ?>
             </select>
@@ -240,11 +220,10 @@ $loc = $_GET['location'];
                    </ul> -->
     <ul>
     
-        <li><a id="fComputing" class="forms" href="#"><label><input class="checky" type="checkbox" id="computingbox" onclick="boxclick(this,'computing')" /></label>Computer Labs</a></li> 
+
+    <li><a id="fComputing" class="forms" href="#"><label><input class="checky" type="checkbox" id="computingbox" onclick="boxclick(this,'computing')" /></label>Computer Labs</a></li> 
     
-    <li><a id="fFood" class="forms" href="#"><label><input class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food')" /></label>
-    Food</a></li>
-    
+    <li><a id="fFood" class="forms" href="#"><label><input class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food')" /></label>Food</a></li>
     
     <li><a id="fGatehouse" class="forms" href="#"><label><input class="checky" type="checkbox" id="gatehousebox" onclick="boxclick(this,'gatehouse')" /></label>Gatehouses</a></li>   
     
@@ -252,18 +231,13 @@ $loc = $_GET['location'];
     
     <li><a id="fLibrary" class="forms" href="#"><label><input class="checky" type="checkbox" id="librarybox" onclick="boxclick(this,'library')" /></label>Libraries</a></li>  
     
+    <li><a id="fVisitors" class="forms" href="#"><label><input class="checky" type="checkbox" id="visitors" onclick="boxclick(this,'visitors')" /></label>Visitor's Center</a></li> 
     
-          <li><a id="fVisitors" class="forms" href="#"><label><input class="checky" type="checkbox" id="visitors" onclick="boxclick(this,'visitors')" /></label>Visitors Center</a></li> 
-    
-        
-        
-           
     </ul>
 	  
       
   <br />
 
- 
 
         </div>
       </div>
