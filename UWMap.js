@@ -19,6 +19,7 @@ function UWIcon(category)
     iconCats['landmarks'] = '4';
     iconCats['library'] = '5';
     iconCats['visitors'] = '6';
+    iconCats['building'] = '7';
 
     if (iconCats[category])
     {
