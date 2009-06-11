@@ -13,17 +13,17 @@ function UWIcon(category)
     this.icon;
 
     var iconCats = new Array();
-    iconCats['parking'] = 'G';
-    iconCats['emergency'] = 'P';
-    iconCats['library'] = 'L';
-    iconCats['bike'] = 'R';
-    iconCats['building'] = 'H';
-    iconCats['gatehouse'] = 'G';
+    iconCats['computing'] = '1';
+    iconCats['food'] = '2';
+    iconCats['gatehouse'] = '3';
+    iconCats['landmarks'] = '4';
+    iconCats['library'] = '5';
+    iconCats['visitors'] = '6';
 
     if (iconCats[category])
     {
         this.icon = new GIcon();
-        this.icon.image = "img/flags/" +iconCats[category]+ ".gif";
+        this.icon.image = "img/flags/icons_lg/" +iconCats[category]+ ".png";
         this.icon.shadow = "img/shadow.png";
         this.icon.iconSize = new GSize(32, 32);
         this.icon.shadowSize = new GSize(45, 33);
