@@ -36,7 +36,6 @@ $loc = $_GET['location'];
     //<![CDATA[
     var cmap;
     
-
     function OnLoad()
     {
         if (GBrowserIsCompatible())
@@ -56,11 +55,10 @@ $loc = $_GET['location'];
             });
 
             var campusmap = this.campusmap;
-            cmap.clicker = GEvent.addListener(cmap.map, 'click', function(campusmap, point)
+            GEvent.addListener(cmap.map, 'dblclick', function(campusmap, point)
             {
                 cmap.ulocset.locate(point);
             });
-
             if (cmap.loc)
             {
                 cmap.overlay();
@@ -72,6 +70,8 @@ $loc = $_GET['location'];
             {
                 cmap.center(17);
             }
+            //GEvent.addListener(cmap.map, 'extinfowindowopen', function(){GLog.write("extinfowindowopen found");});
+            //GEvent.addListener(cmap.map, 'extinfowindowclose', function(){GLog.write("extinfowindowclose found");});
             // The point of this is instead of using the KML data, we just 
             // Choose the closest pointer and go with that.
             // ------------------------------------------------------ 
@@ -105,7 +105,7 @@ $loc = $_GET['location'];
     </script>
 
 </head>
-  <body onunload="GUnload()"> 
+  <body onunload="GUnload();"> 
   
   <div id="thinSearchbar">
 	<a href="http://www.washington.edu/"><img id="lgo" src="Slim_Header/w.gif" alt="University of Washington"/></a>  

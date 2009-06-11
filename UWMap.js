@@ -63,14 +63,16 @@ function UWLocation(code, map, lat, lng, name, cat)
     this.event1 = null;
     this.event2 = null;
 
-    this.init = function()
+    this.init = function() 
     {
         self = this;
+        
         this.buildingIcon = new UWIcon(this.category);
         // GMarker does not work if you assign it right away
         // Need to store it in a temp variable and the load when complete
         this.marker = new GMarker(this.point,this.buildingIcon.icon);
         this.event1 = GEvent.addListener(this.marker, 'click', function(){
+            // this.openInfoWindow('hi');
             this.openExtInfoWindow(map,self.cssid,self.html,
                 {
                     ajaxUrl:self.url,
@@ -94,6 +96,7 @@ function UWLocation(code, map, lat, lng, name, cat)
     }
     this.openw = function()
     {
+        //this.marker.openInfoWindow('hi');
         this.marker.openExtInfoWindow(map,this.cssid,this.html,
            {
                ajaxUrl:this.url,
@@ -181,7 +184,7 @@ function UWLocationSet(map)
                 this.cat[c][i].init();
             }
         }
-        this.cmap.center(16);
+        cmap.center(16);
     }
     this.hide = function(c)
     {
@@ -213,7 +216,8 @@ function UWLocationSet(map)
             if (this.cat[c][i].name.toLowerCase() == strQuery.toLowerCase())
             {
                 this.cat[c][i].init();
-                this.cat[c][i].center();
+                this.cat[c][i].center(17);
+                this.cat[c][i].openw();
                 this.result = i;
             }
         }
@@ -250,7 +254,7 @@ function UWLocationSet(map)
             if (bL)
             {
                 this.cat[c][bL].init();
-                this.cat[c][bL].center();
+                this.cat[c][bL].center(17);
                 this.cat[c][bL].openw();
                 this.result = bL;
             }
@@ -272,8 +276,8 @@ function UWCampusMap()
     this.tileLayers = [];
     this.campusmap = null;
     this.map = null;
-    this.loc = null;
     this.clicker = null;
+    this.loc = null;
 
     // Setting the Normal Map as the initial will show it in the background if 
     // user goes out of range
