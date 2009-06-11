@@ -28,7 +28,7 @@ $loc = $_GET['location'];
     <!-- Google Includes -->
     
     <!-- Shared JS code -->
-    <script type="text/javascript" src="scripts/extinfowindow_packed.js"></script>
+    <script type="text/javascript" src="scripts/extinfowindow.js"></script>
     <script type="text/javascript" src="scripts/functions.js"></script>
     <script type="text/javascript" src="UWMap.js"></script>
 
@@ -36,17 +36,18 @@ $loc = $_GET['location'];
     //<![CDATA[
     var cmap;
     
+<?php
+    if ($loc)
+        echo "    var loc = '$loc';";
+    else
+        echo '    var loc = null;';
+?>
+
     function OnLoad()
     {
         if (GBrowserIsCompatible())
         {
             cmap = new UWCampusMap();
-<?php
-    if ($loc)
-        echo "    cmap.loc = $loc;";
-    else
-        echo '    cmap.loc = null;';
-?>
 
             GDownloadUrl("markers.xml", function(doc)
             {
@@ -54,22 +55,22 @@ $loc = $_GET['location'];
                 cmap.ulocset.load(xmlDoc);
             });
 
-            var campusmap = this.campusmap;
-            GEvent.addListener(cmap.map, 'dblclick', function(campusmap, point)
-            {
-                cmap.ulocset.locate(point);
-            });
-            if (cmap.loc)
+            if (loc)
             {
                 cmap.overlay();
-                cmap.ulocset.search('building',cmap.loc);
-                var result = ulocset.result;
-                cmap.ulocset.cat['building'][result].openw();
+                setTimeout('cmap.ulocset.search(\'building\',loc)', 2000);
             }
             else
             {
                 cmap.center(17);
             }
+
+            var campusmap = this.campusmap;
+            GEvent.addListener(cmap.map, 'click', function(campusmap, point)
+            {
+                cmap.ulocset.locate(point);
+            });
+
             //GEvent.addListener(cmap.map, 'extinfowindowopen', function(){GLog.write("extinfowindowopen found");});
             //GEvent.addListener(cmap.map, 'extinfowindowclose', function(){GLog.write("extinfowindowclose found");});
             // The point of this is instead of using the KML data, we just 
@@ -156,7 +157,7 @@ $loc = $_GET['location'];
     </div>
     <div id="browse">
         <form id="browseform">
-            <select name="buildingList" size="1" class="gmls-no-results-label" id="buildingList" >
+            <select name="buildingList" size="1" onclick="cmap.ulocset.search('building',this.value)" class="gmls-no-results-label" id="buildingList">
                 <option value="" selected="selected">Select a building...</option>
 <?php
     // Grab our categories XML document and prepare for parsing
@@ -170,7 +171,7 @@ $loc = $_GET['location'];
     {
         $code = $markers->item($x)->getAttribute('code');
         $name = $markers->item($x)->getAttribute('name');
-        echo "<option value=\"$name\" onclick=\"cmap.ulocset.search('building',this.value)\">$name ($code)</option>";
+        echo "<option value=\"$name\">$name ($code)</option>";
     }
 ?>
             </select>

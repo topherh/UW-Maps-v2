@@ -16,7 +16,7 @@ $doc->load( 'markers.xml' );
 
 $markers = $doc->getElementsByTagName( "marker" );
 
-$pageURL = 'http://' . $_SERVER["SERVER_NAME"].'/uweb/map/campusmap2.php';
+$pageURL = 'http://' . $_SERVER["SERVER_NAME"].'/uweb/map/campusmap.php';
 
 // We are only searching for the name by looking through all the results
 for ($x=0; $x<$markers->length; $x++)
@@ -43,7 +43,7 @@ for ($x=0; $x<$markers->length; $x++)
             $name . '" title="' . $name . '" width="240" height="180" />' . 
             '<p>Address: ' . $address . '</p>' .
             '<p style="padding-left:15px">Share: <input name="embed" value="' .
-            $pageURL . '?location=' . $name . '" size="30" /></p>' . 
+            $pageURL . "?location=" . $name . "\" size=\"30\" /></p>" . 
             '</div>';
         }
     }

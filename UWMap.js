@@ -55,7 +55,7 @@ function UWLocation(code, map, lat, lng, name, cat)
     this.lat = parseFloat(lat);
     this.lng = parseFloat(lng);
     this.point = new GLatLng(this.lat,this.lng);
-    this.url = 'info/window.php?cat='+ this.category +'&code='+ this.code;
+    this.url = null;
     this.marker = null;
     this.buildingIcon = null;
     this.html = '<p>Loading..</p>';
@@ -65,17 +65,18 @@ function UWLocation(code, map, lat, lng, name, cat)
 
     this.init = function() 
     {
-        self = this;
-        
+        this.url = 'info/window.php?cat='+ this.category +'&code='+ this.code;
         this.buildingIcon = new UWIcon(this.category);
         // GMarker does not work if you assign it right away
         // Need to store it in a temp variable and the load when complete
         this.marker = new GMarker(this.point,this.buildingIcon.icon);
+        var url = this.url;
+        var cssid = this.cssid;
+        var html = this.html;
         this.event1 = GEvent.addListener(this.marker, 'click', function(){
-            // this.openInfoWindow('hi');
-            this.openExtInfoWindow(map,self.cssid,self.html,
+            this.openExtInfoWindow(map,cssid,html,
                 {
-                    ajaxUrl:self.url,
+                    ajaxUrl:url,
                     beakOffset:3,
                     paddingX:25,
                     paddingY:25
@@ -112,6 +113,7 @@ function UWLocation(code, map, lat, lng, name, cat)
     }
     this.destroy = function()
     {
+        map.closeExtInfoWindow();
         GEvent.removeListener(this.event1);
         GEvent.removeListener(this.event2);
         map.removeOverlay(this.marker);
@@ -173,6 +175,7 @@ function UWLocationSet(map)
     }
     this.show = function(c)
     {
+        //this.clear();
         for (var i=0; i<this.cat[c].length; i++)
         {
             if (this.cat[c][i].marker)
@@ -277,7 +280,6 @@ function UWCampusMap()
     this.campusmap = null;
     this.map = null;
     this.clicker = null;
-    this.loc = null;
 
     // Setting the Normal Map as the initial will show it in the background if 
     // user goes out of range
@@ -291,11 +293,14 @@ function UWCampusMap()
     //http:code.google.com/p/cumberland/wiki/TilePyramiderAndGoogleMaps
     this.tilelayers[1].getTileUrl = function(point,zoom)
     {
-        // // Define our tile boundaries
-        // // Note: origin in google maps is top-left
+        // Define our tile boundaries
+        // Note: origin in google maps is top-left
+        // SW: (47.653413440109304, -122.31207847595215) NE: (47.65787959116601, -122.30426788330077)
         // var minLL = new GLatLng(47.6641,-122.32565); 
         // var maxLL = new GLatLng(47.6465,-122.2881);
-  
+
+        // var minLL = new GLatLng(47.65787959116601, -122.31207847595215);
+        // var maxLL = new GLatLng(47.65341344010930, -122.30426788330077);
         // // convert our lat/long values to world pixel coordinates
         // var currentProjection = G_NORMAL_MAP.getProjection();
         // var minPixelPt = currentProjection.fromLatLngToPixel(minLL, zoom);
@@ -334,6 +339,13 @@ function UWCampusMap()
     this.map.addControl(new GLargeMapControl());
     this.map.addControl(new GMapTypeControl());
 
+    // var m1 = new UWLocation('ME',this.map,47.6641,-122.31565,'ME','building');
+    // m1.init();
+    // m1.marker.show();
+    // var m2 = new UWLocation('ME',this.map,47.6465,-122.2881,'ME','building');
+    // m2.init();
+    // m2.marker.show();
+
     this.ulocset = new UWLocationSet(this.map);
 
     this.overlay = function()
@@ -343,5 +355,9 @@ function UWCampusMap()
     this.center = function(z)
     {
         this.map.setCenter(this.point, z, this.campusmap);
+        // var bounds = this.map.getBounds(); 
+        // var southWest = bounds.getSouthWest(); 
+        // var northEast = bounds.getNorthEast(); 
+        // GLog.write('SW: '+southWest+' NE: '+northEast);
     }
 };
