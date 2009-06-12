@@ -141,6 +141,7 @@ function UWLocationSet(map)
     this.cat['computing'] = new Array();
     this.cat['library'] = new Array();
     this.cat['building'] = new Array();
+    this.cat['visitors'] = new Array();
     this.cat['gatehouse'] = new Array();
 
     this.load = function(xmlDoc)
