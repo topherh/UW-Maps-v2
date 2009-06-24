@@ -58,7 +58,7 @@ $loc = $_GET['location'];
             if (loc)
             {
                 cmap.overlay();
-                setTimeout('cmap.ulocset.search(\'building\',loc)', 2000);
+                setTimeout('cmap.ulocset.search(\'building\',loc,\'code\')', 2000);
             }
             else
             {
@@ -157,7 +157,7 @@ $loc = $_GET['location'];
     </div>
     <div id="browse">
         <form id="browseform">
-            <select name="buildingList" size="1" onclick="cmap.ulocset.search('building',this.value)" class="gmls-no-results-label" id="buildingList">
+            <select name="buildingList" size="1" onclick="cmap.ulocset.search('building',this.value,'code')" class="results-label" id="buildingList">
                 <option value="" selected="selected">Select a building...</option>
 <?php
     // Grab our categories XML document and prepare for parsing
@@ -171,7 +171,7 @@ $loc = $_GET['location'];
     {
         $code = $markers->item($x)->getAttribute('code');
         $name = $markers->item($x)->getAttribute('name');
-        echo "<option value=\"$name\">$name ($code)</option>";
+        echo "<option value=\"$code\">$name ($code)</option>";
     }
 ?>
             </select>
@@ -219,28 +219,34 @@ $loc = $_GET['location'];
                               Metro</p></form>
    					    </li><br />                        
                    </ul> -->
+                   
+                   
+                   
+       <h3>Noteworthy Locations</h3>            
+                   
     <ul>
     
-
-    <li><a id="fComputing" class="forms" href="#"><label><input class="checky" type="checkbox" id="computingbox" onclick="boxclick(this,'computing')" /></label>Computer Labs</a></li> 
+    <li><a id="fComputing" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="computingbox" onclick="boxclick(this,'computing')" />Computer Labs</label></a></li> 
     
-    <li><a id="fFood" class="forms" href="#"><label><input class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food')" /></label>Food</a></li>
+    <li><a id="fFood" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food')" />Food</label></a></li>
     
-    <li><a id="fGatehouse" class="forms" href="#"><label><input class="checky" type="checkbox" id="gatehousebox" onclick="boxclick(this,'gatehouse')" /></label>Gatehouses</a></li>   
+    <li><a id="fGatehouse" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="gatehousebox" onclick="boxclick(this,'gatehouse')" />Gatehouses</label></a></li>
     
-    <li><a id="fLandmarks" class="forms" href="#"><label><input class="checky" type="checkbox" id="landmarksbox" onclick="boxclick(this,'landmarks')" /></label>Landmarks</a></li>  
+    <li><a id="fLandmarks" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="landmarksbox" onclick="boxclick(this,'landmarks')" />Landmarks</label></a></li>  
     
-    <li><a id="fLibrary" class="forms" href="#"><label><input class="checky" type="checkbox" id="librarybox" onclick="boxclick(this,'library')" /></label>Libraries</a></li>  
+    <li><a id="fLibrary" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="librarybox" onclick="boxclick(this,'library')" />Libraries</label></a></li>  
     
-    <li><a id="fVisitors" class="forms" href="#"><label><input class="checky" type="checkbox" id="visitors" onclick="boxclick(this,'visitors')" /></label>Visitor's Center</a></li> 
+    <li><a id="fVisitors" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="visitorsbox"  onclick="boxclick(this,'visitors')" />Visitors Center</label></a></li> 
     
     </ul>
-	  
+
+    <br />
       
   <br />
 
 
         </div>
+    <p><a onclick="cmap.reset();" href="#">Reset Map</a></p>	  
       </div>
        
     <div id="map"></div>
@@ -289,7 +295,9 @@ $loc = $_GET['location'];
             <span class="footLinks">
     <ul>
 		<li>Campuses</li>
-        <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a> <a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
+        <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a></li>
+        
+        <li><a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
     </ul>
             </span>
     

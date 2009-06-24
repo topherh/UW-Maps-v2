@@ -93,6 +93,7 @@ function UWLocation(code, map, lat, lng, name, cat)
             {
                 //Hope it works
             }
+            this.hide();
         });
         map.addOverlay(this.marker);
     }
@@ -189,7 +190,7 @@ function UWLocationSet(map)
                 this.cat[c][i].init();
             }
         }
-        cmap.center(16);
+        cmap.center(15);
     }
     this.hide = function(c)
     {
@@ -209,22 +210,39 @@ function UWLocationSet(map)
                 this.cat[c][i].destroy();
         }
     }
-    this.search = function(c,strQuery)
+    this.search = function(c,strQuery,strType)
     {
         // If we have a result, it's because
         // Someone already clicked
         if (this.result)
             this.cat[c][this.result].destroy();
-        // Verify there's something exists
-        for (var i=0; i<this.cat[c].length; i++)
+        switch (strType)
         {
-            if (this.cat[c][i].name.toLowerCase() == strQuery.toLowerCase())
+            case undefined:
+            // Verify there's something exists
+            for (var i=0; i<this.cat[c].length; i++)
             {
-                this.cat[c][i].init();
-                this.cat[c][i].center(17);
-                this.cat[c][i].openw();
-                this.result = i;
+                if (this.cat[c][i].name.toLowerCase() == strQuery.toLowerCase())
+                {
+                    this.cat[c][i].init();
+                    this.cat[c][i].center(17);
+                    this.cat[c][i].openw();
+                    this.result = i;
+                }
             }
+            break;
+            case 'code':
+            for (var i=0; i<this.cat[c].length; i++)
+            {
+                if (this.cat[c][i].code.toLowerCase() == strQuery.toLowerCase())
+                {
+                    this.cat[c][i].init();
+                    this.cat[c][i].center(17);
+                    this.cat[c][i].openw();
+                    this.result = i;
+                }
+            }
+         
         }
     }
     this.locate = function(point)
@@ -349,7 +367,6 @@ function UWCampusMap()
     // m2.marker.show();
 
     this.ulocset = new UWLocationSet(this.map);
-
     this.overlay = function()
     {
         this.map.setMapType(this.campusmap);
@@ -361,5 +378,18 @@ function UWCampusMap()
         // var southWest = bounds.getSouthWest(); 
         // var northEast = bounds.getNorthEast(); 
         // GLog.write('SW: '+southWest+' NE: '+northEast);
+    }
+    this.reset = function()
+    {
+        // var lb = document.getElementsByName["locbox"];
+        // for (i=0;i<lb.length;i++)
+        // {
+        //     if (lb[i].checkbox.checked) 
+        //     {
+        //         lb[i].checkbox.checked = false;
+        //     }
+        // }
+        this.ulocset.clear();
+        this.center(17);
     }
 };
