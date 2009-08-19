@@ -60,13 +60,13 @@ function UWLocation(code, map, lat, lng, name, cat)
     this.marker = null;
     this.buildingIcon = null;
     this.html = '<p>Loading..</p>';
-    this.cssid = 'custom_info_window_red';
+    this.cssid = 'custom_info_window';
     this.event1 = null;
     this.event2 = null;
 
     this.init = function() 
     {
-        this.url = 'info/window.php?cat='+ this.category +'&code='+ this.code;
+        this.url = 'infowindow.php?cat='+ this.category +'&code='+ this.code;
         this.buildingIcon = new UWIcon(this.category);
         // GMarker does not work if you assign it right away
         // Need to store it in a temp variable and the load when complete
@@ -199,15 +199,42 @@ function UWLocationSet(map)
             this.cat[c][i].marker.hide();
         }
     }
-    this.clear = function()
+    this.clear = function(sAll)
     {
-        // Only care about clearing buildings
-        // Other categories are handled seperate
-        var c = 'building';
-        for (var i=0; i<this.cat[c].length; i++)
+        switch (sAll)
         {
-            if (this.cat[c][i].marker)
-                this.cat[c][i].destroy();
+            case undefined: 
+            // Only care about clearing buildings
+            // Other categories are handled seperate
+            var c = 'building';
+            for (var i=0; i<this.cat[c].length; i++)
+            {
+                if (this.cat[c][i].marker)
+                    this.cat[c][i].destroy();
+            }
+            break;
+            case 'all':
+            for (var c in this.cat)
+            {
+                if (c =='building')
+                {
+                    for (var i=0; i<this.cat[c].length; i++)
+                    {
+                        if (this.cat[c][i].marker)
+                            this.cat[c][i].destroy();
+                    }
+                }
+                else 
+                {
+                    for (var i=0; i<this.cat[c].length; i++)
+                    {
+                        if (this.cat[c][i].marker)
+                            this.cat[c][i].marker.hide();
+                    }
+                 
+                }
+            }
+            break;
         }
     }
     this.search = function(c,strQuery,strType)
@@ -381,15 +408,21 @@ function UWCampusMap()
     }
     this.reset = function()
     {
-        // var lb = document.getElementsByName["locbox"];
-        // for (i=0;i<lb.length;i++)
-        // {
-        //     if (lb[i].checkbox.checked) 
-        //     {
-        //         lb[i].checkbox.checked = false;
-        //     }
-        // }
-        this.ulocset.clear();
+        var lb = document.getElementsByName("locbox");
+        for (i=0;i<lb.length;i++)
+        {
+            if (lb[i].checked) 
+            {
+                lb[i].checked = false;
+            }
+        }
+        document.getElementById('searchField').value = '';
+        document.getElementById('buildingList').value= '';
+        // document.getElementById('browse').style.display = 'none';
+        // document.getElementById('search').style.display = 'block';
+        // document.getElementById('browseTab').style.display = 'none';
+        // document.getElementById('searchTab').style.display = 'block';
+        this.ulocset.clear('all');
         this.center(17);
     }
 };

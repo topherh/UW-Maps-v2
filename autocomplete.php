@@ -16,7 +16,7 @@ if (isset($_GET['part']) and $_GET['part'] != '')
 {
     // Grab our categories XML document and prepare for parsing
     $doc = new DOMDocument();
-    $doc->load( 'categories.xml' );
+    $doc->load( 'buildings.xml' );
 
     $markers = $doc->getElementsByTagName( "marker" );
 
@@ -35,6 +35,6 @@ if (isset($_GET['part']) and $_GET['part'] != '')
         }
     }
 
-	// return the array as json with PHP 5.2
-	echo json_encode($results);
+    // return the array as json with PHP 5.2
+    echo json_encode($results);
 }

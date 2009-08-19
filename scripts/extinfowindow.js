@@ -553,16 +553,6 @@ GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
       html,
       opt_opts
     ) );
-    if (map.ClickListener_ == null) {
-      //listen for map click, close ExtInfoWindow if open
-      map.ClickListener_ = GEvent.addListener(map, 'click',
-      function(event) {
-          if( !event && map.getExtInfoWindow() != null ){
-            map.closeExtInfoWindow();
-          }
-        }
-      );
-    }
     if (map.InfoWindowListener_ == null) {
       //listen for default info window open, close ExtInfoWindow if open
       map.InfoWindowListener_ = GEvent.addListener(map, 'infowindowopen', 

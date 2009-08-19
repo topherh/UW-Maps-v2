@@ -22,7 +22,78 @@ $(function() {
 //   eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
 //   if (restore) selObj.selectedIndex=0;
 // }
+$(function() {
+    $(".results-label")
+        .mouseover(function(){
+            $(this)
+                .data("origWidth", $(this).css("width"))
+                .css("width", "auto");
+        })
+    $(".results-label option")
+        .mouseout(function(){
+            $(this).css("width", $(this).data("origWidth"));
+        });
+});
 
+// wait for the DOM to be loaded and wait for comments
+$(document).ready(function(){
+    $("#feedbackSubmit").click(function(){                                     
+        $(".error").hide();
+        var hasError = false;
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        
+        var emailVal = $("#email").val();
+        if (emailVal == '')
+        {
+            $("#email").after('<span class="error">Please enter an email address.</span>');
+            hasError = true;
+        }
+        else if (!emailReg.test(emailVal)) 
+        {
+            $("#email").after('<span class="error">Please enter a valid email address.</span>');
+            hasError = true;
+        }
+
+        var messageVal = $("#comment").val();
+        if (messageVal == '') {
+            $("#comment").after('<span class="error">You forgot to enter a comment.</span>');
+            hasError = true;
+        }
+        
+        if(hasError == false) 
+        {
+            var data = new Object();
+            data.email = emailVal;
+            data.message = messageVal;
+            var dataString = $.toJSON(data)
+            $(this).hide();
+            $("#feedbackForm").append('<img src="/maps/img/loading.gif" alt="Loading" id="loading" />');
+            
+            $.post("comment.php",
+                { data: dataString },
+                function(resp)
+                {
+                    var obj = $.evalJSON(resp); 
+                    if (obj == true) 
+                    {
+                        $("#feedback").slideUp("normal", function()
+                        {
+                            $("#feedback").before('<h3>Awesome!</h3><p>Thanks for the comment!</p>');                                          
+                        });
+                    }
+                    else
+                    {
+                        $("#feedback").slideUp("normal", function()
+                        {
+                            $("#feedback").before('<h3>Fail!</h3><p>Massive problem.</p>'); 
+                        });
+                    }
+                }
+            );
+        }
+        return false;
+    });                        
+});
 
 /**
  * AutoComplete Field - JavaScript Code
@@ -150,7 +221,7 @@ function autoComplete(lastValue)
 // clear auto complete box
 function clearAutoComplete()
 {
-	acResultsDiv.html('');
+	acResultsDiv.html('--No Results--');
 	acResultsDiv.css("display","none");
 }
 
