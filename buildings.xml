@@ -1,33 +1,5 @@
 <?xml version="1.0" ?>
 <markers>
-  <marker category="building" code="UDB" name="1107 NE 45th Street (University District Building)"/>
-  <marker category="building" code="ATS" name="1209 N.E. 41ST STREET"/>
-  <marker category="building" code="AHO" name="1415 N.E. 45TH STREET (Alumni House)"/>
-  <marker category="building" code="OTS" name="1429 N.E. Boat Street"/>
-  <marker category="building" code="WSG" name="3710 Brooklyn Avenue N.E."/>
-  <marker category="building" code="WSP" name="3716 Brooklyn Avenue N.E."/>
-  <marker category="building" code="EK" name="3900/3902 UNIVERSITY WAY"/>
-  <marker category="building" code="IC2" name="3930 Brooklyn Avenue N.E."/>
-  <marker category="building" code="ADI" name="3937 15th Avenue N.E."/>
-  <marker category="building" code="EIC" name="3939 University Way N.E."/>
-  <marker category="building" code="DSC" name="3941 University Way N.E."/>
-  <marker category="building" code="ADA" name="3945 15th Avenue N.E."/>
-  <marker category="building" code="UTO" name="4001-7 University Way N.E."/>
-  <marker category="building" code="MSS" name="4034 12th Avenue N.E."/>
-  <marker category="building" code="AU" name="4038 12TH AVE NE"/>
-  <marker category="building" code="LSS" name="4042 12th Avenue N.E."/>
-  <marker category="building" code="AZ" name="4046 12TH AVE NE"/>
-  <marker category="building" code="OTT" name="4225 Roosevelt Way N.E. (Roosevelt I)"/>
-  <marker category="building" code="QUC" name="4245 Roosevelt Way N.E. (Roosevelt II)"/>
-  <marker category="building" code="UWTA" name="4328 BROOKLYN AVE NE (UW TOWER BUILDING A)"/>
-  <marker category="building" code="AAC" name="4516 University Way NE"/>
-  <marker category="building" code="AAB" name="4518 University Way N.E. (Arcade Building)"/>
-  <marker category="building" code="ZAK" name="4522 University Way NE"/>
-  <marker category="building" code="GLB" name="4534 University Way NE (Gelb Building)"/>
-  <marker category="building" code="REC" name="4535 Union Bay Place (Solid Waste Management Office)"/>
-  <marker category="building" code="BOW" name="4625 Union Bay Place"/>
-  <marker category="building" code="EHD" name="668 N. E. Northlake Way (Environmental Hlth Dept)"/>
-  <marker category="building" code="PRO" name="909 N.E. 43RD (WARREN BUILDING)"/>
   <marker category="building" code="ACC" name="Academic Computer Center"/>
   <marker category="building" code="ADL" name="Aerodynamics Laboratory"/>
   <marker category="building" code="AER" name="Aerospace and Engineering Research Building"/>
@@ -36,7 +8,7 @@
   <marker category="building" code="ARC" name="Architecture Hall"/>
   <marker category="building" code="ART" name="Art Building"/>
   <marker category="building" code="ATG" name="Atmospheric Sciences-Geophysics Building"/>
-  <marker category="building" code="RTB" name="BENJAMIN HALL INTERDISCIPLINARY RESEARCH BUILDING(R&amp;amp;T BLDG)"/>
+  <marker category="building" code="RTB" name="Benjamin Hall Interdisciplinary Research Building(R&amp;amp;T Bldg)"/>
   <marker category="building" code="BAG" name="Bagley Hall"/>
   <marker category="building" code="BLM" name="Balmer Hall"/>
   <marker category="building" code="BNS" name="Benson Hall"/>
@@ -48,7 +20,7 @@
   <marker category="building" code="BRA" name="Bryants Annex"/>
   <marker category="building" code="BRY" name="Bryants Building"/>
   <marker category="building" code="BMM" name="Burke Memorial-Washington State Museum"/>
-  <marker category="building" code="COL" name="COLLEGIANA"/>
+  <marker category="building" code="COL" name="Collegiana"/>
   <marker category="building" code="CNH" name="Canoe House"/>
   <marker category="building" code="CHCL" name="Center on Human Development and Disability Clinic"/>
   <marker category="building" code="CHSC" name="Center on Human Development and Disability School"/>
@@ -97,7 +69,7 @@
   <marker category="building" code="GA3" name="Guthrie Annex 3"/>
   <marker category="building" code="GA4" name="Guthrie Annex 4"/>
   <marker category="building" code="GTH" name="Guthrie Hall"/>
-  <marker category="building" code="HND" name="HENDERSON HALL"/>
+  <marker category="building" code="HND" name="Henderson Hall"/>
   <marker category="building" code="HGT" name="Haggett Hall"/>
   <marker category="building" code="HLL" name="Hall Health Center"/>
   <marker category="building" code="HNS" name="Hansee Hall"/>
@@ -107,7 +79,7 @@
   <marker category="building" code="HCK" name="Hitchcock Hall"/>
   <marker category="building" code="HPT" name="Hughes Penthouse Theatre"/>
   <marker category="building" code="HUT" name="Hutchinson Hall"/>
-  <marker category="building" code="IPF" name="Indoor Practice Facility (DEMPSEY INDOOR CENTER)"/>
+  <marker category="building" code="IPF" name="Indoor Practice Facility (Dempsey Indoor Center)"/>
   <marker category="building" code="IMA" name="Intramural Activities Building"/>
   <marker category="building" code="ISA" name="Isaacson Hall"/>
   <marker category="building" code="JHA" name="Johnson Annex A"/>
@@ -115,7 +87,7 @@
   <marker category="building" code="KNE" name="Kane Hall"/>
   <marker category="building" code="KIN" name="Kincaid Hall"/>
   <marker category="building" code="KIR" name="Kirsten Wnd Tunnel"/>
-  <marker category="building" code="LAN" name="LANDER HALL"/>
+  <marker category="building" code="LAN" name="Lander Hall"/>
   <marker category="building" code="LAVC" name="Laurel Village Building C"/>
   <marker category="building" code="LAVM" name="Laurel Village Building M"/>
   <marker category="building" code="LAVN" name="Laurel Village Building N"/>
@@ -129,11 +101,11 @@
   <marker category="building" code="LAVW" name="Laurel Village Building W"/>
   <marker category="building" code="LAVX" name="Laurel Village Building X"/>
   <marker category="building" code="LAVY" name="Laurel Village Building Y"/>
-  <marker category="building" code="LA1" name="Lewis Annex 1 (A&amp;amp;S)"/>
-  <marker category="building" code="LA2" name="Lewis Annex 2 (A&amp;amp;S)"/>
+  <marker category="building" code="LA1" name="Lewis Annex 1 (A&amp;S)"/>
+  <marker category="building" code="LA2" name="Lewis Annex 2 (A&amp;S)"/>
   <marker category="building" code="LEW" name="Lewis Hall"/>
   <marker category="building" code="LOW" name="Loew Hall"/>
-  <marker category="building" code="MCR" name="MERCER HALL"/>
+  <marker category="building" code="MCR" name="Mercer Hall"/>
   <marker category="building" code="MKZ" name="Mackenzie Hall"/>
   <marker category="building" code="HSA" name="Magnuson Health Sciences Center A"/>
   <marker category="building" code="HSAA" name="Magnuson Health Sciences Center AA"/>
@@ -162,8 +134,8 @@
   <marker category="building" code="NRB" name="More Hall Annex"/>
   <marker category="building" code="MUE" name="Mueller Hall"/>
   <marker category="building" code="MUS" name="Music Building"/>
-  <marker category="building" code="NPC" name="NORTH PHYSICS LABORATORY (CYCLOTRON BUILDING)"/>
-  <marker category="building" code="NPS" name="NORTH PHYSICS LABORATORY (Cyclotron Shop)"/>
+  <marker category="building" code="NPC" name="North Physics Laboratory (Cyclotron Building)"/>
+  <marker category="building" code="NPS" name="North Physics Laboratory (Cyclotron Shop)"/>
   <marker category="building" code="NTC" name="Nordstrom Tennis Center"/>
   <marker category="building" code="NPV" name="North Physics Laboratory (Van de Graaff Accelerator)"/>
   <marker category="building" code="NLB" name="Northlake Building"/>
@@ -177,7 +149,7 @@
   <marker category="building" code="OUG" name="Odegaard Undergraduate Library"/>
   <marker category="building" code="PDL" name="Padelford Hall"/>
   <marker category="building" code="PAR" name="Parrington Hall"/>
-  <marker category="building" code="CSE" name="Paul G. Allen Center for Computer Science &amp;amp; Engineering"/>
+  <marker category="building" code="CSE" name="Paul G. Allen Center for Computer Science &amp; Engineering"/>
   <marker category="building" code="PPO" name="Physical Plant Office Building"/>
   <marker category="building" code="PAA" name="Physics-Astronomy Building"/>
   <marker category="building" code="PAB" name="Physics-Astronomy Building"/>
@@ -203,12 +175,12 @@
   <marker category="building" code="RVC" name="Roosevelt Commons"/>
   <marker category="building" code="RSN" name="Rosen Building"/>
   <marker category="building" code="RUS" name="Russian House"/>
-  <marker category="building" code="SOCC" name="SOUTH CAMPUS CENTER"/>
-  <marker category="building" code="SR2" name="STADIUM CONCESSION"/>
-  <marker category="building" code="SR3" name="STADIUM CONCESSION"/>
-  <marker category="building" code="SR4" name="STADIUM CONCESSION"/>
-  <marker category="building" code="SR6" name="STADIUM CONCESSION"/>
-  <marker category="building" code="SR9" name="STADIUM CONCESSION"/>
+  <marker category="building" code="SOCC" name="South Campus Center"/>
+  <marker category="building" code="SR2" name="Stadium Concession"/>
+  <marker category="building" code="SR3" name="Stadium Concession"/>
+  <marker category="building" code="SR4" name="Stadium Concession"/>
+  <marker category="building" code="SR6" name="Stadium Concession"/>
+  <marker category="building" code="SR9" name="Stadium Concession"/>
   <marker category="building" code="URC" name="SW Maintenance Bldg"/>
   <marker category="building" code="SAV" name="Savery Hall"/>
   <marker category="building" code="SMZ" name="Schmitz Hall"/>
@@ -235,11 +207,11 @@
   <marker category="building" code="OBS" name="THEODOR JACOBSEN Observatory"/>
   <marker category="building" code="THO" name="Thomson Hall"/>
   <marker category="building" code="TSB" name="Transportation Services Building"/>
-  <marker category="building" code="FAC" name="UNIVERSITY OF WASHINGTON CLUB (Faculty Center)"/>
-  <marker category="building" code="UWTC" name="UNIVERSITY OF WASHINGTON TOWER BUILDING C"/>
-  <marker category="building" code="UWTO" name="UNIVERSITY OF WASHINGTON TOWER BUILDING O"/>
-  <marker category="building" code="UWTS" name="UNIVERSITY OF WASHINGTON TOWER BUILDING S"/>
-  <marker category="building" code="UWTT" name="UNIVERSITY OF WASHINGTON TOWER BUILDING T"/>
+  <marker category="building" code="FAC" name="University of Washington Club (Faculty Center)"/>
+  <marker category="building" code="UWTC" name="UW Tower Building C"/>
+  <marker category="building" code="UWTO" name="UW Tower Building O"/>
+  <marker category="building" code="UWTS" name="UW Tower Building S"/>
+  <marker category="building" code="UWTT" name="UW Tower Building T"/>
   <marker category="building" code="ADS" name="UW Technology"/>
   <marker category="building" code="UFA" name="University Facilities Annex 1"/>
   <marker category="building" code="UFB" name="University Facilities Building"/>
@@ -254,8 +226,8 @@
   <marker category="building" code="UMCC" name="University Medical Center,CC"/>
   <marker category="building" code="UWMC" name="University of Washington Medical Center"/>
   <marker category="building" code="UHF" name="Urban Horticulture Field House"/>
-  <marker category="building" code="BIOE" name="WILLIAM H. FOEGE Bioengineering"/>
-  <marker category="building" code="GNOM" name="WILLIAM H. FOEGE Genome Sciences"/>
+  <marker category="building" code="BIOE" name="William H. Foege Bioengineering"/>
+  <marker category="building" code="GNOM" name="William H. Foege Genome Sciences"/>
   <marker category="building" code="WAC" name="Waterfront Activities Center"/>
   <marker category="building" code="WRS" name="West Receiving Station"/>
   <marker category="building" code="WIL" name="Wilcox Hall"/>

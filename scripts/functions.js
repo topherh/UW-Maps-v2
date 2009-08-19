@@ -221,7 +221,8 @@ function autoComplete(lastValue)
 // clear auto complete box
 function clearAutoComplete()
 {
-	acResultsDiv.html('--No Results--');
+    //acSearchField.val('No Results');
+	acResultsDiv.html('');
 	acResultsDiv.css("display","none");
 }
 

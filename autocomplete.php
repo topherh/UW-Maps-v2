@@ -26,10 +26,12 @@ if (isset($_GET['part']) and $_GET['part'] != '')
     // We are only searching for the name by looking through all the results
     for ($x=0; $x<$markers->length; $x++)
     {
+        // Template: `Building Name (CODE)`
         $name = $markers->item($x)->getAttribute('name');
-        //$category = $markers->item($x)->getAttribute('category');
+        $code = $markers->item($x)->getAttribute('code');
+        $sName = $name . ' (' . $code . ')';
 
-        if ( strpos(strtolower($name), strtolower($_GET['part'])) === 0 )
+        if ( strpos(strtolower($sName), strtolower($_GET['part'])) !== false )
         {
             $results[] = $name;
         }

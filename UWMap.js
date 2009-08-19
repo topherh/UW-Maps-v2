@@ -56,8 +56,10 @@ function UWLocation(code, map, lat, lng, name, cat)
     this.lat = parseFloat(lat);
     this.lng = parseFloat(lng);
     this.point = new GLatLng(this.lat,this.lng);
+    this.points = null;
     this.url = null;
     this.marker = null;
+    this.overlay = null;
     this.buildingIcon = null;
     this.html = '<p>Loading..</p>';
     this.cssid = 'custom_info_window';
@@ -239,6 +241,11 @@ function UWLocationSet(map)
     }
     this.search = function(c,strQuery,strType)
     {
+        // if (strQuery == '')
+        // {
+        //     // Do something if we get a blank
+        //     document.getElementById('search-error').style.visibility = "visible";
+        // }
         // If we have a result, it's because
         // Someone already clicked
         if (this.result)
@@ -255,6 +262,10 @@ function UWLocationSet(map)
                     this.cat[c][i].center(17);
                     this.cat[c][i].openw();
                     this.result = i;
+                }
+                else
+                {
+                    // alert('No Search Results Found');
                 }
             }
             break;
@@ -386,12 +397,18 @@ function UWCampusMap()
     this.map.addControl(new GLargeMapControl());
     this.map.addControl(new GMapTypeControl());
 
-    // var m1 = new UWLocation('ME',this.map,47.6641,-122.31565,'ME','building');
+    // var m1 = new UWLocation('NW',this.map,47.663207,-122.324297,'NW','building');
     // m1.init();
     // m1.marker.show();
-    // var m2 = new UWLocation('ME',this.map,47.6465,-122.2881,'ME','building');
+    // var m2 = new UWLocation('SW',this.map,47.647322,-122.324175,'SW','building');
     // m2.init();
     // m2.marker.show();
+    // var m3 = new UWLocation('NE',this.map,47.661983,-122.283532,'NE','building');
+    // m3.init();
+    // m3.marker.show();
+    // var m4 = new UWLocation('SE',this.map,47.647322,-122.295812,'SE','building');
+    // m4.init();
+    // m4.marker.show();
 
     this.ulocset = new UWLocationSet(this.map);
     this.overlay = function()
