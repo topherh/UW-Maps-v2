@@ -37,31 +37,56 @@ for( $x=0; $x<$aLoc->length; $x++ )
         $aLocations = array();
         for ($j=0;$j<$aLoc->item($x)->childNodes->length;$j++)
         {
-            if ($aLoc->item($x)->childNodes->item($j)->hasChildNodes() == 1)
+            if (($aLoc->item($x)->childNodes->item($j)->nodeName == 'code') and ($aLoc->item($x)->childNodes->item($j)->nodeValue == $strCode))
             {
-                if ($aLoc->item($x)->childNodes->item($j)->nodeName != 'organizations')
-                    echo "<p>".$aLoc->item($x)->childNodes->item($j)->nodeName.' == '.$aLoc->item($x)->childNodes->item($j)->nodeValue."</p>";
-
-                // TODO: How much replication should we really have here?
-                // Location Key Value Pairs
-                $aLocations[$aLoc->item($x)->childNodes->item($j)->nodeName] = $aLoc->item($x)->childNodes->item($j)->nodeValue;
-                for ($i=0;$i<$aLoc->item($x)->childNodes->item($j)->childNodes->length;$i++)
+                echo "<h4>".$aLoc->item($x)->nodeName.'</h4>';
+                if ($aLoc->item($x)->childNodes->item($j)->hasChildNodes() == 1)
                 {
-                    if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName == 'organization')
-                        echo "<p>".$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName.' == '.$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeValue."</p>";
-                        ($name,$value) = split(' ',$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeValue);
-                        $aOrganizations[$name] = $value;
+                    if ($aLoc->item($x)->childNodes->item($j)->nodeName != 'organizations')
+                    {
+                        echo "<p>".$aLoc->item($x)->childNodes->item($j)->nodeName.' == '.$aLoc->item($x)->childNodes->item($j)->nodeValue."</p>";
+                    }
+
+                    // TODO: How much replication should we really have here?
+                    // Location Key Value Pairs
+                    $aLocations[$aLoc->item($x)->childNodes->item($j)->nodeName] = $aLoc->item($x)->childNodes->item($j)->nodeValue;
+                    for ($i=0;$i<$aLoc->item($x)->childNodes->item($j)->childNodes->length;$i++)
+                    {
+                        if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName == 'organization')
+                        {
+                            echo "<h5>".$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName.'</h5>';
+                            for ($k=0;$k<$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->length;$k++)
+                            {
+                                if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName != '#text')
+                                {
+                                    echo '<p>'.$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName .' == '.
+                                    $aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue.'</p>';
+                                    ## $orgname = '';
+                                    ## $orgurl = '';
+                                    ## if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName == 'url')
+                                    ## {
+                                    ##     $orgurl = $aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue;
+                                    ## }
+                                    ## if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName == 'name')
+                                    ## {
+                                    ##     $orgname = $aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue;
+                                    ## }
+                                    ## echo '<p>'.$orgname.'-----'.$orgurl.'</p>';
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
 
 
-        foreach ($aLocations as $key=>$value)
-        {
-            ## print "<p>Key: $key => Value: $value";
-        }
-        if ($x == 10)
-            exit;
+        ## foreach ($aLocations as $key=>$value)
+        ## {
+        ##     ## print "<p>Key: $key => Value: $value";
+        ## }
+        // if ($x == 10)
+        //     exit;
     
         // $aName =
         // $aAddress =
