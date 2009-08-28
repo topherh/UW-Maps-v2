@@ -26,41 +26,48 @@ $aLoc = $doc->getElementsByTagName("location");
 // $aOrg = $doc->getElementsByTagName("organizations");
 
 $pageURL = 'http://' . $_SERVER["SERVER_NAME"].'/maps/';
+$strPageContent = '';
 
 // We are only searching for the name by looking through all the results
 for( $x=0; $x<$aLoc->length; $x++ )
 {
     if ($strCode and $strCategory)
     {
-        // $aLoc->childNodes->item($x)->nodeValue;
-        $aOrganizations = array();
-        $aLocations = array();
-        for ($j=0;$j<$aLoc->item($x)->childNodes->length;$j++)
+        if (($aLoc->item($x)->childNodes->item(5)->nodeName == 'code') and ($aLoc->item($x)->childNodes->item(5)->nodeValue == $strCode))
         {
-            if (($aLoc->item($x)->childNodes->item($j)->nodeName == 'code') and ($aLoc->item($x)->childNodes->item($j)->nodeValue == $strCode))
+            // Location: "<h4>".$aLoc->item($x)->nodeName.'</h4>';
+            // $aLoc->childNodes->item($x)->nodeValue;
+            // $aOrganizations = array();
+            $aLocations = array();
+            for ($j=0;$j<$aLoc->item($x)->childNodes->length;$j++)
             {
-                echo "<h4>".$aLoc->item($x)->nodeName.'</h4>';
                 if ($aLoc->item($x)->childNodes->item($j)->hasChildNodes() == 1)
                 {
                     if ($aLoc->item($x)->childNodes->item($j)->nodeName != 'organizations')
                     {
-                        echo "<p>".$aLoc->item($x)->childNodes->item($j)->nodeName.' == '.$aLoc->item($x)->childNodes->item($j)->nodeValue."</p>";
+                        $strPageContent[$aLoc->item($x)->childNodes->item($j)->nodeName] = $aLoc->item($x)->childNodes->item($j)->nodeValue;
+                        // echo "<p>".$aLoc->item($x)->childNodes->item($j)->nodeName.' == '.$aLoc->item($x)->childNodes->item($j)->nodeValue."</p>";
                     }
 
                     // TODO: How much replication should we really have here?
                     // Location Key Value Pairs
                     $aLocations[$aLoc->item($x)->childNodes->item($j)->nodeName] = $aLoc->item($x)->childNodes->item($j)->nodeValue;
+                    $aOrgs = array();
                     for ($i=0;$i<$aLoc->item($x)->childNodes->item($j)->childNodes->length;$i++)
                     {
                         if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName == 'organization')
                         {
-                            echo "<h5>".$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName.'</h5>';
+                            // echo "<h5>".$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName.'</h5>';
                             for ($k=0;$k<$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->length;$k++)
                             {
                                 if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName != '#text')
                                 {
-                                    echo '<p>'.$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName .' == '.
-                                    $aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue.'</p>';
+                                    $aOrg = '';
+                                    // TODO: Org Names
+                                    $aOrg[$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName] = 
+                                        $aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue;
+                                    ## echo '<p>'.$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName .' == '.
+                                    ## $aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue.'</p>';
                                     ## $orgname = '';
                                     ## $orgurl = '';
                                     ## if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName == 'url')
@@ -72,10 +79,12 @@ for( $x=0; $x<$aLoc->length; $x++ )
                                     ##     $orgname = $aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue;
                                     ## }
                                     ## echo '<p>'.$orgname.'-----'.$orgurl.'</p>';
+                                    array_push($aOrgs, $aOrg);
                                 }
                             }
                         }
                     }
+                    $strPageContent['orgs'] = $aOrgs;
                 }
             }
         }
@@ -104,51 +113,55 @@ for( $x=0; $x<$aLoc->length; $x++ )
         ## $img = $aImg->item($x)->nodeValue;
         ## $aOrgs = $aOrg->item($x);
         // TODO: finish this section //
-    
-        if (($code == $strCode) and ($category == $strCategory))
-        {
-            // If we have a landmark, then what should we do here?
-            // The url is taken care of now - don't worry about it
-            //$image = 'src="img/' . ($img ? 'landmarks/'.$img : 'bldg/'.strtolower($code).'.jpg'). '"';
-
-            $title = '<h2>' . $name .( $img ? '' : ' ('.$code.')' ). '</h2>' ;
-            $addrs = $img ? '' : '<p>Address: ' . $address . '</p>';
- 
-            echo $title .
-            '<div id="popLeft">' .
-            '<div id="scrollText">';
-            // TODO: What should be the or else behavior?
-            if ($aOrgs)
-            {
-                echo '<p>What you can find here:</p>';
-                echo '<ul>';
-
-                ## $child = $aOrgs->first_child();
-                ## 
-                ## while ($child) {
-                ##    echo '<li><a href="'.($child->first_child()).'" title="'.($child->next_sibling()).'">'.($child->next_sibling()).'</a></li>';
-                ##    $child = $child->next_sibling();
-                ## }
-
-                // for ($x=0; $x<$aOrgs->length; $x++)
-                // {
-                //     $aOrgs->childNodes->item($x)->nodeValue
-
-                // for ($aOrgs as $sOrg)
-                // {
-                //     echo '<li><a href="'.().'" title="'.().'">'.().'</a></li>';
-                // }
-                echo '</ul>';
-            }
-            echo '</div>' . '</div>' . 
-            '<div id="popRight">' .
-            '<img class="photoBorder" '.$image.' alt="'.
-            $name . '" title="' . $name . '" width="240" height="180" />' . 
-            $addrs .
-            '<p style="padding-left:15px">Share: <input name="embed" value="' .
-            $pageURL . "?location=" . $code . "\" onclick=\"this.focus();this.select();\" size=\"30\" /></p>" . 
-            '</div>';
-        }
     }
 }
+
+// Let's go with some variables here, make things easier
+$strName = $strPageContent['name'];
+$strCode = $strPageContent['code'];
+$strAddress = $strPageContent['address'];
+$strImg = $strPageContent['img'];
+$strLng = $strPageContent['lng'];
+$strLat = $strPageContent['lat'];
+$strCat = $strPageContent['category'];
+$aOrgs = $strPageContent['orgs'];
+
+// We are doing the check up top, should be ok for now
+// if (($code == $strCode) and ($category == $strCategory))
+// {
+    // If we have a landmark, then what should we do here?
+    // The url is taken care of now - don't worry about it
+    $image = 'src="strImg/' . ($strImg ? 'landmarks/'.$strImg : 'bldg/'.strtolower($strCode).'.jpg'). '"';
+    $title = '<h2>' . $strName .( $strImg ? '' : ' ('.$strCode.')' ). '</h2>' ;
+    $addrs = $strImg ? '' : '<p>Address: ' . $strAddress . '</p>';
+
+    // var_dump($aOrgs);
+
+    // Now go forth and prosper
+    echo $title.
+    '<div id="popLeft">' .
+    '<div id="scrollText">';
+    // TODO: What should be the or else behavior?
+    if ($aOrgs)
+    {
+        echo '<p>What you can find here:</p>';
+        echo '<ul>';
+
+        foreach ($aOrgs as $sOrg)
+        {
+            // Total Cheat
+            if ($sOrg['name'] != '')
+                echo '<li><a href="'.$sOrg['url'].'" title="'.$sOrg['name'].'">'.$sOrg['name'].'</a></li>';
+        }
+        echo '</ul>';
+    }
+    echo '</div>' . '</div>' . 
+    '<div id="popRight">' .
+    '<img class="photoBorder" '.$image.' alt="'.
+    $name . '" title="' . $name . '" width="240" height="180" />' . 
+    $addrs .
+    '<p style="padding-left:15px">Share: <input name="embed" value="' .
+    $pageURL . "?location=" . $code . "\" onclick=\"this.focus();this.select();\" size=\"30\" /></p>" . 
+    '</div>';
+// }
 ?>
