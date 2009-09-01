@@ -12,7 +12,8 @@ $strCode = $_GET['code'];
 // Fixed the if statement later with error checking
 $doc = new DOMDocument();
 // SHould think about this - so much from one file
-$doc->load( 'locations.xml' );
+$doc->load( 'iphone-app.xml' );
+// $doc->load( 'markers.xml' );
 
 $aLoc = $doc->getElementsByTagName("location");
 // $aLoc->childNodes->item(0)->nodeValue
@@ -33,41 +34,42 @@ for( $x=0; $x<$aLoc->length; $x++ )
 {
     if ($strCode and $strCategory)
     {
-        if (($aLoc->item($x)->childNodes->item(5)->nodeName == 'code') and ($aLoc->item($x)->childNodes->item(5)->nodeValue == $strCode))
+        //if ((trim($aLoc->item($x)->childNodes->item(1)->nodeName) == 'code') and (trim($aLoc->item($x)->childNodes->item(1)->nodeValue) == $strCode))
+        if ((trim($aLoc->item($x)->childNodes->item(5)->nodeName) == 'code') and (trim($aLoc->item($x)->childNodes->item(5)->nodeValue) == $strCode))
         {
-            // Location: "<h4>".$aLoc->item($x)->nodeName.'</h4>';
+            // Location: echo "<h4>".$aLoc->item($x)->nodeName.'</h4>';
             // $aLoc->childNodes->item($x)->nodeValue;
             // $aOrganizations = array();
             $aLocations = array();
+            $aOrgs = array();
             for ($j=0;$j<$aLoc->item($x)->childNodes->length;$j++)
             {
                 if ($aLoc->item($x)->childNodes->item($j)->hasChildNodes() == 1)
                 {
-                    if ($aLoc->item($x)->childNodes->item($j)->nodeName != 'organizations')
+                    if (trim($aLoc->item($x)->childNodes->item($j)->nodeName) != 'organizations')
                     {
-                        $strPageContent[$aLoc->item($x)->childNodes->item($j)->nodeName] = $aLoc->item($x)->childNodes->item($j)->nodeValue;
-                        // echo "<p>".$aLoc->item($x)->childNodes->item($j)->nodeName.' == '.$aLoc->item($x)->childNodes->item($j)->nodeValue."</p>";
+                        $strPageContent[trim($aLoc->item($x)->childNodes->item($j)->nodeName)] = trim($aLoc->item($x)->childNodes->item($j)->nodeValue);
+                        // echo "<p>".trim($aLoc->item($x)->childNodes->item($j)->nodeName).' == '.trim($aLoc->item($x)->childNodes->item($j)->nodeValue)."</p>";
                     }
 
                     // TODO: How much replication should we really have here?
                     // Location Key Value Pairs
-                    $aLocations[$aLoc->item($x)->childNodes->item($j)->nodeName] = $aLoc->item($x)->childNodes->item($j)->nodeValue;
-                    $aOrgs = array();
+                    $aLocations[trim($aLoc->item($x)->childNodes->item($j)->nodeName)] = trim($aLoc->item($x)->childNodes->item($j)->nodeValue);
                     for ($i=0;$i<$aLoc->item($x)->childNodes->item($j)->childNodes->length;$i++)
                     {
-                        if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName == 'organization')
+                        if (trim($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName) == 'organization')
                         {
                             // echo "<h5>".$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->nodeName.'</h5>';
                             for ($k=0;$k<$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->length;$k++)
                             {
-                                if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName != '#text')
+                                if (trim($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName) != '#text')
                                 {
                                     $aOrg = '';
                                     // TODO: Org Names
-                                    $aOrg[$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName] = 
-                                        $aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue;
-                                    ## echo '<p>'.$aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName .' == '.
-                                    ## $aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue.'</p>';
+                                    $aOrg[trim($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName)] = 
+                                        trim($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue);
+                                    ## echo '<p>'.trim($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName).' == '.
+                                    ## trim($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeValue).'</p>';
                                     ## $orgname = '';
                                     ## $orgurl = '';
                                     ## if ($aLoc->item($x)->childNodes->item($j)->childNodes->item($i)->childNodes->item($k)->nodeName == 'url')
@@ -84,11 +86,10 @@ for( $x=0; $x<$aLoc->length; $x++ )
                             }
                         }
                     }
-                    $strPageContent['orgs'] = $aOrgs;
                 }
             }
+            $strPageContent['orgs'] = $aOrgs;
         }
-
 
         ## foreach ($aLocations as $key=>$value)
         ## {
@@ -123,6 +124,7 @@ $strAddress = $strPageContent['address'];
 $strImg = $strPageContent['img'];
 $strLng = $strPageContent['lng'];
 $strLat = $strPageContent['lat'];
+$strInfo = $strPageContent['info'];
 $strCat = $strPageContent['category'];
 $aOrgs = $strPageContent['orgs'];
 
@@ -131,9 +133,13 @@ $aOrgs = $strPageContent['orgs'];
 // {
     // If we have a landmark, then what should we do here?
     // The url is taken care of now - don't worry about it
-    $image = 'src="strImg/' . ($strImg ? 'landmarks/'.$strImg : 'bldg/'.strtolower($strCode).'.jpg'). '"';
-    $title = '<h2>' . $strName .( $strImg ? '' : ' ('.$strCode.')' ). '</h2>' ;
+    $image = 'src="' . ($strImg ? $strImg : 'http://www.washington.edu/maps/img/bldg/'.strtolower($strCode).'.jpg'). '"';
+    // $image = 'src="'.$strImg.'"';
+    // $title = '<h2>' . $strName .( $strImg ? '' : ' ('.$strCode.')' ). '</h2>' ;
+    $title = '<h2>' . $strName .( $strCat=='landmarks' ? '' : ' ('.$strCode.')' ). '</h2>' ;
+    // $title = '<h2>' . $strName .' ('.$strCode.')' . '</h2>' ;
     $addrs = $strImg ? '' : '<p>Address: ' . $strAddress . '</p>';
+    $name = $strName;
 
     // var_dump($aOrgs);
 
@@ -155,13 +161,17 @@ $aOrgs = $strPageContent['orgs'];
         }
         echo '</ul>';
     }
+    else if ($strInfo)
+    {
+        echo '<p>'.$strInfo.'</p>';
+    }
     echo '</div>' . '</div>' . 
     '<div id="popRight">' .
     '<img class="photoBorder" '.$image.' alt="'.
     $name . '" title="' . $name . '" width="240" height="180" />' . 
     $addrs .
     '<p style="padding-left:15px">Share: <input name="embed" value="' .
-    $pageURL . "?location=" . $code . "\" onclick=\"this.focus();this.select();\" size=\"30\" /></p>" . 
+    $pageURL . "?location=" . $strCode . "\" onclick=\"this.focus();this.select();\" size=\"30\" /></p>" . 
     '</div>';
 // }
 ?>

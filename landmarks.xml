@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<locations>
+  <location>
+    <name>
+      Drumheller Fountain
+    </name>
+    <code>
+      LNDMK-0
+    </code>
+    <category>
+      landmarks
+    </category>
+    <info>
+      Drumheller Fountain, in the center of Frosh Pond, was a gift from Regent Joseph Drumheller for the university's centennial celebration in 1961. The fountain has built-in lighting and three banks of jets. The center jet can shoot water to a height of 100 feet, while the two surrounding rings of jets gush water slightly outward from 10 to 30 feet.
+    </info>
+    <geocode>
+      <lng>-122.30787</lng>
+      <lat>47.65383</lat>
+    </geocode>
+    <img>
+      http://www.washington.edu/maps/img/landmarks/fountain.jpg
+    </img>
+  </location>
+  <location>
+    <name>
+      Quad
+    </name>
+    <code>
+      LNDMK-1
+    </code>
+    <category>
+      landmarks
+    </category>
+    <info>
+      Cherry trees on the Liberal Arts Quadrangle were first planted on land that is now the approach to the Evergreen Point Floating Bridge. They were rescued during construction and moved to campus in 1964. The trees are nearing the end of their natural lifespan, and the Class of 1959 launched a campaign the Cherry Tree Project to replace them. (Photo by Stewart Hopkins)
+    </info>
+    <geocode>
+      <lng>-122.30724</lng>
+      <lat>47.65725</lat>
+    </geocode>
+    <img>
+      http://www.washington.edu/maps/img/landmarks/quad.jpg
+    </img>
+  </location>
+  <location>
+    <name>
+      Red Square
+    </name>
+    <code>
+     LNDMK-2 
+    </code>
+    <category>
+      landmarks
+    </category>
+    <info>
+      Red Square, officially Central Plaza, is a large open square on the campus of the University of Washington that serves as a hub for two of the University's major axes, connecting the campus's northern Liberal Arts Quadrangle ('The Quad') with the science and engineering buildings found on the lower campus. - Wikipedia
+    </info>
+    <geocode>
+      <lng>-122.30971</lng>
+      <lat>47.65578</lat>
+    </geocode>
+    <img>
+      http://www.washington.edu/maps/img/landmarks/redsquare.jpg
+    </img>
+  </location>
+  <location>
+    <name>
+      Rainier Vista
+    </name>
+    <code>
+      LNDMK-3 
+    </code>
+    <category>
+      landmarks
+    </category>
+    <info>
+      On a crisp winter day when the skies dry out and the sun sets early, Mount Rainier turns into a pink pyramid floating over the city of Seattle. It is dusk, what Hollywood cinematographers call the 'magic hour,' and it is indeed magic if you linger on the steps leading from 'Red Square' to Rainier Vista. Before you hovers a 14,411-foot mass of snow and rock, and the rare clarity of the air makes it seem as if you could reach out and touch a glacier. Almost any time the mountain is 'out' is a signature moment in the lives of students, faculty and staff at the UW. The view is without doubt the natural icon of the University of Washington the image burned into our brains that we will never forget. It wasn't always going to be this way. John C. Olmsted, commissioned to draw up a campus plan in 1904, may not have seen the mountain during his first visit. His original scheme, a jumble of academic buildings, lacked any Rainier Vista. But chance favored the UW. When Olmsted returned to draw plans for a 1909 exposition held on our campus, the mountain may have been out. This time Olmsted saw the potential of a grand promenade with Mount Rainier as its focal point. His idea became the center point of the Alaska-Yukon-Pacific Exposition and has remained through every turn of campus development. A century later, we still have the same excitement, and the same view, that he did when he created Rainier Vista.  Tom Griffin, Columns Magazine (Photo by Mary Levin / UW Photography)
+    </info>
+    <geocode>
+      <lng>-122.30715</lng>
+      <lat>47.65292</lat>
+    </geocode>
+    <img>
+      http://www.washington.edu/maps/img/landmarks/vista.jpg
+    </img>
+  </location>
+  <location>
+    <name>
+      Columns and Sylvan Theater
+    </name>
+    <code>
+      LNDMK-4
+    </code>
+    <category>
+      landmarks
+    </category>
+    <info>
+      A low, stone stairway vanishing into the trees leads to the Sylvan Theater, the site of early-day graduation ceremonies. Since then, weddings, plays, banquets, and other happy occurrences such as squirrel watching, sunbathing, and studying have taken place here. This tree-enclosed hideaway features a grassy stage set with the four white columns that once graced the front stoop of the original university building. In 1908, when the original structure was about to be razed, Edmond S. Meany--head of the History Department and one of the university's first graduates--sought to save the old building by having it moved to the new campus. Eventually, the hand-fluted cedar columns were preserved and erected at the new site by the Class of 1911. Sentimental Edmond Meany and his colleague Dean Herbert T. Condon dubbed the Ionic pillars 'Loyalty,' 'Industry,' 'Faith,' and 'Efficiency,' the first letters spelling 'LIFE.' (Photo by Mary Levin / UW Photography)
+    </info>
+    <geocode>
+      <lng>-122.30611</lng>
+      <lat>47.65273</lat>
+    </geocode>
+    <img>
+      http://www.washington.edu/maps/img/landmarks/washingtonstatue.jpg
+    </img>
+  </location>
+</locations>
+

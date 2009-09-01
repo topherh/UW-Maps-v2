@@ -55,39 +55,11 @@ $loc = $_GET['location'];
         {
             cmap = new UWCampusMap();
 
-            var polygon = new GPolygon([
-            new GLatLng(47.655079,-122.308318),
-            new GLatLng(47.655281,-122.307681),
-            new GLatLng(47.654503,-122.307175),
-            new GLatLng(47.654438,-122.307388),
-            new GLatLng(47.654523,-122.307445),
-            new GLatLng(47.654406,-122.307813),
-            new GLatLng(47.654509,-122.307890),
-            new GLatLng(47.654486,-122.307964),
-            new GLatLng(47.654521,-122.307889),
-            new GLatLng(47.654520,-122.307979),
-            new GLatLng(47.654552,-122.307918),
-            new GLatLng(47.654566,-122.308002),
-            new GLatLng(47.655079,-122.308318)
-            ],"#00FF00",1,1,"#00FF00",1);
-            var campusmap = this.campusmap;
-            GEvent.addListener(polygon, 'mouseover', function(campusmap, point)
-            {
-                this.setFillStyle({fillColor:'#FF0000', fillOpacity:1});
-                this.setStrokeStyle({strokeColor:'#FF0000', strokeOpacity:1});
-            });
-            // GEvent.addListener(polygon, 'mouseout', function(campusmap, point)
-            // {
-            //     GLog.write('Mouseout Event');
-            //     this.setFillStyle({fillColor:'#333333', fillOpacity:0.8})
-            // });
-
-            GDownloadUrl("markers.xml", function(doc)
+            GDownloadUrl("locations.xml", function(doc)
             {
                 var xmlDoc = GXml.parse(doc);
                 cmap.ulocset.load(xmlDoc);
             });
-            cmap.map.addOverlay(polygon);
 
             if (loc)
             {
@@ -99,11 +71,11 @@ $loc = $_GET['location'];
                 cmap.center(16);
             }
 
-            // var campusmap = this.campusmap;
-            // GEvent.addListener(cmap.map, 'click', function(campusmap, point)
-            // {
-            //     cmap.ulocset.locate(point);
-            // });
+            var campusmap = this.campusmap;
+            GEvent.addListener(cmap.map, 'click', function(campusmap, point)
+            {
+                cmap.ulocset.locate(point);
+            });
         }
         else
         {

@@ -16,7 +16,7 @@ if (isset($_GET['part']) and $_GET['part'] != '')
 {
     // Grab our categories XML document and prepare for parsing
     $doc = new DOMDocument();
-    $doc->load( 'buildings.xml' );
+    $doc->load( 'locations.xml' );
 
     $markers = $doc->getElementsByTagName( "marker" );
 
@@ -29,11 +29,15 @@ if (isset($_GET['part']) and $_GET['part'] != '')
         // Template: `Building Name (CODE)`
         $name = $markers->item($x)->getAttribute('name');
         $code = $markers->item($x)->getAttribute('code');
-        $sName = $name . ' (' . $code . ')';
-
-        if ( strpos(strtolower($sName), strtolower($_GET['part'])) !== false )
+        $category = $markers->item($x)->getAttribute('category');
+        if ($category == 'building')
         {
-            $results[] = $name;
+            $sName = $name . ' (' . $code . ')';
+
+            if ( strpos(strtolower($sName), strtolower($_GET['part'])) !== false )
+            {
+                $results[] = $name;
+            }
         }
     }
 
