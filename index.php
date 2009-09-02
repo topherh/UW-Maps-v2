@@ -55,7 +55,7 @@ $loc = $_GET['location'];
         {
             cmap = new UWCampusMap();
 
-            GDownloadUrl("locations.xml", function(doc)
+            GDownloadUrl("markers.original.xml", function(doc)
             {
                 var xmlDoc = GXml.parse(doc);
                 cmap.ulocset.load(xmlDoc);
@@ -98,10 +98,17 @@ $loc = $_GET['location'];
          OnLoad();
     }
     //]]>
+    // Start the loading process
+    window.unload = function()
+    {
+        map2=null;
+        GUnload();
+    }
+    //]]>
     </script>
 
 </head>
-<body onunload="map2=null;GUnload();"> 
+<body>
 <!-- Google Analytics -->
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
