@@ -16,7 +16,7 @@ if (isset($_GET['part']) and $_GET['part'] != '')
 {
     // Grab our categories XML document and prepare for parsing
     $doc = new DOMDocument();
-    $doc->load( 'locations.xml' );
+    $doc->load( 'markers.xml' );
 
     $markers = $doc->getElementsByTagName( "marker" );
 

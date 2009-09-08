@@ -135,6 +135,7 @@ function UWLocation(code, map, lat, lng, name, cat)
 function UWLocationSet(map)
 {
     this.result = null;
+    this.error = document.getElementById('search-error');
     this.cat = new Array();
 
     // All Known Categories - statically
@@ -241,11 +242,12 @@ function UWLocationSet(map)
     }
     this.search = function(c,strQuery,strType)
     {
-        // if (strQuery == '')
-        // {
-        //     // Do something if we get a blank
-        //     document.getElementById('search-error').style.visibility = "visible";
-        // }
+        //if ((strQuery == null) || (strQuery == ''))
+        //{
+        //    // Do something if we get a blank
+        //    this.error.innerText = 'Search Area Blank';
+        //    this.error.textContent = 'Search Area Blank';
+        //}
         // If we have a result, it's because
         // Someone already clicked
         if (this.result)
@@ -258,6 +260,7 @@ function UWLocationSet(map)
             {
                 if (this.cat[c][i].name.toLowerCase() == strQuery.toLowerCase())
                 {
+                    this.error.style.display = "none";
                     this.cat[c][i].init();
                     this.cat[c][i].center(17);
                     this.cat[c][i].openw();
@@ -265,7 +268,8 @@ function UWLocationSet(map)
                 }
                 else
                 {
-                    // alert('No Search Results Found');
+                    this.error.innerText = 'No Search Results';
+                    this.error.textContent = 'No Search Results';
                 }
             }
             break;

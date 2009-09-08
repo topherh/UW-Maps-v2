@@ -33,10 +33,11 @@ $loc = $_GET['location'];
     <!-- Google Includes -->
     
     <!-- Shared JS code -->
-    <script type="text/javascript" src="scripts/jquery.json-min.js"></script>
-    <script type="text/javascript" src="scripts/extinfowindow.js"></script>
-    <script type="text/javascript" src="scripts/functions.js"></script>
-    <script type="text/javascript" src="UWMap.js"></script>
+    <script type="text/javascript" language="Javascript" src="scripts/jquery.json-min.js"></script>
+    <script type="text/javascript" language="Javascript" src="scripts/extinfowindow.js"></script>
+    <script type="text/javascript" language="Javascript" src="scripts/functions.js"></script>
+    <script type="text/javascript" language="Javascript" src="scripts/jquery.dimensions.pack.js"></script>
+    <script type="text/javascript" language="Javascript" src="UWMap.js"></script>
 
     <script type="text/javascript">
     //<![CDATA[
@@ -158,17 +159,17 @@ pageTracker._trackPageview();
           	<div id="dotted">
                 <div class="subTabs">
                     <ul class="tabNavigation">
-                        <li><a href="#search" id="searchTab" onclick="pageTracker._trackPageview('/maps-searchtab');"></a></li>
-                        <li><a href="#browse" id="browseTab" onclick="pageTracker._trackPageview('/maps-browsetab');"></a></li>
+                        <li><a href="#search" id="searchTab" onclick="pageTracker._trackPageview('/maps/index-searchtab');"></a></li>
+                        <li><a href="#browse" id="browseTab" onclick="pageTracker._trackPageview('/maps/index-browsetab');"></a></li>
                     </ul>
                     <br style="clear:both" />
                     <div id="search">
                         <input name="searchField" type="text" id="searchField" />
-                        <input value="Go" type="submit" onclick="cmap.ulocset.search('building',document.getElementById('searchField').value);pageTracker._trackPageview('/maps-browse');" />
+                        <input id="searchgo" value="Go" type="submit" onclick="cmap.ulocset.search('building',document.getElementById('searchField').value);pageTracker._trackPageview('/maps/index-search');" />
                     </div>
                     <div id="browse">
                         <form id="browseform">
-                            <select name="buildingList" size="1" onclick="cmap.ulocset.search('building',this.value,'code');pageTracker._trackPageview('/maps-search');" class="results-label" id="buildingList">
+                            <select name="buildingList" size="1" onclick="cmap.ulocset.search('building',this.value,'code');pageTracker._trackPageview('/maps/index-browse');" class="results-label" id="buildingList">
                                 <option value="" selected="selected">Select a building...</option>
 <?php
     // Grab our categories XML document and prepare for parsing
@@ -189,20 +190,20 @@ pageTracker._trackPageview();
                         </form>
                     </div>
                 </div>	
-            <p><span id="search-error" class="error">Search Area Blank</span></p>
+            <p><span id="search-error" class="error"></span></p>
     
                 <h3>Noteworthy Locations</h3>            
                                
                 <ul>
-                    <li><a id="fComputing" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="computingbox" onclick="boxclick(this,'computing');pageTracker._trackPageview('/maps-computingbox');" />Computer Labs</label></a></li> 
-                    <li><a id="fFood" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food');pageTracker._trackPageview('/maps-foodbox');" />Food</label></a></li>
-                    <li><a id="fGatehouse" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="gatehousebox" onclick="boxclick(this,'gatehouse');pageTracker._trackPageview('/maps-gatehousebox');" />Gatehouses</label></a></li>
-                    <li><a id="fLandmarks" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="landmarksbox" onclick="boxclick(this,'landmarks');pageTracker._trackPageview('/maps-landmarksbox');" />Landmarks</label></a></li>  
-                    <li><a id="fLibrary" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="librarybox" onclick="boxclick(this,'library');pageTracker._trackPageview('/maps-librarybox');" />Libraries</label></a></li>  
-                    <li><a id="fVisitors" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="visitorsbox"  onclick="boxclick(this,'visitors');pageTracker._trackPageview('/maps-visitorsbox');" />Visitors Center</label></a></li> 
+                    <li><a id="fComputing" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="computingbox" onclick="boxclick(this,'computing');pageTracker._trackPageview('/maps/index-computingbox');" />Computer Labs</label></a></li> 
+                    <li><a id="fFood" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="foodbox" onclick="boxclick(this,'food');pageTracker._trackPageview('/maps/index-foodbox');" />Food</label></a></li>
+                    <li><a id="fGatehouse" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="gatehousebox" onclick="boxclick(this,'gatehouse');pageTracker._trackPageview('/maps/index-gatehousebox');" />Gatehouses</label></a></li>
+                    <li><a id="fLandmarks" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="landmarksbox" onclick="boxclick(this,'landmarks');pageTracker._trackPageview('/maps/index-landmarksbox');" />Landmarks</label></a></li>  
+                    <li><a id="fLibrary" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="librarybox" onclick="boxclick(this,'library');pageTracker._trackPageview('/maps/index-librarybox');" />Libraries</label></a></li>  
+                    <li><a id="fVisitors" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="visitorsbox"  onclick="boxclick(this,'visitors');pageTracker._trackPageview('/maps/index-visitorsbox');" />Visitors Center</label></a></li> 
                 </ul>
                   
-                <h3 class="reset"><a onclick="cmap.reset();pageTracker._trackPageview('/maps-reset');" href="#">RESET MAP</a></h3>
+                <h3 class="reset"><a onclick="cmap.reset();pageTracker._trackPageview('/maps/index-reset');" href="#">RESET MAP</a></h3>
             </div>
             <br />
     
