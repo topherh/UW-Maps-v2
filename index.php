@@ -1,5 +1,5 @@
 <?php
-$loc = $_GET['location'];
+$loc = $_GET['loc'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -208,6 +208,7 @@ pageTracker._trackPageview();
             </div>
             <br />
     
+            <input id="leave-feedback" name="leave-feedback" value="leave-feedback" type="submit" />
             <div id="feedback">
                 <form id="feedbackForm" action="/maps/" method="post"> 
                     <label for="email"><span class="feedback">Email: </span></label><input class="feedback-in" type="text" id="email" name="email" /> 
