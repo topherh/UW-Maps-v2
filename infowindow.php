@@ -34,7 +34,7 @@ for ($x=0; $x<$markers->length; $x++)
             #$image = 'src="img/' . ($img ? 'landmarks/'.$img : 'bldg/'.strtolower($code).'.jpg'). '"';
             $image = $img;
             $title = '<h2>' . $name .( $img ? '' : ' ('.$code.')' ). '</h2>' ;
-            $addrs = $img ? '' : '<p>Address: ' . $address . '</p>';
+            $addrs = $address ? '<p>Address: ' . $address . '</p>' : '';
 
             echo $title .
             '<div id="popLeft">' .
@@ -45,7 +45,8 @@ for ($x=0; $x<$markers->length; $x++)
             '<img class="photoBorder" src="'.$image.'" alt="'.
             $name . '" title="' . $name . '" width="240" height="180" />' . 
             $addrs .
-            '<p style="padding-left:15px">Share: <input name="embed" value="' .
+            '<p style="padding-left:15px">' .
+            'Share: <input id="copy-text-embed" name="embed" value="' .
             $pageURL . "?loc=" . $code. "\" size=\"30\" /></p>" . 
             '</div>';
         }
