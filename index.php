@@ -6,6 +6,7 @@ $loc = $_GET['location'];
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
     <title>University of Washington Campus Map</title>
     <link href="css/header.css" rel="stylesheet" type="text/css" />
     <link href="css/UWInfoWindow.css" type="text/css" rel="Stylesheet" media="screen" />
@@ -56,7 +57,7 @@ $loc = $_GET['location'];
         {
             cmap = new UWCampusMap();
 
-            GDownloadUrl("markers.original.xml", function(doc)
+            GDownloadUrl("markers.xml", function(doc)
             {
                 var xmlDoc = GXml.parse(doc);
                 cmap.ulocset.load(xmlDoc);
