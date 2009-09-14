@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <locations>
   <location>
     <name>3930 Brooklyn Avenue N.E.</name>
@@ -230,7 +230,7 @@
         <name>Department of Pharmacology</name>
       </organization>
       <organization>
-        <name>Espresso Cafe: Court Café</name>
+        <name>Espresso Cafe: Court Caf&#233;</name>
         <url>http://hfs.washington.edu/dining/location.aspx?id=243</url>
       </organization>
     </organizations>
@@ -790,7 +790,7 @@
   </location>
   <location>
     <name>Johnson Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>JHN</code>
     <img>http://www.washington.edu/maps/img/bldg/jhn.jpg</img>
     <geocode>
@@ -812,7 +812,7 @@
   </location>
   <location>
     <name>Atmospheric Sciences-Geophysics Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>ATG</code>
     <img>http://www.washington.edu/maps/img/bldg/atg.jpg</img>
     <geocode>
@@ -834,7 +834,7 @@
   </location>
   <location>
     <name>Plant Operations Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>POB</code>
     <img>http://www.washington.edu/maps/img/bldg/pob.jpg</img>
     <geocode>
@@ -883,7 +883,7 @@
   </location>
   <location>
     <name>Power Plant</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PWR</code>
     <img>http://www.washington.edu/maps/img/bldg/pwr.jpg</img>
     <geocode>
@@ -896,7 +896,7 @@
   </location>
   <location>
     <name>Mechanical Engineering Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MEB</code>
     <img>http://www.washington.edu/maps/img/bldg/meb.jpg</img>
     <geocode>
@@ -918,7 +918,7 @@
   </location>
   <location>
     <name>Engineering Annex</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>EGA</code>
     <img>http://www.washington.edu/maps/img/bldg/ega.jpg</img>
     <geocode>
@@ -940,7 +940,7 @@
   </location>
   <location>
     <name>Physics-Astronomy Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PAB</code>
     <img>http://www.washington.edu/maps/img/bldg/pab.jpg</img>
     <geocode>
@@ -1037,7 +1037,7 @@
         <name>UW Medicine</name>
       </organization>
       <organization>
-        <name>Espresso Cafe: Tower Café</name>
+        <name>Espresso Cafe: Tower Caf&#233;</name>
         <url>http://hfs.washington.edu/dining/location.aspx?id=2808</url>
       </organization>
     </organizations>
@@ -1106,7 +1106,7 @@
   </location>
   <location>
     <name>Waterfront Activities Center</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>WAC</code>
     <img>http://www.washington.edu/maps/img/bldg/wac.jpg</img>
     <geocode>
@@ -1155,7 +1155,7 @@
   </location>
   <location>
     <name>Bryants Annex</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>BRA</code>
     <img>http://www.washington.edu/maps/img/bldg/bra.jpg</img>
     <geocode>
@@ -1222,7 +1222,7 @@
   </location>
   <location>
     <name>Guggenheim Annex</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>GUA</code>
     <img>http://www.washington.edu/maps/img/bldg/gua.jpg</img>
     <geocode>
@@ -1274,7 +1274,7 @@
       <lat>47.655519</lat>
     </geocode>
     <grid>10-F</grid>
-    <category>building</category>
+    <category>1032</category>
     <organizations>
       <organization>
         <url>http://www.meany.org/</url>
@@ -1345,7 +1345,7 @@
   </location>
   <location>
     <name>Corporation Yard Buildings</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CYB</code>
     <img>http://www.washington.edu/maps/img/bldg/cyb.jpg</img>
     <geocode>
@@ -1358,7 +1358,7 @@
   </location>
   <location>
     <name>North Physics Laboratory (Cyclotron Shop)</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>NPS</code>
     <img>http://www.washington.edu/maps/img/bldg/nps.jpg</img>
     <geocode>
@@ -1376,7 +1376,7 @@
   </location>
   <location>
     <name>Environmental Safety Storage Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>ESB</code>
     <img>http://www.washington.edu/maps/img/bldg/esb.jpg</img>
     <geocode>
@@ -1622,7 +1622,7 @@
   </location>
   <location>
     <name>Paul G. Allen Center For Computer Science &amp; Engineering</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CSE</code>
     <img>http://www.washington.edu/maps/img/bldg/cse.jpg</img>
     <geocode>
@@ -1746,7 +1746,7 @@
   </location>
   <location>
     <name>Denny Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>DEN</code>
     <img>http://www.washington.edu/maps/img/bldg/den.jpg</img>
     <geocode>
@@ -1803,7 +1803,7 @@
         <name>H Hughes Medical Institute</name>
       </organization>
       <organization>
-        <name>Espresso Cafe: Vista Café</name>
+        <name>Espresso Cafe: Vista Caf&#233;</name>
         <url>http://hfs.washington.edu/dining/location.aspx?id=1266</url>
       </organization>
     </organizations>
@@ -1828,7 +1828,7 @@
   </location>
   <location>
     <name>Plant Operations Annex 7 (Modular)</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>OR1</code>
     <img>http://www.washington.edu/maps/img/bldg/or1.jpg</img>
     <geocode>
@@ -1841,7 +1841,7 @@
   </location>
   <location>
     <name>Raitt Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>RAI</code>
     <img>http://www.washington.edu/maps/img/bldg/rai.jpg</img>
     <geocode>
@@ -1893,7 +1893,7 @@
   </location>
   <location>
     <name>Anderson Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>AND</code>
     <img>http://www.washington.edu/maps/img/bldg/and.jpg</img>
     <geocode>
@@ -1911,7 +1911,7 @@
   </location>
   <location>
     <name>Mary Gates Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MGH</code>
     <img>http://www.washington.edu/maps/img/bldg/mgh.jpg</img>
     <geocode>
@@ -1969,7 +1969,7 @@
   </location>
   <location>
     <name>Kirsten Wnd Tunnel</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>KIR</code>
     <img>http://www.washington.edu/maps/img/bldg/kir.jpg</img>
     <geocode>
@@ -1987,7 +1987,7 @@
   </location>
   <location>
     <name>Smith Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>SMI</code>
     <img>http://www.washington.edu/maps/img/bldg/smi.jpg</img>
     <geocode>
@@ -2021,7 +2021,7 @@
   </location>
   <location>
     <name>Gowen Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>GWN</code>
     <img>http://www.washington.edu/maps/img/bldg/gwn.jpg</img>
     <geocode>
@@ -2059,7 +2059,7 @@
   </location>
   <location>
     <name>Art Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>ART</code>
     <img>http://www.washington.edu/maps/img/bldg/art.jpg</img>
     <geocode>
@@ -2085,7 +2085,7 @@
   </location>
   <location>
     <name>Botany Greenhouse</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>BGH</code>
     <img>http://www.washington.edu/maps/img/bldg/bgh.jpg</img>
     <geocode>
@@ -2103,7 +2103,7 @@
   </location>
   <location>
     <name>Student Union Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>HUB</code>
     <img>http://www.washington.edu/maps/img/bldg/hub.jpg</img>
     <geocode>
@@ -2183,7 +2183,7 @@
   </location>
   <location>
     <name>Aerospace and Engineering Research Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>AER</code>
     <img>http://www.washington.edu/maps/img/bldg/aer.jpg</img>
     <geocode>
@@ -2248,7 +2248,7 @@
   </location>
   <location>
     <name>Fluke Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>FLK</code>
     <img>http://www.washington.edu/maps/img/bldg/flk.jpg</img>
     <geocode>
@@ -2288,7 +2288,7 @@
   </location>
   <location>
     <name>Physics-Astronomy Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PAT</code>
     <img>http://www.washington.edu/maps/img/bldg/pat.jpg</img>
     <geocode>
@@ -2322,7 +2322,7 @@
   </location>
   <location>
     <name>Physics-Astronomy Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PAA</code>
     <img>http://www.washington.edu/maps/img/bldg/paa.jpg</img>
     <geocode>
@@ -2340,7 +2340,7 @@
   </location>
   <location>
     <name>Plant Operations Annex 6</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PO6</code>
     <img>http://www.washington.edu/maps/img/bldg/po6.jpg</img>
     <geocode>
@@ -2358,7 +2358,7 @@
   </location>
   <location>
     <name>University of Washington Club (Faculty Center)</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>FAC</code>
     <img>http://www.washington.edu/maps/img/bldg/fac.jpg</img>
     <geocode>
@@ -2376,7 +2376,7 @@
   </location>
   <location>
     <name>Wilson Ceramic Laboratory</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>WCL</code>
     <img>http://www.washington.edu/maps/img/bldg/wcl.jpg</img>
     <geocode>
@@ -2394,7 +2394,7 @@
   </location>
   <location>
     <name>Burke Memorial-Washington State Museum</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>BMM</code>
     <img>http://www.washington.edu/maps/img/bldg/bmm.jpg</img>
     <geocode>
@@ -2409,14 +2409,14 @@
         <name>Burke Museum</name>
       </organization>
       <organization>
-        <name>Espresso Cafe: Burke Café</name>
+        <name>Espresso Cafe: Burke Caf&#233;</name>
         <url>http://hfs.washington.edu/dining/location.aspx?id=242</url>
       </organization>
     </organizations>
   </location>
   <location>
     <name>Wilson Annex</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>WLA</code>
     <img>http://www.washington.edu/maps/img/bldg/wla.jpg</img>
     <geocode>
@@ -2429,7 +2429,7 @@
   </location>
   <location>
     <name>Loew Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>LOW</code>
     <img>http://www.washington.edu/maps/img/bldg/low.jpg</img>
     <geocode>
@@ -2447,7 +2447,7 @@
   </location>
   <location>
     <name>Roberts Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>ROB</code>
     <img>http://www.washington.edu/maps/img/bldg/rob.jpg</img>
     <geocode>
@@ -2465,7 +2465,7 @@
   </location>
   <location>
     <name>Mueller Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MUE</code>
     <img>http://www.washington.edu/maps/img/bldg/mue.jpg</img>
     <geocode>
@@ -2483,7 +2483,7 @@
   </location>
   <location>
     <name>Wilcox Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>WIL</code>
     <img>http://www.washington.edu/maps/img/bldg/wil.jpg</img>
     <geocode>
@@ -2509,7 +2509,7 @@
   </location>
   <location>
     <name>Conibear Shellhouse</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CSH</code>
     <img>http://www.washington.edu/maps/img/bldg/csh.jpg</img>
     <geocode>
@@ -2527,7 +2527,7 @@
   </location>
   <location>
     <name>Sieg Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>SIG</code>
     <img>http://www.washington.edu/maps/img/bldg/sig.jpg</img>
     <geocode>
@@ -2553,7 +2553,7 @@
   </location>
   <location>
     <name>Balmer Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>BLM</code>
     <img>http://www.washington.edu/maps/img/bldg/blm.jpg</img>
     <geocode>
@@ -2572,14 +2572,14 @@
         <url>http://foster.washington.edu/it/balmer.shtml</url>
       </organization>
       <organization>
-        <name>Espresso Cafe: Balmer Café</name>
+        <name>Espresso Cafe: Balmer Caf&#233;</name>
         <url>http://hfs.washington.edu/dining/location.aspx?id=241</url>
       </organization>
     </organizations>
   </location>
   <location>
     <name>Hall Health Center</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>HLL</code>
     <img>http://www.washington.edu/maps/img/bldg/hll.jpg</img>
     <geocode>
@@ -2605,7 +2605,7 @@
   </location>
   <location>
     <name>Savery Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>SAV</code>
     <img>http://www.washington.edu/maps/img/bldg/sav.jpg</img>
     <geocode>
@@ -2639,7 +2639,7 @@
   </location>
   <location>
     <name>Kane Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>KNE</code>
     <img>http://www.washington.edu/maps/img/bldg/kne.jpg</img>
     <geocode>
@@ -2657,7 +2657,7 @@
   </location>
   <location>
     <name>Odegaard Undergraduate Library</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>OUG</code>
     <img>http://www.washington.edu/maps/img/bldg/oug.jpg</img>
     <geocode>
@@ -2695,7 +2695,7 @@
   </location>
   <location>
     <name>Thomson Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>THO</code>
     <img>http://www.washington.edu/maps/img/bldg/tho.jpg</img>
     <geocode>
@@ -2717,7 +2717,7 @@
   </location>
   <location>
     <name>Guthrie Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>GTH</code>
     <img>http://www.washington.edu/maps/img/bldg/gth.jpg</img>
     <geocode>
@@ -2735,7 +2735,7 @@
   </location>
   <location>
     <name>Haggett Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>HGT</code>
     <img>http://www.washington.edu/maps/img/bldg/hgt.jpg</img>
     <geocode>
@@ -2753,7 +2753,7 @@
   </location>
   <location>
     <name>Lewis Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>LEW</code>
     <img>http://www.washington.edu/maps/img/bldg/lew.jpg</img>
     <geocode>
@@ -2783,7 +2783,7 @@
   </location>
   <location>
     <name>Hughes Penthouse Theatre</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>HPT</code>
     <img>http://www.washington.edu/maps/img/bldg/hpt.jpg</img>
     <geocode>
@@ -2801,7 +2801,7 @@
   </location>
   <location>
     <name>Hutchinson Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>HUT</code>
     <img>http://www.washington.edu/maps/img/bldg/hut.jpg</img>
     <geocode>
@@ -2831,7 +2831,7 @@
   </location>
   <location>
     <name>Theodor Jacobsen Observatory</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>OBS</code>
     <img>http://www.washington.edu/maps/img/bldg/obs.jpg</img>
     <geocode>
@@ -2844,7 +2844,7 @@
   </location>
   <location>
     <name>North Physics Laboratory (Cyclotron Building)</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>NPC</code>
     <img>http://www.washington.edu/maps/img/bldg/npc.jpg</img>
     <geocode>
@@ -2862,7 +2862,7 @@
   </location>
   <location>
     <name>Lewis Annex 2 (A&amp;S)</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>LA2</code>
     <img>http://www.washington.edu/maps/img/bldg/la2.jpg</img>
     <geocode>
@@ -2898,7 +2898,7 @@
   </location>
   <location>
     <name>Benson Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>BNS</code>
     <img>http://www.washington.edu/maps/img/bldg/bns.jpg</img>
     <geocode>
@@ -2920,7 +2920,7 @@
   </location>
   <location>
     <name>Johnson Annex A</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>JHA</code>
     <img>http://www.washington.edu/maps/img/bldg/jha.jpg</img>
     <geocode>
@@ -2942,7 +2942,7 @@
   </location>
   <location>
     <name>Cunningham Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>ICH</code>
     <img>http://www.washington.edu/maps/img/bldg/ich.jpg</img>
     <geocode>
@@ -2972,7 +2972,7 @@
   </location>
   <location>
     <name>Plant Laboratory Annex</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PL1</code>
     <img>http://www.washington.edu/maps/img/bldg/pl1.jpg</img>
     <geocode>
@@ -2990,7 +2990,7 @@
   </location>
   <location>
     <name>Plant Laboratory</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PLT</code>
     <img>http://www.washington.edu/maps/img/bldg/plt.jpg</img>
     <geocode>
@@ -3008,7 +3008,7 @@
   </location>
   <location>
     <name>Winkenwerder Forest Sciences Laboratory</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>WFS</code>
     <img>http://www.washington.edu/maps/img/bldg/wfs.jpg</img>
     <geocode>
@@ -3026,7 +3026,7 @@
   </location>
   <location>
     <name>Bagley Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>BAG</code>
     <img>http://www.washington.edu/maps/img/bldg/bag.jpg</img>
     <geocode>
@@ -3066,7 +3066,7 @@
   </location>
   <location>
     <name>Bloedel Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>BLD</code>
     <img>http://www.washington.edu/maps/img/bldg/bld.jpg</img>
     <geocode>
@@ -3132,7 +3132,7 @@
   </location>
   <location>
     <name>Nordstrom Tennis Center</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>NTC</code>
     <img>http://www.washington.edu/maps/img/bldg/ntc.jpg</img>
     <geocode>
@@ -3208,7 +3208,7 @@
   </location>
   <location>
     <name>Clark Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CLK</code>
     <img>http://www.washington.edu/maps/img/bldg/clk.jpg</img>
     <geocode>
@@ -3234,7 +3234,7 @@
   </location>
   <location>
     <name>Music Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MUS</code>
     <img>http://www.washington.edu/maps/img/bldg/mus.jpg</img>
     <geocode>
@@ -3260,7 +3260,7 @@
   </location>
   <location>
     <name>Miller Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MLR</code>
     <img>http://www.washington.edu/maps/img/bldg/mlr.jpg</img>
     <geocode>
@@ -3278,7 +3278,7 @@
   </location>
   <location>
     <name>Suzzallo Library</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>SUZ</code>
     <img>http://www.washington.edu/maps/img/bldg/suz.jpg</img>
     <geocode>
@@ -3324,7 +3324,7 @@
   </location>
   <location>
     <name>Engineering Library</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>ELB</code>
     <img>http://www.washington.edu/maps/img/bldg/elb.jpg</img>
     <geocode>
@@ -3350,7 +3350,7 @@
   </location>
   <location>
     <name>University Facilities Annex 1</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>UFA</code>
     <img>http://www.washington.edu/maps/img/bldg/ufa.jpg</img>
     <geocode>
@@ -3368,7 +3368,7 @@
   </location>
   <location>
     <name>University Facilities Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>UFB</code>
     <img>http://www.washington.edu/maps/img/bldg/ufb.jpg</img>
     <geocode>
@@ -3394,7 +3394,7 @@
   </location>
   <location>
     <name>Plant Operations Annex 4</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PO4</code>
     <img>http://www.washington.edu/maps/img/bldg/po4.jpg</img>
     <geocode>
@@ -3407,7 +3407,7 @@
   </location>
   <location>
     <name>Physical Plant Office Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PPO</code>
     <img>http://www.washington.edu/maps/img/bldg/ppo.jpg</img>
     <geocode>
@@ -3433,7 +3433,7 @@
   </location>
   <location>
     <name>Kincaid Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>KIN</code>
     <img>http://www.washington.edu/maps/img/bldg/kin.jpg</img>
     <geocode>
@@ -3451,7 +3451,7 @@
   </location>
   <location>
     <name>Architecture Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>ARC</code>
     <img>http://www.washington.edu/maps/img/bldg/arc.jpg</img>
     <geocode>
@@ -3490,8 +3490,8 @@
     </organizations>
   </location>
   <location>
-    <name>Women'S Fastpitch Softball Building</name>
-    <address></address>
+    <name>Women's Fastpitch Softball Building</name>
+    <address>Main Campus</address>
     <code>WSB</code>
     <img>http://www.washington.edu/maps/img/bldg/wsb.jpg</img>
     <geocode>
@@ -3527,7 +3527,7 @@
   </location>
   <location>
     <name>Roberts Annex</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>RAX</code>
     <img>http://www.washington.edu/maps/img/bldg/rax.jpg</img>
     <geocode>
@@ -3558,7 +3558,7 @@
   </location>
   <location>
     <name>Lewis Annex 1 (A&amp;S)</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>LA1</code>
     <img>http://www.washington.edu/maps/img/bldg/la1.jpg</img>
     <geocode>
@@ -3592,7 +3592,7 @@
   </location>
   <location>
     <name>Guggenheim Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>GUG</code>
     <img>http://www.washington.edu/maps/img/bldg/gug.jpg</img>
     <geocode>
@@ -3614,7 +3614,7 @@
   </location>
   <location>
     <name>Mcmahon Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MCM</code>
     <img>http://www.washington.edu/maps/img/bldg/mcm.jpg</img>
     <geocode>
@@ -3697,7 +3697,7 @@
   </location>
   <location>
     <name>Gerberding Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>GRB</code>
     <img>http://www.washington.edu/maps/img/bldg/grb.jpg</img>
     <geocode>
@@ -3829,7 +3829,7 @@
   </location>
   <location>
     <name>Meany Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MNY</code>
     <img>http://www.washington.edu/maps/img/bldg/mny.jpg</img>
     <geocode>
@@ -3933,7 +3933,7 @@
   </location>
   <location>
     <name>Guthrie Annex 4</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>GA4</code>
     <img>http://www.washington.edu/maps/img/bldg/ga4.jpg</img>
     <geocode>
@@ -3951,7 +3951,7 @@
   </location>
   <location>
     <name>Chemistry Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CHB</code>
     <img>http://www.washington.edu/maps/img/bldg/chb.jpg</img>
     <geocode>
@@ -4027,7 +4027,7 @@
   </location>
   <location>
     <name>Mackenzie Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MKZ</code>
     <img>http://www.washington.edu/maps/img/bldg/mkz.jpg</img>
     <geocode>
@@ -4061,7 +4061,7 @@
   </location>
   <location>
     <name>Allen Library</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>ALB</code>
     <img>http://www.washington.edu/maps/img/bldg/alb.jpg</img>
     <geocode>
@@ -4083,7 +4083,7 @@
   </location>
   <location>
     <name>Graves Annex Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>GAB</code>
     <img>http://www.washington.edu/maps/img/bldg/gab.jpg</img>
     <geocode>
@@ -4119,7 +4119,7 @@
   </location>
   <location>
     <name>Parrington Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PAR</code>
     <img>http://www.washington.edu/maps/img/bldg/par.jpg</img>
     <geocode>
@@ -4141,7 +4141,7 @@
   </location>
   <location>
     <name>Mccarty Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MCC</code>
     <img>http://www.washington.edu/maps/img/bldg/mcc.jpg</img>
     <geocode>
@@ -4203,7 +4203,7 @@
   </location>
   <location>
     <name>More Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>MOR</code>
     <img>http://www.washington.edu/maps/img/bldg/mor.jpg</img>
     <geocode>
@@ -4221,7 +4221,7 @@
   </location>
   <location>
     <name>North Physics Laboratory (Van De Graaff Accelerator)</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>NPV</code>
     <img>http://www.washington.edu/maps/img/bldg/npv.jpg</img>
     <geocode>
@@ -4239,7 +4239,7 @@
   </location>
   <location>
     <name>Padelford Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>PDL</code>
     <img>http://www.washington.edu/maps/img/bldg/pdl.jpg</img>
     <geocode>
@@ -4331,7 +4331,7 @@
   </location>
   <location>
     <name>Center on Human Development and Disability School</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CHSC</code>
     <img>http://www.washington.edu/maps/img/bldg/chsc.jpg</img>
     <geocode>
@@ -4353,7 +4353,7 @@
   </location>
   <location>
     <name>South Campus Center</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>SOCC</code>
     <img>http://www.washington.edu/maps/img/bldg/socc.jpg</img>
     <geocode>
@@ -4444,7 +4444,7 @@
   </location>
   <location>
     <name>Center on Human Development and Disability Clinic</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CHCL</code>
     <img>http://www.washington.edu/maps/img/bldg/chcl.jpg</img>
     <geocode>
@@ -4466,7 +4466,7 @@
   </location>
   <location>
     <name>Center on Human Development and Disability South</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CHSB</code>
     <img>http://www.washington.edu/maps/img/bldg/chsb.jpg</img>
     <geocode>
@@ -4484,7 +4484,7 @@
   </location>
   <location>
     <name>Fisheries Center</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>FIS</code>
     <img>http://www.washington.edu/maps/img/bldg/fis.jpg</img>
     <geocode>
@@ -4544,7 +4544,7 @@
   </location>
   <location>
     <name>Harris Hydraulics Laboratory</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>HHL</code>
     <img>http://www.washington.edu/maps/img/bldg/hhl.jpg</img>
     <geocode>
@@ -4584,7 +4584,7 @@
   </location>
   <location>
     <name>Oceanography Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>OCE</code>
     <img>http://www.washington.edu/maps/img/bldg/oce.jpg</img>
     <geocode>
@@ -4796,7 +4796,7 @@
   </location>
   <location>
     <name>William H. Gates Hall</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>LAW</code>
     <img>http://www.washington.edu/maps/img/bldg/law.jpg</img>
     <geocode>
@@ -4826,7 +4826,7 @@
   </location>
   <location>
     <name>Communications Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CMU</code>
     <img>http://www.washington.edu/maps/img/bldg/cmu.jpg</img>
     <geocode>
@@ -4860,7 +4860,7 @@
   </location>
   <location>
     <name>Chemistry Library Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>CHL</code>
     <img>http://www.washington.edu/maps/img/bldg/chl.jpg</img>
     <geocode>
@@ -4886,7 +4886,7 @@
   </location>
   <location>
     <name>Electrical Engineering Building</name>
-    <address></address>
+    <address>Main Campus</address>
     <code>EE1</code>
     <img>http://www.washington.edu/maps/img/bldg/ee1.jpg</img>
     <geocode>
@@ -5010,110 +5010,5 @@
         <name>Department of Microbiology</name>
       </organization>
     </organizations>
-  </location>
-  <location>
-    <name>
-      Drumheller Fountain
-    </name>
-    <category>
-      landmarks
-    </category>
-    <code>
-      LNDMK-0
-    </code>
-    <info>
-      Drumheller Fountain, in the center of Frosh Pond, was a gift from Regent Joseph Drumheller for the university's centennial celebration in 1961. The fountain has built-in lighting and three banks of jets. The center jet can shoot water to a height of 100 feet, while the two surrounding rings of jets gush water slightly outward from 10 to 30 feet.
-    </info>
-    <geocode>
-      <lng>-122.30787</lng>
-      <lat>47.65383</lat>
-    </geocode>
-    <img>
-      http://www.washington.edu/maps/img/landmarks/fountain.jpg
-    </img>
-  </location>
-  <location>
-    <name>
-      Quad
-    </name>
-    <category>
-      landmarks
-    </category>
-    <code>
-      LNDMK-1
-    </code>
-    <info>
-      Cherry trees on the Liberal Arts Quadrangle were first planted on land that is now the approach to the Evergreen Point Floating Bridge. They were rescued during construction and moved to campus in 1964. The trees are nearing the end of their natural lifespan, and the Class of 1959 launched a campaign the Cherry Tree Project to replace them. (Photo by Stewart Hopkins)
-    </info>
-    <geocode>
-      <lng>-122.30724</lng>
-      <lat>47.65725</lat>
-    </geocode>
-    <img>
-      http://www.washington.edu/maps/img/landmarks/quad.jpg
-    </img>
-  </location>
-  <location>
-    <name>
-      Red Square
-    </name>
-    <category>
-      landmarks
-    </category>
-    <code>
-     LNDMK-2 
-    </code>
-    <info>
-      Red Square, officially Central Plaza, is a large open square on the campus of the University of Washington that serves as a hub for two of the University's major axes, connecting the campus's northern Liberal Arts Quadrangle ('The Quad') with the science and engineering buildings found on the lower campus. - Wikipedia
-    </info>
-    <geocode>
-      <lng>-122.30971</lng>
-      <lat>47.65578</lat>
-    </geocode>
-    <img>
-      http://www.washington.edu/maps/img/landmarks/redsquare.jpg
-    </img>
-  </location>
-  <location>
-    <name>
-      Rainier Vista
-    </name>
-    <category>
-      landmarks
-    </category>
-    <code>
-      LNDMK-3 
-    </code>
-    <info>
-      On a crisp winter day when the skies dry out and the sun sets early, Mount Rainier turns into a pink pyramid floating over the city of Seattle. It is dusk, what Hollywood cinematographers call the 'magic hour,' and it is indeed magic if you linger on the steps leading from 'Red Square' to Rainier Vista. Before you hovers a 14,411-foot mass of snow and rock, and the rare clarity of the air makes it seem as if you could reach out and touch a glacier. Almost any time the mountain is 'out' is a signature moment in the lives of students, faculty and staff at the UW. The view is without doubt the natural icon of the University of Washington the image burned into our brains that we will never forget. It wasn't always going to be this way. John C. Olmsted, commissioned to draw up a campus plan in 1904, may not have seen the mountain during his first visit. His original scheme, a jumble of academic buildings, lacked any Rainier Vista. But chance favored the UW. When Olmsted returned to draw plans for a 1909 exposition held on our campus, the mountain may have been out. This time Olmsted saw the potential of a grand promenade with Mount Rainier as its focal point. His idea became the center point of the Alaska-Yukon-Pacific Exposition and has remained through every turn of campus development. A century later, we still have the same excitement, and the same view, that he did when he created Rainier Vista.  Tom Griffin, Columns Magazine (Photo by Mary Levin / UW Photography)
-    </info>
-    <geocode>
-      <lng>-122.30715</lng>
-      <lat>47.65292</lat>
-    </geocode>
-    <img>
-      http://www.washington.edu/maps/img/landmarks/vista.jpg
-    </img>
-  </location>
-  <location>
-    <name>
-      Columns and Sylvan Theater
-    </name>
-    <category>
-      landmarks
-    </category>
-    <code>
-      LNDMK-4
-    </code>
-    <info>
-      A low, stone stairway vanishing into the trees leads to the Sylvan Theater, the site of early-day graduation ceremonies. Since then, weddings, plays, banquets, and other happy occurrences such as squirrel watching, sunbathing, and studying have taken place here. This tree-enclosed hideaway features a grassy stage set with the four white columns that once graced the front stoop of the original university building. In 1908, when the original structure was about to be razed, Edmond S. Meany--head of the History Department and one of the university's first graduates--sought to save the old building by having it moved to the new campus. Eventually, the hand-fluted cedar columns were preserved and erected at the new site by the Class of 1911. Sentimental Edmond Meany and his colleague Dean Herbert T. Condon dubbed the Ionic pillars 'Loyalty,' 'Industry,' 'Faith,' and 'Efficiency,' the first letters spelling 'LIFE.' (Photo by Mary Levin / UW Photography)
-    </info>
-    <geocode>
-      <lng>-122.30611</lng>
-      <lat>47.65273</lat>
-    </geocode>
-    <img>
-      http://www.washington.edu/maps/img/landmarks/washingtonstatue.jpg
-    </img>
   </location>
 </locations>
