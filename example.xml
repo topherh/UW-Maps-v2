@@ -1,9 +1,0 @@
-<markers>
-  <!-- Dont use copy and paste on this XML file, use "View Source" or "Save As"
-       What the browser displays is *interpreted* XML, not XML source. -->
- <marker lat="47.655502" lng="-122.3315" html="Some stuff to display in the&lt;br&gt;First Info Window"  label="Marker One" />
- <marker lat="47.655502" lng="-122.3025" html="Some stuff to display in the&lt;br&gt;Second Info Window" label="Marker Two" />
- <marker lat="47.655502" lng="-122.3045" html="Some stuff to display in the&lt;br&gt;Third Info Window"  label="Marker Three" />
-</markers> 
-
-
