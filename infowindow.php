@@ -1,3 +1,18 @@
+<?php /***
+* http://bradleysepos.com/projects/jquery/clipboard/
+* <script type="text/javascript" src="scripts/jquery-1.3.1.min.js"></script>
+* <script type="text/javascript" src="scripts/jquery.clipboard.min.js"></script>
+* <script type="text/javascript">
+* $(document).ready(function(){
+*     $.clipboardReady(function(){
+*         $("#copy-text").click(function(){
+*             $.clipboard($("#share-url").val());
+*             return false;
+*         });
+*     },{debug:true});
+* });
+* </script>
+**/?>
 <?php
 /** 
  * Custom information grab - find info on 
@@ -25,15 +40,13 @@ for ($x=0; $x<$markers->length; $x++)
     $code = $markers->item($x)->getAttribute('code');
     $address = $markers->item($x)->getAttribute('address');
     $category = $markers->item($x)->getAttribute('category');
-    $img = $markers->item($x)->getAttribute('img') ? $markers->item($x)->getAttribute('img') : 'http://www.washington.edu/maps/img/bldg/'.strtolower($code).'.jpg';
+    $image = $markers->item($x)->getAttribute('img') ? $markers->item($x)->getAttribute('img') : 'http://www.washington.edu/maps/img/bldg/'.strtolower($code).'.jpg';
     $desc = $markers->item($x)->nodeValue;
     if ($strCode and $strCategory)
     {
         if (($code == $strCode) and ($category == $strCategory))
         {
-            #$image = 'src="img/' . ($img ? 'landmarks/'.$img : 'bldg/'.strtolower($code).'.jpg'). '"';
-            $image = $img;
-            $title = '<h2>' . $name .( $img ? '' : ' ('.$code.')' ). '</h2>' ;
+            $title = '<h2>' . $name .( $category == 'landmarks' ? '' : ' ('.$code.')' ). '</h2>' ;
             $addrs = $address ? '<p>Address: ' . $address . '</p>' : '';
 
             echo $title .
@@ -46,8 +59,10 @@ for ($x=0; $x<$markers->length; $x++)
             $name . '" title="' . $name . '" width="240" height="180" />' . 
             $addrs .
             '<p style="padding-left:15px">' .
-            'Share: <input id="copy-text-embed" name="embed" value="' .
+            'Share: <input id="share-url" name="share-url" ' .
+            'onclick="this.focus();this.select();" value="' .
             $pageURL . "?loc=" . $code. "\" size=\"30\" /></p>" . 
+            // '<input id="copy-text" type="button" value="Copy" />' .
             '</div>';
         }
     }
