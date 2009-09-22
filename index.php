@@ -1,14 +1,13 @@
 <?php
 $loc = $_GET['loc'];
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
     <title>University of Washington Campus Map</title>
-    <link href="css/header.css" rel="stylesheet" type="text/css" />
     <link href="css/UWInfoWindow.css" type="text/css" rel="Stylesheet" media="screen" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
@@ -18,7 +17,19 @@ $loc = $_GET['loc'];
             margin-right: 0px;
             margin-bottom: 0px;
         }
-    </style>
+    a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+</style>
 
     <!-- Google Includes -->
 <?php
@@ -34,11 +45,11 @@ $loc = $_GET['loc'];
     <!-- Google Includes -->
     
     <!-- Shared JS code -->
-    <script type="text/javascript" language="Javascript" src="scripts/jquery.json-min.js"></script>
-    <script type="text/javascript" language="Javascript" src="scripts/extinfowindow.js"></script>
-    <script type="text/javascript" language="Javascript" src="scripts/functions.js"></script>
-    <script type="text/javascript" language="Javascript" src="scripts/jquery.dimensions.pack.js"></script>
-    <script type="text/javascript" language="Javascript" src="UWMap.js"></script>
+    <script type="text/javascript" src="scripts/jquery.dimensions.pack.js"></script>
+    <script type="text/javascript" src="scripts/jquery.json-min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.copy.min.js"></script>
+    <script type="text/javascript" src="scripts/functions.js"></script>
+    <script type="text/javascript" src="UWMap.js"></script>
 
     <script type="text/javascript">
     //<![CDATA[
@@ -124,28 +135,36 @@ pageTracker._trackPageview();
 </script> 
 <!-- Google Analytics -->
 
-<div id="thinSearchbar">
-    <a href="http://www.washington.edu/"><img id="lgo" src="img/w.gif" alt="University of Washington"/></a>  
-    <div id="rhtlnks">
-      <form class=formation name=form1 id="searchbox_001967960132951597331:04hcho0_drk" 
-    		action="http://www.google.com/cse">
-          <input type="hidden" name="cx" value="001967960132951597331:04hcho0_drk" />
-          <input type="hidden" name="cof" value="FORID:0" />
-          <input name="q" type="text" size="20" value="Enter Search" onclick="make_blank();"/>
-          <input type="submit" name="sa" value="Go" />
-      </form>
-      <div id="searcha">
-        <ul>
-          <li><a href="http://www.washington.edu/">UW Home</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
-          <li><a href="http://www.uwnews.org/">News</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
-          <li><a href="http://gohuskies.ocsn.com/">Sports</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
-          <li><a href="http://www.washington.edu/alumni/">Alumni</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
-          <li><a href="http://myuw.washington.edu/">MyUW</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
-          <li><a href="http://www.washington.edu/home/directories.html">Directories</a>&nbsp;&nbsp;<span class="barLeft">|</span></li>
-          <li><a href="http://www.washington.edu/visit/events.html">Calendar</a></li>
-        </ul>
-      </div>
+<div class="wheader patchYes colorGold">	
+  <span id="autoMargin">
+  
+    <div class="wlogoSmall">
+            <div class="logoAbsolute"><a id="wlogoLink" href="http://www.washington.edu/">W</a></div>
+            <div><a href="http://www.washington.edu/">University of Washington</a></div>
     </div>
+    
+	<div id="wsearch">        
+          <form name=form1 id="searchbox_001967960132951597331:04hcho0_drk" action="http://www.google.com/cse">
+			 <div class="wfield">
+                <input type="hidden" name="cx" value="001967960132951597331:04hcho0_drk" />
+				<input type="hidden" name="cof" value="FORID:0" />
+			    <input name="q" type="text" value="Search the UW" class="wTextInput" onclick="make_blank();"/>			   
+             </div>   
+	  			<input type="submit" class="formbutton" name="sa" value="Go" />
+          </form>
+    </div>
+    
+	<div id="wtext">
+    	<ul>
+      		<li><a href="#">UW Home</a></li>
+        	<li><span class="border"><a href="#">Directories</a></span></li>
+       	  	<li><span class="border"><a href="#">Calendar</a></span></li>
+       	  	<li><span class="border"><a href="#">Maps</a></span></li>
+       	  	<li><span class="border"><a href="#">My UW</a></span></li>
+       </ul>
+    </div>
+    
+  </span>
 </div>
 
 <div id="rounded">
@@ -170,7 +189,7 @@ pageTracker._trackPageview();
                     </div>
                     <div id="browse">
                         <form id="browseform">
-                            <select name="buildingList" size="1" onclick="cmap.ulocset.search('building',this.value,'code');pageTracker._trackPageview('/maps/index-browse');" class="results-label" id="buildingList">
+                            <select name="buildingList" size="1" onchange="cmap.ulocset.search('building',this.value,'code');pageTracker._trackPageview('/maps/index-browse');" class="results-label" id="buildingList">
                                 <option value="" selected="selected">Select a building...</option>
 <?php
     // Grab our categories XML document and prepare for parsing
@@ -208,7 +227,7 @@ pageTracker._trackPageview();
             </div>
             <br />
     
-            <input id="leave-feedback" name="leave-feedback" value="leave-feedback" type="submit" />
+            <div class="center"><input id="leave-feedback" name="leave-feedback" value="Leave Feedback" type="submit" /></div>
             <div id="feedback">
                 <form id="feedbackForm" action="/maps/" method="post"> 
                     <label for="email"><span class="feedback">Email: </span></label><input class="feedback-in" type="text" id="email" name="email" /> 
@@ -231,33 +250,32 @@ pageTracker._trackPageview();
     <span class="footLinks">
             <ul>
             <li>Prospective Students</li>
-             <li><a href="http://admit.washington.edu/Visit/GuidedTour">&#187; Schedule a Guided Campus Tour</a> </li>
+             <li><a href="http://admit.washington.edu/Visit/GuidedTour">&bull; Schedule a Guided Campus Tour &#187;</a> </li>
             </ul>
     </span>
     <span class="footLinks">
         <ul>
             <li>Commuter Services</li>
-            <li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&#187; Getting to the UW</a> </li>
-            <li><a href="http://www.washington.edu/commuterservices/parking/index.php">&#187;  Parking at the UW</a></li> 
-            <li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&#187;  Gatehouses</a> </li>
-            <li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&#187; UW Shuttle Service</a></li>
+            <li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&bull; Getting to the UW &#187;</a> </li>
+            <li><a href="http://www.washington.edu/commuterservices/parking/index.php">&bull; Parking at the UW &#187;</a></li> 
+            <li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&bull; Gatehouses &#187;</a> </li>
+            <li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&bull; UW Shuttle Service &#187;</a></li>
         </ul>
     </span>
     <span class="footLinks">
         <ul>
         	<li>Other Maps</li>
-            <li><a href="http://flatline.cs.washington.edu/CAMPS/">&#187; Campus Walking Directions</a></li>
-            <li><a href="/home/maps/campusmappg.pdf">&#187; Printable Campus Map (PDF)</a></li>
-            <li><a href="/admin/ada/">&#187; Disabilities Access Guide</a></li>
-            <li><a href="/home/maps/mobilitymap.pdf">&#187; Wheelchair Access Routes  (PDF)</a></li>
-            <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&#187; UW Health Sciences Center</a></li>
+            <li><a href="http://flatline.cs.washington.edu/CAMPS/">&bull; Campus Walking Directions &#187;</a></li>
+            <li><a href="/home/maps/campusmappg.pdf">&bull; Printable Campus Map &#187;</a></li>
+            <li><a href="/admin/ada/">&bull; Disabilities Access Guide &#187;</a></li>
+            <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&bull; UW Health Sciences Center &#187;</a></li>
         </ul>
     </span>
     <span class="footLinks">
         <ul>
         	<li>Campuses</li>
-            <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&#187; UW Bothell</a></li>
-            <li><a href="http://www.tacoma.washington.edu/campus_map/">&#187; UW Tacoma</a></li>
+            <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&bull; UW Bothell &#187;</a></li>
+            <li><a href="http://www.tacoma.washington.edu/campus_map/">&bull; UW Tacoma &#187;</a></li>
         </ul>
     </span>
 </div>
