@@ -10,26 +10,6 @@ $loc = $_GET['loc'];
     <title>University of Washington Campus Map</title>
     <link href="css/UWInfoWindow.css" type="text/css" rel="Stylesheet" media="screen" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        body {
-            margin-left: 0px;
-            margin-top: 0px;
-            margin-right: 0px;
-            margin-bottom: 0px;
-        }
-    a:link {
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: none;
-}
-a:active {
-	text-decoration: none;
-}
-</style>
 
     <!-- Google Includes -->
 <?php
@@ -156,11 +136,11 @@ pageTracker._trackPageview();
     
 	<div id="wtext">
     	<ul>
-      		<li><a href="#">UW Home</a></li>
-        	<li><span class="border"><a href="#">Directories</a></span></li>
-       	  	<li><span class="border"><a href="#">Calendar</a></span></li>
-       	  	<li><span class="border"><a href="#">Maps</a></span></li>
-       	  	<li><span class="border"><a href="#">My UW</a></span></li>
+      		<li><a href="http://www.washington.edu/">UW Home</a></li>
+        	<li><span class="border"><a href="http://www.washington.edu/home/directories.html">Directories</a></span></li>
+       	  	<li><span class="border"><a href="http://www.washington.edu/visit/events.html">Calendar</a></span></li>
+       	  	<li><span class="border"><a href="http://www.washington.edu/maps/">Maps</a></span></li>
+       	  	<li><span class="border"><a href="http://myuw.washington.edu/">My UW</a></span></li>
        </ul>
     </div>
     
@@ -179,8 +159,8 @@ pageTracker._trackPageview();
           	<div id="dotted">
                 <div class="subTabs">
                     <ul class="tabNavigation">
-                        <li><a href="#search" id="searchTab" onclick="pageTracker._trackPageview('/maps/index-searchtab');"></a></li>
-                        <li><a href="#browse" id="browseTab" onclick="pageTracker._trackPageview('/maps/index-browsetab');"></a></li>
+                        <li><a href="#search" id="searchTab" onclick="pageTracker._trackPageview('/maps/index-searchtab');">Search</a></li>
+                        <li><a href="#browse" id="browseTab" onclick="pageTracker._trackPageview('/maps/index-browsetab');">Brownse</a></li>
                     </ul>
                     <br style="clear:both" />
                     <div id="search">

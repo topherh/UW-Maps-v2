@@ -444,6 +444,6 @@ function UWCampusMap()
         // document.getElementById('browseTab').style.display = 'none';
         // document.getElementById('searchTab').style.display = 'block';
         this.ulocset.clear('all');
-        this.center(17);
+        this.center(16);
     }
 };
