@@ -39,10 +39,12 @@ $loc = $_GET['loc'];
     if ($loc)
     {
         echo "    var loc = '$loc';";
-        if (strpos($loc,'LNDMK') === false)
-            echo '    var loccat = null;';
+        if (strpos($loc,'GH') == 0)
+            echo "    var loccat = 'gatehouse';";
+        elseif (strpos($loc,'LNDMK') == 0)
+            echo "    var loccat = 'landmarks';";
         else
-            echo "    var loccat = 'landmark';";
+            echo "    var loccat = 'building';";
     }
     else
     {
@@ -63,15 +65,10 @@ $loc = $_GET['loc'];
                 cmap.ulocset.load(xmlDoc);
             });
 
-            if (loccat)
+            if (loc)
             {
                 cmap.overlay();
-                setTimeout('cmap.ulocset.search(\'landmarks\',loc,\'code\')', 2000);
-            }
-            else if (loc)
-            {
-                cmap.overlay();
-                setTimeout('cmap.ulocset.search(\'building\',loc,\'code\')', 2000);
+                setTimeout('cmap.ulocset.search(loccat,loc,\'code\')', 2000);
             }
             else
             {
