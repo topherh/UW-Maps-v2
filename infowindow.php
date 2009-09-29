@@ -41,27 +41,31 @@ for ($x=0; $x<$markers->length; $x++)
     $address = $markers->item($x)->getAttribute('address');
     $category = $markers->item($x)->getAttribute('category');
     $image = $markers->item($x)->getAttribute('img') ? $markers->item($x)->getAttribute('img') : 'http://www.washington.edu/maps/img/bldg/'.strtolower($code).'.jpg';
+    if ($category == 'landmarks')
+        $image = 'http://www.washington.edu/maps/'.$markers->item($x)->getAttribute('img');
     $desc = $markers->item($x)->nodeValue;
     if ($strCode and $strCategory)
     {
         if (($code == $strCode) and ($category == $strCategory))
         {
             $title = '<h2>' . $name .( $category == 'landmarks' ? '' : ' ('.$code.')' ). '</h2>' ;
-            $addrs = $address ? '<p>Address: ' . $address . '</p>' : '';
+            $addrs = $address ? '<h3>Address: ' . $address . '</h3>' : '';
 
             echo $title .
             '<div id="popLeft">' .
             '<div id="scrollText">' . 
+			//$addrs .
             $desc . 
             '</div>' . '</div>' . 
             '<div id="popRight">' .
             '<img class="photoBorder" src="'.$image.'" alt="'.
             $name . '" title="' . $name . '" width="240" height="180" />' . 
-            $addrs .
-            '<p style="padding-left:15px">' .
-            'Share: <input id="share-url" name="share-url" ' .
+            '<br />' . '<p style="padding-left:2px; padding-top:6px">' .
+            '<div class="popHeader">Link to this location* <input id="share-url" name="share-url" ' .
             'onclick="this.focus();this.select();" value="' .
-            $pageURL . "?loc=" . $code. "\" size=\"30\" /></p>" . 
+            $pageURL . "?loc=" . $code. "\" size=\"30\" /></div></p>" . 
+			'<div class="copyURL">* Step 1 - Click / highlight the above URL<br />
+			                      * Step 2 - PC: Control-C to copy; Mac: Command-C</div>' .
             // '<input id="copy-text" type="button" value="Copy" />' .
             '</div>';
         }

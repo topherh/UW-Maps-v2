@@ -37,9 +37,18 @@ $loc = $_GET['loc'];
     
 <?php
     if ($loc)
+    {
         echo "    var loc = '$loc';";
+        if (strpos($loc,'LNDMK') === false)
+            echo '    var loccat = null;';
+        else
+            echo "    var loccat = 'landmark';";
+    }
     else
+    {
+        echo '    var loccat = null;';
         echo '    var loc = null;';
+    }
 ?>
 
     function OnLoad()
@@ -54,7 +63,12 @@ $loc = $_GET['loc'];
                 cmap.ulocset.load(xmlDoc);
             });
 
-            if (loc)
+            if (loccat)
+            {
+                cmap.overlay();
+                setTimeout('cmap.ulocset.search(\'landmarks\',loc,\'code\')', 2000);
+            }
+            else if (loc)
             {
                 cmap.overlay();
                 setTimeout('cmap.ulocset.search(\'building\',loc,\'code\')', 2000);
@@ -238,13 +252,17 @@ pageTracker._trackPageview();
             <li>Commuter Services</li>
             <li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&bull; Getting to the UW &#187;</a> </li>
             <li><a href="http://www.washington.edu/commuterservices/parking/index.php">&bull; Parking at the UW &#187;</a></li> 
-            <li><a href="http://www.washington.edu/commuterservices/parking/gatehouse_map.php">&bull; Gatehouses &#187;</a> </li>
             <li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&bull; UW Shuttle Service &#187;</a></li>
         </ul>
     </span>
     <span class="footLinks">
         <ul>
         	<li>Other Maps</li>
+            
+            
+            
+            <li><a href="http://www.washington.edu/home/maps/">&bull; Static Campus Map &#187;</a></li>
+            
             <li><a href="http://flatline.cs.washington.edu/CAMPS/">&bull; Campus Walking Directions &#187;</a></li>
             <li><a href="/home/maps/campusmappg.pdf">&bull; Printable Campus Map &#187;</a></li>
             <li><a href="/admin/ada/">&bull; Disabilities Access Guide &#187;</a></li>
