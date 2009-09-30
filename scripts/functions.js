@@ -652,7 +652,8 @@ jQuery.each(jQuery.browser, function(i) {
 // wait for the DOM to be loaded and wait for comments
 $(document).ready(function(){
     $("#leave-feedback").click(function() {
-        $("#feedback").show("slow");
+        $("#feedback").slideDown("slow");
+        $("#leave-feedback").hide();
     });  
 
     $("#feedbackSubmit").click(function(){                                     
@@ -686,7 +687,6 @@ $(document).ready(function(){
             var dataString = $.toJSON(data)
             $(this).hide();
             $("#feedbackForm").append('<img src="/maps/img/loading.gif" alt="Loading" id="loading" />');
-            $("#leave-feedback").hide();
             
             $.post("comment.php",
                 { data: dataString },
