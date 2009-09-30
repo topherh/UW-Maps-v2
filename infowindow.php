@@ -63,7 +63,8 @@ for ($x=0; $x<$markers->length; $x++)
             '<br />' . '<p style="padding-left:2px; padding-top:6px">' .
             '<div class="popHeader">Link to this location* <input id="share-url" name="share-url" ' .
             'onclick="this.focus();this.select();" value="' .
-            $pageURL . "?loc=" . $code. "\" size=\"30\" /></div></p>" . 
+            $pageURL . "?l=" . $code . ($category == 'building' ? '' : "&c=" . $category) 
+            . "\" size=\"30\" /></div></p>" . 
 			'<div class="copyURL">* Step 1 - Click / highlight the above URL<br />
 			                      * Step 2 - PC: Control-C to copy; Mac: Command-C</div>' .
             // '<input id="copy-text" type="button" value="Copy" />' .

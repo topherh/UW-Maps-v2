@@ -1,5 +1,6 @@
 <?php
-$loc = $_GET['loc'];
+$loc = $_GET['l'];
+$cat = $_GET['c'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -36,20 +37,20 @@ $loc = $_GET['loc'];
     var cmap;
     
 <?php
-    if ($loc)
+    if ($cat)
     {
         echo "    var loc = '$loc';";
-        if (strpos($loc,'GH') == 0)
-            echo "    var loccat = 'gatehouse';";
-        elseif (strpos($loc,'LNDMK') == 0)
-            echo "    var loccat = 'landmarks';";
-        else
-            echo "    var loccat = 'building';";
+        echo "    var loccat = '$cat';";
+    }
+    else if ($loc)
+    {
+        echo "    var loc = '$loc';";
+        echo "    var loccat = 'building';";
     }
     else
     {
-        echo '    var loccat = null;';
         echo '    var loc = null;';
+        echo '    var loccat = null;';
     }
 ?>
 
@@ -165,9 +166,9 @@ pageTracker._trackPageview();
     <div id="entire">
         <div id="nav">
             <br />
-            <img src="img/headline.gif" alt="UW Campus Buildings" /> 
+            <div class="headlineCampus">UW Campus Buildings</div>
         
-          	<div id="dotted">
+   	  <div id="dotted">
                 <div class="subTabs">
                     <ul class="tabNavigation">
                         <li><a href="#search" id="searchTab" onclick="pageTracker._trackPageview('/maps/index-searchtab');">Search</a></li>
@@ -203,7 +204,7 @@ pageTracker._trackPageview();
                 </div>	
             <p><span id="search-error" class="error"></span></p>
     
-                <h3>Noteworthy Locations</h3>            
+                <div class="headlineNoteworthy">Noteworthy Locations</div>            
                                
                 <ul>
                     <li><a id="fComputing" class="forms" href="#"><label><input name="locbox" class="checky" type="checkbox" id="computingbox" onclick="boxclick(this,'computing');pageTracker._trackPageview('/maps/index-computingbox');" />Computer Labs</label></a></li> 
@@ -221,9 +222,9 @@ pageTracker._trackPageview();
             <div class="center"><input id="leave-feedback" name="leave-feedback" value="Leave Feedback" type="submit" /></div>
             <div id="feedback">
                 <form id="feedbackForm" action="/maps/" method="post"> 
-                    <label for="email"><span class="feedback">Email: </span></label><input class="feedback-in" type="text" id="email" name="email" /> 
-                    <label for="comment"><span class="feedback">Comment: </span></label><textarea class="feedback-in" id="comment" name="comment"></textarea> 
-                    <input id="feedbackSubmit" type="submit" value="Comment &raquo;" /> 
+                    <label for="email"><span class="feedback">Your Email: </span></label><br /><input class="feedback-in" type="text" id="email" name="email" /> <br />
+                    <label for="comment"><span class="feedback">Comments: </span></label><br /><textarea class="feedback-in" id="comment" name="comment"></textarea> 
+                    <input id="feedbackSubmit" type="submit" value="Send Comments &raquo;" /> 
                 </form>
             </div>
         </div>
@@ -241,39 +242,62 @@ pageTracker._trackPageview();
     <span class="footLinks">
             <ul>
             <li>Prospective Students</li>
-             <li><a href="http://admit.washington.edu/Visit/GuidedTour">&bull; Schedule a Guided Campus Tour &#187;</a> </li>
+             <li><a href="http://admit.washington.edu/Visit/GuidedTour" onclick="javascript:pageTracker._trackPageview('/maps_guidedtour'); ">&bull; Schedule a Guided <br />Campus Tour &#187;</a> </li>
+             
+             
+             <li>Other Campuses</li>
+            <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml" onclick="javascript:pageTracker._trackPageview('/maps_bothell'); ">&bull; Bothell &#187;</a> | <a href="http://www.tacoma.washington.edu/campus_map/" onclick="javascript:pageTracker._trackPageview('/maps_tacoma'); ">Tacoma &#187;</a></li>
+             
+  
             </ul>
     </span>
     <span class="footLinks">
         <ul>
-            <li>Commuter Services</li>
-            <li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php">&bull; Getting to the UW &#187;</a> </li>
-            <li><a href="http://www.washington.edu/commuterservices/parking/index.php">&bull; Parking at the UW &#187;</a></li> 
-            <li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/">&bull; UW Shuttle Service &#187;</a></li>
+            <li>Commuter Resources</li>
+            <li><a href="http://www.washington.edu/commuterservices/get_to_uw/maps_directions/index.php" onclick="javascript:pageTracker._trackPageview('/maps_gettingToUW'); ">&bull; Getting to the UW &#187;</a> </li>
+            <li><a href="http://www.washington.edu/commuterservices/parking/index.php" onclick="javascript:pageTracker._trackPageview('/maps_parking'); ">&bull; Parking at the UW &#187;</a></li> 
+            <li><a href="http://www.washington.edu/facilities/transportation/uwshuttles/" onclick="javascript:pageTracker._trackPageview('/maps_shuttle'); ">&bull; UW Shuttle Service &#187;</a></li>
+            <li><a href="http://www.onebusaway.org" onclick="javascript:pageTracker._trackPageview('/maps_onebusaway'); ">&bull; One Bus Away &#187;</a></li>
         </ul>
     </span>
     <span class="footLinks">
         <ul>
         	<li>Other Maps</li>
+  
+            <li><a href="http://www.washington.edu/home/maps/" onclick="javascript:pageTracker._trackPageview('/maps_static'); ">&bull; Static Campus Map &#187;</a></li>
             
-            
-            
-            <li><a href="http://www.washington.edu/home/maps/">&bull; Static Campus Map &#187;</a></li>
-            
-            <li><a href="http://flatline.cs.washington.edu/CAMPS/">&bull; Campus Walking Directions &#187;</a></li>
-            <li><a href="/home/maps/campusmappg.pdf">&bull; Printable Campus Map &#187;</a></li>
-            <li><a href="/admin/ada/">&bull; Disabilities Access Guide &#187;</a></li>
-            <li><a href="http://uwmedicine.washington.edu/Global/Maps/">&bull; UW Health Sciences Center &#187;</a></li>
+            <!-- <li><a href="http://flatline.cs.washington.edu/CAMPS/">&bull; Campus Walking Directions &#187;</a></li> -->
+            <li><a href="/home/maps/campusmappg.pdf" onclick="javascript:pageTracker._trackPageview('/maps_printmap'); ">&bull; Printable Campus Map &#187;</a></li>
+            <li><a href="/admin/ada/" onclick="javascript:pageTracker._trackPageview('/maps_ada'); ">&bull; Disabilities Access Guide &#187;</a></li>
+            <li><a href="http://uwmedicine.washington.edu/Global/Maps/" onclick="javascript:pageTracker._trackPageview('/maps_healthsciences'); ">&bull; UW Health Sciences Center &#187;</a></li>
         </ul>
     </span>
     <span class="footLinks">
         <ul>
-        	<li>Campuses</li>
-            <li><a href="http://www.uwb.edu/admin/services/transportation/map.xhtml">&bull; UW Bothell &#187;</a></li>
-            <li><a href="http://www.tacoma.washington.edu/campus_map/">&bull; UW Tacoma &#187;</a></li>
+        	
+            <li>Photography</li>
+             <li><a href="http://depts.washington.edu/mediarel/galleries/" onclick="javascript:pageTracker._trackPageview('/maps_campusgallery'); ">&bull; Campus Scenes Gallery &#187;</a> </li>
+             <li><a href="http://uwnews.org/uweek/communityphotos.aspx" onclick="javascript:pageTracker._trackPageview('/maps_communityphotos'); ">&bull; Community Photos &#187;</a> </li>
+          
+            <li><a href="mailto:uweb@uw.edu" onclick="javascript:pageTracker._trackPageview('/maps_email_an_image'); ">&bull; Submit a Seattle Campus<br />Building Image &#187;</a></li>
+            
         </ul>
     </span>
 </div>
+
+
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10899051-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
 
 </body>
 </html>
