@@ -9,7 +9,7 @@
 
 $sResponse = json_decode(stripslashes($_POST['data']), true);
 
-// check the parametersk
+// check the parameters
 if ($sResponse)
 {
     // Execute some mail function
@@ -23,7 +23,7 @@ if ($sResponse)
     $sBody = 'Your feedback was received: '.$body;
 
     mail( $email, "UW Map Comment Received",
-    $sBody, "From: $email" );
+    $sBody, "From: uweb@uw.edu" );
 
     echo true;
 }
