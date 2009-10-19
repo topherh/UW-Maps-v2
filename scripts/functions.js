@@ -1,3 +1,4 @@
+// http://www.logiclabz.com/javascript/copy-to-clipboard-with-javascript-on-mozilla-firefox-and-ie.aspx
 function copy_to_clipboard(text)
 {
     if(window.clipboardData)

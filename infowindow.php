@@ -1,18 +1,3 @@
-<?php /***
-* http://bradleysepos.com/projects/jquery/clipboard/
-* <script type="text/javascript" src="scripts/jquery-1.3.1.min.js"></script>
-* <script type="text/javascript" src="scripts/jquery.clipboard.min.js"></script>
-* <script type="text/javascript">
-* $(document).ready(function(){
-*     $.clipboardReady(function(){
-*         $("#copy-text").click(function(){
-*             $.clipboard($("#share-url").val());
-*             return false;
-*         });
-*     },{debug:true});
-* });
-* </script>
-**/?>
 <?php
 /** 
  * Custom information grab - find info on 
