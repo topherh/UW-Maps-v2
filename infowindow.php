@@ -67,7 +67,7 @@ for ($x=0; $x<$markers->length; $x++)
             . "\" size=\"30\" /></div></p>" . 
 			'<div class="copyURL">* Step 1 - Click / highlight the above URL<br />
 			                      * Step 2 - PC: Control-C to copy; Mac: Command-C</div>' .
-            // '<input id="copy-text" type="button" value="Copy" />' .
+            '<input id="copy-text" type="button" onclick="copy_to_clipboard(document.getElementById(\'share-url\').value)" value="Copy" />' .
             '</div>';
         }
     }
