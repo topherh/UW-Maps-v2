@@ -628,11 +628,6 @@ GMap2.prototype.closeExtInfoWindow = function(){
 * also known as function.js
 */
 
-// clear out the global search input text field
-function make_blank() {
-	document.form1.q.value = "";
-}
-
 $(function() {
    setAutoComplete("searchField", "results", "autocomplete.php?part=");
 });

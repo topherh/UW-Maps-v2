@@ -25,9 +25,11 @@ for ($x=0; $x<$markers->length; $x++)
     $code = $markers->item($x)->getAttribute('code');
     $address = $markers->item($x)->getAttribute('address');
     $category = $markers->item($x)->getAttribute('category');
-    $image = $markers->item($x)->getAttribute('img') ? $markers->item($x)->getAttribute('img') : 'http://www.washington.edu/maps/img/bldg/'.strtolower($code).'.jpg';
+    $image = $markers->item($x)->getAttribute('img') ? $markers->item($x)->getAttribute('img') : '/maps/img/bldg/'.strtolower($code).'.jpg';
+    // This is now generated in the XML, but need to keep until landmarks are
+    // physically replaced in the file
     if ($category == 'landmarks')
-        $image = 'http://www.washington.edu/maps/'.$markers->item($x)->getAttribute('img');
+        $image = '/maps/'.$markers->item($x)->getAttribute('img');
     $desc = $markers->item($x)->nodeValue;
     if ($strCode and $strCategory)
     {
@@ -52,7 +54,7 @@ for ($x=0; $x<$markers->length; $x++)
             . "\" size=\"30\" /></div></p>" . 
 			'<div class="copyURL">* Step 1 - Click / highlight the above URL<br />
 			                      * Step 2 - PC: Control-C to copy; Mac: Command-C</div>' .
-            '<input id="copy-text" type="button" onclick="copy_to_clipboard(document.getElementById(\'share-url\').value)" value="Copy" />' .
+            '<!--<input id="copy-text" type="button" onclick="copy_to_clipboard(document.getElementById(\'share-url\').value)" value="Copy" />-->' .
             '</div>';
         }
     }
