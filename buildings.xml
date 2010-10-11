@@ -1,240 +1,240 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <markers>
-  <marker category="building" code="ACC" name="Academic Computer Center"/>
-  <marker category="building" code="ADL" name="Aerodynamics Laboratory"/>
-  <marker category="building" code="AER" name="Aerospace and Engineering Research Building"/>
-  <marker category="building" code="ALB" name="Allen Library"/>
-  <marker category="building" code="AND" name="Anderson Hall"/>
-  <marker category="building" code="ARC" name="Architecture Hall"/>
-  <marker category="building" code="ART" name="Art Building"/>
-  <marker category="building" code="ATG" name="Atmospheric Sciences-Geophysics Building"/>
-  <marker category="building" code="RTB" name="Benjamin Hall Interdisciplinary Research Building(R&amp;amp;T Bldg)"/>
-  <marker category="building" code="BAG" name="Bagley Hall"/>
-  <marker category="building" code="BLM" name="Balmer Hall"/>
-  <marker category="building" code="BNS" name="Benson Hall"/>
-  <marker category="building" code="BLD" name="Bloedel Hall"/>
-  <marker category="building" code="BGH" name="Botany Greenhouse"/>
-  <marker category="building" code="BHA" name="Botany Greenhouse Annex"/>
-  <marker category="building" code="BRK" name="Brooklyn Building"/>
-  <marker category="building" code="BFB" name="Brotman Building  (SLU Building D)"/>
-  <marker category="building" code="BRA" name="Bryants Annex"/>
-  <marker category="building" code="BRY" name="Bryants Building"/>
-  <marker category="building" code="BMM" name="Burke Memorial-Washington State Museum"/>
-  <marker category="building" code="COL" name="Collegiana"/>
-  <marker category="building" code="CNH" name="Canoe House"/>
-  <marker category="building" code="CHCL" name="Center on Human Development and Disability Clinic"/>
-  <marker category="building" code="CHSC" name="Center on Human Development and Disability School"/>
-  <marker category="building" code="CHSB" name="Center on Human Development and Disability South"/>
-  <marker category="building" code="CMA" name="Ceramic and Metal Arts Building"/>
-  <marker category="building" code="CHB" name="Chemistry Building"/>
-  <marker category="building" code="CHL" name="Chemistry Library Building"/>
-  <marker category="building" code="CCC" name="Child Care Center"/>
-  <marker category="building" code="CLK" name="Clark Hall"/>
-  <marker category="building" code="CDA" name="Commodore-Duchess Apartments"/>
-  <marker category="building" code="CMU" name="Communications Building"/>
-  <marker category="building" code="CDH" name="Condon Hall"/>
-  <marker category="building" code="CSH" name="Conibear Shellhouse"/>
-  <marker category="building" code="CRB" name="Corbet Building"/>
-  <marker category="building" code="CYB" name="Corporation Yard Buildings"/>
-  <marker category="building" code="ICH" name="Cunningham Hall"/>
-  <marker category="building" code="DEN" name="Denny Hall"/>
-  <marker category="building" code="EGL" name="Eagleson Hall"/>
-  <marker category="building" code="EDP" name="Edmundson Pavilion"/>
-  <marker category="building" code="EE1" name="Electrical Engineering Building"/>
-  <marker category="building" code="EGA" name="Engineering Annex"/>
-  <marker category="building" code="ELB" name="Engineering Library"/>
-  <marker category="building" code="ESB" name="Environmental Safety Storage Building"/>
-  <marker category="building" code="ECC" name="Ethnic Cultural Center"/>
-  <marker category="building" code="HSK" name="Fialkow Biomedical Sciences Research Pavilion (K wing)"/>
-  <marker category="building" code="FIS" name="Fisheries Center"/>
-  <marker category="building" code="FTR" name="Fisheries Teaching and Research Building"/>
-  <marker category="building" code="FSH" name="Fishery Sciences"/>
-  <marker category="building" code="FLK" name="Fluke Hall"/>
-  <marker category="gatehouse" code="GH2" name="Gatehouse 2 - Memorial Way"/>
-  <marker category="gatehouse" code="GH3" name="Gatehouse 3 - Pend Oreille"/>
-  <marker category="gatehouse" code="GH5" name="Gatehouse 5 - NE 40th"/>
-  <marker category="gatehouse" code="GH6" name="Gatehouse 6 - 15th NE"/>
-  <marker category="gatehouse" code="GH7" name="Gatehouse 7 - Columbia Road"/>
-  <marker category="gatehouse" code="GH8" name="Gatehouse 8 - Stadium Parking"/>
-  <marker category="building" code="GRB" name="Gerberding Hall"/>
-  <marker category="building" code="GDR" name="Golf Driving Range Building"/>
-  <marker category="building" code="GLD" name="Gould Hall"/>
-  <marker category="building" code="GWN" name="Gowen Hall"/>
-  <marker category="building" code="GAB" name="Graves Annex Building"/>
-  <marker category="building" code="TGB" name="Graves Hall, 3910 Montlake Blvd NE"/>
-  <marker category="building" code="GUA" name="Guggenheim Annex"/>
-  <marker category="building" code="GUG" name="Guggenheim Hall"/>
-  <marker category="building" code="GA1" name="Guthrie Annex 1"/>
-  <marker category="building" code="GA2" name="Guthrie Annex 2"/>
-  <marker category="building" code="GA3" name="Guthrie Annex 3"/>
-  <marker category="building" code="GA4" name="Guthrie Annex 4"/>
-  <marker category="building" code="GTH" name="Guthrie Hall"/>
-  <marker category="building" code="HND" name="Henderson Hall"/>
-  <marker category="building" code="HGT" name="Haggett Hall"/>
-  <marker category="building" code="HLL" name="Hall Health Center"/>
-  <marker category="building" code="HNS" name="Hansee Hall"/>
-  <marker category="building" code="HHL" name="Harris Hydraulics Laboratory"/>
-  <marker category="building" code="HS4" name="Health Sciences Annex 4"/>
-  <marker category="building" code="HAG" name="Henry Art Gallery and Allen Center for The Visual Arts"/>
-  <marker category="building" code="HCK" name="Hitchcock Hall"/>
-  <marker category="building" code="HPT" name="Hughes Penthouse Theatre"/>
-  <marker category="building" code="HUT" name="Hutchinson Hall"/>
-  <marker category="building" code="IPF" name="Indoor Practice Facility (Dempsey Indoor Center)"/>
-  <marker category="building" code="IMA" name="Intramural Activities Building"/>
-  <marker category="building" code="ISA" name="Isaacson Hall"/>
-  <marker category="building" code="JHA" name="Johnson Annex A"/>
-  <marker category="building" code="JHN" name="Johnson Hall"/>
-  <marker category="building" code="KNE" name="Kane Hall"/>
-  <marker category="building" code="KIN" name="Kincaid Hall"/>
-  <marker category="building" code="KIR" name="Kirsten Wnd Tunnel"/>
-  <marker category="building" code="LAN" name="Lander Hall"/>
-  <marker category="building" code="LAVC" name="Laurel Village Building C"/>
-  <marker category="building" code="LAVM" name="Laurel Village Building M"/>
-  <marker category="building" code="LAVN" name="Laurel Village Building N"/>
-  <marker category="building" code="LAVP" name="Laurel Village Building P"/>
-  <marker category="building" code="LAVQ" name="Laurel Village Building Q"/>
-  <marker category="building" code="LAVR" name="Laurel Village Building R"/>
-  <marker category="building" code="LAVS" name="Laurel Village Building S"/>
-  <marker category="building" code="LAVT" name="Laurel Village Building T"/>
-  <marker category="building" code="LAVU" name="Laurel Village Building U"/>
-  <marker category="building" code="LAVV" name="Laurel Village Building V"/>
-  <marker category="building" code="LAVW" name="Laurel Village Building W"/>
-  <marker category="building" code="LAVX" name="Laurel Village Building X"/>
-  <marker category="building" code="LAVY" name="Laurel Village Building Y"/>
-  <marker category="building" code="LA1" name="Lewis Annex 1 (A&amp;S)"/>
-  <marker category="building" code="LA2" name="Lewis Annex 2 (A&amp;S)"/>
-  <marker category="building" code="LEW" name="Lewis Hall"/>
-  <marker category="building" code="LOW" name="Loew Hall"/>
-  <marker category="building" code="MCR" name="Mercer Hall"/>
-  <marker category="building" code="MKZ" name="Mackenzie Hall"/>
-  <marker category="building" code="HSA" name="Magnuson Health Sciences Center A"/>
-  <marker category="building" code="HSAA" name="Magnuson Health Sciences Center AA"/>
-  <marker category="building" code="HSB" name="Magnuson Health Sciences Center B"/>
-  <marker category="building" code="HSBB" name="Magnuson Health Sciences Center BB"/>
-  <marker category="building" code="HSC" name="Magnuson Health Sciences Center C"/>
-  <marker category="building" code="HSD" name="Magnuson Health Sciences Center D"/>
-  <marker category="building" code="HSE" name="Magnuson Health Sciences Center E"/>
-  <marker category="building" code="HSF" name="Magnuson Health Sciences Center F"/>
-  <marker category="building" code="HSG" name="Magnuson Health Sciences Center G"/>
-  <marker category="building" code="HSH" name="Magnuson Health Sciences Center H"/>
-  <marker category="building" code="HSI" name="Magnuson Health Sciences Center I"/>
-  <marker category="building" code="HSJ" name="Magnuson Health Sciences Center J"/>
-  <marker category="building" code="HSRR" name="Magnuson Health Sciences Center RR"/>
-  <marker category="building" code="HST" name="Magnuson Health Sciences Center T"/>
-  <marker category="building" code="MSB" name="Marine Sciences Building"/>
-  <marker category="building" code="MAR" name="Marine Studies Building"/>
-  <marker category="building" code="MGH" name="Mary Gates Hall"/>
-  <marker category="building" code="MCC" name="McCarty Hall"/>
-  <marker category="building" code="MCM" name="McMahon Hall"/>
-  <marker category="building" code="MNY" name="Meany Hall"/>
-  <marker category="building" code="MEB" name="Mechanical Engineering Building"/>
-  <marker category="building" code="NMH" name="Merrill Hall"/>
-  <marker category="building" code="MLR" name="Miller Hall"/>
-  <marker category="building" code="MOR" name="More Hall"/>
-  <marker category="building" code="NRB" name="More Hall Annex"/>
-  <marker category="building" code="MUE" name="Mueller Hall"/>
-  <marker category="building" code="MUS" name="Music Building"/>
-  <marker category="building" code="NPC" name="North Physics Laboratory (Cyclotron Building)"/>
-  <marker category="building" code="NPS" name="North Physics Laboratory (Cyclotron Shop)"/>
-  <marker category="building" code="NTC" name="Nordstrom Tennis Center"/>
-  <marker category="building" code="NPV" name="North Physics Laboratory (Van de Graaff Accelerator)"/>
-  <marker category="building" code="NLB" name="Northlake Building"/>
-  <marker category="building" code="NHS" name="Northwest Horticultural Society Hall"/>
-  <marker category="building" code="OR2" name="Ocean Research Bldg. #2 (Trailer)"/>
-  <marker category="building" code="OCN" name="Ocean Sciences Building"/>
-  <marker category="building" code="OCE" name="Oceanography Building"/>
-  <marker category="building" code="ODB" name="Oceanography Dock Building"/>
-  <marker category="building" code="OSS" name="Oceanography Storage Shed"/>
-  <marker category="building" code="OTB" name="Oceanography Teaching Building"/>
-  <marker category="building" code="OUG" name="Odegaard Undergraduate Library"/>
-  <marker category="building" code="PDL" name="Padelford Hall"/>
-  <marker category="building" code="PAR" name="Parrington Hall"/>
-  <marker category="building" code="CSE" name="Paul G. Allen Center for Computer Science &amp; Engineering"/>
-  <marker category="building" code="PPO" name="Physical Plant Office Building"/>
-  <marker category="building" code="PAA" name="Physics-Astronomy Building"/>
-  <marker category="building" code="PAB" name="Physics-Astronomy Building"/>
-  <marker category="building" code="PAT" name="Physics-Astronomy Building"/>
-  <marker category="building" code="PL2" name="Plant Lab Annex 2"/>
-  <marker category="building" code="PLT" name="Plant Laboratory"/>
-  <marker category="building" code="PL1" name="Plant Laboratory Annex"/>
-  <marker category="building" code="PO2" name="Plant Operations Annex 2"/>
-  <marker category="building" code="PO3" name="Plant Operations Annex 3"/>
-  <marker category="building" code="PO4" name="Plant Operations Annex 4"/>
-  <marker category="building" code="PO5" name="Plant Operations Annex 5"/>
-  <marker category="building" code="PO6" name="Plant Operations Annex 6"/>
-  <marker category="building" code="OR1" name="Plant Operations Annex 7 (Modular)"/>
-  <marker category="building" code="POB" name="Plant Operations Building"/>
-  <marker category="building" code="PSB" name="Plant Services Building"/>
-  <marker category="building" code="PHT" name="Playhouse Theater"/>
-  <marker category="building" code="PWR" name="Power Plant"/>
-  <marker category="building" code="PSV" name="Publications Services Building"/>
-  <marker category="building" code="PCH" name="Purchasing and Accounting Building"/>
-  <marker category="building" code="RAI" name="Raitt Hall"/>
-  <marker category="building" code="RAX" name="Roberts Annex"/>
-  <marker category="building" code="ROB" name="Roberts Hall"/>
-  <marker category="building" code="RVC" name="Roosevelt Commons"/>
-  <marker category="building" code="RSN" name="Rosen Building"/>
-  <marker category="building" code="RUS" name="Russian House"/>
-  <marker category="building" code="SOCC" name="South Campus Center"/>
-  <marker category="building" code="SR2" name="Stadium Concession"/>
-  <marker category="building" code="SR3" name="Stadium Concession"/>
-  <marker category="building" code="SR4" name="Stadium Concession"/>
-  <marker category="building" code="SR6" name="Stadium Concession"/>
-  <marker category="building" code="SR9" name="Stadium Concession"/>
-  <marker category="building" code="URC" name="SW Maintenance Bldg"/>
-  <marker category="building" code="SAV" name="Savery Hall"/>
-  <marker category="building" code="SMZ" name="Schmitz Hall"/>
-  <marker category="building" code="SHA" name="Shellhouse Annex 1"/>
-  <marker category="building" code="SIG" name="Sieg Hall"/>
-  <marker category="building" code="SMI" name="Smith Hall"/>
-  <marker category="building" code="SWS" name="Social Work/Speech and Hearing Sciences Building"/>
-  <marker category="building" code="SLC" name="South Lake Union Administration (SLU Building C)"/>
-  <marker category="building" code="SLA" name="South Lake Union Research A"/>
-  <marker category="building" code="SLB" name="South Lake Union Research B"/>
-  <marker category="building" code="STD" name="Stadium"/>
-  <marker category="building" code="SEB" name="Staff Human Resources Building"/>
-  <marker category="building" code="SSB" name="Staff Services Building"/>
-  <marker category="building" code="SCA" name="Stevens Court A"/>
-  <marker category="building" code="SCB" name="Stevens Court B"/>
-  <marker category="building" code="SCC" name="Stevens Court C"/>
-  <marker category="building" code="SCD" name="Stevens Court D"/>
-  <marker category="building" code="SCJ" name="Stevens Court J"/>
-  <marker category="building" code="SCK" name="Stevens Court K"/>
-  <marker category="building" code="SCL" name="Stevens Court L"/>
-  <marker category="building" code="SCM" name="Stevens Court M"/>
-  <marker category="building" code="HUB" name="Student Union Building"/>
-  <marker category="building" code="SUZ" name="Suzzallo Library"/>
-  <marker category="building" code="OBS" name="Theodor Jacobsen Observatory"/>
-  <marker category="building" code="THO" name="Thomson Hall"/>
-  <marker category="building" code="TSB" name="Transportation Services Building"/>
-  <marker category="building" code="FAC" name="University of Washington Club (Faculty Center)"/>
-  <marker category="building" code="UWTC" name="UW Tower Building C"/>
-  <marker category="building" code="UWTO" name="UW Tower Building O"/>
-  <marker category="building" code="UWTS" name="UW Tower Building S"/>
-  <marker category="building" code="UWTT" name="UW Tower Building T"/>
-  <marker category="building" code="ADS" name="UW Technology"/>
-  <marker category="building" code="UFA" name="University Facilities Annex 1"/>
-  <marker category="building" code="UFB" name="University Facilities Building"/>
-  <marker category="building" code="UMSP" name="University Medical Center, Surgery and Treatment Pavilion"/>
-  <marker category="building" code="UMEB" name="University Medical Center, Wings EB"/>
-  <marker category="building" code="UMEE" name="University Medical Center, Wings EE"/>
-  <marker category="building" code="UMNN" name="University Medical Center, Wings NN"/>
-  <marker category="building" code="UMNW" name="University Medical Center, Wings NW"/>
-  <marker category="building" code="UMSE" name="University Medical Center, Wings SE"/>
-  <marker category="building" code="UMSS" name="University Medical Center, Wings SS"/>
-  <marker category="building" code="UMSW" name="University Medical Center, Wings SW"/>
-  <marker category="building" code="UMCC" name="University Medical Center,CC"/>
-  <marker category="building" code="UWMC" name="University of Washington Medical Center"/>
-  <marker category="building" code="UHF" name="Urban Horticulture Field House"/>
-  <marker category="building" code="BIOE" name="William H. Foege Bioengineering"/>
-  <marker category="building" code="GNOM" name="William H. Foege Genome Sciences"/>
-  <marker category="building" code="WAC" name="Waterfront Activities Center"/>
-  <marker category="building" code="WRS" name="West Receiving Station"/>
-  <marker category="building" code="WIL" name="Wilcox Hall"/>
-  <marker category="building" code="LAW" name="William H. Gates Hall"/>
-  <marker category="building" code="WLA" name="Wilson Annex"/>
-  <marker category="building" code="WCL" name="Wilson Ceramic Laboratory"/>
-  <marker category="building" code="WNX" name="Winkenwerder Annex"/>
-  <marker category="building" code="WFS" name="Winkenwerder Forest Sciences Laboratory"/>
-  <marker category="building" code="WSB" name="Women's Fastpitch Softball Building"/>
+<marker name="Arts Ticket office" code="UTO" category="building" />
+<marker name="Arcade Building" code="AAB" category="building" />
+<marker name="Aerodynamics Laboratory" code="ADL" category="building" />
+<marker name="Aerospace And Engineering Research Building" code="AER" category="building" />
+<marker name="Allen Library" code="ALB" category="building" />
+<marker name="Anderson Hall" code="AND" category="building" />
+<marker name="Architecture Hall" code="ARC" category="building" />
+<marker name="Art Building" code="ART" category="building" />
+<marker name="Atmospheric Sciences-Geophysics Building" code="ATG" category="building" />
+<marker name="Benjamin Hall Interdisciplinary Research Building(R&amp;T Bldg)" code="RTB" category="building" />
+<marker name="Bagley Hall" code="BAG" category="building" />
+<marker name="Bank of America Executive Education Center" code="EEC" category="building" />
+<marker name="Balmer Hall" code="BLM" category="building" />
+<marker name="Benson Hall" code="BNS" category="building" />
+<marker name="Bloedel Hall" code="BLD" category="building" />
+<marker name="Botany Greenhouse" code="BGH" category="building" />
+<marker name="Botany Greenhouse Annex" code="BHA" category="building" />
+<marker name="Brooklyn Building" code="BRK" category="building" />
+<marker name="Brotman Building (Slu Building D)" code="BFB" category="building" />
+<marker name="Bryants Annex" code="BRA" category="building" />
+<marker name="Bryants Building" code="BRY" category="building" />
+<marker name="Burke Memorial-Washington State Museum" code="BMM" category="building" />
+<marker name="Collegiana" code="COL" category="building" />
+<marker name="Canoe House" code="CNH" category="building" />
+<marker name="Center On Human Development And Disability Clinic" code="CHCL" category="building" />
+<marker name="Center On Human Development And Disability School" code="CHSC" category="building" />
+<marker name="Center On Human Development And Disability South" code="CHSB" category="building" />
+<marker name="Ceramic And Metal Arts Building" code="CMA" category="building" />
+<marker name="Chemistry Building" code="CHB" category="building" />
+<marker name="Chemistry Library Building" code="CHL" category="building" />
+<marker name="Child Care Center" code="CCC" category="building" />
+<marker name="Clark Hall" code="CLK" category="building" />
+<marker name="Commodore-Duchess Apartments" code="CDA" category="building" />
+<marker name="Communications Building" code="CMU" category="building" />
+<marker name="Condon Hall" code="CDH" category="building" />
+<marker name="Conibear Shellhouse" code="CSH" category="building" />
+<marker name="Corbet Building" code="CRB" category="building" />
+<marker name="Corporation Yard Buildings" code="CYB" category="building" />
+<marker name="Cunningham Hall" code="ICH" category="building" />
+<marker name="Denny Hall" code="DEN" category="building" />
+<marker name="Eagleson Hall" code="EGL" category="building" />
+<marker name="Edmundson Pavilion" code="EDP" category="building" />
+<marker name="Electrical Engineering Building" code="EEB" category="building" />
+<marker name="Engineering Annex" code="EGA" category="building" />
+<marker name="Engineering Library" code="ELB" category="building" />
+<marker name="Environmental Hlth Dept" code="EHD" category="building" />
+<marker name="Environmental Safety Storage Building" code="ESB" category="building" />
+<marker name="Ethnic Cultural Center" code="ECC" category="building" />
+<marker name="Fialkow Biomedical Sciences Research Pavilion (K Wing)" code="HSK" category="building" />
+<marker name="Fisheries Center" code="FIS" category="building" />
+<marker name="Fisheries Teaching And Research Building" code="FTR" category="building" />
+<marker name="Fishery Sciences" code="FSH" category="building" />
+<marker name="Fluke Hall" code="FLK" category="building" />
+<marker name="Gerberding Hall" code="GRB" category="building" />
+<marker name="Gelb Building" code="GLB" category="building" />
+<marker name="Golf Driving Range Building" code="GDR" category="building" />
+<marker name="Gould Hall" code="GLD" category="building" />
+<marker name="Gowen Hall" code="GWN" category="building" />
+<marker name="Graves Annex Building" code="GAB" category="building" />
+<marker name="Graves Hall, 3910 Montlake Blvd Ne" code="TGB" category="building" />
+<marker name="Guggenheim Annex" code="GUA" category="building" />
+<marker name="Guggenheim Hall" code="GUG" category="building" />
+<marker name="Guthrie Annex 1" code="GA1" category="building" />
+<marker name="Guthrie Annex 2" code="GA2" category="building" />
+<marker name="Guthrie Annex 3" code="GA3" category="building" />
+<marker name="Guthrie Annex 4" code="GA4" category="building" />
+<marker name="Guthrie Hall" code="GTH" category="building" />
+<marker name="Henderson Hall" code="HND" category="building" />
+<marker name="Haggett Hall" code="HGT" category="building" />
+<marker name="Hall Health Center" code="HLL" category="building" />
+<marker name="Hansee Hall" code="HNS" category="building" />
+<marker name="Harris Hydraulics Laboratory" code="HHL" category="building" />
+<marker name="Health Sciences Annex 4" code="HS4" category="building" />
+<marker name="Henry Art Gallery And Allen Center For The Visual Arts" code="HAG" category="building" />
+<marker name="Hitchcock Hall" code="HCK" category="building" />
+<marker name="Hughes Penthouse Theatre" code="HPT" category="building" />
+<marker name="Hutchinson Hall" code="HUT" category="building" />
+<marker name="Indoor Practice Facility (Dempsey Indoor Center)" code="IPF" category="building" />
+<marker name="Intramural Activities Building" code="IMA" category="building" />
+<marker name="Isaacson Hall" code="ISA" category="building" />
+<marker name="John M. Wallace Hall" code="ACC" category="building" />
+<marker name="Johnson Annex A" code="JHA" category="building" />
+<marker name="Johnson Hall" code="JHN" category="building" />
+<marker name="Kane Hall" code="KNE" category="building" />
+<marker name="Kincaid Hall" code="KIN" category="building" />
+<marker name="Kirsten Wnd Tunnel" code="KIR" category="building" />
+<marker name="Terry - Lander Hall" code="LAN" category="building" />
+<marker name="Laurel Village Building C" code="LAVC" category="building" />
+<marker name="Laurel Village Building M" code="LAVM" category="building" />
+<marker name="Laurel Village Building N" code="LAVN" category="building" />
+<marker name="Laurel Village Building P" code="LAVP" category="building" />
+<marker name="Laurel Village Building Q" code="LAVQ" category="building" />
+<marker name="Laurel Village Building R" code="LAVR" category="building" />
+<marker name="Laurel Village Building S" code="LAVS" category="building" />
+<marker name="Laurel Village Building T" code="LAVT" category="building" />
+<marker name="Laurel Village Building U" code="LAVU" category="building" />
+<marker name="Laurel Village Building V" code="LAVV" category="building" />
+<marker name="Laurel Village Building W" code="LAVW" category="building" />
+<marker name="Laurel Village Building X" code="LAVX" category="building" />
+<marker name="Laurel Village Building Y" code="LAVY" category="building" />
+<marker name="Lewis Annex 1 (A&amp;S)" code="LA1" category="building" />
+<marker name="Lewis Annex 2 (A&amp;S)" code="LA2" category="building" />
+<marker name="Lewis Hall" code="LEW" category="building" />
+<marker name="Loew Hall" code="LOW" category="building" />
+<marker name="Mercer Hall" code="MCR" category="building" />
+<marker name="Mackenzie Hall" code="MKZ" category="building" />
+<marker name="Magnuson Health Sciences Center A" code="HSA" category="building" />
+<marker name="Magnuson Health Sciences Center Aa" code="HSAA" category="building" />
+<marker name="Magnuson Health Sciences Center B" code="HSB" category="building" />
+<marker name="Magnuson Health Sciences Center Bb" code="HSBB" category="building" />
+<marker name="Magnuson Health Sciences Center C" code="HSC" category="building" />
+<marker name="Magnuson Health Sciences Center D" code="HSD" category="building" />
+<marker name="Magnuson Health Sciences Center E" code="HSE" category="building" />
+<marker name="Magnuson Health Sciences Center F" code="HSF" category="building" />
+<marker name="Magnuson Health Sciences Center G" code="HSG" category="building" />
+<marker name="Magnuson Health Sciences Center H" code="HSH" category="building" />
+<marker name="Magnuson Health Sciences Center I" code="HSI" category="building" />
+<marker name="Magnuson Health Sciences Center J" code="HSJ" category="building" />
+<marker name="Magnuson Health Sciences Center Rr" code="HSRR" category="building" />
+<marker name="Magnuson Health Sciences Center T" code="HST" category="building" />
+<marker name="Marine Sciences Building" code="MSB" category="building" />
+<marker name="Marine Studies Building" code="MAR" category="building" />
+<marker name="Mary Gates Hall" code="MGH" category="building" />
+<marker name="Mccarty Hall" code="MCC" category="building" />
+<marker name="Mcmahon Hall" code="MCM" category="building" />
+<marker name="Meany Hall" code="MNY" category="building" />
+<marker name="Mechanical Engineering Building" code="MEB" category="building" />
+<marker name="Merrill Hall" code="NMH" category="building" />
+<marker name="Miller Hall" code="MLR" category="building" />
+<marker name="More Hall" code="MOR" category="building" />
+<marker name="More Hall Annex" code="NRB" category="building" />
+<marker name="Mueller Hall" code="MUE" category="building" />
+<marker name="Music Building" code="MUS" category="building" />
+<marker name="North Physics Laboratory (Cyclotron Building)" code="NPC" category="building" />
+<marker name="North Physics Laboratory (Cyclotron Shop)" code="NPS" category="building" />
+<marker name="Nordstrom Tennis Center" code="NTC" category="building" />
+<marker name="North Physics Laboratory (Van De Graaff Accelerator)" code="NPV" category="building" />
+<marker name="Northlake Building" code="NLB" category="building" />
+<marker name="Northwest Horticultural Society Hall" code="NHS" category="building" />
+<marker name="Ocean Research Bldg. #2 (Trailer)" code="OR2" category="building" />
+<marker name="Ocean Sciences Building" code="OCN" category="building" />
+<marker name="Oceanography Building" code="OCE" category="building" />
+<marker name="Oceanography Dock Building" code="ODB" category="building" />
+<marker name="Oceanography Storage Shed" code="OSS" category="building" />
+<marker name="Oceanography Teaching Building" code="OTB" category="building" />
+<marker name="Odegaard Undergraduate Library" code="OUG" category="building" />
+<marker name="Paccar Hall" code="PCAR" category="building" />
+<marker name="Padelford Hall" code="PDL" category="building" />
+<marker name="Parrington Hall" code="PAR" category="building" />
+<marker name="Paul G. Allen Center For Computer Science &amp; Engineering" code="CSE" category="building" />
+<marker name="Physical Plant office Building" code="PPO" category="building" />
+<marker name="Physics-Astronomy Building" code="PAA" category="building" />
+<marker name="Physics-Astronomy Building" code="PAB" category="building" />
+<marker name="Physics-Astronomy Building" code="PAT" category="building" />
+<marker name="Plant Lab Annex 2" code="PL2" category="building" />
+<marker name="Plant Laboratory" code="PLT" category="building" />
+<marker name="Plant Laboratory Annex" code="PL1" category="building" />
+<marker name="Plant Operations Annex 2" code="PO2" category="building" />
+<marker name="Plant Operations Annex 3" code="PO3" category="building" />
+<marker name="Plant Operations Annex 4" code="PO4" category="building" />
+<marker name="Plant Operations Annex 5" code="PO5" category="building" />
+<marker name="Plant Operations Annex 6" code="PO6" category="building" />
+<marker name="Plant Operations Annex 7 (Modular)" code="OR1" category="building" />
+<marker name="Plant Operations Building" code="POB" category="building" />
+<marker name="Plant Services Building" code="PSB" category="building" />
+<marker name="Floyd and Delores Jones Playhouse Theater" code="PHT" category="building" />
+<marker name="Power Plant" code="PWR" category="building" />
+<marker name="Publications Services Building" code="PSV" category="building" />
+<marker name="Purchasing And Accounting Building" code="PCH" category="building" />
+<marker name="Raitt Hall" code="RAI" category="building" />
+<marker name="Roberts Annex" code="RAX" category="building" />
+<marker name="Roberts Hall" code="ROB" category="building" />
+<marker name="Roosevelt Commons" code="RVC" category="building" />
+<marker name="Rosen Building" code="RSN" category="building" />
+<marker name="Russian House" code="RUS" category="building" />
+<marker name="Solid Waste Management office" code="REC" category="building" />
+<marker name="South Campus Center" code="SOCC" category="building" />
+<marker name="SW Maintenance Bldg" code="SWMB" category="building" />
+<marker name="Savery Hall" code="SAV" category="building" />
+<marker name="Schmitz Hall" code="SMZ" category="building" />
+<marker name="Shellhouse Annex 1" code="SHA" category="building" />
+<marker name="Sieg Hall" code="SIG" category="building" />
+<marker name="Smith Hall" code="SMI" category="building" />
+<marker name="Social Work/Speech And Hearing Sciences Building" code="SWS" category="building" />
+<marker name="South Lake Union Administration (Slu Building C)" code="SLC" category="building" />
+<marker name="South Lake Union Research A" code="SLA" category="building" />
+<marker name="South Lake Union Research B" code="SLB" category="building" />
+<marker name="Husky Stadium" code="STD" category="building" />
+<marker name="Staff Human Resources Building" code="SEB" category="building" />
+<marker name="Staff Services Building" code="SSB" category="building" />
+<marker name="Stevens Court A" code="SCA" category="building" />
+<marker name="Stevens Court B" code="SCB" category="building" />
+<marker name="Stevens Court C" code="SCC" category="building" />
+<marker name="Stevens Court D" code="SCD" category="building" />
+<marker name="Stevens Court J" code="SCJ" category="building" />
+<marker name="Stevens Court K" code="SCK" category="building" />
+<marker name="Stevens Court L" code="SCL" category="building" />
+<marker name="Stevens Court M" code="SCM" category="building" />
+<marker name="Student Union Building" code="HUB" category="building" />
+<marker name="Suzzallo Library" code="SUZ" category="building" />
+<marker name="Theodor Jacobsen Observatory" code="OBS" category="building" />
+<marker name="Thomson Hall" code="THO" category="building" />
+<marker name="Transportation Services Building" code="TSB" category="building" />
+<marker name="University of Washington Club" code="FAC" category="building" />
+<marker name="UW Tower Building A" code="UWTA" category="building" />
+<marker name="University of Washington Tower Building C" code="UWTC" category="building" />
+<marker name="University of Washington Tower Building O" code="UWTO" category="building" />
+<marker name="Alumni Commons" code="UWTS" category="building" />
+<marker name="University Book Store" code="BOOK" category="building" />
+<marker name="University District Building" code="UDB" category="building" />
+<marker name="University of Washington Tower Building T" code="UWTT" category="building" />
+<marker name="UW Technology" code="ADS" category="building" />
+<marker name="University Facilities Annex 1" code="UFA" category="building" />
+<marker name="University Facilities Building" code="UFB" category="building" />
+<marker name="University Medical Center, Surgery And Treatment Pavilion" code="UMSP" category="building" />
+<marker name="University Medical Center, Wings Eb" code="UMEB" category="building" />
+<marker name="University Medical Center, Wings Ee" code="UMEE" category="building" />
+<marker name="University Medical Center, Wings Nn" code="UMNN" category="building" />
+<marker name="University Medical Center, Wings Nw" code="UMNW" category="building" />
+<marker name="University Medical Center, Wings Se" code="UMSE" category="building" />
+<marker name="University Medical Center, Wings Ss" code="UMSS" category="building" />
+<marker name="University Medical Center, Wings Sw" code="UMSW" category="building" />
+<marker name="University Medical Center,Cc" code="UMCC" category="building" />
+<marker name="University of Washington Medical Center" code="UWMC" category="building" />
+<marker name="Urban Horticulture Field House" code="UHF" category="building" />
+<marker name="William H. Foege Bioengineering" code="BIOE" category="building" />
+<marker name="William H. Foege Genome Sciences" code="GNOM" category="building" />
+<marker name="Warren Building" code="PRO" category="building" />
+<marker name="Waterfront Activities Center" code="WAC" category="building" />
+<marker name="West Receiving Station" code="WRS" category="building" />
+<marker name="Wilcox Hall" code="WIL" category="building" />
+<marker name="William H. Gates Hall" code="LAW" category="building" />
+<marker name="Wilson Annex" code="WLA" category="building" />
+<marker name="Wilson Ceramic Laboratory" code="WCL" category="building" />
+<marker name="Winkenwerder Annex" code="WNX" category="building" />
+<marker name="Winkenwerder Forest Sciences Laboratory" code="WFS" category="building" />
+<marker name="Women's Fastpitch Softball Building" code="WSB" category="building" />
 </markers>
