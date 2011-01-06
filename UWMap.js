@@ -1,3 +1,30 @@
+//UI Temp Hack
+$(document).ready(function() {
+    var original_div = $('div#results');
+    $('#searchField').bind('keydown', function(event) {
+        var $this = $(this);
+        var val = $this.val();
+        var results_div = $('div#results');
+        if(!results_div.length) {
+            $('body').append(original_div);
+        }
+        if(event.keyCode === 13 && val.length > 0) {
+            event.preventDefault();
+                var query = 'part='+val;
+                $.ajax({
+                    url:'autocomplete.php',
+                    dataType: 'json',
+                    data: query,
+                    success: function(data) { 
+                        cmap.ulocset.search('building',data[0]);
+                        results_div.remove();
+                    }
+                });
+                return false;
+        } 
+    });
+
+});
 /****************************************************************
 *** Program Name: UWMap
 *** Author: Chris Heiland
